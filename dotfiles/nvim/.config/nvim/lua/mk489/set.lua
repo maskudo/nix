@@ -10,6 +10,7 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
+vim.opt.wildignore:append { '*/node_modules/*' } --Finding files -Search
 
 vim.opt.smartindent = true
 
