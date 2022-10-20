@@ -2,12 +2,12 @@ require("mk489.set")
 require("mk489.remap")
 require("mk489.telescope")
 require("mk489.treesitter")
+require("mk489.indent-blankline")
+require("mk489.gitsigns")
 
-require("indent_blankline").setup {
-  -- for example, context is off by default, use this to turn it on
-  show_current_context = true,
-  show_current_context_start = true,
-}
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
@@ -18,9 +18,6 @@ require('Comment').setup()
 -- examples for your init.lua
 
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- empty setup using defaults
 require("nvim-tree").setup()
 -- OR setup with some options
