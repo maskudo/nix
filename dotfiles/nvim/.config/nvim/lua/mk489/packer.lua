@@ -52,7 +52,11 @@ return packer.startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
   use "lukas-reineke/indent-blankline.nvim"
-  use "nvim-treesitter/nvim-treesitter"
+
+  --TreeSitter
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
+  use "p00f/nvim-ts-rainbow"
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {

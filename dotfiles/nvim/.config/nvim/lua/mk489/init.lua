@@ -1,6 +1,7 @@
 require("mk489.set")
 require("mk489.remap")
 require("mk489.telescope")
+require("mk489.treesitter")
 
 require("indent_blankline").setup {
   -- for example, context is off by default, use this to turn it on
