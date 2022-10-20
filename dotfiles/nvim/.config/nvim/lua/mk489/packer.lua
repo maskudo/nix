@@ -41,8 +41,8 @@ packer.init {
 return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use 'ThePrimeagen/vim-be-good' --vim game 
-  use 'folke/tokyonight.nvim'
+  use 'ThePrimeagen/vim-be-good' --vim game
+  use 'folke/tokyonight.nvim' --color scheme
   use { 'ibhagwan/fzf-lua',
     -- optional for icon support
     requires = { 'kyazdani42/nvim-web-devicons' }
@@ -108,6 +108,7 @@ return packer.startup(function(use)
     -- or                            , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use "nvim-telescope/telescope-media-files.nvim"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
