@@ -5,6 +5,7 @@ require("mk489.treesitter")
 require("mk489.indent-blankline")
 require("mk489.gitsigns")
 require("mk489.nvim-tree")
+require("mk489.toggleterm")
 
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
