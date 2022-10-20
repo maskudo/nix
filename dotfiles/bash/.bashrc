@@ -147,3 +147,5 @@ function tpussh() {
 # fnm
 export PATH=/home/mk489/.fnm:$PATH
 eval "`fnm env`"
+
+[ -f "/home/mk489/.ghcup/env" ] && source "/home/mk489/.ghcup/env" # ghcup-env
