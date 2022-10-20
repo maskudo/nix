@@ -1,13 +1,61 @@
-local map = require("mk489.utils").map
-local builtin = require('telescope.builtin')
+local builtin   = require('telescope.builtin') local opts      = { noremap = true, silent = true }
+local temp_opts = { silent = true }
+
+--shorten function name
+local keymap = vim.api.nvim_set_keymap
+
+--set space as leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 --map("n", "<Leader>f", ":FzfLua files<CR>", { silent = true })
-map("n", "<Leader>w", ":LspZeroFormat<CR>", { silent = true })
-map("i", "jk", "<Esc>", { silent = true })
-map("i", "kj", "<Esc>", { silent = true })
+keymap("n", "<Leader>w", ":LspZeroFormat<CR>", { silent = true })
 
---telescope remaps 
-vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<Leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<Leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<Leader>fh', builtin.help_tags, {})
+keymap("i", "jk", "<Esc>", { silent = true })
+keymap("i", "kj", "<Esc>", { silent = true })
+
+
+-- Normal --
+-- Better window navigation
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+
+-- Resize with arrows
+keymap("n", "<C-Up>", ":resize +2<CR>", opts)
+keymap("n", "<C-Down>", ":resize -2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Navigate buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+
+--telescope remaps
+vim.keymap.set('n', '<Leader>ff', builtin.find_files, opts)
+vim.keymap.set('n', '<Leader>fg', builtin.live_grep, opts)
+vim.keymap.set('n', '<Leader>fb', builtin.buffers, opts)
+vim.keymap.set('n', '<Leader>fh', builtin.help_tags, opts)
+
+
+-- Visual --
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+
+-- Move text up and down
+keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "p", '"_dP', opts)
+
+-- Visual Block --
+-- Move text up and down
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
