@@ -11,7 +11,6 @@ vim.g.maplocalleader = " "
 
 --map("n", "<Leader>f", ":FzfLua files<CR>", { silent = true })
 keymap("n", "<Leader>w", ":LspZeroFormat<CR>", { silent = true })
-
 keymap("i", "jk", "<Esc>", { silent = true })
 keymap("i", "kj", "<Esc>", { silent = true })
 
@@ -23,7 +22,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+vim.keymap.set('n', '<Leader>xd', vim.diagnostic.open_float, opts) --display diagnostics as floating message
+keymap("n", "<leader>e", ":Lex 30<cr>", opts) --open nvim-tree explorer
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
