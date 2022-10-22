@@ -136,6 +136,8 @@ return packer.startup(function(use)
     end
   }
   use 'lewis6991/impatient.nvim'
+
+  use 'ggandor/leap.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
