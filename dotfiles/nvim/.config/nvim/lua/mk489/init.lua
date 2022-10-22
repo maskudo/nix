@@ -7,6 +7,8 @@ require("mk489.gitsigns")
 require("mk489.nvim-tree")
 require("mk489.toggleterm")
 
+require("impatient")
+
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
