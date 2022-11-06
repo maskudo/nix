@@ -13,7 +13,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.wildignore:append { '*/node_modules/*' } --Finding files -Search
-vim.opt.guifont = "monospace:h17"
+vim.opt.guifont = "mono:h10"
 vim.opt.cursorline = true
 
 vim.opt.smartindent = true
