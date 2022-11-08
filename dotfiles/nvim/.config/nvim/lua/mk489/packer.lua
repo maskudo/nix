@@ -43,7 +43,8 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'ThePrimeagen/vim-be-good' --vim game
   use 'folke/tokyonight.nvim' --color scheme
-  use 'navarasu/onedark.nvim'
+  use  'navarasu/onedark.nvim'
+
   use { 'ibhagwan/fzf-lua',
     -- optional for icon support
     requires = { 'kyazdani42/nvim-web-devicons' }
