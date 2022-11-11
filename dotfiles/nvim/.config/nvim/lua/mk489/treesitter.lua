@@ -21,6 +21,9 @@ configs.setup {
     -- termcolors = {} -- table of colour name strings
   },
   indent = { enable = true, disable = { "yaml" } },
+  autotag = {
+    enable = true,
+  },
 }
 vim.api.nvim_create_augroup("rainbow", {
   clear = true,

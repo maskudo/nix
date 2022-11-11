@@ -35,14 +35,15 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
+keymap("n", "<Leader>bc", "<Cmd>BufferClose<CR>", opts)
+keymap("n", "<Leader>ba", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
 
 --telescope remaps
 vim.keymap.set('n', '<Leader>ff', builtin.find_files, opts)
 vim.keymap.set('n', '<Leader>fg', builtin.live_grep, opts)
 vim.keymap.set('n', '<Leader>fb', builtin.buffers, opts)
 vim.keymap.set('n', '<Leader>fh', builtin.help_tags, opts)
-
+keymap("n", "<Leader>fp", "<Cmd>Telescope projects<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode

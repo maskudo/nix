@@ -58,6 +58,7 @@ return packer.startup(function(use)
   --TreeSitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
   use "p00f/nvim-ts-rainbow"
+  use "windwp/nvim-ts-autotag"
 
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -143,6 +144,8 @@ return packer.startup(function(use)
 
   use 'simrat39/rust-tools.nvim'
   use 'rust-lang/rust.vim'
+
+  use "ahmedkhalf/project.nvim"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
