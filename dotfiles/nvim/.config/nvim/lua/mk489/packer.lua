@@ -146,6 +146,8 @@ return packer.startup(function(use)
   use 'rust-lang/rust.vim'
 
   use "ahmedkhalf/project.nvim"
+
+  use "jose-elias-alvarez/null-ls.nvim"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
