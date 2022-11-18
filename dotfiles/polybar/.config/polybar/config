@@ -49,7 +49,7 @@ line-size = 3
 line-color = #f00
 
 border-size = 4
-border-color = #00000000
+border-color = #000000
 
 padding-left = 0
 padding-right = 2
@@ -63,8 +63,8 @@ font-2 = "JetBrainsMono Nerd Font:size=10;2"
 font-3 = "JetBrainsMono Nerd Font:size=10;2"
 
 modules-left = bspwm i3
-modules-center = mpd
-modules-right = xkeyboard xbacklight pulseaudio memory cpu  battery wlan date powermenu
+modules-center = 
+modules-right = xkeyboard xbacklight pulseaudio memory cpu wlan date battery
 
 tray-position = right
 tray-padding = 2
@@ -92,17 +92,13 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = scroll lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.fg-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
+format =  <label-indicator>
+format-spacing = 0
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${colors.orange}
+label-indicator-on-capslock = C
+label-indicator-on-numlock = N
 
 [module/filesystem]
 type = internal/fs
@@ -193,13 +189,13 @@ type = internal/xbacklight
 format = <label> <bar>
 label = BL
 
-bar-width = 10
+bar-width = 5
 bar-indicator = |
 bar-indicator-foreground = #fff
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
+bar-fill-foreground = ${colors.yellow}
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.fg-alt}
@@ -213,7 +209,7 @@ card = intel_backlight
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.green}
+format-prefix-foreground = ${colors.orange}
 ; format-underline = #f90000
 label = %percentage:2%%
 
@@ -291,7 +287,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = 🔇 muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
+bar-volume-width = 5
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -319,7 +315,7 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.fg-alt}
 label-muted = sound muted
 
-bar-volume-width = 10
+bar-volume-width = 5
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -337,66 +333,28 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.fg-alt}
 
 [module/battery]
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
 type = internal/battery
-battery = BAT0
+battery = BAT1
 adapter = ADP1
-full-at = 98
-low-at = 25
-format-full-prefix =  
-format-full = <label-charging>
-format-charging-prefix =  
-format-charging = <label-charging>
-label-charging = %percentage:2%%
-label-charging-padding = 1
-format-charging-foreground = ${colors.fg}
-format-discharging = <ramp-capacity> <label-discharging>
+full-at = 100
+
+format-charging =  <label-charging>
+format-charging-prefix = "  "
+format-charging-prefix-foreground = ${colors.green}
+label-charging = %percentage%%
+
+format-discharging =  <label-discharging>
+format-discharging-prefix = "  "
+format-discharging-prefix-foreground = ${colors.white}
 label-discharging = %percentage%%
-label-discharging-padding = 1
-format-discharging-foreground = ${colors.fg}
-format-low = <ramp-capacity><label-discharging>
-label-low-padding = 1
-format-low-foreground = ${colors.red}
-ramp-capacity-0 = ""
-ramp-capacity-1 = ""
-ramp-capacity-2 = ""
-ramp-capacity-3 = ""
-ramp-capacity-4 = ""
-ramp-capacity-5 = ""
-poll-interval = 5
-; type = internal/battery
-; battery = BAT0
-; adapter = AC
-; full-at = 98
-;
-; format-charging = <animation-charging> <label-charging>
-; format-charging-underline = #ffb52a
-; label-charging = Charging %percentage%%
-;
-; format-discharging = <animation-discharging> <label-discharging>
-; format-discharging-underline = ${self.format-charging-underline}
-; label-discharging = Discharging %percentage%%
-;
-; format-full-prefix = " "
-; format-full-prefix-foreground = ${colors.fg-alt}
-; format-full-underline = ${self.format-charging-underline}
-; label-full = %percentage%
-;
-; ramp-capacity-0 = 
-; ramp-capacity-1 = 
-; ramp-capacity-2 = 
-; ramp-capacity-foreground = ${colors.fg-alt}
-;
-; animation-charging-0 = 
-; animation-charging-1 = 
-; animation-charging-2 = 
-; animation-charging-foreground = ${colors.fg-alt}
-; animation-charging-framerate = 750
-;
-; animation-discharging-0 = 
-; animation-discharging-1 = 
-; animation-discharging-2 = 
-; animation-discharging-foreground = ${colors.fg-alt}
-; animation-discharging-framerate = 750
+
+format-full = <label-full>
+format-full-prefix = "  "
+format-full-prefix-foreground = ${colors.green}
+label-full = %percentage%
+
 
 [module/temperature]
 type = internal/temperature
@@ -452,7 +410,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+; pseudo-transparency = false
 
 [global/wm]
 margin-top = 5

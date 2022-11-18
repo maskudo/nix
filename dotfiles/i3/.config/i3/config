@@ -34,7 +34,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -52,8 +52,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# start rofi (a program launcher)
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+F2 exec --no-startup-id rofi -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -204,10 +205,10 @@ bindsym XF86AudioPrev exec playerctl previous
 # https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/
 
 # wallpaper
-exec_always feh --bg-scale /home/mk489/Pictures/Wallpapers/anime.png
+exec_always feh --bg-scale /home/mk489/Pictures/Wallpapers/4.png
 
 # screen lock
-set $i3lockwall i3lock -i /home/mk489/Pictures/Wallpapers/anime.png -t
+set $i3lockwall i3lock -i /home/mk489/Pictures/Wallpapers/4.png -t
 
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
 
@@ -235,5 +236,6 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 
-# Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec --no-startup-id picom -b
+exec_always --no-startup-id picom --experimental-backends &
