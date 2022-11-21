@@ -185,20 +185,23 @@ label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
+format = <ramp> <label>
+format-padding = 1
 
-format = <label> <bar>
-label = BL
-
-bar-width = 5
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = ${colors.yellow}
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.fg-alt}
+label = %percentage%%
+; label-foreground = ${colors.yellow}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
+ramp-9 = 
+ramp-font = 2
+ramp-foreground = ${colors.yellow}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -274,35 +277,16 @@ time-alt = %H:%M:%S
 format-prefix = 
 format-prefix-foreground = ${colors.purple}
 ; format-underline = #0a6cf5
-
 label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 5
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.fg-alt}
+format-volume-prefix = " "
+format-volume-prefix-foreground = ${colors.purple}
+format-volume = <label-volume>
+label-volume = %percentage%%
+label-muted = ﱝ
+label-muted-foreground = ${colors.disabled}
 
 [module/alsa]
 type = internal/alsa
@@ -339,6 +323,7 @@ type = internal/battery
 battery = BAT1
 adapter = ADP1
 full-at = 100
+low-at = 40
 
 format-charging =  <label-charging>
 format-charging-prefix = "  "
@@ -349,6 +334,11 @@ format-discharging =  <label-discharging>
 format-discharging-prefix = "  "
 format-discharging-prefix-foreground = ${colors.white}
 label-discharging = %percentage%%
+
+format-low = <label-low>
+format-low-prefix = "  "
+format-low-prefix-foreground = ${colors.red}
+label-low = low %percentage%%
 
 format-full = <label-full>
 format-full-prefix = "  "
