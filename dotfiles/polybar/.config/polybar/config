@@ -236,11 +236,10 @@ format-connected =  <label-connected>
 label-connected = "%{A1:wifimenu:} %upspeed%  %downspeed%%{A}"
 label-connected-foreground = ${colors.blue}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = "%{A1:wifimenu:} %upspeed%  %downspeed%%{A}"
+label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 

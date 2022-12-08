@@ -23,8 +23,17 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
-vim.keymap.set('n', '<Leader>xd', vim.diagnostic.open_float, opts) --display diagnostics as floating message
+keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
+keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
+keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
+
+vim.keymap.set('n', '<Leader>xf', vim.diagnostic.open_float, opts) --display diagnostics as floating message
 keymap("n", "<leader>e", ":Lex 30<cr>", opts) --open nvim-tree explorer
 
 -- Resize with arrows
