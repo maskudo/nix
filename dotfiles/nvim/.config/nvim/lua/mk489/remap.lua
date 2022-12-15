@@ -53,6 +53,8 @@ vim.keymap.set('n', '<Leader>ff', builtin.find_files, opts)
 vim.keymap.set('n', '<Leader>fg', builtin.live_grep, opts)
 vim.keymap.set('n', '<Leader>fb', builtin.buffers, opts)
 vim.keymap.set('n', '<Leader>fh', builtin.help_tags, opts)
+vim.keymap.set('n', '<Leader>fr', builtin.registers, opts)
+vim.keymap.set('n', '<Leader>fk', builtin.keymaps, opts)
 keymap("n", "<Leader>fp", "<Cmd>Telescope projects<CR>", opts)
 
 -- Visual --

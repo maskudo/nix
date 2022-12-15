@@ -1,4 +1,4 @@
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.termguicolors = true
 
 vim.opt.nu = true
