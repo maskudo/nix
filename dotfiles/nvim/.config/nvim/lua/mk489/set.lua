@@ -19,3 +19,6 @@ vim.opt.cursorline = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.scrolloff = 8
+vim.opt.mouse = ""
+-- vim.opt.colorcolumn = "120"

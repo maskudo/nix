@@ -41,7 +41,6 @@ packer.init {
 return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use 'ThePrimeagen/vim-be-good' --vim game
   use 'folke/tokyonight.nvim' --color scheme
   use 'navarasu/onedark.nvim'
 

@@ -3,4 +3,4 @@ if not status_ok then
   return
 end
 
-require("impatient")
+require("impatient").enable_profile()

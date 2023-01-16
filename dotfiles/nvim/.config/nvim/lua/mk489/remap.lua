@@ -11,9 +11,9 @@ vim.g.maplocalleader = " "
 
 --map("n", "<Leader>f", ":FzfLua files<CR>", { silent = true })
 -- keymap("n", "<Leader>w", ":LspZeroFormat<CR>", { silent = true })
-keymap("n", "<Leader>w", ":lua vim.lsp.buf.formatting()<CR>", { silent = true })
-keymap("i", "jk", "<Esc>", { silent = true })
-keymap("i", "kj", "<Esc>", { silent = true })
+keymap("n", "<Leader>w", ":lua vim.lsp.buf.format({async=true})<CR>", { silent = true })
+-- keymap("i", "jk", "<Esc>", { silent = true })
+-- keymap("i", "kj", "<Esc>", { silent = true })
 
 
 -- Normal --
@@ -23,14 +23,26 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- split window
+keymap("n", "<leader>sv", ":vs<CR>", opts)
+keymap("n", "<leader>sh", ":split<CR>", opts)
+
 keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
+
+-- copy to system clipboard
+keymap("n", "<leader>y", "\"+y", opts)
+keymap("v", "<leader>y", "\"+y", opts)
+keymap("n", "<leader>Y", "\"+Y", opts)
 
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
 keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
 keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+keymap("n", "<leader>xf", "<cmd>vim.diagnostic.open_float()<cr>", opts)
 keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
 
 vim.keymap.set('n', '<Leader>xf', vim.diagnostic.open_float, opts) --display diagnostics as floating message
