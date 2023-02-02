@@ -56,6 +56,7 @@ return packer.startup(function(use)
 
   --TreeSitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
+  use "nvim-treesitter/playground"
   use "p00f/nvim-ts-rainbow"
   use "windwp/nvim-ts-autotag"
 
@@ -80,6 +81,7 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
+  use { 'kkharji/lspsaga.nvim' }
   use {
     'numToStr/Comment.nvim',
     config = function()
