@@ -146,9 +146,19 @@ return packer.startup(function(use)
   use 'simrat39/rust-tools.nvim'
   use 'rust-lang/rust.vim'
 
-  use "ahmedkhalf/project.nvim"
+  use 'ahmedkhalf/project.nvim'
 
-  use "jose-elias-alvarez/null-ls.nvim"
+  use 'jose-elias-alvarez/null-ls.nvim'
+
+  use { 'brenoprata10/nvim-highlight-colors',
+    config = function()
+      require 'nvim-highlight-colors'.setup {
+        render = 'background', -- or 'foreground' or 'first_column'
+        enable_named_colors = true,
+        enable_tailwind = true
+      }
+    end }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

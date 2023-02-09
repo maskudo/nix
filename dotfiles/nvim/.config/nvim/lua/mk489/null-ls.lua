@@ -11,7 +11,7 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
   sources = {
     formatting.prettierd.with { extra_args = { "--single-quote", "--jsx-single-quote" } },
-    diagnostics.eslint,
-    code_actions.eslint,
+    diagnostics.eslint_d,
+    code_actions.eslint_d,
   },
 })

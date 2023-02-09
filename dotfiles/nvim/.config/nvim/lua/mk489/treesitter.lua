@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 configs.setup {
-  ensure_installed = { "c", "cpp", "javascript", "html", "css", "rust", "lua", "bash", "typescript", "tsx" },
+  ensure_installed = { "c", "cpp", "javascript", "html", "css", "rust", "lua", "bash", "typescript", "tsx", "python" },
   sync_install = false,
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {

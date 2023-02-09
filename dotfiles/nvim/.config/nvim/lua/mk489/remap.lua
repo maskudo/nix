@@ -11,7 +11,7 @@ vim.g.maplocalleader = " "
 
 --map("n", "<Leader>f", ":FzfLua files<CR>", { silent = true })
 -- keymap("n", "<Leader>w", ":LspZeroFormat<CR>", { silent = true })
-keymap("n", "<Leader>w", ":lua vim.lsp.buf.format({async=true})<CR>", { silent = true })
+keymap("n", "<Leader>w", ":lua vim.lsp.buf.format()<CR> | :w<CR>", { silent = true })
 keymap("n", "<A-k>", ":lua vim.lsp.buf.signature_help()<CR>", { silent = true })
 -- keymap("i", "jk", "<Esc>", { silent = true })
 -- keymap("i", "kj", "<Esc>", { silent = true })
