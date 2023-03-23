@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $m1 eDP1
+set $m2 HDMI1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -56,7 +58,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -157,6 +160,18 @@ bindsym $mod+Shift+8 move container to workspace  $ws8
 bindsym $mod+Shift+9 move container to workspace  $ws9
 bindsym $mod+Shift+0 move container to workspace  $ws10
 
+# set monitor
+workspace $ws1  output $m1
+workspace $ws2  output $m1
+workspace $ws3  output $m1
+workspace $ws4  output $m1
+workspace $ws5  output $m1
+workspace $ws6  output $m2
+workspace $ws7  output $m2
+workspace $ws8  output $m2
+workspace $ws9  output $m2
+workspace $ws10 output $m2
+
 #assign apps to workspace
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
@@ -207,8 +222,10 @@ bindsym $mod+r mode "resize"
 # Brightness controls
 # sudo apt install light
 # sudo chmod +s /usr/bin/light
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/.local/bin/changebrightness down 
+bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/.local/bin/changebrightness up 
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -223,7 +240,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always feh --bg-scale /home/mk489/Pictures/Wallpapers/4.png
 
 # screen lock
-set $i3lockwall i3lock -i /home/mk489/Pictures/Wallpapers/4.png -t
+set $i3lockwall i3lock -i /home/mk489/Pictures/Wallpapers/3.png -t
 
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
 
@@ -254,3 +271,8 @@ for_window [window_role="task_dialog"] floating enable
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id picom -b
 exec_always --no-startup-id picom --experimental-backends &
+
+
+exec --no-startup-id copyq &
+exec --no-startup-id firefox
+exec --no-startup-id flatpak run com.discordapp.Discord
