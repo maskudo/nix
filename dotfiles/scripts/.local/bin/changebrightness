@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# in case this doesnt work. do
+# sudo chmod +s /usr/bin/light
 function send_notification() {
 	brightness=$(printf "%.0f\n" $(light -G))
 	dunstify -a "changebrightness" -u low -r 9991 -h int:value:"$brightness" -i "brightness-$1" "Brightness: $brightness%" -t 2000
@@ -15,4 +16,3 @@ down)
 	send_notification $1
 	;;
 esac
-

@@ -64,7 +64,7 @@ font-3 = "JetBrainsMono Nerd Font:size=10;2"
 
 modules-left = bspwm i3
 modules-center = 
-modules-right = xkeyboard xbacklight pulseaudio memory cpu wlan date battery session
+modules-right = xkeyboard backlight pulseaudio memory cpu wlan date battery session
 
 tray-position = right
 tray-padding = 2
@@ -207,6 +207,47 @@ ramp-foreground = ${colors.yellow}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+
+[module/backlight]
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+; Use the `/sys/class/backlight/.../actual-brightness` file
+; rather than the regular `brightness` file.
+; Defaults to true unless the specified card is an amdgpu backlight.
+; New in version 3.6.0
+use-actual-brightness = true
+
+; Enable changing the backlight with the scroll wheel
+enable-scroll = true
+format = <ramp> <label>
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
+ramp-9 = 
+ramp-font = 2
+ramp-foreground = ${colors.yellow}
+
+; Only applies if <bar> is used
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
 
 [module/cpu]
 type = internal/cpu

@@ -131,6 +131,9 @@ export GOPATH=~/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
+#vim
+export EDITOR=vi
+
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 . "$HOME/.cargo/env"
 eval
