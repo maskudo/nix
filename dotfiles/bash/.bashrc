@@ -126,6 +126,11 @@ alias ta='tmux a'
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env)"
 
+# go
+export GOPATH=~/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 . "$HOME/.cargo/env"
 eval
@@ -154,3 +159,4 @@ fi
 
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
+. "/usr/share/doc/fzf/examples/key-bindings.bash"
