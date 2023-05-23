@@ -122,14 +122,13 @@ alias lg='lazygit'
 alias t='tmux'
 alias ta='tmux a'
 
-# fnm
-export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env)"
-
 # go
 export GOPATH=~/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+export PATH="/usr/local/ssl/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/ssl/lib:$LD_LIBRARY_PATH"
 
 #vim
 export EDITOR=vi
@@ -163,3 +162,4 @@ fi
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 . "/usr/share/doc/fzf/examples/key-bindings.bash"
+setxkbmap -option caps:escape_shifted_capslock
