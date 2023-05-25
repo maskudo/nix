@@ -9,8 +9,10 @@
 ; primary = #ffb52a
 ; secondary = #e60053
 ; alert = #bd2c40
-bg = #282c34
-bg-alt = #4b5263
+;
+; One Dark
+bg = #aa282a36
+bg-alt = #aa4b5263
 fg = #abb2bf
 fg-alt = #5c6370
 
@@ -48,7 +50,8 @@ foreground = ${colors.fg}
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-top = 4
+border-bottom = 1
 border-color = #000000
 
 padding-left = 0
@@ -230,16 +233,11 @@ format = <ramp> <label>
 label = %percentage%%
 
 ; Only applies if <ramp> is used
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-5 = 
-ramp-6 = 
-ramp-7 = 
-ramp-8 = 
-ramp-9 = 
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 ramp-font = 2
 ramp-foreground = ${colors.yellow}
 
@@ -260,7 +258,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.blue}
 ; format-underline = #4bffdc
 label = %percentage_used%%
@@ -326,8 +324,8 @@ format-volume-prefix = " "
 format-volume-prefix-foreground = ${colors.purple}
 format-volume = <label-volume>
 label-volume = %percentage%%
-label-muted = ﱝ
-label-muted-foreground = ${colors.disabled}
+label-muted = " "
+label-muted-foreground = ${colors.purple}
 
 [module/alsa]
 type = internal/alsa

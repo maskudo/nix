@@ -121,6 +121,7 @@ alias v='vim'
 alias lg='lazygit'
 alias t='tmux'
 alias ta='tmux a'
+. ~/.tmux-onedark-theme.tmux
 
 # go
 export GOPATH=~/go
