@@ -12,7 +12,7 @@ return {
         end,
       },
     })
-    rt.inlay_hints.disable()
+    rt.inlay_hints.enable()
     rt.hover_actions.hover_actions()
   end,
   -- opts = {
