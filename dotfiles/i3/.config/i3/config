@@ -20,11 +20,11 @@ font pango:JetBrainsMono Nerd Font 9
 default_border pixel 2
 hide_edge_borders smart
 # class                         border          background      text            indicator       child_border
-client.focused                  #4E5F77         #4E5F77         #ffffff         #4f4f4f       #4f4f4f
+client.focused                    #5c6370         #5c6370         #ffffff         #4f4f4f       #4f4f4f
 # client.focused_inactive         #333333         #000000         #ffff33         #ff0001       #000000
 # client.unfocused                #333333         #000000         #888888         #ff0000       #aa000000
-# client.urgent                   #2f343a         #900000         #ffffff         $coloratt       #900000
-# client.placeholder              #000000         #000000         #ffffff         $coloratt       #0c0c0c
+# client.urgent                   #2f343a         #900000         #ffffff         $coloratt     #900000
+# client.placeholder              #000000         #000000         #ffffff         $coloratt     #0c0c0c
 
 # font "JetBrainsMono Nerd Font 8"
 
@@ -49,9 +49,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/.local/bin/changevolume up
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/.local/bin/changevolume down
+bindsym XF86AudioMute exec --no-startup-id $HOME/.local/bin/changevolume mute
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -67,6 +67,7 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -sort  -sorting-method fzf
 bindsym $mod+F2 exec --no-startup-id rofi -show run
+bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -228,8 +229,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/.local/bin/changebright
 bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/.local/bin/changebrightness up 
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 

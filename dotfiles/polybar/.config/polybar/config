@@ -145,7 +145,7 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = #000
+label-mode-foreground = ${colors.fg}
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
