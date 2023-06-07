@@ -277,3 +277,6 @@ exec_always --no-startup-id picom --experimental-backends &
 exec --no-startup-id copyq &
 exec --no-startup-id firefox
 exec --no-startup-id flatpak run com.discordapp.Discord
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+exec --no-startup-id setxkbmap -option caps:escape_shifted_capslock

@@ -13,6 +13,7 @@ return {
       "tailwindcss-language-server",
       "gopls",
       "emmet-ls",
+      "css-lsp",
       "dockerfile-language-server",
       "docker-compose-language-service",
       "clangd",

@@ -154,7 +154,7 @@ unset -f __main
 if type ag &>/dev/null; then
 	export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
 fi
-#refer rg over ag
+#prefer rg over ag
 if type rg &>/dev/null; then
 	export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
@@ -162,4 +162,3 @@ fi
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 . "/usr/share/doc/fzf/examples/key-bindings.bash"
-setxkbmap -option caps:escape_shifted_capslock

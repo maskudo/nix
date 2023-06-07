@@ -12,7 +12,10 @@ up)
 	send_notification $1
 	;;
 down)
-	light -U 5 -q
-	send_notification $1
+	brightness=$(printf "%.0f\n" $(light -G))
+	if [[ $brightness -gt 5 ]]; then
+		light -U 5 -q
+		send_notification $1
+	fi
 	;;
 esac
