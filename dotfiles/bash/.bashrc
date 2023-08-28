@@ -130,6 +130,10 @@ export PATH=$PATH:$GOBIN
 export PATH="/usr/local/ssl/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/ssl/lib:$LD_LIBRARY_PATH"
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 #vim
 export EDITOR=vi
 
