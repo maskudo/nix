@@ -18,6 +18,10 @@ return {
       "docker-compose-language-service",
       "clangd",
       "ansible-language-server",
+      "mypy",
+      "ruff",
+      "pyright",
+      "black",
     },
   },
 }

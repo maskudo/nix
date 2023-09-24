@@ -18,6 +18,9 @@ return {
       "yaml",
       "markdown",
       "markdown_inline",
+      "ninja",
+      "rst",
+      "toml",
     },
   },
 }

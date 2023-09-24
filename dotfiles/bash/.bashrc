@@ -121,6 +121,7 @@ alias v='vim'
 alias lg='lazygit'
 alias t='tmux'
 alias ta='tmux a'
+alias ssh='TERM=xterm ssh'
 
 # go
 export GOPATH=~/go
