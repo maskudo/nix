@@ -139,7 +139,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export EDITOR=vi
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-. "$HOME/.cargo/env"
+[ -f ~/.cargo/env ] && source $HOME/.cargo/env
 eval
 __main() {
 	local major="${BASH_VERSINFO[0]}"
