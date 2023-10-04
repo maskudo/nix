@@ -275,6 +275,8 @@ exec_always --no-startup-id picom --experimental-backends &
 
 
 exec --no-startup-id copyq &
+exec --no-startup-id dunst &
+exec --no-startup-id nm-applet &
 exec --no-startup-id firefox
 exec --no-startup-id flatpak run com.discordapp.Discord
 exec --no-startup-id xset s off

@@ -135,20 +135,27 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+ASDFSHIM="$HOME/.asdf/shims"
+export PATH=$PATH:$ASDFSHIM
+
+export CARGO_BIN="$HOME/.cargo/bin"
+export PATH=$PATH:$CARGO_BIN
+
 #vim
 export EDITOR=vi
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
+
 eval
 __main() {
 	local major="${BASH_VERSINFO[0]}"
 	local minor="${BASH_VERSINFO[1]}"
 
 	if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
-		source <($HOME/.cargo/bin/starship init bash --print-full-init)
+		source <(starship init bash --print-full-init)
 	else
-		source /dev/stdin <<<"$($HOME/.cargo/bin/starship init bash --print-full-init)"
+		source /dev/stdin <<<"$(starship init bash --print-full-init)"
 	fi
 }
 __main
@@ -162,6 +169,10 @@ fi
 #prefer rg over ag
 if type rg &>/dev/null; then
 	export FZF_DEFAULT_COMMAND='rg --files --hidden'
+fi
+
+if type bat &>/dev/null; then
+	alias cat="bat"
 fi
 
 . "$HOME/.asdf/asdf.sh"
