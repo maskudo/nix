@@ -6,6 +6,7 @@ return {
       -- Order of formatters matters. They are used in order of appearance.
       nls.builtins.formatting.ruff,
       nls.builtins.formatting.black,
+      nls.builtins.diagnostics.ansiblelint,
       -- nls.builtins.formatting.black.with({
       --   extra_args = { "--preview" },
       -- }),
