@@ -123,6 +123,7 @@ alias t='tmux'
 alias ta='tmux a'
 alias ssh='TERM=xterm ssh'
 alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"
+alias r="ranger"
 
 # go
 export GOPATH=~/go

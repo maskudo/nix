@@ -18,6 +18,7 @@ return {
       "docker-compose-language-service",
       "clangd",
       "ansible-language-server",
+      "ansible-lint",
       "mypy",
       "ruff",
       "pyright",
