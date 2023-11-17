@@ -1,18 +1,16 @@
 local map = require("helpers.keys").map
-
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
 -- Blazingly fast way out of insert mode
 map("i", "jk", "<esc>")
 --better movement
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
+map("n", "<C-u>", "<C-u>zz", "Move up by half page")
+map("n", "<C-d>", "<C-d>zz", "Mode down by half page")
+map("n", "n", "nzzzv", "Jump to Next")
+map("n", "N", "Nzzzv", "Jump to Prev")
 
 -- Quick access to some common actions
 map("n", "<leader>fw", "<cmd>w<cr>", "Write")
 map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
+map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
 map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 map("n", "<leader>dw", "<cmd>close<cr>", "Window")
@@ -58,18 +56,41 @@ map("v", ">", ">gv")
 
 -- Switch between light and dark modes
 map("n", "<leader>ut", function()
-	if vim.o.background == "dark" then
-		vim.o.background = "light"
-	else
-		vim.o.background = "dark"
-	end
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
 end, "Toggle between light and dark themes")
 
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
 
-map("n", "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle Diagnostics")
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workplace Diagnostice")
--- map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics")
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Quick Fix")
-map("n", "gD", ":lua", "Goto Declaration")
+-- map("n", "gD", ":lua", "Goto Declaration")
+
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", "Escape and clear hlsearch")
+
+-- Move text up and down
+map("v", "<A-j>", ":m .+1<CR>==", "Move text down")
+map("v", "<A-k>", ":m .-2<CR>==", "Move text up")
+map("v", "p", '"_dP', "Paste")
+
+-- Visual Block --
+-- Move text up and down
+map("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
+map("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", "Move text down")
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", "Move text up")
+-- Disgnostics
+-- keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workplace diagnostics")
+map("n", "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", "Document diagnostics")
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", "Loclist")
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Quickfix")
+-- map("n", "<leader>xf", "<cmd>vim.diagnostic.open_float()<cr>", "Open float diagnostics")
+
+-- copy to system clipboard
+map("n", "<leader>y", '"+y', "Copy to system clipboard")
+map("v", "<leader>y", '"+y', "Copy to system clipboard")
+map("n", "<leader>Y", '"+Y', "Copy to system clipboard")

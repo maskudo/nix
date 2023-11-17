@@ -6,3 +6,5 @@ require("core.keymaps")
 
 -- Other options
 require("core.options")
+
+require("core.autocmds")

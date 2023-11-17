@@ -1,7 +1,8 @@
 return {
 	"williamboman/mason.nvim",
 	cmd = "Mason",
-	keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+	event = "VeryLazy",
+	keys = { { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" } },
 	build = ":MasonUpdate",
 	opts = {
 		ensure_installed = {
@@ -30,6 +31,7 @@ return {
 	},
 	---@param opts MasonSettings | {ensure_installed: string[]}
 	config = function(_, opts)
+		require("lsp-zero").extend_lspconfig()
 		require("mason").setup(opts)
 		local mr = require("mason-registry")
 		mr:on("package:install:success", function()
