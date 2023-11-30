@@ -7,7 +7,12 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+				cond = vim.fn.executable("make") == 1,
+				event = "VeryLazy",
+			},
 		},
 		config = function()
 			require("telescope").setup({
@@ -37,7 +42,8 @@ return {
 
 			map("n", "<leader>ff", require("telescope.builtin").find_files, "Files")
 			map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
-			map("n", "<leader>fg", require("telescope.builtin").live_grep, "Grep")
+			map("n", "<leader>fg", require("telescope.builtin").git_files, "Git Files")
+			map("n", "<leader>f/", require("telescope.builtin").live_grep, "Grep")
 			map("n", "<leader>/", require("telescope.builtin").live_grep, "Grep")
 			map("n", "<leader>fb", require("telescope.builtin").buffers, "Buffers")
 			map("n", "<leader>fd", require("telescope.builtin").diagnostics, "Diagnostics")

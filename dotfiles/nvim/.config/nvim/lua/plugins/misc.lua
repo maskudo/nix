@@ -1,10 +1,25 @@
 -- Miscelaneous fun stuff
 return {
-	-- Comment with haste
 	{
-		"numToStr/Comment.nvim",
-		opts = {},
+		"echasnovski/mini.comment",
 		event = "VeryLazy",
+		opts = {
+			options = {
+				custom_commentstring = function()
+					return require("ts_context_commentstring.internal").calculate_commentstring()
+						or vim.bo.commentstring
+				end,
+			},
+		},
+		dependencies = {
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				lazy = true,
+				opts = {
+					enable_autocmd = false,
+				},
+			},
+		},
 	},
 	{
 		"echasnovski/mini.pairs",
@@ -14,7 +29,6 @@ return {
 			require("mini.pairs").setup()
 		end,
 	},
-	-- Better buffer closing actions. Available via the buffers helper.
 	{
 		"kazhala/close-buffers.nvim",
 		event = "VeryLazy",

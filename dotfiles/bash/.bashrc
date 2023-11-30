@@ -124,7 +124,7 @@ alias ta='tmux a'
 alias ssh='TERM=xterm ssh'
 alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"
 alias r="ranger"
-
+alias copy="xclip -selection clipboard"
 # go
 export GOPATH=~/go
 export GOBIN=$GOPATH/bin
@@ -181,6 +181,12 @@ fi
 . "$HOME/.asdf/completions/asdf.bash"
 . "/usr/share/doc/fzf/examples/key-bindings.bash"
 
+# use ctrl-z to toggle in and out of bg
+if [[ $- == *i* ]]; then 
+  stty susp undef
+  bind '"\C-z":" fg\015"'
+fi
+
 _z_cd() {
 	cd "$@" || return "$?"
 
@@ -210,7 +216,7 @@ ji() {
 
 alias ja='zoxide add'
 
-alias jq='zoxide query'
+# alias jq='zoxide query'
 alias jqi='zoxide query -i'
 
 alias jr='zoxide remove'
@@ -231,3 +237,20 @@ case "$PROMPT_COMMAND" in
 *_zoxide_hook*) ;;
 *) PROMPT_COMMAND="_zoxide_hook${PROMPT_COMMAND:+;${PROMPT_COMMAND}}" ;;
 esac
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mk489/Downloads/.anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mk489/Downloads/.anaconda/etc/profile.d/conda.sh" ]; then
+        . "/home/mk489/Downloads/.anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mk489/Downloads/.anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# . ~/.asdf/plugins/dotnet/set-dotnet-env.bash

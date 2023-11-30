@@ -1,0 +1,18 @@
+[display]
+compact = false
+
+[style.command_name]
+foreground = "yellow"
+
+[style.example_text]
+foreground = "green"
+
+[style.example_code]
+foreground = "yellow"
+
+[style.example_variable]
+foreground = "yellow"
+
+[updates]
+auto_update = true
+

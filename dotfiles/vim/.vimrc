@@ -1,17 +1,28 @@
-"Set compatibility to Vim only"
 set nocompatible
-
-"Show line numbers "
 set number
+set relativenumber
+set smartcase 
+set smartindent 
+set splitbelow 
+set confirm 
+set ignorecase 
+set hlsearch
+set expandtab 
+set autowrite 
+set nowrap
+set wildmenu
+set showmatch
+set fillchars="eob: "
 
-"Status bar"
-set laststatus=2
+set tabstop=2           "the amount of spaces that vim will equate to a tab character
+set softtabstop=2       "like tabstop, but for editing operations (insert mode)
+set shiftwidth=2        "used for autoindent and << and >> operators in normal mode
+set autoindent          "copies indent from current line to the next line
+set expandtab   
 
-"wrap text that extends beyond the screen length"
-set wrap
+syntax enable                   "turn syntax highlighting on
+filetype plugin indent on       "load plugin and indent files associated a detected filetype
+runtime macros/matchit.vim      
 
-"Call the .vimrc.plug file"
-if filereadable(expand("~/.vimrc.plug"))
-	source ~/.vimrc.plug
-endif
-
+" Make double-<Esc> clear search highlights
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>

@@ -16,7 +16,7 @@ return {
 			"typescript-language-server",
 			"tailwindcss-language-server",
 			"gopls",
-			"emmet-ls",
+			"emmet-language-server",
 			"css-lsp",
 			"dockerfile-language-server",
 			"docker-compose-language-service",

@@ -1,6 +1,6 @@
 -- Highlight, edit, and navigate code
 return {
-	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle", event = "VeryLazy" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
@@ -8,7 +8,7 @@ return {
 		end,
 		event = { "VeryLazy" },
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
+			{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
