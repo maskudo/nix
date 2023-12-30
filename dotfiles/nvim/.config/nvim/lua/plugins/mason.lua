@@ -11,6 +11,7 @@ return {
 			"shfmt",
 			"flake8",
 			"prettierd",
+			"eslint-lsp",
 			"eslint_d",
 			"rust-analyzer",
 			"typescript-language-server",

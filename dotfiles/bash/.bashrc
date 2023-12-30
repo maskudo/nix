@@ -119,12 +119,14 @@ fi
 alias nv='nvim'
 alias v='vim'
 alias lg='lazygit'
+alias ld='lazydocker'
 alias t='tmux'
 alias ta='tmux a'
 alias ssh='TERM=xterm ssh'
 alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"
 alias r="ranger"
 alias copy="xclip -selection clipboard"
+
 # go
 export GOPATH=~/go
 export GOBIN=$GOPATH/bin
@@ -142,6 +144,9 @@ export PATH=$PATH:$ASDFSHIM
 
 export CARGO_BIN="$HOME/.cargo/bin"
 export PATH=$PATH:$CARGO_BIN
+
+export SCRIPTS=~/.local/bin/scripts
+export PATH=$PATH:$SCRIPTS
 
 #vim
 export EDITOR=vi
@@ -179,8 +184,8 @@ fi
 
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
-. "/usr/share/doc/fzf/examples/key-bindings.bash"
-
+# . "/usr/share/doc/fzf/examples/key-bindings.bash"
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash 
 # use ctrl-z to toggle in and out of bg
 if [[ $- == *i* ]]; then 
   stty susp undef
@@ -254,3 +259,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # . ~/.asdf/plugins/dotnet/set-dotnet-env.bash
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"

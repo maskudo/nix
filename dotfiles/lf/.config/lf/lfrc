@@ -35,6 +35,25 @@ cmd mkfile ${{
   nvim $ans
 }}
 
+cmd  create %{{
+  read -p "Enter a name for the file or directory: " input
+
+  current_directory=$(pwd)
+  path="$current_directory/$input"
+  directory=$(dirname "$path")
+
+  if [[ $input == */ ]]; then
+      mkdir -p "$path"
+      echo "Directory '$input' created in $current_directory."
+  else
+      mkdir -p "$directory"
+
+      touch "$path"
+      echo "File '$input' created in $directory."
+  fi
+
+}}
+
 cmd zip %zip -r "$f.zip" "$fx"
 cmd tar %tar cvf "$f.tar" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
@@ -90,6 +109,13 @@ cmd zi ${{
 	lf -remote "send $id cd \"$result\""
 }}
 
+cmd z_jump %{{
+  read directory
+  result="$(zoxide query $directory)"
+  echo $result
+  lf -remote "send $id cd \"$result\""
+}}
+
 # Remove some defaults
 map o
 map n
@@ -98,7 +124,9 @@ map c
 map f
 map y
 
-map . set hidden!
+map a create
+map f z_jump
+map H set hidden!
 map DD delete
 map Y copy
 map P paste
@@ -110,8 +138,6 @@ map Md mkdir
 map ch chmod
 map br $vimv $fx
 map r rename
-map H top
-map L bottom
 map R reload
 map c clear
 map U unselect
@@ -121,4 +147,3 @@ map <c-f> fzf_jump
 map dd trash
 # map tc clear_trash
 map tr restore_trash
-

@@ -41,14 +41,15 @@ return {
 			end, "Search in current buffer")
 
 			map("n", "<leader>ff", require("telescope.builtin").find_files, "Files")
+			map("n", "<leader>.", require("telescope.builtin").find_files, "Files")
 			map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
 			map("n", "<leader>fg", require("telescope.builtin").git_files, "Git Files")
+			map("n", "<C-p>", require("telescope.builtin").git_files, "Git Files")
 			map("n", "<leader>f/", require("telescope.builtin").live_grep, "Grep")
 			map("n", "<leader>/", require("telescope.builtin").live_grep, "Grep")
 			map("n", "<leader>fb", require("telescope.builtin").buffers, "Buffers")
 			map("n", "<leader>fd", require("telescope.builtin").diagnostics, "Diagnostics")
-
-			map("n", "<C-p>", require("telescope.builtin").keymaps, "Search keymaps")
+			map("n", "<leader>fk", require("telescope.builtin").keymaps, "Search keymaps")
 		end,
 	},
 }

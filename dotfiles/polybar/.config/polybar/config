@@ -272,12 +272,12 @@ interval = 3.0
 format-connected =  <label-connected>
 ; format-connected-underline = #9f78e1
 ; label-connected =  %upspeed%  %downspeed%
-label-connected = "%{A1:wifimenu:} %upspeed%  %downspeed%%{A}"
+label-connected = "%{A1:~/.local/bin/scripts/wifimenu:} %upspeed%  %downspeed%%{A}"
 label-connected-foreground = ${colors.blue}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = "%{A1:wifimenu:} %upspeed%  %downspeed%%{A}"
+label-disconnected = "%{A1:~/.local/bin/scripts/wifimenu:} %upspeed%  %downspeed%%{A}"
 label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
@@ -448,7 +448,7 @@ margin-bottom = 5
 [module/session]
 type = custom/text
 
-click-left = powermenu
+click-left = ~/.local/bin/scripts/powermenu
 content = %{T4}%{T-}
 content-background = ${colors.bg}
 content-foreground = ${colors.red}

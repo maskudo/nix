@@ -10,6 +10,7 @@ map("n", "N", "Nzzzv", "Jump to Prev")
 -- Quick access to some common actions
 map("n", "<leader>fw", "<cmd>w<cr>", "Write")
 map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
+map("n", "<leader>fu", "<cmd>up<cr>", "Update file")
 map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
 map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
@@ -82,13 +83,6 @@ map("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
 map("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
 map("x", "<A-j>", ":move '>+1<CR>gv-gv", "Move text down")
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", "Move text up")
--- Disgnostics
--- keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workplace diagnostics")
-map("n", "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", "Document diagnostics")
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", "Loclist")
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Quickfix")
--- map("n", "<leader>xf", "<cmd>vim.diagnostic.open_float()<cr>", "Open float diagnostics")
 
 -- copy to system clipboard
 map("n", "<leader>y", '"+y', "Copy to system clipboard")

@@ -1,6 +1,6 @@
 -- Highlight, edit, and navigate code
 return {
-	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle", event = "VeryLazy" },
+	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle", lazy = true },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()

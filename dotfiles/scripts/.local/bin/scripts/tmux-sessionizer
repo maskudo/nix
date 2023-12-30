@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  if ! command -v fd &> /dev/null
+  then 
+    echo "fd not found"
+    selected=$(find $HOME/dev/ $HOME/personal/ -type d -iname '.git' -prune | sed 's/\/.git//g' | fzf)
+  else
+    selected=$(fd -H --prune --type d .git "$HOME/dev" "$HOME/personal" | sed 's/\/.git//g' | fzf)
+  fi
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+tmux switch-client -t $selected_name 2> /dev/null
+if [ $? -ne 0 ]; then
+  tmux attach -t $selected_name 2> /dev/null
+fi

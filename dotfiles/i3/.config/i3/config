@@ -26,9 +26,9 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/.local/bin/changevolume up
-bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/.local/bin/changevolume down
-bindsym XF86AudioMute exec --no-startup-id $HOME/.local/bin/changevolume mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/scripts/changevolume up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/scripts/changevolume down
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/scripts/changevolume mute
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -85,7 +85,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle; [tiling con_id=__focused__] border none; [floating con_id=__focused__] border normal
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -179,8 +179,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/.local/bin/changebrightness down 
-bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/.local/bin/changebrightness up 
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/scripts/changebrightness down 
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/scripts/changebrightness up 
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause

@@ -1,14 +1,14 @@
 return {
 	"hrsh7th/nvim-cmp",
 	version = false, -- last release is way too old
-	event = "VeryLazy",
+	event = "InsertEnter",
 	dependencies = {
-		{ "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
-		{ "hrsh7th/cmp-buffer", event = "VeryLazy" },
-		{ "hrsh7th/cmp-path", event = "VeryLazy" },
-		{ "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
-		{ "L3MON4D3/LuaSnip", event = "VeryLazy" },
-		{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
+		{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+		{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
+		{ "hrsh7th/cmp-path", event = "InsertEnter" },
+		{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
+		{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
+		{ "rafamadriz/friendly-snippets", event = "InsertEnter" },
 	},
 	opts = function()
 		vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })

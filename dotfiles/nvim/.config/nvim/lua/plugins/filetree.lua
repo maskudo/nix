@@ -2,7 +2,8 @@ return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		cmd = { "Neotree" },
 		dependencies = {
 			{ "nvim-lua/plenary.nvim", event = "VeryLazy" },
 			{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
@@ -50,6 +51,13 @@ return {
 				},
 			},
 		},
+		keys = {
+			{
+				"<leader>e",
+				"<Cmd>Neotree toggle<CR>",
+				desc = "Toggle filetree",
+			},
+		},
 		config = function()
 			-- If you want icons for diagnostic errors, you'll need to define them somewhere:
 			vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
@@ -58,7 +66,7 @@ return {
 			vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 			vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-			vim.api.nvim_set_keymap("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
+			-- vim.api.nvim_set_keymap("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
 			vim.api.nvim_create_autocmd({ "ExitPre" }, {
 				callback = function()
 					require("neo-tree.command").execute({ action = "close" })
