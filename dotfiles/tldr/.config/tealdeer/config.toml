@@ -2,16 +2,16 @@
 compact = false
 
 [style.command_name]
-foreground = "yellow"
+foreground = "red"
 
 [style.example_text]
 foreground = "green"
 
 [style.example_code]
-foreground = "yellow"
+foreground = "red"
 
 [style.example_variable]
-foreground = "yellow"
+foreground = "white"
 
 [updates]
 auto_update = true

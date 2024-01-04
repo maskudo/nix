@@ -32,6 +32,7 @@ setw() {
 	tmux set-window-option -gq "$option" "$value"
 }
 
+set "status-style" "bg=default"
 set "status" "on"
 set "status-justify" "left"
 

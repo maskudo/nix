@@ -124,7 +124,7 @@ map c
 map f
 map y
 
-map a create
+map A create
 map f z_jump
 map H set hidden!
 map DD delete
