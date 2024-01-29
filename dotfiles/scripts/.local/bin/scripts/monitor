@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+laptop_display="eDP-1"
+external_display="HDMI-1"
+
+duplicate="Duplicate"
+extend_top="Extend top"
+extend_left="Extend left"
+extend_right="Extend right"
+extend_bottom="Extend bottom"
+turn_off_laptop="Turn off laptop screen"
+
+options=("$duplicate" "$extend_top" "$extend_left" "$extend_right" "$extend_bottom" "$turn_off_laptop")
+
+selected_option=$(printf "%s\n" "${options[@]}" | fzf --prompt="Select a display configuration: "  --layout=reverse --border --exit-0)
+
+case "$selected_option" in
+    "$turn_off_laptop")
+        xrandr --output "$laptop_display" --off
+        ;;
+    "$extend_bottom")
+        xrandr --output "$laptop_display" --auto --top "$external_display"
+        ;;
+    "$extend_top")
+        xrandr --output "$laptop_display" --auto --below "$external_display"
+        ;;
+    "$duplicate")
+        xrandr --output "$laptop_display" --auto --same-as "$external_display"
+        ;;
+    "$extend_right")
+        xrandr --output "$laptop_display" --auto --left-of "$external_display"
+        ;;
+    "$extend_left")
+        xrandr --output "$laptop_display" --auto --right-of "$external_display"
+        ;;
+    *)
+        echo "Invalid option selected."
+        ;;
+esac
