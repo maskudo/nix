@@ -5,6 +5,7 @@
 {
   home.homeDirectory = homeDirectory;
   nixpkgs.config.allowUnfree = true;
+  targets.genericLinux.enable = true;
   home.username = username;
   home.packages = with pkgs; [
     # TUI
@@ -13,13 +14,12 @@
     fd
     ffmpeg
     fzf
-    glibcLocales
     haskellPackages.tldr
     jq
-    jq 
     lazydocker
-    lazygit 
+    lazygit
     lf
+    light
     neovim
     nettools
     pandoc
@@ -37,7 +37,6 @@
     gimp
     gnome.gnome-disk-utility
     kitty
-    light
     mpv
     rxvt-unicode
     smplayer
