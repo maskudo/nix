@@ -26,3 +26,6 @@ runtime macros/matchit.vim
 
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+nnoremap <silent> <C-d> <C-d>zz
+nnoremap <silent> <C-u> <C-u>zz
+nnoremap - :E<CR>
