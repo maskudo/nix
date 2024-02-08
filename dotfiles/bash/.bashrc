@@ -182,10 +182,14 @@ if type bat &>/dev/null; then
 	alias cat="bat"
 fi
 
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
+[ -f $HOME/.asdf/asdf.sh ] && . "$HOME/.asdf/asdf.sh"
+[ -f $HOME/.asdf/completions/asdf.bash ] && . "$HOME/.asdf/completions/asdf.bash"
 # . "/usr/share/doc/fzf/examples/key-bindings.bash"
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash 
+if command -v fzf-share >/dev/null; then
+  source "$(fzf-share)/key-bindings.bash"
+  source "$(fzf-share)/completion.bash"
+fi
 # use ctrl-z to toggle in and out of bg
 if [[ $- == *i* ]]; then 
   stty susp undef
@@ -259,4 +263,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # . ~/.asdf/plugins/dotnet/set-dotnet-env.bash
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
+[ -f ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
