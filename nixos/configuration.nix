@@ -1,14 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -16,13 +17,13 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.supportedFilesystems = ["ntfs"];
   nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than +5";
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than +5";
   };
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -40,23 +41,36 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.xserver.libinput.touchpad.naturalScrolling = true; 
-  services.xserver.libinput.mouse.naturalScrolling = true; 
+  services.xserver.libinput.touchpad.naturalScrolling = true;
+  services.xserver.libinput.mouse.naturalScrolling = false;
   services.locate.enable = true;
-  services.locate.locate = pkgs.plocate;
+  services.locate.package = pkgs.plocate;
+  services.locate.localuser = null;
 
   #configure keymap in X11
+  nixpkgs.config = {
+    packageOverrides = pkgs: rec {
+      polybar = pkgs.polybar.override {
+        i3Support = true;
+        pulseSupport = true;
+      };
+    };
+  };
   services.xserver = {
     layout = "us";
     xkbVariant = "";
     displayManager = {
-    	lightdm.enable = true;
-    	defaultSession = "none+i3";
+      lightdm.enable = true;
+      defaultSession = "none+i3";
     };
     windowManager.i3 = {
-    	enable = true;
-	extraPackages = with pkgs; [
-	];
+      enable = true;
+      extraPackages = with pkgs; [
+        dunst
+        rofi
+        picom
+        polybar
+      ];
     };
   };
 
@@ -89,10 +103,10 @@
     isNormalUser = true;
     description = "mk489";
     shell = pkgs.bash;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio"];
     packages = with pkgs; [
       firefox
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -104,14 +118,14 @@
   environment.systemPackages = with pkgs; [
     clang
     gcc
-    git  
+    git
     gnumake
     killall
     ldmtool
     unzip
-    vim 
+    vim
     wget
-];
+  ];
 
   programs.light.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
@@ -140,5 +154,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
