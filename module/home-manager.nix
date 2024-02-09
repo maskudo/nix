@@ -20,11 +20,15 @@
     # TUI
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka"]; })
     bat
+    bc
+    brave
     btop
     du-dust
+    emacs
     fd
     feh
     ffmpeg
+    findutils
     fzf
     haskellPackages.tldr
     jq
@@ -35,33 +39,43 @@
     neovim
     nettools
     pandoc
+    plocate
     rclone
     rclone-browser
     ripgrep
+    rustup
     stow
     starship
     tmux
+    tokei
     vim
+    w3m
+    yq
     zoxide
 
     # GUI
     arandr
+    betterlockscreen
     copyq
+    discord
     dunst
     flameshot
     gimp
     gnome.gnome-disk-utility
+    gparted
     kitty
     mpv
     picom
     polybar
     pulseaudioFull
+    qbittorrent
     rxvt-unicode
     rofi
-    rustup
+    slack
     smplayer
     vlc
     vscode
+    xdotool
     xfce.thunar
     
   ];
