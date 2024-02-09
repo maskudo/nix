@@ -21,7 +21,6 @@
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka"]; })
     bat
     bc
-    brave
     btop
     du-dust
     emacs
@@ -30,6 +29,7 @@
     ffmpeg
     findutils
     fzf
+    go
     haskellPackages.tldr
     jq
     lazydocker
@@ -38,6 +38,7 @@
     neofetch
     neovim
     nettools
+    nodejs_20
     pandoc
     plocate
     rclone
@@ -48,7 +49,6 @@
     starship
     tmux
     tokei
-    vim
     w3m
     yq
     zoxide
@@ -56,6 +56,7 @@
     # GUI
     arandr
     betterlockscreen
+    brave
     copyq
     discord
     dunst
