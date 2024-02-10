@@ -32,6 +32,21 @@
     fsType = "ext4";
   };
 
+  fileSystems."/mnt/acer" = {
+    device = "/dev/disk/by-uuid/F2B04A21B049ED23";
+    fsType = "ntfs";
+  };
+
+  fileSystems."/mnt/ssd" = {
+    device = "/dev/disk/by-uuid/01D989993966A490";
+    fsType = "ntfs";
+  };
+
+  fileSystems."/mnt/media" = {
+    device = "/dev/disk/by-uuid/263E6A633E6A2BCD";
+    fsType = "ntfs";
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/01c1b93e-ea7a-455a-ab03-b9a34996b587";}
   ];

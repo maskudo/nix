@@ -9,6 +9,7 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     # TUI
+    font-awesome
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
     alejandra
     bat
@@ -17,9 +18,7 @@
     du-dust
     emacs
     fd
-    feh
     ffmpeg
-    findutils
     fzf
     go
     haskellPackages.tldr
@@ -29,10 +28,8 @@
     lf
     neofetch
     neovim
-    nettools
     nodejs_20
     pandoc
-    plocate
     rclone
     rclone-browser
     ripgrep
@@ -47,8 +44,11 @@
 
     # GUI
     arandr
+    arc-theme
+    arc-icon-theme
     betterlockscreen
     brave
+    catppuccin
     copyq
     discord
     flameshot
@@ -56,15 +56,16 @@
     gnome.gnome-disk-utility
     gparted
     kitty
+    lxappearance
     mpv
-    pulseaudioFull
     qbittorrent
+    qogir-theme
+    qogir-icon-theme
     rxvt-unicode
     slack
     smplayer
     vlc
     vscode
-    xdotool
     xfce.thunar
   ];
   home.stateVersion = "23.11";
