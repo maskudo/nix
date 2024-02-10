@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
   ];
 
+  systemd.enableEmergencyMode = false;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -46,6 +47,14 @@
   services.locate.enable = true;
   services.locate.package = pkgs.plocate;
   services.locate.localuser = null;
+
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"
+  '';
+
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   #configure keymap in X11
   nixpkgs.config = {
@@ -117,14 +126,21 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     clang
+    feh
+    findutils
     gcc
     git
     gnumake
     killall
     ldmtool
+    nettools
+    plocate
+    pulseaudioFull
     unzip
+    usbutils
     vim
     wget
+    xdotool
   ];
 
   programs.light.enable = true;
