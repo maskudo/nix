@@ -20,6 +20,7 @@ return {
           null_ls.builtins.code_actions.eslint,
           null_ls.builtins.formatting.rustfmt,
           null_ls.builtins.formatting.alejandra,
+          null_ls.builtins.formatting.gofumpt,
         },
         on_attach = function(client, bufnr)
           if client.supports_method("textDocument/formatting") then

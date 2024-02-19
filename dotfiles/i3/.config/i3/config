@@ -195,7 +195,8 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/7.png
 
 # screen lock
-set $i3lockwall i3lock -i $HOME/Pictures/Wallpapers/3.png -t
+# set $i3lockwall i3lock -i $HOME/Pictures/Wallpapers/3.png -t
+set $i3lockwall betterlockscreen -l 
 
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
 
@@ -244,7 +245,7 @@ exec --no-startup-id copyq &
 exec --no-startup-id dunst &
 exec --no-startup-id nm-applet &
 exec --no-startup-id firefox
-exec --no-startup-id flatpak run com.discordapp.Discord
+exec --no-startup-id discord
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 exec --no-startup-id setxkbmap -option caps:escape_shifted_capslock

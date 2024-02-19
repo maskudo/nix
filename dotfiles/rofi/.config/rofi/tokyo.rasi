@@ -1,0 +1,19 @@
+* {
+  bg0     : #282a36;  /* Dracula background */
+  bg1     : #44475a;  /* Dracula selection background */
+  bg2     : #44475a;  /* Dracula selection background (alternative) */
+  bg3     : #44475a;  /* Dracula selection background (alternative) */
+  fg0     : #f8f8f2;  /* Dracula foreground */
+  fg1     : #ffffff;  /* Dracula selection foreground */
+  fg2     : #ffffff;  /* Dracula selection foreground (alternative) */
+  red     : #ff5555;  /* Dracula red */
+  green   : #50fa7b;  /* Dracula green */
+  yellow  : #f1fa8c;  /* Dracula yellow */
+  blue    : #bd93f9;  /* Dracula blue */
+  magenta : #ff79c6;  /* Dracula magenta */
+  cyan    : #8be9fd;  /* Dracula cyan */
+
+  accent: #ff5555;    /* Dracula red as accent */
+  urgent: #f1fa8c;    /* Dracula yellow for urgency */
+}
+

@@ -4,77 +4,99 @@ configuration {
   drun-display-format: "{name}";
   font: "JetBrainsMono Nerd Font Medium 10";
   show-icons: true;
-  modi: "window,run,drun,emoji";
+  modi: "window,run,drun";
 }
 
-@theme "/dev/null"
-
+@theme "tokyo"
 * {
-  bg: #282c34;
-  bg-alt: #393e48;
+    background-color:   transparent;
+    text-color:         @fg0;
 
-  fg: #FFFFFF;
-  fg-alt: #979eab;
-
-  background-color: @bg;
-  
-  border: 0;
-  margin: 0;
-  padding: 0;
-  spacing: 0;
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
 }
 
 window {
-  width: 30%;
-}
+    location:       center;
+    width:          480;
+    y-offset:       -20;
+    border-radius:  2px;
 
-element {
-  padding: 8 0;
-  text-color: @fg-alt;
-}
-
-element selected {
-  text-color: @fg;
-}
-
-element-text {
-  text-color: inherit;
-  vertical-align: 0.5;
-}
-
-element-icon {
-  size: 14;
-  padding: 0 10 0 0;
-}
-
-entry {
-  background-color: @bg-alt;
-  padding: 12;
-  text-color: @fg;
-}
-
-inputbar {
-  children: [prompt, entry];
-}
-
-listview {
-  padding: 8 12;
-  background-color: @bg;
-  columns: 1;
-  lines: 8;
+    border: 1px;
+    border-color: @bg3;
+    background-color:   @bg0;
 }
 
 mainbox {
-  background-color: @bg;
-  children: [inputbar, listview];
+    padding:    12px;
+}
+
+inputbar {
+    background-color:   @bg0;
+    border-color:       @bg3;
+    border-radius:  5px;
+    border:         1px;
+
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
 }
 
 prompt {
-  background-color: @bg-alt;
-  enabled: true;
-  padding: 12 0 0 12;
-  text-color: @fg;
+    text-color: @fg2;
 }
 
-/* vim: ft=sass
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @bg3;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      16px;
+    border-color:       @bg2;
+    background-color:   @bg2;
+}
+
+textbox {
+    padding:    8px 24px;
+    background-color:   @bg2;
+}
+
+listview {
+    background-color:   transparent;
+    margin:     12px 0 0;
+    columns:    1;
+    lines:      5;
+
+    fixed-height: false;
+}
+
+element {
+    padding:        8px 16px;
+    spacing:        8px;
+    border-radius:  0;
+}
+
+element normal urgent {
+  text-color: @urgent;
+}
+
+element normal active {
+    text-color: @accent;
+}
+
+element selected normal, element selected active {
+    background-color:   @bg2;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: @fg1;
+}
 

@@ -18,6 +18,7 @@ return {
 			"eslint_d",
 			"flake8",
 			"gopls",
+			"gofumpt",
 			"mypy",
 			"prettierd",
 			"pyright",
