@@ -27,11 +27,6 @@
     fsType = "vfat";
   };
 
-  fileSystems."/mnt/mint" = {
-    device = "/dev/disk/by-uuid/e695417a-7b4b-4d45-a723-eef6bf28b4c8";
-    fsType = "ext4";
-  };
-
   fileSystems."/mnt/acer" = {
     device = "/dev/disk/by-uuid/F2B04A21B049ED23";
     fsType = "ntfs";
@@ -46,10 +41,6 @@
     device = "/dev/disk/by-uuid/263E6A633E6A2BCD";
     fsType = "ntfs";
   };
-
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/01c1b93e-ea7a-455a-ab03-b9a34996b587";}
-  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

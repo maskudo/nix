@@ -29,7 +29,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = let
-      homeManagerModule = import ./module/home-manager.nix {
+      homeManagerModule = import ./home/home-manager.nix {
         homeDirectory = /home/mk489;
         username = "mk489";
       };
