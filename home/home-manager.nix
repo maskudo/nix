@@ -1,7 +1,7 @@
-{
-  homeDirectory,
-  username,
-}: {pkgs, ...}: {
+{ homeDirectory
+, username
+,
+}: { pkgs, ... }: {
   home.homeDirectory = homeDirectory;
   nixpkgs.config.allowUnfree = true;
   targets.genericLinux.enable = true;
@@ -10,7 +10,7 @@
   home.packages = with pkgs; [
     # TUI
     font-awesome
-    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
     alejandra
     bat
     bc
@@ -30,6 +30,8 @@
     neovim
     nodejs_20
     pandoc
+    poetry
+    python311Packages.pip
     rclone
     rclone-browser
     ripgrep
@@ -51,11 +53,13 @@
     catppuccin
     copyq
     discord
+    dracula-theme
     flameshot
     gimp
     gnome.gnome-disk-utility
     gparted
     kitty
+    libsForQt5.breeze-qt5
     lxappearance
     mpv
     qbittorrent
