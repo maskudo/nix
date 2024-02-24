@@ -5,6 +5,7 @@ $directory\
 $git_branch\
 $cmd_duration\
 $python\
+$line_break\
 $character"""
 
 [directory]

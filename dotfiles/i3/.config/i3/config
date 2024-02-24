@@ -192,7 +192,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/7.png
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/10.png
 
 # screen lock
 # set $i3lockwall i3lock -i $HOME/Pictures/Wallpapers/3.png -t

@@ -1,4 +1,5 @@
 URxvt*transparent: true
+URxvt.geometry: 80x-1
 URxvt*shading: 20
 URxvt*saveLines: 12000
 URxvt*font:     xft:JetBrains Mono Nerd Font Mono:pixelsize=16:antialias=true:hinting=true, \
@@ -19,7 +20,7 @@ URxvt*scrollstyle: rxvt
 
 /* URxvt*tintColor: #BFBFBF */
 URxvt*.foreground: #F8F8F2
-URxvt*.background: #282A36
+URxvt*.background: #111111
 URxvt*.color0:     #000000
 URxvt*.color1:     #FF5555
 URxvt*.color2:     #50FA7B
@@ -42,3 +43,6 @@ URxvt*.cursorColor2:#FFFFFF
 URxvt*.highlightColor:#FF5555
 URxvt*.highlightColor2:#FFFFFF
 
+ URxvt.perl-ext-common: selection-to-clipboard 
+ URxvt.keysym.Shift-Control-V: eval:paste_clipboard 
+ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
