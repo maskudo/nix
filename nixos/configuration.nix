@@ -163,6 +163,16 @@
     libsForQt5.qt5.qtgraphicaleffects
   ];
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
+  services.flatpak.enable = true;
+
   programs.light.enable = true;
 
   programs.gnupg.agent = {

@@ -1,7 +1,8 @@
-{ homeDirectory
-, username
-,
-}: { pkgs, ... }: {
+{
+  homeDirectory,
+  username,
+}: {pkgs, ...}: {
+  imports = [../overlays/postmanOverlay.nix];
   home.homeDirectory = homeDirectory;
   nixpkgs.config.allowUnfree = true;
   targets.genericLinux.enable = true;
@@ -10,7 +11,7 @@
   home.packages = with pkgs; [
     # TUI
     font-awesome
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
+    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
     alejandra
     bat
     bc
@@ -41,6 +42,7 @@
     tmux
     tokei
     w3m
+    yarn
     yq
     zoxide
 
@@ -62,6 +64,7 @@
     libsForQt5.breeze-qt5
     lxappearance
     mpv
+    postman
     qbittorrent
     qogir-theme
     qogir-icon-theme
