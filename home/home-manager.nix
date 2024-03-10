@@ -5,6 +5,9 @@
   imports = [../overlays/postmanOverlay.nix];
   home.homeDirectory = homeDirectory;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
   targets.genericLinux.enable = true;
   home.username = username;
   fonts.fontconfig.enable = true;
@@ -13,6 +16,7 @@
     font-awesome
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
     alejandra
+    azure-cli
     bat
     bc
     btop
@@ -21,6 +25,7 @@
     fd
     ffmpeg
     fzf
+    gh
     go
     haskellPackages.tldr
     jq
@@ -39,6 +44,7 @@
     rustup
     stow
     starship
+    terraform
     tmux
     tokei
     w3m
@@ -64,6 +70,7 @@
     libsForQt5.breeze-qt5
     lxappearance
     mpv
+    obsidian
     postman
     qbittorrent
     qogir-theme
@@ -71,8 +78,11 @@
     rxvt-unicode
     slack
     smplayer
+    virtualbox
     vlc
     vscode
+    xarchiver
+    xfce.xfconf
     xfce.thunar
   ];
   home.stateVersion = "23.11";
