@@ -58,9 +58,16 @@
     ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"
   '';
 
+  services.power-profiles-daemon.enable = true;
+
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  services.tumbler.enable = true; # Thumbnail support for images
+
+  services.syncthing.enable = true;
+  # services.syncthing.user = "mk489";
+  services.syncthing.openDefaultPorts = true;
 
   virtualisation.docker.enable = true;
 
@@ -111,6 +118,11 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  services.blueman.enable = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -173,6 +185,9 @@
   };
   services.flatpak.enable = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+  ];
   programs.light.enable = true;
 
   programs.gnupg.agent = {
