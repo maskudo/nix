@@ -261,3 +261,5 @@ unset __conda_setup
 
 # . ~/.asdf/plugins/dotnet/set-dotnet-env.bash
 [ -f ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
+eval "$(direnv hook bash)"
+export DIRENV_LOG_FORMAT=""

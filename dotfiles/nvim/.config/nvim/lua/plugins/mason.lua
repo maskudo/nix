@@ -29,7 +29,9 @@ return {
 			"stylua",
 			"tailwindcss-language-server",
 			"typescript-language-server",
-      "rnix-lsp",
+			"terraform-ls",
+			"tflint",
+			"rnix-lsp",
 		},
 	},
 	---@param opts MasonSettings | {ensure_installed: string[]}

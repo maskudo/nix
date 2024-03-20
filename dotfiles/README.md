@@ -1,6 +1,6 @@
 ## dotfiles
 
-Uses GNU Stow – https://www.gnu.org/software/stow/
+Uses [GNU Stow](https://www.gnu.org/software/stow/)
 
 ```bash
 Usage:

@@ -23,7 +23,7 @@ yellow-alt = #37373a
 black = #000
 white = #FFF
 
-trans = #80000000
+trans = #ba000000
 semi-trans-black = #aa000000
 
 [bar/bar1]
@@ -41,7 +41,7 @@ foreground = ${colors.fg}
 line-size = 3
 line-color = #f00
 
-border-top = 4
+; border-top = 4
 border-bottom = 1
 border-color = #000000
 
