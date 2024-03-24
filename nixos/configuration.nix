@@ -137,12 +137,17 @@
     isNormalUser = true;
     description = "mk489";
     shell = pkgs.bash;
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "docker"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "syncthing"];
     packages = with pkgs; [
       firefox
       #  thunderbird
     ];
   };
+  users.users.syncthing.extraGroups = ["users"];
+  systemd.services.syncthing.serviceConfig.UMask = "0007";
+  systemd.tmpfiles.rules = [
+    "d /home/mk489 0750 mk489 syncthing"
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -151,6 +156,7 @@
   qt.style = "breeze";
 
   environment.systemPackages = with pkgs; [
+    docker-compose
     feh
     findutils
     gcc

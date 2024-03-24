@@ -20,12 +20,14 @@
     bat
     bc
     btop
+    direnv
     du-dust
     emacs
     fd
     ffmpeg
     fzf
     gh
+    git-extras
     go
     haskellPackages.tldr
     jq
@@ -35,6 +37,7 @@
     neofetch
     neovim
     nodejs_20
+    nodePackages.pnpm
     pandoc
     poetry
     python311Packages.pip
