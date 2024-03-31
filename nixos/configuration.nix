@@ -69,7 +69,15 @@
   # services.syncthing.user = "mk489";
   services.syncthing.openDefaultPorts = true;
 
+  boot.kernelModules = ["kvm-amd" "kvm-intel"];
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = ["kv"];
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.x11 = true;
+  nixpkgs.config.virtualbox.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enableHardening = false;
 
   #configure keymap in X11
   nixpkgs.config = {
@@ -137,7 +145,7 @@
     isNormalUser = true;
     description = "mk489";
     shell = pkgs.bash;
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "syncthing"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "syncthing" "vboxusers"];
     packages = with pkgs; [
       firefox
       #  thunderbird
