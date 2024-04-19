@@ -9,6 +9,9 @@ return {
 				"folke/neodev.nvim",
 				opts = {},
 				event = "VeryLazy",
+				config = function()
+					require("neodev").setup({})
+				end,
 			},
 			{ "neovim/nvim-lspconfig", event = "VeryLazy" },
 			"hrsh7th/cmp-nvim-lsp",

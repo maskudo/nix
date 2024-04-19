@@ -83,7 +83,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{ "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
-			{ "<C-f>", "<cmd>Oil<cr>", desc = "Open parent directory" },
 		},
 		opts = {},
 		config = function()

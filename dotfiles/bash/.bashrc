@@ -123,6 +123,7 @@ alias ssh='TERM=xterm ssh'
 alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"
 alias r="ranger"
 alias copy="xclip -selection clipboard"
+alias yz="yazi"
 
 # go
 export GOPATH=~/go
@@ -263,3 +264,11 @@ unset __conda_setup
 [ -f ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 eval "$(direnv hook bash)"
 export DIRENV_LOG_FORMAT=""
+
+# pnpm
+export PNPM_HOME="/home/mk489/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

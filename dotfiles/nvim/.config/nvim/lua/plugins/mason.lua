@@ -20,6 +20,7 @@ return {
 			"gopls",
 			"gofumpt",
 			"mypy",
+			"lua-language-server",
 			"prettierd",
 			"pyright",
 			"ruff",
@@ -31,7 +32,7 @@ return {
 			"typescript-language-server",
 			"terraform-ls",
 			"tflint",
-			"rnix-lsp",
+			"nil",
 		},
 	},
 	---@param opts MasonSettings | {ensure_installed: string[]}

@@ -57,11 +57,11 @@ map("v", ">", ">gv")
 
 -- Switch between light and dark modes
 map("n", "<leader>ut", function()
-  if vim.o.background == "dark" then
-    vim.o.background = "light"
-  else
-    vim.o.background = "dark"
-  end
+	if vim.o.background == "dark" then
+		vim.o.background = "light"
+	else
+		vim.o.background = "dark"
+	end
 end, "Toggle between light and dark themes")
 
 -- Clear after search
