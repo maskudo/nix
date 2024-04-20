@@ -5,31 +5,33 @@
   imports = [../overlays/postmanOverlay.nix];
   home.homeDirectory = homeDirectory;
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
   targets.genericLinux.enable = true;
   home.username = username;
   fonts.fontconfig.enable = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
   home.packages = with pkgs; [
     # TUI
     font-awesome
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
     alejandra
+    ansible
     azure-cli
     bat
-    bc
     btop
     direnv
-    du-dust
     emacs
     fd
     ffmpeg
     fzf
     gh
     git-extras
+    git-lfs
     go
     haskellPackages.tldr
+    imagemagick
     jq
     lazydocker
     lazygit
@@ -40,17 +42,14 @@
     nodePackages.pnpm
     pandoc
     poetry
+    python3
     python311Packages.pip
-    rclone
-    rclone-browser
     ripgrep
     rustup
     stow
     starship
     terraform
     tmux
-    tokei
-    w3m
     yarn
     yq
     zoxide
@@ -59,20 +58,24 @@
     arandr
     arc-theme
     arc-icon-theme
+    aseprite
     betterlockscreen
     brave
     catppuccin
     copyq
+    dbeaver
     discord
     dracula-theme
     flameshot
     gimp
     gnome.gnome-disk-utility
+    google-chrome
     gparted
     kitty
     libsForQt5.breeze-qt5
     lxappearance
     mpv
+    nicotine-plus
     obsidian
     postman
     qbittorrent
