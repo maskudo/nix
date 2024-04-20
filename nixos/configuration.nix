@@ -20,6 +20,13 @@
     fsIdentifier = "uuid";
     devices = ["nodev"];
   };
+  boot.kernelParams = ["button.lid_init_state=open"];
+  services.logind = {
+    lidSwitch = "ignore";
+    extraConfig = ''
+      HandlePowerKey=ignore
+    '';
+  };
   boot.supportedFilesystems = ["ntfs"];
   boot.loader.grub.extraEntries = ''
     menuentry "Reboot" {
@@ -33,11 +40,11 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than +5";
+    options = "--delete-older-than 30d";
   };
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = "mk489-nixos"; # Define your hostname.
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
   };
@@ -66,21 +73,25 @@
   services.tumbler.enable = true; # Thumbnail support for images
 
   services.syncthing.enable = true;
-  # services.syncthing.user = "mk489";
   services.syncthing.openDefaultPorts = true;
+  # services.syncthing.user = "mk489";
 
   boot.kernelModules = ["kvm-amd" "kvm-intel"];
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
+    virtualbox = {
+      host.enable = true;
+      guest.enable = true;
+      guest.x11 = true;
+      host.enableHardening = false;
+    };
+  };
   users.extraGroups.vboxusers.members = ["kv"];
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.guest.x11 = true;
-  nixpkgs.config.virtualbox.enableExtensionPack = true;
-  virtualisation.virtualbox.host.enableHardening = false;
 
-  #configure keymap in X11
   nixpkgs.config = {
+    allowUnfree = true;
+    virtualbox.host.enableExtensionPack = true;
     packageOverrides = pkgs: rec {
       polybar = pkgs.polybar.override {
         i3Support = true;
@@ -125,9 +136,16 @@
 
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware = {
+    pulseaudio.enable = false;
+    bluetooth.enable = true; # enables support for Bluetooth
+    bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+  };
 
   services.blueman.enable = true;
 
@@ -157,8 +175,6 @@
     "d /home/mk489 0750 mk489 syncthing"
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
   qt.enable = true;
   qt.platformTheme = "gtk2";
   qt.style = "breeze";
@@ -171,7 +187,6 @@
     git
     gnumake
     killall
-    ldmtool
     libcxx
     libgcc
     libstdcxx5
@@ -179,7 +194,7 @@
     nix-prefetch-git
     plocate
     pulseaudioFull
-    python3
+    pavucontrol
     unzip
     usbutils
     vim
