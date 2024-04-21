@@ -17,11 +17,11 @@
     font-awesome
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
     alejandra
-    ansible
     azure-cli
     bat
     btop
     direnv
+    nix-direnv
     emacs
     fd
     ffmpeg
@@ -50,6 +50,7 @@
     starship
     terraform
     tmux
+    vim
     yarn
     yq
     zoxide
@@ -66,6 +67,7 @@
     dbeaver
     discord
     dracula-theme
+    feh
     flameshot
     gimp
     gnome.gnome-disk-utility

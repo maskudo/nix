@@ -83,7 +83,7 @@
     virtualbox = {
       host.enable = true;
       guest.enable = true;
-      guest.x11 = true;
+      # guest.x11 = true;
       host.enableHardening = false;
     };
   };
@@ -113,13 +113,8 @@
         naturalScrolling = false;
       };
     };
-    layout = "us";
-    xkbVariant = "";
-    displayManager = {
-      sddm.enable = true;
-      sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
-      defaultSession = "none+i3";
-    };
+    xkb.layout = "us";
+    xkb.variant = "";
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
@@ -129,6 +124,12 @@
         polybar
       ];
     };
+  };
+
+  services.displayManager = {
+    sddm.enable = true;
+    sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+    defaultSession = "none+i3";
   };
 
   # Enable CUPS to print documents.
@@ -181,7 +182,6 @@
 
   environment.systemPackages = with pkgs; [
     docker-compose
-    feh
     findutils
     gcc
     git
@@ -197,7 +197,6 @@
     pavucontrol
     unzip
     usbutils
-    vim
     wget
     xdotool
     libsForQt5.qt5.qtquickcontrols2
@@ -216,6 +215,57 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
+    alsa-lib
+    at-spi2-atk
+    at-spi2-core
+    atk
+    cairo
+    cups
+    curl
+    dbus
+    expat
+    fontconfig
+    freetype
+    fuse3
+    gdk-pixbuf
+    glib
+    gtk3
+    icu
+    libGL
+    libappindicator-gtk3
+    libdrm
+    libglvnd
+    libnotify
+    libpulseaudio
+    libunwind
+    libusb1
+    libuuid
+    libxkbcommon
+    libxml2
+    mesa
+    nspr
+    nss
+    openssl
+    pango
+    pipewire
+    stdenv.cc.cc
+    systemd
+    vulkan-loader
+    xorg.libX11
+    xorg.libXScrnSaver
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXtst
+    xorg.libxcb
+    xorg.libxkbfile
+    xorg.libxshmfence
+    zlib
   ];
   programs.light.enable = true;
 
