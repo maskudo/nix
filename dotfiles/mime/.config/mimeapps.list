@@ -18,6 +18,7 @@ x-scheme-handler/ftp=firefox.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/postman=Postman.desktop
+inode/directory=thunar.desktop
 
 [Added Associations]
 application/pdf=firefox.desktop;
@@ -35,3 +36,7 @@ video/x-matroska=smplayer.desktop;
 x-scheme-handler/chrome=firefox.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
+inode/directory=thunar.desktop
+
+[Removed Associations]
+inode/directory=code.desktop
