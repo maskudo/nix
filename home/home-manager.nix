@@ -48,7 +48,6 @@
     rustup
     stow
     starship
-    terraform
     tmux
     vim
     yarn
@@ -69,6 +68,7 @@
     dracula-theme
     feh
     flameshot
+    firefox
     gimp
     gnome.gnome-disk-utility
     google-chrome
@@ -76,6 +76,7 @@
     kitty
     libsForQt5.breeze-qt5
     lxappearance
+    monitor
     mpv
     nicotine-plus
     obsidian

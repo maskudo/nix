@@ -12,19 +12,14 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: let
-    inherit (self) outputs;
-  in {
+  } @ inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        system = "x86_64-linux";
-        # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
-      };
-    };
+    nixosConfigurations = (
+      import ./hosts {
+        inherit inputs nixpkgs;
+      }
+    );
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
