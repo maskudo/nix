@@ -109,9 +109,4 @@ return {
 			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
 		},
 	},
-	{
-		"barrett-ruth/import-cost.nvim",
-		build = "sh install.sh yarn",
-		config = true,
-	},
 }

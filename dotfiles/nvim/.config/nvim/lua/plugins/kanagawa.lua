@@ -13,7 +13,7 @@ return {
 			typeStyle = {},
 			transparent = true, -- do not set background color
 			dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-			terminalColors = true, -- define vim.g.terminal_color_{0,17}
+			terminalColors = false, -- define vim.g.terminal_color_{0,17}
 			colors = { -- add/modify theme and palette colors
 				palette = {},
 				theme = {
@@ -63,17 +63,17 @@ return {
 				light = "lotus",
 			},
 		})
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			pattern = "kanagawa",
-			callback = function()
-				if vim.o.background == "light" then
-					vim.fn.system("kitty +kitten themes Kanagawa_light")
-				elseif vim.o.background == "dark" then
-					vim.fn.system("kitty +kitten themes Kanagawa_dragon")
-				else
-					vim.fn.system("kitty +kitten themes Kanagawa")
-				end
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("ColorScheme", {
+		-- 	pattern = "kanagawa",
+		-- 	callback = function()
+		-- 		if vim.o.background == "light" then
+		-- 			vim.fn.system("kitty +kitten themes Kanagawa_light")
+		-- 		elseif vim.o.background == "dark" then
+		-- 			vim.fn.system("kitty +kitten themes Kanagawa_dragon")
+		-- 		else
+		-- 			vim.fn.system("kitty +kitten themes Kanagawa")
+		-- 		end
+		-- 	end,
+		-- })
 	end,
 }

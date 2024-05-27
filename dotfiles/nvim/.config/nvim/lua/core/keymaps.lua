@@ -1,6 +1,5 @@
 local map = require("helpers.keys").map
--- Blazingly fast way out of insert mode
-map("i", "jk", "<esc>")
+
 --better movement
 map("n", "<C-u>", "<C-u>zz", "Move up by half page")
 map("n", "<C-d>", "<C-d>zz", "Mode down by half page")
@@ -40,6 +39,10 @@ map("n", "<C-Up>", ":resize +2<CR>")
 map("n", "<C-Down>", ":resize -2<CR>")
 map("n", "<C-Left>", ":vertical resize +2<CR>")
 map("n", "<C-Right>", ":vertical resize -2<CR>")
+
+-- Navigate quickfix list
+map("n", "<C-p>", ":cprev<CR>")
+map("n", "<C-n>", ":cnext<CR>")
 
 -- Deleting buffers
 local buffers = require("helpers.buffers")
@@ -88,3 +91,5 @@ map("x", "<A-k>", ":move '<-2<CR>gv-gv", "Move text up")
 map("n", "<leader>y", '"+y', "Copy to system clipboard")
 map("v", "<leader>y", '"+y', "Copy to system clipboard")
 map("n", "<leader>Y", '"+Y', "Copy to system clipboard")
+
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

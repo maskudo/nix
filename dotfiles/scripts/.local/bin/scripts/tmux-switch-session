@@ -1,0 +1,1 @@
+tmux list-sessions | cut -d ":" -f 1 | fzf | xargs tmux switch -t

@@ -195,7 +195,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/10.png
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/solar_eclipse.png
 
 # screen lock
 # set $i3lockwall i3lock -i $HOME/Pictures/Wallpapers/3.png -t
@@ -232,8 +232,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom  &
 
 set $i3scripts ~/.config/i3
-exec --no-startup-id kitty --class scratchterm -e bash
-bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "kitty --class scratchterm -e bash"
+exec --no-startup-id kitty --class scratchterm -e python
+bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "kitty --class scratchterm -e python"
 
 for_window [instance="^scratch"] \
     floating enable, border none, \

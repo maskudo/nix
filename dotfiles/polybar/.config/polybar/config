@@ -23,7 +23,7 @@ yellow-alt = #37373a
 black = #000
 white = #FFF
 
-trans = #ba000000
+trans = #00000000
 semi-trans-black = #aa000000
 
 [bar/bar1]
