@@ -46,6 +46,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -sort  -sorting-method fzf
+bindsym $mod+Shift+d exec --no-startup-id rofi -show combi
 bindsym $mod+F2 exec --no-startup-id rofi -show run
 
 # change focus

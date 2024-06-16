@@ -44,6 +44,7 @@ return {
 			map("n", "<leader><space>", require("telescope.builtin").find_files, "Files")
 			map("n", "<leader>.", require("telescope.builtin").git_files, "Git Files")
 			map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
+			map("n", "<leader>fc", require("telescope.builtin").git_commits, "Git Commits")
 			map("n", "<leader>fg", require("telescope.builtin").git_files, "Git Files")
 			map("n", "<leader>fs", require("telescope.builtin").git_status, "Git Status")
 			-- map("n", "<C-f>", require("telescope.builtin").git_files, "Git Files")

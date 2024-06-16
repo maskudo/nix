@@ -146,8 +146,8 @@ export PATH=$PATH:$CARGO_BIN
 export SCRIPTS=~/.local/bin/scripts
 export PATH=$PATH:$SCRIPTS
 
-#vim
-export EDITOR=vi
+#nvim
+export EDITOR=nvim
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env

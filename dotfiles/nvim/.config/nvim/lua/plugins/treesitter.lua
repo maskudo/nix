@@ -19,6 +19,7 @@ return {
 					"c",
 					"cpp",
 					"javascript",
+					"jsdoc",
 					"html",
 					"css",
 					"rust",
