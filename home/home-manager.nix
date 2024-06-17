@@ -12,6 +12,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+  dconf.enable = true;
   home.packages = with pkgs; [
     # TUI
     font-awesome
@@ -20,9 +21,11 @@
     azure-cli
     bat
     btop
-    direnv
-    nix-direnv
-    emacs
+    cmatrix
+    dconf
+    delta
+    distrobox
+    dua
     fd
     ffmpeg
     fzf
@@ -30,7 +33,6 @@
     git-extras
     git-lfs
     go
-    haskellPackages.tldr
     imagemagick
     jq
     lazydocker
@@ -48,6 +50,7 @@
     rustup
     stow
     starship
+    tealdeer
     tmux
     vim
     yarn
@@ -58,14 +61,13 @@
     arandr
     arc-theme
     arc-icon-theme
-    aseprite
     betterlockscreen
     brave
     catppuccin
     copyq
-    dbeaver
     discord
     dracula-theme
+    emacs
     feh
     flameshot
     firefox
@@ -85,7 +87,6 @@
     qogir-theme
     qogir-icon-theme
     rxvt-unicode
-    slack
     smplayer
     virtualbox
     vlc
@@ -94,5 +95,10 @@
     xfce.xfconf
     xfce.thunar
   ];
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
   home.stateVersion = "23.11";
 }

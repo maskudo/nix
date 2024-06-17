@@ -45,6 +45,8 @@
   };
 
   services = {
+    dbus.packages = [pkgs.dconf];
+    resolved.enable = true;
     logind = {
       lidSwitch = "ignore";
       extraConfig = ''
@@ -75,7 +77,7 @@
     syncthing.enable = true;
     syncthing.openDefaultPorts = true;
     # syncthing.user = "mk489";
-    # tailscale.enable = true;
+    tailscale.enable = true;
 
     xserver = {
       enable = true;
@@ -125,13 +127,14 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than +5";
   };
 
   networking = {
     hostName = "mk489-nixos"; # Define your hostname.
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
+    nameservers = ["1.1.1.1" "9.9.9.9"];
   };
 
   # Set your time zone.
@@ -201,15 +204,21 @@
     libstdcxx5
     nettools
     nix-prefetch-git
+    nmap
     plocate
+    polkit
     pulseaudioFull
     pavucontrol
+    tailscale
     unzip
     usbutils
     wget
     xdotool
+    vim
+    libsForQt5.qt5.qtquickcontrols
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
+    libsForQt5.full
   ];
 
   xdg.portal = {
