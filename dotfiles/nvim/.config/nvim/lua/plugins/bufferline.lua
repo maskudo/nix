@@ -5,7 +5,6 @@ return {
 		dependencies = {
 			{
 				"echasnovski/mini.nvim",
-				version = false,
 				config = function()
 					require("mini.bufremove").setup()
 				end,
@@ -31,6 +30,9 @@ return {
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
 				diagnostics = "nvim_lsp",
 				always_show_bufferline = false,
+				indicator = {
+					style = "underline",
+				},
 				diagnostics_indicator = function(count, level, diagnostics_dict, context)
 					local icon = level:match("error") and " " or " "
 					return " " .. icon .. count
@@ -64,7 +66,6 @@ return {
 					desc = "Toggle Barbecue",
 				},
 			},
-			version = "*",
 			opts = {
 				kinds = {
 					File = "",

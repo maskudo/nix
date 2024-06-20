@@ -1,7 +1,7 @@
 set $mod Mod4
 set $mod2 Mod4
-set $m1 eDP1
-set $m2 HDMI1
+set $m1 eDP-1
+set $m2 HDMI-1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -151,7 +151,7 @@ workspace $ws10 output $m2
 #assign apps to workspace
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
-assign [class="obsidian"] $ws5
+assign [class="obsidian"] $ws4
 
 #toggle workspace 
 workspace_auto_back_and_forth yes
@@ -159,8 +159,6 @@ workspace_auto_back_and_forth yes
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -182,6 +180,25 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+set $monitor_mode_system w.r.t HDMI (r) Right, (l) Left, (t) Top, (b) Bottom, (d) Duplicate
+mode "$monitor_mode_system" {
+        bindsym o exec xrandr --output "$m1" --off, mode "default"
+        bindsym t exec xrandr --output "$m1" --auto --top "$m2", mode "default"
+        bindsym b exec xrandr --output "$m1" --auto --below "$m2" , mode "default"
+        bindsym r exec xrandr --output "$m1" --auto --right-of "$m2" , mode "default"
+        bindsym l exec xrandr --output "$m1" --auto --left-of "$m2" , mode "default"
+        bindsym d exec xrandr --output "$m1" --auto --same-as "$m2" , mode "default"
+
+        bindsym Escape mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+m mode "default"
+}
+
+bindsym $mod+m mode "$monitor_mode_system"
+# duplicate display
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output "eDP-1" --auto --same-as "HDMI-1"
+
 
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/scripts/changebrightness down 
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/scripts/changebrightness up 
@@ -218,6 +235,7 @@ mode "$mode_system" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+BackSpace mode "default"
 }
 
 bindsym $mod+BackSpace mode "$mode_system"
@@ -229,7 +247,6 @@ for_window [window_role="task_dialog"] floating enable
 
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# exec --no-startup-id picom -b
 exec_always --no-startup-id picom  &
 
 set $i3scripts ~/.config/i3

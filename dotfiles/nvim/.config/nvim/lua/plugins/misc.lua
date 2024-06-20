@@ -95,6 +95,8 @@ return {
 	},
 	{
 		"maskudo/bharyang.nvim",
+		cmd = { "BharyangAsc", "BharyangDesc", "BharyangGroupDesc", "BharyangGroupAsc" },
+		lazy = true,
 		config = function()
 			require("bharyang").setup()
 		end,

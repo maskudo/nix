@@ -10,7 +10,7 @@ return {
 		{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
 		{ "rafamadriz/friendly-snippets", event = "InsertEnter" },
 	},
-	opts = function()
+	opts = function(_, opts)
 		vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 		local cmp = require("cmp")
 		require("luasnip.loaders.from_vscode").lazy_load()
@@ -18,6 +18,12 @@ return {
 		require("luasnip").filetype_extend("javascript", { "jsdoc" })
 		require("luasnip").filetype_extend("javascriptreact", { "jsdoc" })
 		require("luasnip").filetype_extend("typescriptreact", { "tsdoc" })
+
+		opts.sources = opts.sources or {}
+		table.insert(opts.sources, {
+			name = "lazydev",
+			group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+		})
 
 		local defaults = require("cmp.config.default")()
 		return {
@@ -52,7 +58,14 @@ return {
 				end,
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
+				{
+					name = "nvim_lsp",
+					option = {
+						markdown_oxide = {
+							keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
+						},
+					},
+				},
 				{ name = "luasnip" },
 				{ name = "path" },
 			}, {
@@ -104,8 +117,6 @@ return {
 	end,
 	---@param opts cmp.ConfigSchema
 	config = function(_, opts)
-		require("lsp-zero").extend_cmp()
-
 		for _, source in ipairs(opts.sources) do
 			source.group_index = source.group_index or 1
 		end

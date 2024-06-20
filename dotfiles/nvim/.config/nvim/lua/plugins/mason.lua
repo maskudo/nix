@@ -1,66 +1,67 @@
 return {
 	"williamboman/mason.nvim",
-	cmd = "Mason",
-	event = "VeryLazy",
-	keys = { { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" } },
-	build = ":MasonUpdate",
-	opts = {
-		ensure_installed = {
-			"ansible-language-server",
-			"ansible-lint",
-			"black",
-			"clangd",
-			"css-lsp",
-			"docker-compose-language-service",
-			"dockerfile-language-server",
-			"emmet-language-server",
-			"eslint-lsp",
-			"eslint_d",
-			"flake8",
-			"gopls",
-			"gofumpt",
-			"mypy",
-			"lua-language-server",
-			"prettierd",
-			"pyright",
-			"ruff",
-			"rust-analyzer",
-			"shellcheck",
-			"shfmt",
-			"stylua",
-			"tailwindcss-language-server",
-			"typescript-language-server",
-			"terraform-ls",
-			"tflint",
-			"nil",
-		},
+	dependencies = {
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
-	---@param opts MasonSettings | {ensure_installed: string[]}
-	config = function(_, opts)
-		require("lsp-zero").extend_lspconfig()
-		require("mason").setup(opts)
-		local mr = require("mason-registry")
-		mr:on("package:install:success", function()
-			vim.defer_fn(function()
-				-- trigger FileType event to possibly load this newly installed LSP server
-				require("lazy.core.handler.event").trigger({
-					event = "FileType",
-					buf = vim.api.nvim_get_current_buf(),
-				})
-			end, 100)
-		end)
-		local function ensure_installed()
-			for _, tool in ipairs(opts.ensure_installed) do
-				local p = mr.get_package(tool)
-				if not p:is_installed() then
-					p:install()
-				end
-			end
-		end
-		if mr.refresh then
-			mr.refresh(ensure_installed)
-		else
-			ensure_installed()
-		end
+	config = function()
+		-- import mason
+		local mason = require("mason")
+
+		-- import mason-lspconfig
+		local mason_lspconfig = require("mason-lspconfig")
+
+		local mason_tool_installer = require("mason-tool-installer")
+
+		-- enable mason and configure icons
+		mason.setup({
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+			},
+		})
+
+		mason_lspconfig.setup({
+			-- list of servers for mason to install
+			ensure_installed = {
+				"ansiblels",
+				"clangd",
+				"cssls",
+				"dockerls",
+				"emmet_ls",
+				"eslint",
+				"gopls",
+				"lua_ls",
+				"pyright",
+				"rust_analyzer",
+				"tailwindcss",
+				"tsserver",
+				"terraformls",
+				"nil_ls",
+				"markdown_oxide",
+			},
+		})
+
+		mason_tool_installer.setup({
+			ensure_installed = {
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
+				"black", -- python formatter
+				"pylint",
+				"eslint_d",
+				"ansible-lint",
+				"flake8",
+				"gofumpt",
+				"mypy",
+				"pyright",
+				"ruff",
+				"shellcheck",
+				"shfmt",
+				"tflint",
+			},
+		})
 	end,
 }
