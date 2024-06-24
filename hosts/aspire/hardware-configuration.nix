@@ -17,6 +17,13 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/629db788-e07d-4df1-b07c-34b5f0111f5d";
     fsType = "ext4";
@@ -29,11 +36,6 @@
 
   fileSystems."/mnt/acer" = {
     device = "/dev/disk/by-uuid/F2B04A21B049ED23";
-    fsType = "ntfs";
-  };
-
-  fileSystems."/mnt/ssd" = {
-    device = "/dev/disk/by-uuid/01D989993966A490";
     fsType = "ntfs";
   };
 
