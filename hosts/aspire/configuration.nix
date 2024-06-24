@@ -79,19 +79,19 @@
     # syncthing.user = "mk489";
     tailscale.enable = true;
 
+    libinput = {
+      enable = true;
+      touchpad = {
+        tapping = true;
+        middleEmulation = true;
+        naturalScrolling = true;
+      };
+      mouse = {
+        naturalScrolling = false;
+      };
+    };
     xserver = {
       enable = true;
-      libinput = {
-        enable = true;
-        touchpad = {
-          tapping = true;
-          middleEmulation = true;
-          naturalScrolling = true;
-        };
-        mouse = {
-          naturalScrolling = false;
-        };
-      };
       xkb.layout = "us";
       xkb.variant = "";
       windowManager.i3 = {
@@ -203,6 +203,7 @@
     libgcc
     libstdcxx5
     nettools
+    networkmanagerapplet
     nix-prefetch-git
     nmap
     plocate
@@ -218,7 +219,6 @@
     libsForQt5.qt5.qtquickcontrols
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.full
   ];
 
   xdg.portal = {
