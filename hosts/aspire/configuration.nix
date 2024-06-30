@@ -65,6 +65,7 @@
 
     postgresql.enable = true;
 
+    # automount usb drives
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"
     '';
@@ -202,6 +203,7 @@
     libcxx
     libgcc
     libstdcxx5
+    lsof
     nettools
     networkmanagerapplet
     nix-prefetch-git
