@@ -34,6 +34,7 @@
     qogir-icon-theme
     rxvt-unicode
     smplayer
+    uget
     virtualbox
     vlc
     vscode

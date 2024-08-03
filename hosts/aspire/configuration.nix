@@ -95,6 +95,7 @@
       enable = true;
       xkb.layout = "us";
       xkb.variant = "";
+      xkb.options = "caps:escape_shifted_capslock";
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
@@ -302,5 +303,5 @@
     };
   };
 
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.05";
 }
