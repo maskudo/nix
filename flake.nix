@@ -12,7 +12,9 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    username = "mk489";
+  in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = (
@@ -25,8 +27,8 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = let
       homeManagerModule = import ./home/home-manager.nix {
-        homeDirectory = /home/mk489;
-        username = "mk489";
+        homeDirectory = "/home/" + username;
+        inherit username;
       };
       homeManager = system:
         home-manager.lib.homeManagerConfiguration {
