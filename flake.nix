@@ -8,23 +8,30 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     ...
   } @ inputs: let
     username = "mk489";
+    system = "x86_64-linux";
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = (
-      import ./hosts {
-        inherit inputs nixpkgs;
-      }
-    );
+    # sudo nixos-rebuild switch --flake .#aspire
+    nixosConfigurations = {
+      aspire = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs system username;};
+        # > Our main nixos configuration file <
+        modules = [./hosts/aspire];
+      };
+    };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
+    # home-manager -- build --flake .#x86_64-linux
+    # home-manager -- switch --flake .#x86_64-linux
+
     homeConfigurations = let
       homeManagerModule = import ./home/home-manager.nix {
         homeDirectory = "/home/" + username;
