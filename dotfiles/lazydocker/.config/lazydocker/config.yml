@@ -1,0 +1,6 @@
+gui:
+  theme:
+    selectedLineBgColor:
+      - red
+    defaultFgColor:
+      - white

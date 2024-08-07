@@ -2,6 +2,7 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
+		lazy = true,
 		event = "VeryLazy",
 		config = function()
 			local status_ok, toggleterm = pcall(require, "toggleterm")

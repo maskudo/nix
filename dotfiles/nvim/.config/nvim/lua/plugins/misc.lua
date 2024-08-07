@@ -14,6 +14,7 @@ return {
 			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				lazy = true,
+				event = "BufEnter",
 				opts = {
 					enable_autocmd = false,
 				},
@@ -24,7 +25,7 @@ return {
 	{
 		"echasnovski/mini.pairs",
 		version = "*",
-		event = "VeryLazy",
+		event = "BufEnter",
 		config = function()
 			require("mini.pairs").setup()
 		end,

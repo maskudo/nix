@@ -21,6 +21,13 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
+		lspconfig.nixd.setup({
+			cmd = { "nixd" },
+			filetypes = { "nix" },
+			root_dir = lspconfig.util.root_pattern("default.nix", "shell.nix", "flake.nix", ".git"),
+			settings = {},
+		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)

@@ -1,6 +1,7 @@
 return {
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	lazy = true,
 	cmd = "Trouble",
 	keys = {
 		{ "<leader>xw", "<cmd>Trouble diagnostics toggle<cr>", desc = "Workplace diagnostics" },

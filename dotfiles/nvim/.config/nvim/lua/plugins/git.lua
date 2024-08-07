@@ -34,37 +34,4 @@ return {
 			end,
 		},
 	},
-
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-		config = true,
-	},
-
-	{
-		"ThePrimeagen/git-worktree.nvim",
-		config = function()
-			require("git-worktree").setup({
-				update_on_change_command = "Oil .",
-			})
-			local map = require("helpers.keys").map
-			map(
-				"n",
-				"<Leader>gw",
-				"<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>",
-				"Git Worktree"
-			)
-			map(
-				"n",
-				"<Leader>gW",
-				"<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>",
-				"Create Git Worktree"
-			)
-		end,
-	},
 }
