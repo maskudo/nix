@@ -2,6 +2,7 @@
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
+    waydroid.enable = true;
     virtualbox = {
       host.enable = true;
       guest.enable = true;

@@ -17,7 +17,6 @@
     feh
     flameshot
     firefox
-    gimp
     gnome.gnome-disk-utility
     google-chrome
     gparted
@@ -28,6 +27,7 @@
     mpv
     nicotine-plus
     obsidian
+    pinta
     postman
     qbittorrent
     qogir-theme
