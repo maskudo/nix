@@ -29,6 +29,7 @@
     neofetch
     neovim
     nixd
+    nix-tree
     nodejs_20
     nodePackages.pnpm
     pandoc
@@ -37,6 +38,8 @@
     python311Packages.pip
     ripgrep
     rustup
+    slides
+    sshs
     stow
     starship
     tealdeer

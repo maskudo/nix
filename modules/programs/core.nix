@@ -16,6 +16,7 @@
     killall
     libcxx
     libgcc
+    libnotify
     libstdcxx5
     lsof
     nettools
@@ -26,6 +27,8 @@
     polkit
     pulseaudioFull
     pavucontrol
+    powertop
+    psmisc
     tailscale
     unzip
     usbutils

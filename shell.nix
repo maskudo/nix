@@ -5,6 +5,7 @@
       git
       nix
       vim
+      gnumake
     ];
   };
 }
