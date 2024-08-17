@@ -1,6 +1,7 @@
-{...}: {
+{stablePkgs, ...}: {
   # Bootloader.
   boot = {
+    kernelPackages = stablePkgs.linuxPackages;
     kernelModules = ["kvm-amd" "kvm-intel"];
     loader.grub = {
       enable = true;

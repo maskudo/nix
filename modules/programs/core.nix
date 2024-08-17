@@ -27,6 +27,7 @@
     polkit
     pulseaudioFull
     pavucontrol
+    pciutils
     powertop
     psmisc
     tailscale
