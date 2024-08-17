@@ -3,6 +3,8 @@
     "electron-25.9.0"
   ];
 
+  services.copyq.enable = true;
+
   home.packages = with pkgs; [
     arandr
     arc-theme

@@ -32,10 +32,10 @@
     fsType = "vfat";
   };
 
-  fileSystems."/mnt/acer" = {
-    device = "/dev/disk/by-uuid/F2B04A21B049ED23";
-    fsType = "ntfs";
-  };
+  # fileSystems."/mnt/acer" = {
+  #   device = "/dev/disk/by-uuid/F2B04A21B049ED23";
+  #   fsType = "ntfs";
+  # };
 
   fileSystems."/mnt/media" = {
     device = "/dev/disk/by-uuid/263E6A633E6A2BCD";

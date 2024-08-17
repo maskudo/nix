@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  system,
-  ...
-}: {
+{...}: {
   nixpkgs.overlays = [
     (final: prev: {
       postman = prev.postman.overrideAttrs (old: rec {

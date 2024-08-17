@@ -11,7 +11,7 @@
           dunst
           rofi
           picom
-          polybar
+          polybarFull
         ];
       };
     };
@@ -35,12 +35,12 @@
     };
   };
 
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      polybar = pkgs.polybar.override {
-        i3Support = true;
-        pulseSupport = true;
-      };
-    };
-  };
+  # nixpkgs.config = {
+  #   packageOverrides = pkgs: {
+  #     polybar = pkgs.polybar.override {
+  #       i3Support = true;
+  #       pulseSupport = true;
+  #     };
+  #   };
+  # };
 }

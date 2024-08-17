@@ -2,14 +2,16 @@
   description = "mk489's nix config'";
 
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    stable,
     ...
   } @ inputs: let
     username = "mk489";
@@ -21,7 +23,13 @@
     nixosConfigurations = {
       aspire = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs system username;};
+        specialArgs = {
+          inherit inputs system username;
+          stablePkgs = import stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        };
         # > Our main nixos configuration file <
         modules = [./hosts/aspire];
       };
