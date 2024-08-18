@@ -125,6 +125,8 @@ alias r="ranger"
 alias copy="xclip -selection clipboard"
 alias yz="yazi"
 
+export TERMINAL=kitty
+
 # go
 export GOPATH=~/go
 export GOBIN=$GOPATH/bin
@@ -178,6 +180,8 @@ fi
 
 if type bat &>/dev/null; then
 	alias cat="bat"
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'" # prettier manpages
+  export MANROFFOPT="-c"
 fi
 
 [ -f $HOME/.asdf/asdf.sh ] && . "$HOME/.asdf/asdf.sh"

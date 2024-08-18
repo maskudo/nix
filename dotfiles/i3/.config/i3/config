@@ -263,7 +263,7 @@ for_window [instance="^scratch"] \
 
 
 
-exec --no-startup-id copyq &
+exec_always --no-startup-id copyq &
 exec --no-startup-id dunst &
 exec --no-startup-id nm-applet &
 exec --no-startup-id firefox
