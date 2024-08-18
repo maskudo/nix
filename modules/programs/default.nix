@@ -1,3 +1,3 @@
 {...}: {
-  imports = [./nix-ld.nix ./graphical.nix ./core.nix ./virtualization.nix];
+  imports = [./nix-ld.nix ./graphical.nix ./core.nix ./virtualization.nix ./gaming.nix];
 }

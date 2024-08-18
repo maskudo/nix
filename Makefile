@@ -4,3 +4,5 @@ home-manager:
 nixos:
 	sudo nixos-rebuild switch --flake .#aspire
 
+aspire:
+	sudo nixos-rebuild switch --flake .#aspire
