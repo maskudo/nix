@@ -9,5 +9,6 @@
     lutris
     protonup
     bottles
+    heroic
   ];
 }

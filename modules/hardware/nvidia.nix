@@ -2,10 +2,9 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    # extraPackages = with pkgs; [
-    #   linuxPackages.nvidia_x11.out
-    # ];
   };
+
+  boot.kernelModules = ["nvidia" "nvidia-uvm"];
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia" "intel"];
   nixpkgs.config.nvidia.acceptLicense = true;
@@ -41,6 +40,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
+      reverseSync.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };

@@ -28,7 +28,6 @@
     pulseaudioFull
     pavucontrol
     pciutils
-    powertop
     psmisc
     tailscale
     unzip
@@ -40,4 +39,5 @@
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
   ];
+  powerManagement.powertop.enable = true;
 }

@@ -2,7 +2,7 @@
   # Bootloader.
   boot = {
     kernelPackages = stablePkgs.linuxPackages;
-    kernelModules = ["kvm-intel" "nvidia"];
+    kernelModules = ["kvm-intel"];
     loader.grub = {
       enable = true;
       copyKernels = true;

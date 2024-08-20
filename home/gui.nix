@@ -30,7 +30,7 @@
     nicotine-plus
     obsidian
     pinta
-    postman
+    # postman
     qbittorrent
     qogir-theme
     qogir-icon-theme
