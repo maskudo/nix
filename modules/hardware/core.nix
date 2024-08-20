@@ -22,7 +22,6 @@
       ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0408", ATTRS{idProduct}=="a030", ATTR{authorized}="0"
     '';
-    power-profiles-daemon.enable = true;
     devmon.enable = true;
     gvfs.enable = true;
     udisks2.enable = true;
