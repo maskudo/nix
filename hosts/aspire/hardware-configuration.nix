@@ -11,8 +11,9 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc"];
-  boot.kernelModules = ["kvm-intel"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-intel" "nvidia"];
   boot.extraModulePackages = [];
 
   swapDevices = [
@@ -23,22 +24,23 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/629db788-e07d-4df1-b07c-34b5f0111f5d";
+    device = "/dev/disk/by-uuid/39b77597-335c-48cb-ab31-2b83b56dc075";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/2E84-1780";
+    device = "/dev/disk/by-uuid/0F5E-64D2";
     fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
   };
-
-  # fileSystems."/mnt/acer" = {
-  #   device = "/dev/disk/by-uuid/F2B04A21B049ED23";
-  #   fsType = "ntfs";
-  # };
 
   fileSystems."/mnt/media" = {
     device = "/dev/disk/by-uuid/263E6A633E6A2BCD";
+    fsType = "ntfs";
+  };
+
+  fileSystems."/mnt/game" = {
+    device = "/dev/disk/by-uuid/5C3E79013E78D58C";
     fsType = "ntfs";
   };
 

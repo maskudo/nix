@@ -49,6 +49,9 @@
         home-manager.lib.homeManagerConfiguration {
           modules = [homeManagerModule];
           pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit username;
+          };
         };
     in {
       aarch64-darwin = homeManager "aarch64-darwin";
