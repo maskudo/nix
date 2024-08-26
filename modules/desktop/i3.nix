@@ -1,4 +1,14 @@
 {pkgs, ...}: {
+  imports = [../../overlays/picomOverlay.nix];
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      rofi = pkgs.rofi.override {
+        plugins = [pkgs.rofi-emoji pkgs.rofi-calc];
+      };
+    };
+  };
+
   services = {
     xserver = {
       enable = true;
@@ -26,11 +36,12 @@
       enable = true;
       touchpad = {
         tapping = true;
-        middleEmulation = true;
         naturalScrolling = true;
+        middleEmulation = false;
       };
       mouse = {
         naturalScrolling = false;
+        middleEmulation = false;
       };
     };
   };

@@ -13,6 +13,8 @@
     brave
     catppuccin
     copyq
+    cozy
+    dex
     discord
     dracula-theme
     emacs
@@ -24,11 +26,13 @@
     gparted
     kitty
     libsForQt5.breeze-qt5
+    libresprite
     lxappearance
     monitor
     mpv
     nicotine-plus
     obsidian
+    pgadmin4
     pinta
     # postman
     qbittorrent
@@ -43,5 +47,6 @@
     xarchiver
     xfce.xfconf
     xfce.thunar
+    xpad
   ];
 }

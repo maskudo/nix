@@ -7,6 +7,18 @@
     };
   };
 
+  # symlink bash to /bin/bash
+  system.activationScripts.createBashSymlink = ''
+    mkdir -p /bin
+    ln -sf ${pkgs.bash}/bin/bash /bin/bash
+  '';
+
+  documentation = {
+    enable = true;
+    man.enable = true;
+    dev.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     docker-compose
     findutils
@@ -19,6 +31,8 @@
     libnotify
     libstdcxx5
     lsof
+    man-pages
+    man-pages-posix
     nettools
     networkmanagerapplet
     nix-prefetch-git
