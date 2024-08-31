@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   username,
   ...
@@ -21,15 +22,22 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than +5";
+    options = "--delete-older-than 14d";
   };
 
   networking = {
+    resolvconf.enable = false;
+    dhcpcd.extraConfig = "nohook resolv.conf";
     hostName = "${username}-nixos"; # Define your hostname.
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      insertNameservers = ["1.1.1.1" "9.9.9.9"];
+      dns = "none";
+    };
     nameservers = ["1.1.1.1" "9.9.9.9"];
   };
+  services.resolved.enable = false;
 
   # Set your time zone.
   time.timeZone = "Asia/Kathmandu";
@@ -40,6 +48,7 @@
   # Enable sound with pipewire.
   systemd = {
     enableEmergencyMode = false;
+    extraConfig = "DefaultTimeoutStopSec=10s";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
