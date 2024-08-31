@@ -3,6 +3,7 @@
   boot = {
     kernelPackages = stablePkgs.linuxPackages;
     kernelModules = ["kvm-intel"];
+    blacklistedKernelModules = ["nouveau"];
     loader.grub = {
       enable = true;
       copyKernels = true;

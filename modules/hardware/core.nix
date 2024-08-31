@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   services = {
     dbus.packages = [pkgs.dconf];
-    resolved.enable = true;
     logind = {
       lidSwitch = "ignore";
       extraConfig = ''

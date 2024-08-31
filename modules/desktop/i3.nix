@@ -11,6 +11,7 @@
 
   services = {
     xserver = {
+      videoDrivers = ["intel"];
       enable = true;
       xkb.layout = "us";
       xkb.variant = "";
