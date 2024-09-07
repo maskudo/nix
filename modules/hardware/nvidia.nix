@@ -2,10 +2,6 @@
   # Enable OpenGL
   specialisation = {
     nvidia-graphics.configuration = {
-      hardware.opengl = {
-        enable = true;
-      };
-
       boot.kernelModules = ["nvidia" "nvidia-uvm"];
       # Load nvidia driver for Xorg and Wayland
       services.xserver.videoDrivers = ["nvidia" "intel"];

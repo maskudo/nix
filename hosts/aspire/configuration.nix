@@ -44,7 +44,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable sound with pipewire.
   systemd = {
     enableEmergencyMode = false;
     extraConfig = "DefaultTimeoutStopSec=10s";

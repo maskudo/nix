@@ -1,7 +1,7 @@
-{stablePkgs, ...}: {
+{pkgs, ...}: {
   # Bootloader.
   boot = {
-    kernelPackages = stablePkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages;
     kernelModules = ["kvm-intel"];
     blacklistedKernelModules = ["nouveau"];
     loader.grub = {
