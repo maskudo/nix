@@ -26,7 +26,6 @@
     jq
     lazydocker
     lazygit
-    lf
     mpd
     neofetch
     neovim
