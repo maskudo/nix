@@ -1,3 +1,3 @@
 {...}: {
-  imports = [./core.nix ./boot.nix ./nvidia.nix];
+  imports = [./core.nix ./boot.nix ./nvidia.nix ./power.nix];
 }

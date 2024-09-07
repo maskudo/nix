@@ -20,6 +20,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    alsa-utils
     docker-compose
     findutils
     gcc

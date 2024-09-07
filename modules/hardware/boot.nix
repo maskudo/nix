@@ -14,7 +14,7 @@
       fsIdentifier = "uuid";
       devices = ["nodev"];
     };
-    kernelParams = ["button.lid_init_state=open"];
+    kernelParams = ["button.lid_init_state=open" "snd_hda_intel.power_save=0"];
     supportedFilesystems = ["ntfs"];
     loader.grub.extraEntries = ''
       menuentry "Reboot" {

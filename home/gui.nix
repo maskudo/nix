@@ -13,7 +13,7 @@
     brave
     catppuccin
     copyq
-    cozy
+    # cozy
     dex
     discord
     dracula-theme
@@ -28,7 +28,7 @@
     libsForQt5.breeze-qt5
     libresprite
     lxappearance
-    monitor
+    # monitor
     mpv
     nicotine-plus
     obsidian
@@ -38,6 +38,7 @@
     qbittorrent
     qogir-theme
     qogir-icon-theme
+    resources
     rxvt-unicode
     smplayer
     uget

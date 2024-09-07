@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   username,
   ...
@@ -58,7 +57,7 @@
         isNormalUser = true;
         description = "${username}";
         shell = pkgs.bash;
-        extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "syncthing" "vboxusers"];
+        extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "vboxusers"];
         packages = [
         ];
       };

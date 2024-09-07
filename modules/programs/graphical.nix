@@ -7,10 +7,4 @@
       xdg-desktop-portal-gtk
     ];
   };
-
-  qt = {
-    enable = true;
-    platformTheme = "gtk2";
-    style = "breeze";
-  };
 }

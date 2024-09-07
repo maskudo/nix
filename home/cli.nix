@@ -9,6 +9,7 @@
     azure-cli
     bat
     btop
+    calcurse
     cmatrix
     dconf
     delta
@@ -26,6 +27,7 @@
     lazydocker
     lazygit
     lf
+    mpd
     neofetch
     neovim
     nixd
@@ -46,6 +48,7 @@
     tmux
     vim
     yarn
+    yazi
     yq
     zoxide
   ];
