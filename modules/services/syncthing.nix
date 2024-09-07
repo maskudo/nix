@@ -13,6 +13,7 @@
   users = {
     users = {
       syncthing.extraGroups = ["users"];
+      ${username}.extraGroups = ["syncthing"];
     };
   };
 }
