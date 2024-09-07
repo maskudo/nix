@@ -9,6 +9,7 @@ font pango:JetBrainsMono Nerd Font 9
 # for_window [class="^.*"] border pixel 0
 default_border pixel 2
 hide_edge_borders smart
+for_window [floating] border pixel 1
 # class                         border          background      text            indicator       child_border
 client.focused                  #282a36         #282a36         #c4d0f2         #c4d0f2       #c4d0f2
 # client.focused_inactive         #333333         #000000         #ffff33         #ff0001       #000000
@@ -51,6 +52,10 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod2+h focus left
+bindsym $mod2+j focus down
+bindsym $mod2+k focus up
+bindsym $mod2+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -63,6 +68,10 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+bindsym $mod2+Shift+h move left
+bindsym $mod2+Shift+j move down
+bindsym $mod2+Shift+k move up
+bindsym $mod2+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -176,7 +185,7 @@ workspace $ws10 output $m1
 #assign apps to workspace
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
-assign [class="obsidian"] $ws11
+assign [class="obsidian"] $ws4
 assign [class="xpad"] $ws12
 assign [instance="xpad"] $ws12
 
@@ -273,11 +282,12 @@ bindsym $mod2+d exec --no-startup-id rofi -show drun -sort  -sorting-method fzf
 bindsym $mod2+Shift+d exec --no-startup-id rofi -show run
 bindsym $mod2+Tab exec --no-startup-id rofi -show combi
 bindsym $mod2+e exec --no-startup-id rofi -show emoji
-bindsym $mod2+c exec --no-startup-id rofi -show calc
+bindsym $mod2+Shift+c exec --no-startup-id rofi -show calc
 bindsym $mod2+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod2+Esc exec --no-startup-id resources
 bindsym $mod2+s exec --no-startup-id flameshot gui
-bindsym $mod2+k exec --no-startup-id pkill picom
-bindsym $mod2+f exec --no-startup-id kitty -e lf
+bindsym $mod2+q exec --no-startup-id pkill picom
+
 
 
 focus_follows_mouse no
@@ -293,12 +303,18 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom  &
 
 set $i3scripts ~/.config/i3
-exec --no-startup-id kitty --class scratchterm -e python
-bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "kitty --class scratchterm -e python"
+exec --no-startup-id kitty --class scratchterm 
+exec --no-startup-id kitty --class scratchcalcurse -e calcurse
+exec --no-startup-id kitty --class scratchyazi -e yazi
+exec --no-startup-id kitty --class scratchbtop -e btop
+bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "kitty --class scratchterm "
+bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "kitty --class scratchyazi -e yazi"
+bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "kitty --class scratchcalcurse -e calcurse"
+bindsym $mod2+b exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchbtop" "kitty --class scratchbtop -e btop"
 
 for_window [instance="^scratch"] \
     floating enable, border none, \
-    resize set 50 ppt 50 ppt, \
+    resize set 70 ppt 70 ppt, \
     move position 0 24, \
     move scratchpad, \
     border pixel 5

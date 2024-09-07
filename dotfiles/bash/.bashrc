@@ -71,31 +71,6 @@ xterm* | rxvt*)
 *) ;;
 esac
 
-# enable color support of ls and also add handy aliases
-alias ls='ls --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
@@ -112,18 +87,6 @@ if ! shopt -oq posix; then
 	fi
 fi
 # [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source /home/mk489/.autojump/etc/profile.d/autojump.sh
-
-alias nv='nvim'
-alias v='vim'
-alias lg='lazygit'
-alias ld='lazydocker'
-alias t='tmux'
-alias ta='tmux a'
-alias ssh='TERM=xterm ssh'
-alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"
-alias r="ranger"
-alias copy="xclip -selection clipboard"
-alias yz="yazi"
 
 export TERMINAL=kitty
 
@@ -178,11 +141,6 @@ if type rg &>/dev/null; then
 	export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
-if type bat &>/dev/null; then
-	alias cat="bat"
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'" # prettier manpages
-  export MANROFFOPT="-c"
-fi
 
 [ -f $HOME/.asdf/asdf.sh ] && . "$HOME/.asdf/asdf.sh"
 [ -f $HOME/.asdf/completions/asdf.bash ] && . "$HOME/.asdf/completions/asdf.bash"

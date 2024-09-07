@@ -1,7 +1,6 @@
 return {
   "williamboman/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   event = "VeryLazy",
@@ -36,30 +35,31 @@ return {
         "eslint",
         "gopls",
         "lua_ls",
+        "markdown_oxide",
+        "nil_ls",
         "pyright",
         "rust_analyzer",
         "tailwindcss",
         "tsserver",
         "terraformls",
-        "markdown_oxide",
       },
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "black", -- python formatter
-        "pylint",
-        "eslint_d",
         "ansible-lint",
+        "black", -- python formatter
+        "eslint_d",
         "flake8",
         "gofumpt",
         "mypy",
+        "prettier", -- prettier formatter
+        "pylint",
         "pyright",
         "ruff",
         "shellcheck",
         "shfmt",
+        "stylua", -- lua formatter
         "tflint",
         -- debuggers
         "js-debug-adapter",

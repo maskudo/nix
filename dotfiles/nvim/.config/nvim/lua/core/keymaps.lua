@@ -15,8 +15,7 @@ map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 map("n", "<leader>dw", "<cmd>close<cr>", "Window")
 
--- Diagnostic keymaps
-map("n", "gx", vim.diagnostic.open_float, "Show diagnostics under cursor")
+map('n', 'gx', ':silent !xdg-open <cfile><CR>', "Open link")
 
 -- Easier access to beginning and end of lines
 map("n", "<M-h>", "^", "Go to beginning of line")

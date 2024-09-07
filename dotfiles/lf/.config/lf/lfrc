@@ -122,7 +122,7 @@ map n
 map d
 map c
 map f
-map y
+# map y
 
 map A create
 map f z_jump
@@ -130,7 +130,7 @@ map H set hidden!
 map DD delete
 map Y copy
 map P paste
-map <esc> quit
+# map <esc> quit
 map X cut
 map <enter> open
 map Mf mkfile

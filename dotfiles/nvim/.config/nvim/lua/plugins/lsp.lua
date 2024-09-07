@@ -8,6 +8,12 @@ return {
       "folke/lazydev.nvim",
       ft = "lua", -- only load on lua files
     },
+    {
+      "williamboman/mason-lspconfig.nvim",
+      dependencies = {
+        "williamboman/mason.nvim",
+      }
+    }
   },
   config = function()
     -- import lspconfig plugin
@@ -26,6 +32,19 @@ return {
       filetypes = { "nix" },
       root_dir = lspconfig.util.root_pattern("default.nix", "shell.nix", "flake.nix", ".git"),
       settings = {},
+    })
+    lspconfig.nil_ls.setup({
+      autostart = true,
+      filetypes = { "nix" },
+      root_dir = lspconfig.util.root_pattern("default.nix", "shell.nix", "flake.nix", ".git"),
+      settings = {
+        ['nil'] = {
+          testSetting = 42,
+          formatting = {
+            command = { "alejandra" },
+          },
+        },
+      },
     })
 
     vim.api.nvim_create_autocmd("LspAttach", {
