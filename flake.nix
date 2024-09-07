@@ -2,16 +2,16 @@
   description = "mk489's nix config'";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.inputs.nixpkgs.follows = "unstable";
     home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    stable,
+    unstable,
     ...
   } @ inputs: let
     username = "mk489";
@@ -25,10 +25,6 @@
         inherit system;
         specialArgs = {
           inherit inputs system username;
-          stablePkgs = import stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
         };
         # > Our main nixos configuration file <
         modules = [./hosts/aspire];
@@ -48,7 +44,7 @@
       homeManager = system:
         home-manager.lib.homeManagerConfiguration {
           modules = [homeManagerModule];
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = unstable.legacyPackages.${system};
           extraSpecialArgs = {
             inherit username;
           };
