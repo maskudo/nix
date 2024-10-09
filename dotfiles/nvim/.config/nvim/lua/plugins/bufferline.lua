@@ -2,6 +2,7 @@
 return {
 	{
 		"akinsho/bufferline.nvim",
+		enabled = false,
 		dependencies = {
 			{
 				"echasnovski/mini.nvim",
@@ -13,10 +14,26 @@ return {
 		event = "VeryLazy",
 		keys = {
 			{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-			{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-			{ "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete other buffers" },
-			{ "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
-			{ "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+			{
+				"<leader>bP",
+				"<Cmd>BufferLineGroupClose ungrouped<CR>",
+				desc = "Delete non-pinned buffers",
+			},
+			{
+				"<leader>bo",
+				"<Cmd>BufferLineCloseOthers<CR>",
+				desc = "Delete other buffers",
+			},
+			{
+				"<leader>br",
+				"<Cmd>BufferLineCloseRight<CR>",
+				desc = "Delete buffers to the right",
+			},
+			{
+				"<leader>bl",
+				"<Cmd>BufferLineCloseLeft<CR>",
+				desc = "Delete buffers to the left",
+			},
 			{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
 			{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
@@ -33,7 +50,12 @@ return {
 				indicator = {
 					style = "underline",
 				},
-				diagnostics_indicator = function(count, level, diagnostics_dict, context)
+				diagnostics_indicator = function(
+					count,
+					level,
+					diagnostics_dict,
+					context
+				)
 					local icon = level:match("error") and " " or " "
 					return " " .. icon .. count
 				end,
@@ -49,53 +71,57 @@ return {
 		},
 	},
 	{
-		{
-			"utilyre/barbecue.nvim",
-			name = "barbecue",
-			event = "BufReadPre",
-			dependencies = {
-				"SmiteshP/nvim-navic",
-				"nvim-tree/nvim-web-devicons",
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		event = "BufReadPre",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons",
+		},
+		keys = {
+			{
+				"<leader>bt",
+				function()
+					require("barbecue.ui").toggle()
+				end,
+				desc = "Toggle Barbecue",
 			},
-			keys = {
-				{
-					"<leader>bt",
-					function()
-						require("barbecue.ui").toggle()
-					end,
-					desc = "Toggle Barbecue",
-				},
+		},
+		opts = {
+			kinds = {
+				File = "",
+				Module = "",
+				Namespace = "",
+				Package = "",
+				Class = "",
+				Method = "m",
+				Property = "",
+				Field = "",
+				Constructor = "",
+				Enum = "",
+				Interface = "",
+				Function = "󰊕",
+				Variable = "",
+				Constant = "",
+				String = "",
+				Number = "",
+				Boolean = "",
+				Array = "",
+				Object = "",
+				Key = "󰌋",
+				Null = "",
+				EnumMember = "",
+				Struct = "",
+				Event = "",
+				Operator = "",
+				TypeParameter = "",
 			},
-			opts = {
-				kinds = {
-					File = "",
-					Module = "",
-					Namespace = "",
-					Package = "",
-					Class = "",
-					Method = "m",
-					Property = "",
-					Field = "",
-					Constructor = "",
-					Enum = "",
-					Interface = "",
-					Function = "󰊕",
-					Variable = "",
-					Constant = "",
-					String = "",
-					Number = "",
-					Boolean = "",
-					Array = "",
-					Object = "",
-					Key = "󰌋",
-					Null = "",
-					EnumMember = "",
-					Struct = "",
-					Event = "",
-					Operator = "",
-					TypeParameter = "",
-				},
-			},
+			show_modified = true,
+			lead_custom_section = function()
+				-- Get the number of buffers and format it for display
+				local buffers = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+				return " (" .. buffers .. ") "
+			end,
 		},
 	},
 }

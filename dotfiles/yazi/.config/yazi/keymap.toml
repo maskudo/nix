@@ -27,10 +27,10 @@ on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
 
-[[manager.prepend_keymap]]
-on  = "k"
-run = "plugin --sync arrow --args=-1"
-
-[[manager.prepend_keymap]]
-on  = "j"
-run = "plugin --sync arrow --args=1"
+# [[manager.prepend_keymap]]
+# on  = "k"
+# run = "plugin --sync arrow --args=-1"
+#
+# [[manager.prepend_keymap]]
+# on  = "j"
+# run = "plugin --sync arrow --args=1"

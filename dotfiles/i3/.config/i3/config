@@ -185,7 +185,7 @@ workspace $ws10 output $m1
 #assign apps to workspace
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
-assign [class="obsidian"] $ws4
+# assign [class="obsidian"] $ws4
 assign [class="xpad"] $ws12
 assign [instance="xpad"] $ws12
 
@@ -303,14 +303,15 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom  &
 
 set $i3scripts ~/.config/i3
-exec --no-startup-id kitty --class scratchterm 
-exec --no-startup-id kitty --class scratchcalcurse -e calcurse
-exec --no-startup-id kitty --class scratchyazi -e yazi
-exec --no-startup-id kitty --class scratchbtop -e btop
-bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "kitty --class scratchterm "
-bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "kitty --class scratchyazi -e yazi"
-bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "kitty --class scratchcalcurse -e calcurse"
-bindsym $mod2+b exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchbtop" "kitty --class scratchbtop -e btop"
+# exec --no-startup-id urxvt -name scratchterm 
+# exec --no-startup-id urxvt -name scratchcalcurse -e bash -c "CALCURSE_EDITOR=vim calcurse"
+# exec --no-startup-id urxvt -name scratchyazi -e bash -c "yazi"
+# exec --no-startup-id urxvt -name scratchbtop -e btop
+bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm "
+bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "urxvt -name scratchyazi -e sh -c 'yazi'"
+bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "urxvt -name scratchcalcurse -e sh -c 'CALCURSE_EDITOR=vim calcurse'"
+# btop leaks memory for some reason
+bindsym $mod2+b exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchbtop" "urxvt -name scratchbtop -e systemd-run --user --scope -p MemoryMax=20M btop"
 
 for_window [instance="^scratch"] \
     floating enable, border none, \
@@ -326,7 +327,7 @@ exec --no-startup-id dunst &
 exec --no-startup-id nm-applet &
 exec --no-startup-id firefox
 exec --no-startup-id discord
-exec --no-startup-id obsidian
+# exec --no-startup-id obsidian
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 exec --no-startup-id setxkbmap -option caps:escape_shifted_capslock

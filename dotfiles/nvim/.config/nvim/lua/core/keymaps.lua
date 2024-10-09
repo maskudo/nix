@@ -7,7 +7,7 @@ map("n", "n", "nzzzv", "Jump to Next")
 map("n", "N", "Nzzzv", "Jump to Prev")
 
 -- Quick access to some common actions
-map("n", "<leader>fw", "<cmd>noa w<cr>", "Write(w/o format on save)")
+map("n", "<leader>fw", "<cmd>noa up<cr>", "Write(w/o format on save)")
 map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
 map("n", "<leader>fu", "<cmd>up<cr>", "Update file")
 map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
@@ -15,7 +15,7 @@ map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 map("n", "<leader>dw", "<cmd>close<cr>", "Window")
 
-map('n', 'gx', ':silent !xdg-open <cfile><CR>', "Open link")
+map("n", "gx", ":silent !xdg-open <cfile><CR>", "Open link")
 
 -- Easier access to beginning and end of lines
 map("n", "<M-h>", "^", "Go to beginning of line")
@@ -45,9 +45,9 @@ map("n", "<C-n>", ":cnext<CR>")
 
 -- Deleting buffers
 local buffers = require("helpers.buffers")
-map("n", "<leader>bd", buffers.delete_this, "Current buffer")
-map("n", "<leader>bo", buffers.delete_others, "Other buffers")
-map("n", "<leader>ba", buffers.delete_all, "All buffers")
+map("n", "<leader>bd", buffers.delete_this, "Delete CurrentBbuffer")
+map("n", "<leader>bo", buffers.delete_others, "Delete Other Buffers")
+map("n", "<leader>ba", buffers.delete_all, "Delete All buffers")
 
 -- Navigate buffers
 map("n", "<S-l>", ":bnext<CR>")
@@ -59,11 +59,11 @@ map("v", ">", ">gv")
 
 -- Switch between light and dark modes
 map("n", "<leader>ut", function()
-  if vim.o.background == "dark" then
-    vim.o.background = "light"
-  else
-    vim.o.background = "dark"
-  end
+	if vim.o.background == "dark" then
+		vim.o.background = "light"
+	else
+		vim.o.background = "dark"
+	end
 end, "Toggle between light and dark themes")
 
 -- Clear after search

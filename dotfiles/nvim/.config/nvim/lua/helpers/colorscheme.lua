@@ -19,7 +19,7 @@ end
 -- local colorscheme = get_if_available("catppuccin")
 -- local colorscheme = get_if_available('gruvbox')
 -- local colorscheme = get_if_available('rose-pine')
-local colorscheme = get_if_available('kanagawa')
+local colorscheme = get_if_available("kanagawa")
 -- local colorscheme = get_if_available('everforest')
 -- local colorscheme = get_if_available('melange')
 

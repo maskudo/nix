@@ -89,6 +89,8 @@ fi
 # [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source /home/mk489/.autojump/etc/profile.d/autojump.sh
 
 export TERMINAL=kitty
+export CALCURSE_EDITOR=vi
+export VISUAL=vi
 
 # go
 export GOPATH=~/go

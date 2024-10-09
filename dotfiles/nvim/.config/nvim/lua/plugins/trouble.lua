@@ -4,8 +4,16 @@ return {
 	lazy = true,
 	cmd = "Trouble",
 	keys = {
-		{ "<leader>xw", "<cmd>Trouble diagnostics toggle<cr>", desc = "Workplace diagnostics" },
-		{ "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics" },
+		{
+			"<leader>xw",
+			"<cmd>Trouble diagnostics toggle<cr>",
+			desc = "Workplace diagnostics",
+		},
+		{
+			"<leader>xx",
+			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+			desc = "Buffer diagnostics",
+		},
 		{ "<leader>xl", "<cmd>Trouble loclist toggle<cr>", "Loclist" },
 		{ "<leader>xq", "<cmd>Trouble qflist toggle<cr>", "Quickfix" },
 	},

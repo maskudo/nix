@@ -22,6 +22,7 @@ return {
 				python = { "isort", "black" },
 				nix = { "alejandra" },
 				rust = { "rustfmt" },
+				go = { "gofmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
