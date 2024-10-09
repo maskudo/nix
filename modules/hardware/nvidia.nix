@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # Enable OpenGL
   specialisation = {
     nvidia-graphics.configuration = {
@@ -6,6 +10,11 @@
       # Load nvidia driver for Xorg and Wayland
       services.xserver.videoDrivers = ["nvidia" "intel"];
       nixpkgs.config.nvidia.acceptLicense = true;
+
+      environment.systemPackages = with pkgs; [
+        eglexternalplatform
+        egl-wayland
+      ];
 
       hardware.nvidia = {
         # Modesetting is required.

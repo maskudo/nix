@@ -12,6 +12,8 @@
   services = {
     xserver = {
       videoDrivers = ["intel"];
+      desktopManager.xterm.enable = false;
+      excludePackages = [pkgs.xterm];
       enable = true;
       xkb.layout = "us";
       xkb.variant = "";

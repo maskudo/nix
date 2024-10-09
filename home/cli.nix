@@ -1,18 +1,28 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   fonts.fontconfig.enable = true;
   dconf.enable = true;
 
+  # home.activation = {
+  #   setLockScreen = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #     export PATH=${pkgs.xorg.xrdb}/bin:$PATH
+  #     ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/Pictures/Wallpapers/
+  #   '';
+  # };
+
   home.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "Iosevka"];})
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
     alejandra
-    azure-cli
     bat
     btop
     calcurse
-    cmatrix
     dconf
     delta
+    dig
     distrobox
     dua
     fd
@@ -26,11 +36,9 @@
     jq
     lazydocker
     lazygit
-    mpd
     neofetch
     neovim
     nixd
-    nix-tree
     nodejs_20
     nodePackages.pnpm
     pandoc
@@ -39,16 +47,16 @@
     python311Packages.pip
     ripgrep
     rustup
-    slides
     sshs
     stow
     starship
     tealdeer
     tmux
+    uv
     vim
-    yarn
     yazi
     yq
+    yt-dlp
     zoxide
   ];
 
