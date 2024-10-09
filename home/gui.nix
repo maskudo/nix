@@ -3,8 +3,6 @@
     "electron-25.9.0"
   ];
 
-  services.copyq.enable = true;
-
   home.packages = with pkgs; [
     arandr
     arc-theme
@@ -15,12 +13,11 @@
     copyq
     dex
     discord
+    deadbeef-with-plugins
     dracula-theme
-    emacs
     feh
     flameshot
     firefox
-    gnome.gnome-disk-utility
     gparted
     kitty
     libsForQt5.breeze-qt5
@@ -29,20 +26,20 @@
     mpv
     nicotine-plus
     obsidian
-    pgadmin4
     pinta
     qbittorrent
+    quickemu
     qogir-theme
     qogir-icon-theme
     rxvt-unicode
     smplayer
     uget
-    virtualbox
     vlc
     vscode
     xarchiver
+    xclip
     xfce.xfconf
     xfce.thunar
-    xpad
+    xsel
   ];
 }

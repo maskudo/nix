@@ -56,5 +56,6 @@
       driSupport = true;
       driSupport32Bit = true;
     };
+    enableAllFirmware = true;
   };
 }

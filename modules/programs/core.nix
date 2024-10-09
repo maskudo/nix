@@ -19,6 +19,8 @@
     dev.enable = true;
   };
 
+  programs.nano.enable = false;
+
   environment.systemPackages = with pkgs; [
     alsa-utils
     docker-compose
@@ -45,14 +47,18 @@
     pavucontrol
     pciutils
     psmisc
-    tailscale
+    unrar
     unzip
     usbutils
     wget
     xdotool
     vim
+    zip
     libsForQt5.qt5.qtquickcontrols
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
   ];
+  environment.variables = {
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+  };
 }
