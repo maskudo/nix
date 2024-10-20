@@ -97,6 +97,12 @@ export GOPATH=~/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
+
+export EMACSDIR="$HOME/.config/emacs"
+export DOOMDIR="$HOME/.config/doom"  # Or ~/.config/doom/ if that's your setup
+export DOOM_PATH=~/.config/emacs/bin
+export PATH=$PATH:$DOOM_PATH
+
 export PATH="/usr/local/ssl/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/ssl/lib:$LD_LIBRARY_PATH"
 
@@ -209,23 +215,6 @@ case "$PROMPT_COMMAND" in
 *) PROMPT_COMMAND="_zoxide_hook${PROMPT_COMMAND:+;${PROMPT_COMMAND}}" ;;
 esac
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/Downloads/.anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/Downloads/.anaconda/etc/profile.d/conda.sh" ]; then
-        . "$HOME/Downloads/.anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/Downloads/.anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# . ~/.asdf/plugins/dotnet/set-dotnet-env.bash
-[ -f ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 eval "$(direnv hook bash)"
 export DIRENV_LOG_FORMAT=""
 
@@ -236,3 +225,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#
+eval "$(atuin init bash --disable-up-arrow)"

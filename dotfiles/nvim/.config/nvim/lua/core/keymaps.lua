@@ -11,9 +11,9 @@ map("n", "<leader>fw", "<cmd>noa up<cr>", "Write(w/o format on save)")
 map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
 map("n", "<leader>fu", "<cmd>up<cr>", "Update file")
 map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
+map("n", "<leader>fx", "<cmd>!chmod +x %<cr>", "Make File Executable")
 map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
-map("n", "<leader>dw", "<cmd>close<cr>", "Window")
 
 map("n", "gx", ":silent !xdg-open <cfile><CR>", "Open link")
 
@@ -26,6 +26,12 @@ map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
 map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
 map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
 map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
+--
+-- Better tab navigation
+map("n", "<leader>tt", ":tabnew<CR>", "New Tab")
+map("n", "<leader>td", ":tabclose<CR>", "Close Tab")
+map("n", "<leader>tn", ":tabnext<CR>", "Next Tab")
+map("n", "<leader>tp", ":tabprevious<CR>", "Previous Tab")
 
 -- Move with shift-arrows
 map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
@@ -48,6 +54,7 @@ local buffers = require("helpers.buffers")
 map("n", "<leader>bd", buffers.delete_this, "Delete CurrentBbuffer")
 map("n", "<leader>bo", buffers.delete_others, "Delete Other Buffers")
 map("n", "<leader>ba", buffers.delete_all, "Delete All buffers")
+map("n", "<leader>bp", ":buffer #<CR>", "Previous Buffer")
 
 -- Navigate buffers
 map("n", "<S-l>", ":bnext<CR>")

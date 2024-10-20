@@ -3,7 +3,9 @@ return {
 	dependencies = {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
-	event = "VeryLazy",
+	lazy = true,
+	cmd = { "Mason" },
+	-- event = "VeryLazy",
 	config = function()
 		-- import mason
 		local mason = require("mason")
@@ -31,6 +33,7 @@ return {
 				"clangd",
 				"cssls",
 				"dockerls",
+				"docker_compose_language_service",
 				"emmet_ls",
 				"eslint",
 				"gopls",
@@ -40,7 +43,7 @@ return {
 				"pyright",
 				"rust_analyzer",
 				"tailwindcss",
-				"tsserver",
+				"ts_ls",
 				"terraformls",
 			},
 		})
@@ -57,6 +60,9 @@ return {
 				"pyright",
 				"ruff",
 				"shellcheck",
+				"nixpkgs-fmt",
+				"nginx_language_server",
+				"nilaway",
 				"shfmt",
 				"stylua", -- lua formatter
 				"tflint",
@@ -64,5 +70,6 @@ return {
 				"js-debug-adapter",
 			},
 		})
+		vim.keymap.set("n", "<leader>M", ":Mason<CR>", { desc = "Mason" })
 	end,
 }

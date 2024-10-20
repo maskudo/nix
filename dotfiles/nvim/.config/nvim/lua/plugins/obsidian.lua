@@ -6,15 +6,24 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	cmd = {
+		"ObsidianNew",
+		"ObsidianTags",
+	},
 	keys = {
 		{ "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New Note" },
-		{ "<leader>oN", "<cmd>ObsidianNewFromTemplate<cr>", "Search" },
+		{ "<leader>oN", "<cmd>ObsidianNewFromTemplate<cr>", desc = "Search" },
 		{ "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", desc = "Find Note" },
-		{ "<leader>ot", "<cmd>ObsidianTags<cr>", "Find Tags" },
-		{ "<leader>od", "<cmd>ObsidianFollowLink<cr>", "Follow Link" },
-		{ "<leader>os", "<cmd>ObsidianSearch<cr>", "Search" },
-		{ "<leader>o/", "<cmd>ObsidianSearch<cr>", "Search" },
-		{ "<leader>ox", "<cmd>ObsidianToggleCheckbox<cr>", "Search" },
+		{ "<leader>ot", "<cmd>ObsidianTags<cr>", desc = "Find Tags" },
+		{ "<leader>od", "<cmd>ObsidianFollowLink<cr>", desc = "Follow Link" },
+		{ "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Search" },
+		{ "<leader>o/", "<cmd>ObsidianSearch<cr>", desc = "Search" },
+		{ "<leader>oD", "<cmd>ObsidianDailies<cr>", desc = "Dailies" },
+		{
+			"<leader>ox",
+			"<cmd>ObsidianToggleCheckbox<cr>",
+			desc = "Toggle Checkbox",
+		},
 	},
 	config = function()
 		require("obsidian").setup({

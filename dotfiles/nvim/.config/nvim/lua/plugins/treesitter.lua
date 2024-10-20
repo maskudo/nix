@@ -6,10 +6,16 @@ return {
 		build = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
-		event = { "VeryLazy" },
+		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
-			{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
-			{ "nvim-treesitter/nvim-treesitter-context", event = "VeryLazy" },
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				event = { "BufReadPost", "BufNewFile" },
+			},
+			{
+				"nvim-treesitter/nvim-treesitter-context",
+				event = { "BufReadPost", "BufNewFile" },
+			},
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -33,6 +39,7 @@ return {
 					"markdown",
 					"markdown_inline",
 					"ninja",
+					"sql",
 					"rst",
 					"toml",
 				},

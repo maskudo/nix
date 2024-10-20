@@ -25,4 +25,4 @@
 [diff]
     colorMoved = default
 [safe]
-	directory = /home/mk489/nix/.git
+	directory = ~/nix/.git

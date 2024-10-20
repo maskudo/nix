@@ -1,7 +1,7 @@
 return {
 	{
 		"echasnovski/mini.comment",
-		event = "BufEnter",
+		lazy = true,
 		opts = {
 			options = {
 				custom_commentstring = function()
@@ -32,18 +32,19 @@ return {
 	},
 
 	{
-		"kazhala/close-buffers.nvim",
-		event = "VeryLazy",
-		opts = {
-			preserve_window_layout = { "this", "nameless" },
-		},
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "BufEnter",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
 	},
-
-	{ "tpope/vim-surround", event = "VeryLazy" }, -- Surround stuff with the ys-, cs-, ds- commands
 
 	{
 		"NvChad/nvim-colorizer.lua",
-		event = "VeryLazy",
+		event = "BufEnter",
 		config = function()
 			require("colorizer").setup({
 				filetypes = {
@@ -84,29 +85,78 @@ return {
 		config = true,
 		lazy = true,
 	},
-
 	{
-		"maskudo/bharyang.nvim",
-		cmd = {
-			"BharyangAsc",
-			"BharyangDesc",
-			"BharyangGroupDesc",
-			"BharyangGroupAsc",
+		"mbbill/undotree",
+		keys = { -- load the plugin only when using it's keybinding:
+			{ "<leader>u", "<cmd>UndotreeToggle<cr>" },
 		},
-		lazy = true,
+	},
+	{
+		"BartSte/nvim-project-marks",
+		lazy = false,
 		config = function()
-			require("bharyang").setup()
+			-- Get the name of the current working directory.
+			local function cwd_name()
+				return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+			end
+
+			require("projectmarks").setup({
+				shadafile = "~/shadas/" .. cwd_name() .. ".shada",
+			})
 		end,
 	},
-
+	-- Lua
 	{
-		"jiaoshijie/undotree",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = function()
-			require("undotree").setup()
-		end,
+		"folke/zen-mode.nvim",
 		keys = { -- load the plugin only when using it's keybinding:
-			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+			{ "<leader>zm", "<cmd>ZenMode<cr>" },
+		},
+		lazy = true,
+		opts = {
+			window = {
+				backdrop = 0, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+				-- height and width can be:
+				-- * an absolute number of cells when > 1
+				-- * a percentage of the width / height of the editor when <= 1
+				-- * a function that returns the width or the height
+				width = 0.8, -- width of the Zen window
+				height = 1, -- height of the Zen window
+				-- by default, no options are changed for the Zen window
+				-- uncomment any of the options below, or add other vim.wo options you want to apply
+				options = {
+					-- signcolumn = "no", -- disable signcolumn
+					-- number = false, -- disable number column
+					relativenumber = false, -- disable relative numbers
+					cursorline = false, -- disable cursorline
+					cursorcolumn = false, -- disable cursor column
+					-- foldcolumn = "0", -- disable fold column
+					-- list = false, -- disable whitespace characters
+				},
+			},
+			plugins = {
+				-- disable some global vim options (vim.o...)
+				-- comment the lines to not apply the options
+				options = {
+					enabled = true,
+					ruler = false, -- disables the ruler text in the cmd line area
+					showcmd = false, -- disables the command in the last line of the screen
+					-- you may turn on/off statusline in zen mode by setting 'laststatus'
+					-- statusline will be shown only if 'laststatus' == 3
+					laststatus = 0, -- turn off the statusline in zen mode
+				},
+				twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+				gitsigns = { enabled = false }, -- disables git signs
+				tmux = { enabled = false }, -- disables the tmux statusline
+				todo = { enabled = false }, -- if set to "true", todo-comments.nvim highlights will be disabled
+				-- this will change the font size on kitty when in zen mode
+				-- to make this work, you need to set the following kitty options:
+				-- - allow_remote_control socket-only
+				-- - listen_on unix:/tmp/kitty
+				kitty = {
+					enabled = false,
+					font = "+4", -- font size increment
+				},
+			},
 		},
 	},
 }

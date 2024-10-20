@@ -2,7 +2,10 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && npm install",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		lazy = true,
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
@@ -11,10 +14,9 @@ return {
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		-- Moved highlight creation out of opts as suggested by plugin maintainer
-		-- There was no issue, but it was creating unnecessary noise when ran
-		-- :checkhealth render-markdown
-		-- https://github.com/MeanderingProgrammer/render-markdown.nvim/issues/138#issuecomment-2295422741
+		ft = { "markdown" },
+		lazy = true,
+		-- event = "VeryLazy",
 		init = function()
 			-- Define color variables
 			-- These are the colors for the eldritch colorscheme

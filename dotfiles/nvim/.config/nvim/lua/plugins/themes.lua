@@ -3,13 +3,13 @@ return {
 	{
 		"rose-pine/nvim",
 		name = "rose-pine",
-		event = "VeryLazy",
 		lazy = true,
+		enabled = false,
 	},
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
+		enabled = false,
+		lazy = true,
 		opts = {},
 	},
 	{

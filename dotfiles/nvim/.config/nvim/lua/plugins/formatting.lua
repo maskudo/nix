@@ -20,9 +20,9 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				nix = { "alejandra" },
+				nix = { "nixpkgs-fmt" },
 				rust = { "rustfmt" },
-				go = { "gofmt" },
+				go = { "gofumpt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

@@ -4,6 +4,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		event = "VeryLazy",
+		cmd = { "Telescope" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
@@ -18,7 +19,12 @@ return {
 			local actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
-					file_ignore_patterns = { "./.git/", ".git" },
+					file_ignore_patterns = {
+						"%.git/",
+						"%.git$",
+						"%.stfolder",
+						"%.obsidian",
+					},
 					mappings = {
 						n = {
 							["<C-d>"] = actions.delete_buffer,
@@ -66,6 +72,12 @@ return {
 				"Buffers"
 			)
 			map("n", "<leader>.", require("telescope.builtin").git_files, "Git Files")
+			map("n", "<leader>fp", function()
+				require("telescope.builtin").git_files({ cwd = "~/dotfiles/" })
+			end, "Dotfiles")
+			map("n", "<leader>fz", function()
+				require("telescope.builtin").git_files({ cwd = "~/zt/" })
+			end, "Zt Files")
 			map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
 			map(
 				"n",

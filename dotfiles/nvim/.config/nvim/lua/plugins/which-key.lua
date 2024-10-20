@@ -8,7 +8,7 @@ return {
 			wk.setup()
 			wk.add({
 				{ "<leader>f", { group = "File" } },
-				{ "<leader>d", { group = "Delete/Close" } },
+				{ "<leader>d", { group = "DB UI" } },
 				{ "<leader>b", { group = "Buffer" } },
 				{ "<leader>q", { group = "Quit" } },
 				{ "<leader>s", { group = "Search" } },
@@ -17,6 +17,7 @@ return {
 				{ "<leader>g", { group = "Git" } },
 				{ "<leader>x", { group = "Diagnostics" } },
 				{ "<leader>y", { group = "Yank" } },
+				{ "<leader>t", { group = "Tab" } },
 			})
 		end,
 	},

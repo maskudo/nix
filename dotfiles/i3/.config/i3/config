@@ -255,16 +255,14 @@ exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/solar_eclip
 # set $i3lockwall i3lock -i $HOME/Pictures/Wallpapers/3.png -t
 set $i3lockwall betterlockscreen -l 
 
-bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
-
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown
 
 mode "$mode_system" {
     bindsym l exec --no-startup-id $i3lockwall, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $i3lockwall && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id $i3lockwall & systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $i3lockwall & systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
@@ -284,7 +282,6 @@ bindsym $mod2+Tab exec --no-startup-id rofi -show combi
 bindsym $mod2+e exec --no-startup-id rofi -show emoji
 bindsym $mod2+Shift+c exec --no-startup-id rofi -show calc
 bindsym $mod2+Return exec --no-startup-id i3-sensible-terminal
-bindsym $mod2+Esc exec --no-startup-id resources
 bindsym $mod2+s exec --no-startup-id flameshot gui
 bindsym $mod2+q exec --no-startup-id pkill picom
 

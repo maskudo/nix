@@ -70,6 +70,7 @@ return {
 						},
 					},
 				},
+				{ name = "vim-dadbod-completion" },
 				{ name = "luasnip" },
 				{ name = "path" },
 			}, {
