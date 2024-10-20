@@ -17,6 +17,7 @@
     font-awesome
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
     alejandra
+    atuin
     bat
     btop
     calcurse
@@ -31,6 +32,7 @@
     gh
     git-extras
     git-lfs
+    glow
     go
     imagemagick
     jq
@@ -43,10 +45,12 @@
     nodePackages.pnpm
     pandoc
     poetry
+    postgresql
     python3
     python311Packages.pip
     ripgrep
     rustup
+    sqlite
     sshs
     stow
     starship
@@ -63,6 +67,7 @@
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
     nix-direnv.enable = true;
   };
 }

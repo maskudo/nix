@@ -49,13 +49,15 @@
     extraConfig = "DefaultTimeoutStopSec=10s";
   };
 
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     users = {
       ${username} = {
         isNormalUser = true;
         description = "${username}";
-        shell = pkgs.bash;
+        shell = pkgs.zsh;
         extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "vboxusers"];
         packages = [
         ];
