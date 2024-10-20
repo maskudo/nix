@@ -3,6 +3,8 @@
     "electron-25.9.0"
   ];
 
+  services.emacs.enable = true;
+
   home.packages = with pkgs; [
     arandr
     arc-theme
@@ -15,6 +17,9 @@
     discord
     deadbeef-with-plugins
     dracula-theme
+    kanagawa-gtk-theme
+    kanagawa-icon-theme
+    emacs
     feh
     flameshot
     firefox
