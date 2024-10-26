@@ -61,7 +61,6 @@ return {
 				"ruff",
 				"shellcheck",
 				"nixpkgs-fmt",
-				"nginx_language_server",
 				"nilaway",
 				"shfmt",
 				"stylua", -- lua formatter

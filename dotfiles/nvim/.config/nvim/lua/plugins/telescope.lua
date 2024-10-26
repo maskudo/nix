@@ -17,6 +17,20 @@ return {
 		},
 		config = function()
 			local actions = require("telescope.actions")
+			-- find and grep
+			local send_find_files_to_live_grep = function()
+				local files = {}
+				local prompt_bufnr = vim.api.nvim_get_current_buf()
+				require("telescope.actions.utils").map_entries(
+					prompt_bufnr,
+					function(entry, _, _)
+						table.insert(files, entry[0] or entry[1])
+					end
+				)
+				require("telescope.builtin").live_grep({
+					search_dirs = files,
+				})
+			end
 			require("telescope").setup({
 				defaults = {
 					file_ignore_patterns = {
@@ -37,6 +51,30 @@ return {
 				pickers = {
 					buffers = {
 						path_display = { smart = true },
+					},
+					git_files = {
+						mappings = {
+							n = {
+								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+							},
+							i = {
+								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+							},
+						},
+					},
+					find_files = {
+						mappings = {
+							n = {
+								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+							},
+							i = {
+								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+							},
+						},
 					},
 				},
 			})
@@ -65,12 +103,9 @@ return {
 			map("n", "<leader>ff", function()
 				return require("telescope.builtin").find_files({ hidden = true })
 			end, "Files")
-			map(
-				"n",
-				"<leader><space>",
-				require("telescope.builtin").buffers,
-				"Buffers"
-			)
+			map("n", "<leader><space>", function()
+				return require("telescope.builtin").buffers({ sort_mru = true })
+			end, "Buffers")
 			map("n", "<leader>.", require("telescope.builtin").git_files, "Git Files")
 			map("n", "<leader>fp", function()
 				require("telescope.builtin").git_files({ cwd = "~/dotfiles/" })

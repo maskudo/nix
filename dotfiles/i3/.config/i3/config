@@ -233,7 +233,7 @@ mode "$monitor_mode_system" {
 
 bindsym $mod+m mode "$monitor_mode_system"
 # duplicate display
-bindsym $mod+Shift+m exec --no-startup-id xrandr --output "eDP-1" --auto --same-as "HDMI-1"
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output "eDP1" --auto --same-as "HDMI1"
 
 
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/scripts/changebrightness down 
@@ -289,21 +289,14 @@ bindsym $mod2+q exec --no-startup-id pkill picom
 
 focus_follows_mouse no
 # floating pop up automatically
-#  use xprop to get window role and instance names
+#  use `xprop` to get window role and instance names
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="xpad"] floating enable
 for_window [instance="xpad"] floating enable
 
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id picom  &
-
 set $i3scripts ~/.config/i3
-# exec --no-startup-id urxvt -name scratchterm 
-# exec --no-startup-id urxvt -name scratchcalcurse -e bash -c "CALCURSE_EDITOR=vim calcurse"
-# exec --no-startup-id urxvt -name scratchyazi -e bash -c "yazi"
-# exec --no-startup-id urxvt -name scratchbtop -e btop
 bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm "
 bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "urxvt -name scratchyazi -e sh -c 'yazi'"
 bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "urxvt -name scratchcalcurse -e sh -c 'CALCURSE_EDITOR=vim calcurse'"
@@ -319,12 +312,14 @@ for_window [instance="^scratch"] \
 
 
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id picom  &
 exec_always --no-startup-id copyq &
 exec --no-startup-id dunst &
+exec --no-startup-id gnome-keyring-daemon &
 exec --no-startup-id nm-applet &
 exec --no-startup-id firefox
 exec --no-startup-id discord
-# exec --no-startup-id obsidian
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 exec --no-startup-id setxkbmap -option caps:escape_shifted_capslock

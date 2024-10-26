@@ -1,25 +1,9 @@
 return {
 	{
-		"echasnovski/mini.comment",
-		lazy = true,
-		opts = {
-			options = {
-				custom_commentstring = function()
-					return require("ts_context_commentstring.internal").calculate_commentstring()
-						or vim.bo.commentstring
-				end,
-			},
-		},
-		dependencies = {
-			{
-				"JoosepAlviste/nvim-ts-context-commentstring",
-				lazy = true,
-				event = "BufEnter",
-				opts = {
-					enable_autocmd = false,
-				},
-			},
-		},
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = "VeryLazy",
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 
 	{
@@ -85,12 +69,15 @@ return {
 		config = true,
 		lazy = true,
 	},
+
 	{
 		"mbbill/undotree",
+		cmd = { "UndotreeToggle" },
 		keys = { -- load the plugin only when using it's keybinding:
 			{ "<leader>u", "<cmd>UndotreeToggle<cr>" },
 		},
 	},
+
 	{
 		"BartSte/nvim-project-marks",
 		lazy = false,
@@ -101,17 +88,18 @@ return {
 			end
 
 			require("projectmarks").setup({
-				shadafile = "~/shadas/" .. cwd_name() .. ".shada",
+				shadafile = "~/.local/share/nvim/shadas/" .. cwd_name() .. ".shada",
 			})
 		end,
 	},
-	-- Lua
+
 	{
 		"folke/zen-mode.nvim",
-		keys = { -- load the plugin only when using it's keybinding:
-			{ "<leader>zm", "<cmd>ZenMode<cr>" },
-		},
 		lazy = true,
+		cmd = { "ZenMode" },
+		keys = { -- load the plugin only when using it's keybinding:
+			{ "<leader>zm", "<cmd>ZenMode<cr>", desc = "ZenMode" },
+		},
 		opts = {
 			window = {
 				backdrop = 0, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
@@ -120,12 +108,12 @@ return {
 				-- * a percentage of the width / height of the editor when <= 1
 				-- * a function that returns the width or the height
 				width = 0.8, -- width of the Zen window
-				height = 1, -- height of the Zen window
+				height = 0.9, -- height of the Zen window
 				-- by default, no options are changed for the Zen window
 				-- uncomment any of the options below, or add other vim.wo options you want to apply
 				options = {
-					-- signcolumn = "no", -- disable signcolumn
-					-- number = false, -- disable number column
+					signcolumn = "no", -- disable signcolumn
+					number = false, -- disable number column
 					relativenumber = false, -- disable relative numbers
 					cursorline = false, -- disable cursorline
 					cursorcolumn = false, -- disable cursor column

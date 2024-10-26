@@ -20,7 +20,7 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				nix = { "nixpkgs-fmt" },
+				nix = { "alejandra" },
 				rust = { "rustfmt" },
 				go = { "gofumpt" },
 			},

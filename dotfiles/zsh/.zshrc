@@ -12,7 +12,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # Append to the history file, don't overwrite it
 setopt appendhistory
-setopt sharehistory
+# setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -25,9 +25,11 @@ HISTDUP=erase
 
 
 # Load aliases if ~/.bash_aliases exists
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
+
+alias ns='nix-shell --command zsh'
 
 # emacs mode for keybinds such as C-p C-n
 bindkey -e

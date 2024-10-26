@@ -13,10 +13,7 @@ return {
 			},
 			on_attach = function(buffer)
 				local gs = package.loaded.gitsigns
-
-				local function map(mode, l, r, desc)
-					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-				end
+				local map = require("helpers.keys").map
 
         -- stylua: ignore start
         map("n", "]h", gs.next_hunk, "Next Hunk")
@@ -34,22 +31,6 @@ return {
 			end,
 		},
 	},
-	-- {
-	-- 	"NeogitOrg/neogit",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim", -- required
-	-- 		"sindrets/diffview.nvim", -- optional - Diff integration
-	--
-	-- 		-- Only one of these is needed.
-	-- 		"nvim-telescope/telescope.nvim", -- optional
-	-- 		"ibhagwan/fzf-lua", -- optional
-	-- 		"echasnovski/mini.pick", -- optional
-	-- 	},
-	-- 	config = true,
-	-- 	keys = {
-	-- 		{ "<Leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
-	-- 	},
-	-- },
 	{
 		"tpope/vim-fugitive",
 	},

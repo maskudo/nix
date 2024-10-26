@@ -54,6 +54,8 @@ return {
 				},
 			})
 
+			lspconfig.racket_langserver.setup({})
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
@@ -79,6 +81,9 @@ return {
 
 					opts.desc = "Show LSP type definitions"
 					keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+
+					opts.desc = "Show LSP Signature"
+					keymap.set({ "i", "v" }, "<C-k>", vim.lsp.buf.signature_help, opts) -- show lsp function signature
 
 					opts.desc = "See available code actions"
 					keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -182,23 +187,6 @@ return {
 					})
 				end,
 			})
-		end,
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
-		opts = {
-			bind = true,
-			handler_opts = {
-				border = "rounded",
-			},
-			toggle_key = "<C-k>", -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
-			toggle_key_flip_floatwin_setting = true, -- true: toggle floating_windows: true|false setting after toggle key pressed
-			-- false: floating_windows setup will not change, toggle_key will pop up signature helper, but signature
-			-- may not popup when typing depends on floating_window setting
-		},
-		config = function(_, opts)
-			require("lsp_signature").setup(opts)
 		end,
 	},
 	{

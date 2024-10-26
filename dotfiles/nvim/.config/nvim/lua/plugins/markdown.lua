@@ -1,18 +1,5 @@
 return {
 	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-		lazy = true,
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-
-	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown" },
 		lazy = true,
@@ -115,7 +102,7 @@ return {
 		opts = {
 			heading = {
 				sign = false,
-				icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+				icons = { "󰼏 ", "󰎨  ", "󰼑  ", "󰎲  ", "󰼓  ", "󰎴  " },
 				backgrounds = {
 					"Headline1Bg",
 					"Headline2Bg",

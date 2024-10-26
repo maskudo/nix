@@ -25,10 +25,15 @@ alias ld='lazydocker'
 alias t='tmux'
 alias ta='tmux a'
 alias ssh='TERM=xterm ssh'
-alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"
-alias r="ranger"
+alias tn="tmux new -s \$(basename $(pwd))"
 alias copy="xclip -selection clipboard"
 alias yz="yazi"
+
+cheat ()
+{
+  curl --silent cheat.sh/$1 | bat
+}
+
 
 if type bat &>/dev/null; then
 	alias cat="bat"

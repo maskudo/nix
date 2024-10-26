@@ -5,17 +5,25 @@ return {
 	cmd = "Trouble",
 	keys = {
 		{
-			"<leader>xw",
+			"<leader>xx",
 			"<cmd>Trouble diagnostics toggle<cr>",
 			desc = "Workplace diagnostics",
 		},
 		{
-			"<leader>xx",
+			"<leader>xb",
 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 			desc = "Buffer diagnostics",
 		},
-		{ "<leader>xl", "<cmd>Trouble loclist toggle<cr>", "Loclist" },
-		{ "<leader>xq", "<cmd>Trouble qflist toggle<cr>", "Quickfix" },
+		{
+			"<leader>xl",
+			"<cmd>Trouble loclist toggle<cr>",
+			desc = "Trouble Loclist",
+		},
+		{
+			"<leader>xq",
+			"<cmd>Trouble qflist toggle<cr>",
+			desc = "Trouble Quickfix",
+		},
 	},
 	opts = {
 		-- your configuration comes here

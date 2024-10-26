@@ -1,20 +1,30 @@
 return {
 	"mfussenegger/nvim-dap",
-	enabled = false,
+	enabled = true,
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 
 		"nvim-neotest/nvim-nio",
+		"theHamsta/nvim-dap-virtual-text",
+		"leoluz/nvim-dap-go",
 	},
-	lazy = true,
+
 	cmd = {
 		"DapToggleBreakpoint",
 		"DapContinue",
 		"DapTerminate",
 		"DapStepOver",
 	},
+	keys = {
+		{ "<leader>Db", ":DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+		{ "<leader>Dc", "<cmd>DapContinue<cr>", desc = "DAP Continue" },
+		{ "<leader>Dt", "<cmd>DapTerminate<cr>", desc = "DAP Terminate" },
+		{ "<leader>Ds", "<cmd>DapStepOver<cr>", desc = "DAP StepOver" },
+	},
 	config = function()
 		require("dapui").setup()
+		require("dap-go").setup({})
+		require("nvim-dap-virtual-text").setup({})
 
 		local dap, dapui = require("dap"), require("dapui")
 
@@ -53,9 +63,11 @@ return {
 			}
 		end
 
-		vim.keymap.set("n", "<Leader>db", ":DapToggleBreakpoint<CR>")
-		vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
-		vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
-		vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+		vim.fn.sign_define("DapBreakpoint", {
+			text = "🔴",
+			texthl = "DapBreakpoint",
+			linehl = "DapBreakpoint",
+			numhl = "DapBreakpoint",
+		})
 	end,
 }

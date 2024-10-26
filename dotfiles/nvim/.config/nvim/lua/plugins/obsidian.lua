@@ -19,6 +19,7 @@ return {
 		{ "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Search" },
 		{ "<leader>o/", "<cmd>ObsidianSearch<cr>", desc = "Search" },
 		{ "<leader>oD", "<cmd>ObsidianDailies<cr>", desc = "Dailies" },
+		{ "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image" },
 		{
 			"<leader>ox",
 			"<cmd>ObsidianToggleCheckbox<cr>",
@@ -93,8 +94,8 @@ return {
 				-- Define how various check-boxes are displayed
 				checkboxes = {
 					-- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-					[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-					["x"] = { char = "", hl_group = "ObsidianDone" },
+					[" "] = { char = "󰄱 ", hl_group = "ObsidianTodo" },
+					["x"] = { char = " ", hl_group = "ObsidianDone" },
 					-- [">"] = { char = "", hl_group = "ObsidianRightArrow" },
 					-- ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
 					-- ["!"] = { char = "", hl_group = "ObsidianImportant" },
