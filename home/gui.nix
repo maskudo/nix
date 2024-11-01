@@ -3,8 +3,6 @@
     "electron-25.9.0"
   ];
 
-  services.emacs.enable = true;
-
   home.packages = with pkgs; [
     arandr
     arc-theme
@@ -19,11 +17,11 @@
     dracula-theme
     kanagawa-gtk-theme
     kanagawa-icon-theme
-    emacs
     feh
     flameshot
     firefox
     gparted
+    gnome.gnome-keyring
     kitty
     libsForQt5.breeze-qt5
     libresprite

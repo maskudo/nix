@@ -58,12 +58,14 @@
         isNormalUser = true;
         description = "${username}";
         shell = pkgs.zsh;
-        extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "vboxusers"];
+        extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "vboxusers" "input" "uinput"];
         packages = [
         ];
       };
     };
-    groups.video = {};
+    groups.video = {
+      members = [username];
+    };
   };
 
   system.stateVersion = "23.05";

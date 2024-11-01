@@ -7,7 +7,7 @@
             owner = "yshui";
             repo = "picom";
             rev = "f4fcedc470d39ce21caae4d1d0f73dd7f0b2600e";
-            sha256 = "sha256-59I6uozu4g9hll5U/r0nf4q92+zwRlbOD/z4R8TpSdo=";
+            sha256 = "sha256-FwjMlHP8xNJikkPpz+8BORrqqKYvRpkqm9GbExCoLAU=";
           };
           nativeBuildInputs = with pkgs; [
             asciidoctor
