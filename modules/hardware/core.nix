@@ -19,7 +19,6 @@
     # automount usb drives
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="0408", ATTRS{idProduct}=="a030", ATTR{authorized}="0"
     '';
     devmon.enable = true;
     gvfs.enable = true;
@@ -35,15 +34,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      wireplumber.extraConfig = {
-        "10-disable-camera" = {
-          "wireplumber.profiles" = {
-            main = {
-              "monitor.libcamera" = "disabled";
-            };
-          };
-        };
-      };
     };
   };
 
