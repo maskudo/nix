@@ -36,6 +36,7 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^F' "tmux-sessionizer\n"
+bindkey '\e\e' vi-cmd-mode
 
 # Environment variables
 export TERMINAL=kitty

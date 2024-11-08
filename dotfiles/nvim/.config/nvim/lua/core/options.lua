@@ -8,6 +8,7 @@ local opts = {
 	expandtab = true,
 	formatoptions = "jcroqlnt",
 	grepformat = "%f:%l:%c:%m",
+	colorcolumn = "80",
 	grepprg = "rg",
 	ignorecase = true,
 	mouse = "a",

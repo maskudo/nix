@@ -7,6 +7,7 @@ return {
 		cmd = { "Telescope" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"debugloop/telescope-undo.nvim",
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
@@ -82,6 +83,7 @@ return {
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "git_worktree")
+			pcall(require("telescope").load_extension, "undo")
 
 			local map = require("helpers.keys").map
 			map(
@@ -117,6 +119,12 @@ return {
 			map(
 				"n",
 				"<leader>fc",
+				require("telescope.builtin").git_bcommits,
+				"Git Commits(Buffer)"
+			)
+			map(
+				"n",
+				"<leader>fC",
 				require("telescope.builtin").git_commits,
 				"Git Commits"
 			)
@@ -164,6 +172,7 @@ return {
 				require("telescope.builtin").keymaps,
 				"Search keymaps"
 			)
+			map("n", "<leader>u", "<cmd>Telescope undo<CR>", "Undotree")
 		end,
 	},
 }

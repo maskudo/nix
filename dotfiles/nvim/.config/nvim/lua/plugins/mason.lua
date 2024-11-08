@@ -39,7 +39,6 @@ return {
 				"gopls",
 				"lua_ls",
 				"markdown_oxide",
-				"nil_ls",
 				"pyright",
 				"rust_analyzer",
 				"tailwindcss",
@@ -55,18 +54,20 @@ return {
 				"flake8",
 				"gofumpt",
 				"mypy",
-				"prettier", -- prettier formatter
+				"prettier",
 				"pylint",
 				"pyright",
 				"ruff",
 				"shellcheck",
 				"nixpkgs-fmt",
+				"sql-formatter",
 				"nilaway",
 				"shfmt",
 				"stylua", -- lua formatter
 				"tflint",
 				-- debuggers
 				"js-debug-adapter",
+				"delve",
 			},
 		})
 		vim.keymap.set("n", "<leader>M", ":Mason<CR>", { desc = "Mason" })

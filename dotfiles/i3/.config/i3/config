@@ -301,7 +301,7 @@ bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratc
 bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "urxvt -name scratchyazi -e sh -c 'yazi'"
 bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "urxvt -name scratchcalcurse -e sh -c 'CALCURSE_EDITOR=vim calcurse'"
 # btop leaks memory for some reason
-bindsym $mod2+b exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchbtop" "urxvt -name scratchbtop -e systemd-run --user --scope -p MemoryMax=20M btop"
+bindsym $mod2+b exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchbtop" "urxvt -name scratchbtop -e systemd-run --user --scope -p MemorySwapMax=0 -p MemoryMax=20M btop"
 
 for_window [instance="^scratch"] \
     floating enable, border none, \

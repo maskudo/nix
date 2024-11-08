@@ -1,8 +1,17 @@
 -- Highlight, edit, and navigate code
 return {
 	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle", lazy = true },
+
+	{
+		"echasnovski/mini.ai", -- {a,i} movements for text objects
+		event = "VeryLazy",
+		config = function()
+			require("mini.ai").setup()
+		end,
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 		build = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
@@ -91,16 +100,24 @@ return {
 						enable = true,
 						set_jumps = true, -- whether to set jumps in the jumplist
 						goto_next_start = {
-							["]]"] = "@function.outer",
+							["]f"] = "@function.outer",
+							["]c"] = "@class.outer",
+							["]a"] = "@parameter.inner",
 						},
 						goto_next_end = {
-							["]["] = "@function.outer",
+							["]F"] = "@function.outer",
+							["]C"] = "@class.outer",
+							["]A"] = "@parameter.inner",
 						},
 						goto_previous_start = {
-							["[["] = "@function.outer",
+							["[f"] = "@function.outer",
+							["[c"] = "@class.outer",
+							["[a"] = "@parameter.inner",
 						},
 						goto_previous_end = {
-							["[]"] = "@function.outer",
+							["[F"] = "@function.outer",
+							["[C"] = "@class.outer",
+							["[A"] = "@parameter.inner",
 						},
 					},
 				},

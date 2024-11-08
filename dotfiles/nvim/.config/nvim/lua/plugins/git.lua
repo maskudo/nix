@@ -11,7 +11,8 @@ return {
 				changedelete = { text = "▎" },
 				untracked = { text = "▎" },
 			},
-			on_attach = function(buffer)
+			attach_to_untracked = true,
+			on_attach = function()
 				local gs = package.loaded.gitsigns
 				local map = require("helpers.keys").map
 
@@ -28,10 +29,32 @@ return {
         map("n", "<leader>gd", gs.diffthis, "Diff This")
         map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+        map("n", "<leader>ga", "<cmd>silent !git add %<cr><cmd>silent Gitsigns refresh<CR>", "Git Add This File")
 			end,
 		},
 	},
 	{
-		"tpope/vim-fugitive",
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			{
+				"sindrets/diffview.nvim", -- optional - Diff integration
+				opts = {
+					keymaps = {
+						file_panel = {
+							{ "n", "q", "<cmd>DiffviewClose<CR>", desc = "Diffview Close" },
+						},
+					},
+				},
+			},
+		},
+		keys = {
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+			{ "<leader>gG", "<cmd>DiffviewOpen<cr>", desc = "Diffview" },
+		},
+		cmd = {
+			"Neogit",
+		},
+		config = true,
 	},
 }

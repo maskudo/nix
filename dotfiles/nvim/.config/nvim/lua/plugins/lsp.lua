@@ -35,24 +35,6 @@ return {
 				),
 				settings = {},
 			})
-			lspconfig.nil_ls.setup({
-				autostart = true,
-				filetypes = { "nix" },
-				root_dir = lspconfig.util.root_pattern(
-					"default.nix",
-					"shell.nix",
-					"flake.nix",
-					".git"
-				),
-				settings = {
-					["nil"] = {
-						testSetting = 42,
-						formatting = {
-							command = { "alejandra" },
-						},
-					},
-				},
-			})
 
 			lspconfig.racket_langserver.setup({})
 
@@ -65,13 +47,13 @@ return {
 
 					-- set keybinds
 					opts.desc = "Show LSP references"
-					keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+					keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 
 					opts.desc = "LSP Rename"
-					keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts) -- LSP rename
+					keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 					opts.desc = "Go to declaration"
-					keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+					keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
 					opts.desc = "Show LSP definitions"
 					keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
@@ -124,7 +106,6 @@ return {
 			}
 
 			-- Change the Diagnostic symbols in the sign column (gutter)
-			-- (not in youtube nvim video)
 			local signs =
 				{ Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			for type, icon in pairs(signs) do

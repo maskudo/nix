@@ -1,6 +1,6 @@
 # enable color support of ls
-if  type dircolors &> /dev/null ; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if type dircolors &>/dev/null; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
 alias ls='ls --color=auto'
@@ -8,11 +8,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -28,15 +26,27 @@ alias ssh='TERM=xterm ssh'
 alias tn="tmux new -s \$(basename $(pwd))"
 alias copy="xclip -selection clipboard"
 alias yz="yazi"
+alias ns='nix-shell --command zsh'
+alias sctl='systemctl'
+alias sctlu='systemctl --user'
+alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 
-cheat ()
-{
+cheat() {
   curl --silent cheat.sh/$1 | bat
 }
 
+run() {
+  echo $1 $2 $3
+  if [ -z $1 ]; then
+    echo "Usage: run <cmd> <mem>[K|M|G] <cpu>%"
+  else
+    systemd-run --user --scope -p MemorySwapMax=0 -p MemoryMax=$2 -p CPUQuota=$3 $1
+  fi
+}
 
 if type bat &>/dev/null; then
-	alias cat="bat"
+  alias cat="bat"
+  alias less="bat --paging=always"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'" # prettier manpages
   export MANROFFOPT="-c"
 fi

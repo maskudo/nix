@@ -8,11 +8,13 @@ set confirm
 set ignorecase 
 set hlsearch
 set expandtab 
-set autowrite 
 set nowrap
 set wildmenu
 set showmatch
 set fillchars="eob: "
+set path+=**
+set path+=*.*
+set noswapfile
 
 set tabstop=2           "the amount of spaces that vim will equate to a tab character
 set softtabstop=2       "like tabstop, but for editing operations (insert mode)
@@ -28,4 +30,6 @@ runtime macros/matchit.vim
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 nnoremap <silent> <C-d> <C-d>zz
 nnoremap <silent> <C-u> <C-u>zz
+nnoremap <silent> <S-h> :bprev<CR>
+nnoremap <silent> <S-l> :bnext<CR>
 nnoremap - :E<CR>

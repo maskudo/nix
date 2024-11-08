@@ -12,6 +12,7 @@ map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
 map("n", "<leader>fu", "<cmd>up<cr>", "Update file")
 map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
 map("n", "<leader>fx", "<cmd>!chmod +x %<cr>", "Make File Executable")
+
 map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 
@@ -48,6 +49,7 @@ map("n", "<C-Right>", ":vertical resize -2<CR>")
 -- Navigate quickfix list
 map("n", "<C-p>", ":cprev<CR>")
 map("n", "<C-n>", ":cnext<CR>")
+map("n", "<C-q>", ":clist<CR>")
 
 -- Deleting buffers
 local buffers = require("helpers.buffers")
@@ -85,6 +87,7 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", "Escape and clear hlsearch")
 map("v", "<A-j>", ":m .+1<CR>==", "Move text down")
 map("v", "<A-k>", ":m .-2<CR>==", "Move text up")
 map("v", "p", '"_dP', "Paste")
+map("n", "x", [["_x]], "Delete letter")
 
 -- Visual Block --
 -- Move text up and down
@@ -99,3 +102,4 @@ map("v", "<leader>y", '"+y', "Copy to system clipboard")
 map("n", "<leader>Y", '"+Y', "Copy to system clipboard")
 
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', "Replace selected text")

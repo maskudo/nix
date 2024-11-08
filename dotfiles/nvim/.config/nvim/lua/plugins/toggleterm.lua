@@ -2,7 +2,11 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
-		event = "VeryLazy",
+		lazy = true,
+		cmd = { "ToggleTerm" },
+		keys = {
+			{ "<C-\\>", "<cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
+		},
 		config = function()
 			local status_ok, toggleterm = pcall(require, "toggleterm")
 			if not status_ok then

@@ -11,6 +11,7 @@ return {
 			typescriptreact = { "eslint" },
 			svelte = { "eslint" },
 			python = { "pylint" },
+			sql = { "sqlfluff" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -23,11 +24,5 @@ return {
 				})
 			end,
 		})
-
-		vim.keymap.set("n", "<leader>l", function()
-			lint.try_lint(nil, {
-				ignore_errors = true,
-			})
-		end, { desc = "Trigger linting for current file" })
 	end,
 }
