@@ -4,17 +4,14 @@ return {
 		"rose-pine/nvim",
 		name = "rose-pine",
 		lazy = true,
-		enabled = false,
-	},
-	{
-		"folke/tokyonight.nvim",
-		enabled = false,
-		lazy = true,
-		opts = {},
+		opts = {
+			styles = {
+				transparency = true,
+			},
+		},
 	},
 	{
 		"rebelot/kanagawa.nvim",
-
 		config = function()
 			-- Default options:
 			require("kanagawa").setup({
@@ -22,7 +19,7 @@ return {
 				undercurl = true, -- enable undercurls
 				commentStyle = { italic = true },
 				functionStyle = {},
-				keywordStyle = { italic = true },
+				keywordStyle = { italic = false },
 				statementStyle = { bold = true },
 				typeStyle = {},
 				transparent = true, -- do not set background color
@@ -86,18 +83,6 @@ return {
 					light = "lotus",
 				},
 			})
-			-- vim.api.nvim_create_autocmd("ColorScheme", {
-			-- 	pattern = "kanagawa",
-			-- 	callback = function()
-			-- 		if vim.o.background == "light" then
-			-- 			vim.fn.system("kitty +kitten themes Kanagawa_light")
-			-- 		elseif vim.o.background == "dark" then
-			-- 			vim.fn.system("kitty +kitten themes Kanagawa_dragon")
-			-- 		else
-			-- 			vim.fn.system("kitty +kitten themes Kanagawa")
-			-- 		end
-			-- 	end,
-			-- })
 		end,
 	},
 }

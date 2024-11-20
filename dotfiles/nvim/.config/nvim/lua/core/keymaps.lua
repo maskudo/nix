@@ -19,8 +19,8 @@ map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 map("n", "gx", ":silent !xdg-open <cfile><CR>", "Open link")
 
 -- Easier access to beginning and end of lines
-map("n", "<M-h>", "^", "Go to beginning of line")
-map("n", "<M-l>", "$", "Go to end of line")
+map("n", "gh", "^", "Go to beginning of line")
+map("n", "gl", "$", "Go to end of line")
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
@@ -51,11 +51,6 @@ map("n", "<C-p>", ":cprev<CR>")
 map("n", "<C-n>", ":cnext<CR>")
 map("n", "<C-q>", ":clist<CR>")
 
--- Deleting buffers
-local buffers = require("helpers.buffers")
-map("n", "<leader>bd", buffers.delete_this, "Delete CurrentBbuffer")
-map("n", "<leader>bo", buffers.delete_others, "Delete Other Buffers")
-map("n", "<leader>ba", buffers.delete_all, "Delete All buffers")
 map("n", "<leader>bp", ":buffer #<CR>", "Previous Buffer")
 
 -- Navigate buffers
@@ -66,26 +61,10 @@ map("n", "<S-h>", ":bprevious<CR>")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Switch between light and dark modes
-map("n", "<leader>ut", function()
-	if vim.o.background == "dark" then
-		vim.o.background = "light"
-	else
-		vim.o.background = "dark"
-	end
-end, "Toggle between light and dark themes")
-
--- Clear after search
-map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
-
--- map("n", "gD", ":lua", "Goto Declaration")
-
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", "Escape and clear hlsearch")
 
 -- Move text up and down
-map("v", "<A-j>", ":m .+1<CR>==", "Move text down")
-map("v", "<A-k>", ":m .-2<CR>==", "Move text up")
 map("v", "p", '"_dP', "Paste")
 map("n", "x", [["_x]], "Delete letter")
 
@@ -93,13 +72,21 @@ map("n", "x", [["_x]], "Delete letter")
 -- Move text up and down
 map("x", "J", ":move '>+1<CR>gv-gv", "Move text down")
 map("x", "K", ":move '<-2<CR>gv-gv", "Move text up")
-map("x", "<A-j>", ":move '>+1<CR>gv-gv", "Move text down")
-map("x", "<A-k>", ":move '<-2<CR>gv-gv", "Move text up")
 
 -- copy to system clipboard
 map("n", "<leader>y", '"+y', "Copy to system clipboard")
 map("v", "<leader>y", '"+y', "Copy to system clipboard")
 map("n", "<leader>Y", '"+Y', "Copy to system clipboard")
 
-map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', "Replace selected text")
+
+--  select mode
+map("s", "p", "<nop>")
+map("s", "<Esc>", "<cmd>lua vim.snippet.stop()<CR><Esc>")
+map("s", "<C-h>", function()
+	vim.snippet.jump(-1)
+end)
+map("s", "<C-l>", function()
+	vim.snippet.jump(1)
+end)

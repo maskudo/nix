@@ -3,7 +3,6 @@ return {
 	enabled = true,
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
-
 		"nvim-neotest/nvim-nio",
 		"theHamsta/nvim-dap-virtual-text",
 		"leoluz/nvim-dap-go",
@@ -12,19 +11,70 @@ return {
 	cmd = {
 		"DapToggleBreakpoint",
 		"DapContinue",
-		"DapTerminate",
-		"DapStepOver",
 	},
 	keys = {
-		{ "<leader>Db", ":DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
-		{ "<leader>Dc", "<cmd>DapContinue<cr>", desc = "DAP Continue" },
-		{ "<leader>Dt", "<cmd>DapTerminate<cr>", desc = "DAP Terminate" },
-		{ "<leader>Ds", "<cmd>DapStepOver<cr>", desc = "DAP StepOver" },
+		{ "<leader>db", ":DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+		{ "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue" },
+		{ "<leader>dt", "<cmd>DapTerminate<cr>", desc = "Terminate" },
+		{ "<leader>dn", "<cmd>DapStepOver<cr>", desc = "StepOver(Next Fn)" },
+		{ "<leader>do", "<cmd>DapStepOut<cr>", desc = "StepOut" },
+		{ "<leader>di", "<cmd>DapStepInto<cr>", desc = "StepInto" },
+		{
+			"<leader>df",
+			function()
+				require("dapui").float_element()
+			end,
+			desc = "Floating Window",
+		},
+		{
+			"<leader>de",
+			function()
+				require("dapui").eval(nil, { enter = true })
+			end,
+			desc = "Eval",
+		},
 	},
 	config = function()
-		require("dapui").setup()
+		require("dapui").setup({
+			layouts = {
+				{
+					elements = {
+						{
+							id = "scopes",
+							size = 0.4,
+						},
+						{
+							id = "stacks",
+							size = 0.,
+						},
+						{
+							id = "breakpoints",
+							size = 0.2,
+						},
+					},
+					position = "left",
+					size = 50,
+				},
+				{
+					elements = {
+						{
+							id = "repl",
+							size = 0.5,
+						},
+						{
+							id = "watches",
+							size = 0.5,
+						},
+					},
+					position = "bottom",
+					size = 15,
+				},
+			},
+		})
 		require("dap-go").setup({})
-		require("nvim-dap-virtual-text").setup({})
+		require("nvim-dap-virtual-text").setup({
+			virt_text_pos = "eol",
+		})
 
 		local dap, dapui = require("dap"), require("dapui")
 
@@ -50,7 +100,12 @@ return {
 			},
 		}
 
-		for _, language in ipairs({ "typescript", "javascript" }) do
+		for _, language in ipairs({
+			"typescript",
+			"javascript",
+			"typesciptreact",
+			"javascriptreact",
+		}) do
 			dap.configurations[language] = {
 				{
 					type = "pwa-node",
@@ -59,6 +114,14 @@ return {
 					program = "${file}",
 					cwd = "${workspaceFolder}",
 					runtimeExecutable = "node",
+				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach",
+					-- processId = require("dap.utils").pick_process,
+					cwd = "${workspaceFolder}",
+					sourceMaps = true,
 				},
 			}
 		end

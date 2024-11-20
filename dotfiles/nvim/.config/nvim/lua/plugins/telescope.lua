@@ -32,6 +32,7 @@ return {
 					search_dirs = files,
 				})
 			end
+
 			require("telescope").setup({
 				defaults = {
 					file_ignore_patterns = {
@@ -39,6 +40,20 @@ return {
 						"%.git$",
 						"%.stfolder",
 						"%.obsidian",
+						"%.png",
+						"%.jpg",
+						"%.jpeg",
+						"%.gif",
+						"%.pdf",
+						"%.zip",
+						"%.tar",
+						"%.tar.gz",
+						"%.exe",
+						"%.bin",
+						"%.iso",
+						"%.o",
+						"%.so",
+						"%.dylib",
 					},
 					mappings = {
 						n = {
@@ -52,16 +67,17 @@ return {
 				pickers = {
 					buffers = {
 						path_display = { smart = true },
+						sort_mru = true,
 					},
 					git_files = {
 						mappings = {
 							n = {
 								["<c-f>"] = send_find_files_to_live_grep,
-								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 							i = {
 								["<c-f>"] = send_find_files_to_live_grep,
-								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 						},
 					},
@@ -69,11 +85,11 @@ return {
 						mappings = {
 							n = {
 								["<c-f>"] = send_find_files_to_live_grep,
-								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 							i = {
 								["<c-f>"] = send_find_files_to_live_grep,
-								["<c-r>"] = require("telescope.actions").to_fuzzy_refine,
+								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 						},
 					},
@@ -86,93 +102,59 @@ return {
 			pcall(require("telescope").load_extension, "undo")
 
 			local map = require("helpers.keys").map
-			map(
-				"n",
-				"<leader>fr",
-				require("telescope.builtin").oldfiles,
-				"Recently opened"
-			)
-			map("n", "<leader>/", function()
-				-- You can pass additional configuration to telescope to change theme, layout, etc.
-				require("telescope.builtin").current_buffer_fuzzy_find(
-					require("telescope.themes").get_dropdown({
-						winblend = 10,
-						previewer = false,
-					})
-				)
-			end, "Search in current buffer")
+			local bin = require("telescope.builtin")
 
+			map("n", "<leader>fr", bin.oldfiles, "Recently opened")
 			map("n", "<leader>ff", function()
-				return require("telescope.builtin").find_files({ hidden = true })
+				return bin.find_files({ hidden = true })
 			end, "Files")
+			map("n", "<leader>ft", ":Telescope<CR>", "Telescope")
 			map("n", "<leader><space>", function()
-				return require("telescope.builtin").buffers({ sort_mru = true })
+				return bin.buffers()
 			end, "Buffers")
-			map("n", "<leader>.", require("telescope.builtin").git_files, "Git Files")
+			map("n", "<leader>.", function()
+				return bin.find_files({ hidden = true })
+			end, "Files")
 			map("n", "<leader>fp", function()
-				require("telescope.builtin").git_files({ cwd = "~/dotfiles/" })
+				bin.find_files({ cwd = "~/dotfiles/", hidden = true })
 			end, "Dotfiles")
 			map("n", "<leader>fz", function()
-				require("telescope.builtin").git_files({ cwd = "~/zt/" })
+				bin.find_files({ cwd = "~/zt/", hidden = true })
 			end, "Zt Files")
-			map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
-			map(
-				"n",
-				"<leader>fc",
-				require("telescope.builtin").git_bcommits,
-				"Git Commits(Buffer)"
-			)
-			map(
-				"n",
-				"<leader>fC",
-				require("telescope.builtin").git_commits,
-				"Git Commits"
-			)
-			map(
-				"n",
-				"<leader>fg",
-				require("telescope.builtin").git_files,
-				"Git Files"
-			)
-			map(
-				"n",
-				"<leader>fs",
-				require("telescope.builtin").git_status,
-				"Git Status"
-			)
-			map(
-				"n",
-				"<leader>f/",
-				require("telescope.builtin").live_grep,
-				"Grep (Except Hidden)"
-			)
+			map("n", "<leader>fh", bin.help_tags, "Help")
+			map("n", "<leader>fm", bin.man_pages, "Man Pages")
+			map("n", "<leader>fc", bin.git_bcommits, "Git Commits(Buffer)")
+			map("n", "<leader>fC", bin.git_commits, "Git Commits")
+			map("n", "<leader>fg", bin.git_files, "Git Files")
+			map("n", "<leader>fs", bin.git_status, "Git Status")
+			map("n", "<leader>f/", bin.live_grep, "Grep (Except Hidden)")
 			map("n", "<leader>/", function()
-				return require("telescope.builtin").live_grep({
+				return bin.live_grep({
 					additional_args = { "--hidden" },
 				})
 			end, "Grep")
 			map("n", "<leader>fb", function()
-				return require("telescope.builtin").buffers({ sort_mru = true })
+				return bin.buffers()
 			end, "Buffers")
 			map("n", "gb", function()
-				return require("telescope.builtin").buffers({ sort_mru = true })
+				return bin.buffers()
 			end, "Buffers")
 			map("n", "=", function()
-				return require("telescope.builtin").buffers({ sort_mru = true })
+				return bin.buffers()
 			end, "Buffers")
-			map(
-				"n",
-				"<leader>fd",
-				require("telescope.builtin").diagnostics,
-				"Diagnostics"
-			)
-			map(
-				"n",
-				"<leader>fk",
-				require("telescope.builtin").keymaps,
-				"Search keymaps"
-			)
-			map("n", "<leader>u", "<cmd>Telescope undo<CR>", "Undotree")
+			map("n", "<leader>fd", bin.diagnostics, "Diagnostics")
+			map("n", "<leader>fk", bin.keymaps, "Search keymaps")
+			map("n", "<leader>cu", "<cmd>Telescope undo<CR>", "Undotree")
+			map("n", "<leader>lS", function()
+				return bin.lsp_workspace_symbols({
+					symbols = { "function", "method" },
+				})
+			end, "Workspace Functions")
+			map("n", "<leader>ls", function()
+				return bin.lsp_document_symbols({
+					symbols = { "function", "method" },
+				})
+			end, "Buffer Functions")
 		end,
 	},
 }

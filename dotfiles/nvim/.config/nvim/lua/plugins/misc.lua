@@ -1,5 +1,12 @@
 return {
 	{
+		"echasnovski/mini.ai", -- {a,i} movements for text objects
+		event = "VeryLazy",
+		config = function()
+			require("mini.ai").setup()
+		end,
+	},
+	{
 		"folke/ts-comments.nvim",
 		opts = {},
 		event = "BufEnter",
@@ -14,15 +21,12 @@ return {
 			require("mini.pairs").setup()
 		end,
 	},
-
 	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		"echasnovski/mini.surround",
+		version = "*",
 		event = "BufEnter",
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
+			require("mini.surround").setup()
 		end,
 	},
 

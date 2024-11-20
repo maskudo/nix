@@ -1,75 +1,76 @@
 return {
 	"williamboman/mason.nvim",
-	dependencies = {
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	},
 	lazy = true,
 	cmd = { "Mason" },
-	-- event = "VeryLazy",
-	config = function()
-		-- import mason
-		local mason = require("mason")
-
-		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
-
-		local mason_tool_installer = require("mason-tool-installer")
-
-		-- enable mason and configure icons
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
+	keys = {
+		{ "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" },
+	},
+	opts = {
+		ui = {
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
 			},
-		})
+		},
+		ensure_installed = {
+			"ansible-language-server",
+			"ansible-lint",
+			"biome",
+			"black", -- python formatter
+			"clangd",
+			"css-lsp",
+			"docker-compose-language-service",
+			"dockerfile-language-server",
+			"emmet-ls",
+			"eslint-lsp",
+			"flake8",
+			"gofumpt",
+			"gopls",
+			"lua-language-server",
+			"markdown-oxide",
+			"mypy",
+			"nilaway",
+			"nixpkgs-fmt",
+			"prettierd",
+			"pylint",
+			"pyright",
+			"pyright",
+			"ruff",
+			"rust-analyzer",
+			"shellcheck",
+			"shfmt",
+			"sql-formatter",
+			"stylua", -- lua formatter
+			"tailwindcss-language-server",
+			"terraform-ls",
+			"tflint",
+			-- "typescript-language-server",
+			-- debuggers
+			"delve",
+			"js-debug-adapter",
+		},
+	},
+	config = function(_, opts)
+		require("mason").setup(opts)
+		local mr = require("mason-registry")
+		mr:on("package:install:success", function()
+			vim.defer_fn(function()
+				-- trigger FileType event to possibly load this newly installed LSP server
+				require("lazy.core.handler.event").trigger({
+					event = "FileType",
+					buf = vim.api.nvim_get_current_buf(),
+				})
+			end, 100)
+		end)
 
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				"ansiblels",
-				"clangd",
-				"cssls",
-				"dockerls",
-				"docker_compose_language_service",
-				"emmet_ls",
-				"eslint",
-				"gopls",
-				"lua_ls",
-				"markdown_oxide",
-				"pyright",
-				"rust_analyzer",
-				"tailwindcss",
-				"ts_ls",
-				"terraformls",
-			},
-		})
-
-		mason_tool_installer.setup({
-			ensure_installed = {
-				-- "ansible-lint",
-				"black", -- python formatter
-				"flake8",
-				"gofumpt",
-				"mypy",
-				"prettier",
-				"pylint",
-				"pyright",
-				"ruff",
-				"shellcheck",
-				"nixpkgs-fmt",
-				"sql-formatter",
-				"nilaway",
-				"shfmt",
-				"stylua", -- lua formatter
-				"tflint",
-				-- debuggers
-				"js-debug-adapter",
-				"delve",
-			},
-		})
-		vim.keymap.set("n", "<leader>M", ":Mason<CR>", { desc = "Mason" })
+		mr.refresh(function()
+			for _, tool in ipairs(opts.ensure_installed) do
+				local p = mr.get_package(tool)
+				if not p:is_installed() then
+					p:install()
+				end
+			end
+		end)
 	end,
 }

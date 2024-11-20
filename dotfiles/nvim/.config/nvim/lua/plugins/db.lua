@@ -16,9 +16,9 @@ return {
 		"DBUIFindBuffer",
 	},
 	keys = {
-		{ "<leader>do", "<cmd>tabnew<cr><cmd>DBUI<cr>", desc = "Open DB UI" },
-		{ "<leader>da", "<cmd>DBUIAddConnection<cr>", desc = "Add Connection" },
-		{ "<leader>df", "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
+		{ "<leader>Do", "<cmd>tabnew<cr><cmd>DBUI<cr>", desc = "Open DB UI" },
+		{ "<leader>Da", "<cmd>DBUIAddConnection<cr>", desc = "Add Connection" },
+		{ "<leader>Df", "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
 	},
 	init = function()
 		-- Your DBUI configuration

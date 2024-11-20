@@ -3,7 +3,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
 			{
 				"williamboman/mason-lspconfig.nvim",
@@ -12,15 +11,12 @@ return {
 				},
 			},
 		},
-		config = function()
+		config = function(_, opts)
 			-- import lspconfig plugin
 			local lspconfig = require("lspconfig")
 
 			-- import mason_lspconfig plugin
 			local mason_lspconfig = require("mason-lspconfig")
-
-			-- import cmp-nvim-lsp plugin
-			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 			local keymap = vim.keymap -- for conciseness
 
@@ -35,6 +31,12 @@ return {
 				),
 				settings = {},
 			})
+
+			for server, config in pairs(opts.servers or {}) do
+				config.capabilities =
+					require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
 
 			lspconfig.racket_langserver.setup({})
 
@@ -70,16 +72,8 @@ return {
 					opts.desc = "See available code actions"
 					keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
-					opts.desc = "Show buffer diagnostics"
-					keymap.set(
-						"n",
-						"<leader>D",
-						"<cmd>Telescope diagnostics bufnr=0<CR>",
-						opts
-					) -- show  diagnostics for file
-
 					opts.desc = "Show line diagnostics"
-					keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+					keymap.set("n", "<leader>xd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 					opts.desc = "Go to previous diagnostic"
 					keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
@@ -91,19 +85,9 @@ return {
 					keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 					opts.desc = "Restart LSP"
-					keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+					keymap.set("n", "<leader>lr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 				end,
 			})
-
-			-- used to enable autocompletion (assign to every lsp server config)
-			local capabilities = cmp_nvim_lsp.default_capabilities(
-				vim.lsp.protocol.make_client_capabilities()
-			)
-			capabilities.workspace = {
-				didChangeWatchedFiles = {
-					dynamicRegistration = true,
-				},
-			}
 
 			-- Change the Diagnostic symbols in the sign column (gutter)
 			local signs =
@@ -112,6 +96,8 @@ return {
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
+
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			mason_lspconfig.setup_handlers({
 				-- default handler for installed servers

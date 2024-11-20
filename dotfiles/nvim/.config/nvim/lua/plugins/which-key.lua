@@ -3,22 +3,38 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		lazy = true,
-		config = function()
-			local wk = require("which-key")
-			wk.setup()
-			wk.add({
-				{ "<leader>f", { group = "File" } },
-				{ "<leader>d", { group = "DB UI" } },
-				{ "<leader>b", { group = "Buffer" } },
-				{ "<leader>q", { group = "Quit" } },
-				{ "<leader>s", { group = "Search" } },
-				{ "<leader>c", { group = "Code" } },
-				{ "<leader>u", { group = "UI" } },
-				{ "<leader>g", { group = "Git" } },
-				{ "<leader>x", { group = "Diagnostics" } },
-				{ "<leader>y", { group = "Yank" } },
-				{ "<leader>t", { group = "Tab" } },
-			})
-		end,
+		opts = {
+			icons = {
+				mappings = false,
+			},
+			spec = {
+				{
+					mode = { "n", "v" },
+					{ "<leader>g", group = "Git" },
+					{ "<leader>f", group = "File" },
+					{ "<leader>D", group = "Database" },
+					{ "<leader>d", group = "Debugger" },
+					{ "<leader>b", group = "Buffer" },
+					{ "<leader>l", group = "LSP" },
+					{ "<leader>q", group = "Quit" },
+					{ "<leader>s", group = "Search" },
+					{ "<leader>c", group = "Code" },
+					{ "<leader>u", group = "UI" },
+					{ "<leader>g", group = "Git" },
+					{ "<leader>x", group = "Diagnostics" },
+					{ "<leader>y", group = "Yank" },
+					{ "<leader>t", group = "Tab" },
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
 }
