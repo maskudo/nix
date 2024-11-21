@@ -9,3 +9,5 @@ gui:
       - red
     defaultFgColor:
       - white
+os:
+  editPreset: 'nvim'

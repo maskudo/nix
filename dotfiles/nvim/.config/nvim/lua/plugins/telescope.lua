@@ -59,9 +59,6 @@ return {
 						n = {
 							["<C-d>"] = actions.delete_buffer,
 						},
-						i = {
-							["<C-d>"] = actions.delete_buffer,
-						},
 					},
 				},
 				pickers = {

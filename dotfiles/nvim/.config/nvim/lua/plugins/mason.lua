@@ -23,7 +23,6 @@ return {
 			"docker-compose-language-service",
 			"dockerfile-language-server",
 			"emmet-ls",
-			"eslint-lsp",
 			"flake8",
 			"gofumpt",
 			"gopls",
@@ -32,9 +31,6 @@ return {
 			"mypy",
 			"nilaway",
 			"nixpkgs-fmt",
-			"prettierd",
-			"pylint",
-			"pyright",
 			"pyright",
 			"ruff",
 			"rust-analyzer",
@@ -45,7 +41,7 @@ return {
 			"tailwindcss-language-server",
 			"terraform-ls",
 			"tflint",
-			-- "typescript-language-server",
+			"vtsls", -- typescript lsp
 			-- debuggers
 			"delve",
 			"js-debug-adapter",

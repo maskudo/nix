@@ -27,8 +27,8 @@ alias tn="tmux new -s \$(basename $(pwd))"
 alias copy="xclip -selection clipboard"
 alias yz="yazi"
 alias ns='nix-shell --command zsh'
-alias sctl='systemctl'
-alias sctlu='systemctl --user'
+alias sc='systemctl'
+alias scu='systemctl --user'
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 
 cheat() {

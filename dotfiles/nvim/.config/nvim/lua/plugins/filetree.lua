@@ -9,8 +9,5 @@ return {
 			{ "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
 		},
 		opts = {},
-		config = function()
-			require("oil").setup()
-		end,
 	},
 }

@@ -8,6 +8,9 @@ return {
 			styles = {
 				transparency = true,
 			},
+			before_highlight = function(_, highlight, _)
+				highlight.undercurl = false
+			end,
 		},
 	},
 	{

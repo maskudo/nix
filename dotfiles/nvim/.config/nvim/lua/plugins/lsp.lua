@@ -106,36 +106,6 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-				["eslint"] = function()
-					lspconfig["eslint"].setup({
-						settings = {
-							-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
-							workingDirectories = { mode = "auto" },
-							capabilities = capabilities,
-							filetypes = {
-								"typescript",
-								"javascript",
-								"typescriptreact",
-								"javascriptreact",
-							},
-						},
-					})
-				end,
-				["emmet_ls"] = function()
-					-- configure emmet language server
-					lspconfig["emmet_ls"].setup({
-						capabilities = capabilities,
-						filetypes = {
-							"html",
-							"typescriptreact",
-							"javascriptreact",
-							"css",
-							"sass",
-							"scss",
-							"less",
-						},
-					})
-				end,
 				["lua_ls"] = function()
 					-- configure lua server (with special settings)
 					lspconfig["lua_ls"].setup({
