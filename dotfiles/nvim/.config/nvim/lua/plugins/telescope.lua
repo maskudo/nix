@@ -32,6 +32,18 @@ return {
 					search_dirs = files,
 				})
 			end
+			local diffView = function()
+				-- Open in diffview
+				local selected_entry =
+					require("telescope.actions.state").get_selected_entry()
+				local value = selected_entry.value
+				-- close Telescope window properly prior to switching windows
+				vim.api.nvim_win_close(0, true)
+				vim.cmd("stopinsert")
+				vim.schedule(function()
+					vim.cmd(("DiffviewOpen %s^!"):format(value))
+				end)
+			end
 
 			require("telescope").setup({
 				defaults = {
@@ -57,7 +69,7 @@ return {
 					},
 					mappings = {
 						n = {
-							["<C-d>"] = actions.delete_buffer,
+							["d"] = actions.delete_buffer,
 						},
 					},
 				},
@@ -66,14 +78,28 @@ return {
 						path_display = { smart = true },
 						sort_mru = true,
 					},
+					git_commits = {
+						mappings = {
+							i = {
+								["<C-d>"] = diffView,
+							},
+						},
+					},
+					git_bcommits = {
+						mappings = {
+							i = {
+								["<C-d>"] = diffView,
+							},
+						},
+					},
 					git_files = {
 						mappings = {
 							n = {
-								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-g>"] = send_find_files_to_live_grep,
 								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 							i = {
-								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-g>"] = send_find_files_to_live_grep,
 								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 						},
@@ -81,11 +107,11 @@ return {
 					find_files = {
 						mappings = {
 							n = {
-								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-g>"] = send_find_files_to_live_grep,
 								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 							i = {
-								["<c-f>"] = send_find_files_to_live_grep,
+								["<c-g>"] = send_find_files_to_live_grep,
 								["<c-r>"] = actions.to_fuzzy_refine,
 							},
 						},
@@ -120,8 +146,8 @@ return {
 			end, "Zt Files")
 			map("n", "<leader>fh", bin.help_tags, "Help")
 			map("n", "<leader>fm", bin.man_pages, "Man Pages")
-			map("n", "<leader>fc", bin.git_bcommits, "Git Commits(Buffer)")
-			map("n", "<leader>fC", bin.git_commits, "Git Commits")
+			map("n", "<leader>gc", bin.git_bcommits, "Git Commits(Buffer)")
+			map("n", "<leader>gC", bin.git_commits, "Git Commits")
 			map("n", "<leader>fg", bin.git_files, "Git Files")
 			map("n", "<leader>fs", bin.git_status, "Git Status")
 			map("n", "<leader>f/", bin.live_grep, "Grep (Except Hidden)")
@@ -134,9 +160,6 @@ return {
 				return bin.buffers()
 			end, "Buffers")
 			map("n", "gb", function()
-				return bin.buffers()
-			end, "Buffers")
-			map("n", "=", function()
 				return bin.buffers()
 			end, "Buffers")
 			map("n", "<leader>fd", bin.diagnostics, "Diagnostics")

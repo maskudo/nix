@@ -31,6 +31,7 @@ return {
 			"mypy",
 			"nilaway",
 			"nixpkgs-fmt",
+			"prettierd",
 			"pyright",
 			"ruff",
 			"rust-analyzer",

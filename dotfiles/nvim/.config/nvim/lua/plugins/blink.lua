@@ -2,6 +2,7 @@ local kind_icons = require("helpers.kind_icons").kind_icons
 return {
 	{
 		"saghen/blink.cmp",
+		enabled = false,
 		lazy = false,
 		dependencies = "rafamadriz/friendly-snippets",
 		version = "*",

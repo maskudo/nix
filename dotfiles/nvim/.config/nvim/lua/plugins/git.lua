@@ -33,4 +33,31 @@ return {
 			end,
 		},
 	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			{
+				"sindrets/diffview.nvim", -- optional - Diff integration
+				cmd = {
+					"DiffviewOpen",
+				},
+				opts = {
+					keymaps = {
+						file_panel = {
+							{ "n", "q", "<cmd>DiffviewClose<CR>", desc = "Diffview Close" },
+						},
+					},
+				},
+			},
+		},
+		keys = {
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+			{ "<leader>gG", "<cmd>DiffviewOpen<cr>", desc = "Diffview" },
+		},
+		cmd = {
+			"Neogit",
+		},
+		config = true,
+	},
 }

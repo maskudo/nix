@@ -65,4 +65,34 @@ return {
 			})
 		end,
 	},
+	{
+		"luckasRanarison/nvim-devdocs",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		lazy = true,
+		cmd = {
+			"DevdocsInstall",
+			"DevdocsOpen",
+		},
+		opts = {
+			previewer_cmd = "glow",
+		},
+		keys = {
+			{
+				"<leader>ho",
+				mode = { "n" },
+				":DevdocsOpen<CR>",
+				desc = "DevDocs Open",
+			},
+			{
+				"<leader>hi",
+				mode = { "n" },
+				":DevdocsInstall<CR>",
+				desc = "DevDocs Install",
+			},
+		},
+	},
 }

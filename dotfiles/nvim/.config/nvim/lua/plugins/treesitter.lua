@@ -2,7 +2,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+		-- lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 		build = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,

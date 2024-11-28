@@ -34,7 +34,7 @@ return {
 
 			for server, config in pairs(opts.servers or {}) do
 				config.capabilities =
-					require("blink.cmp").get_lsp_capabilities(config.capabilities)
+					require("cmp_nvim_lsp").default_capabilities(config.capabilities)
 				lspconfig[server].setup(config)
 			end
 
@@ -97,7 +97,7 @@ return {
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
 
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			mason_lspconfig.setup_handlers({
 				-- default handler for installed servers
@@ -118,6 +118,21 @@ return {
 								},
 								completion = {
 									callSnippet = "Replace",
+								},
+							},
+						},
+					})
+				end,
+				["vtsls"] = function()
+					lspconfig["vtsls"].setup({
+						capabilities = capabilities,
+						settings = {
+							vtsls = {
+								experimental = {
+									completion = {
+										enableServerSideFuzzyMatch = true,
+										entriesLimit = 10,
+									},
 								},
 							},
 						},

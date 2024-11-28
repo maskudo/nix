@@ -63,11 +63,21 @@ local function modified()
 end
 
 local open_buffers = function()
-	-- Get the number of buffers and format it for display
+	-- Get all listed buffers
+	local listed_buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+	-- Count buffers that are actually modified
+	local modified_count = 0
+	for _, buf in ipairs(listed_buffers) do
+		if buf.changed == 1 then
+			modified_count = modified_count + 1
+		end
+	end
+
 	return string.format(
 		" (%s|%s) ",
-		vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 })),
-		vim.fn.len(vim.fn.getbufinfo({ bufmodified = 1 }))
+		#listed_buffers, -- Total listed buffers
+		modified_count -- Modified listed buffers
 	)
 end
 
@@ -99,16 +109,16 @@ local function lsp()
 	local info = ""
 
 	if count["errors"] ~= 0 then
-		errors = " %#LspDiagnosticsSignError#" .. count["errors"]
+		errors = " %#DiagnosticError# " .. count["errors"]
 	end
 	if count["warnings"] ~= 0 then
-		warnings = " %#LspDiagnosticsSignWarning# " .. count["warnings"]
+		warnings = " %#DiagnosticWarn# " .. count["warnings"]
 	end
 	if count["hints"] ~= 0 then
-		hints = " %#LspDiagnosticsSignHint# " .. count["hints"]
+		hints = " %#DiagnosticHint# " .. count["hints"]
 	end
 	if count["info"] ~= 0 then
-		info = " %#LspDiagnosticsSignInformation# " .. count["info"]
+		info = " %#DiagnosticInfo#  " .. count["info"]
 	end
 
 	return errors .. warnings .. hints .. info .. "%#Normal#"

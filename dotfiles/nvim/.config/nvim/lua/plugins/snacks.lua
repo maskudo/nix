@@ -85,6 +85,20 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		require("snacks").setup(opts)
+		vim.api.nvim_create_autocmd("TermOpen", {
+			pattern = "*",
+			callback = function()
+				local term_title = vim.b.term_title
+				if term_title and term_title:match("lazygit") then
+					-- Create lazygit specific mappings
+					vim.keymap.set("t", "<C-g>", "<cmd>close<cr>", { buffer = true })
+					vim.keymap.set("t", "<leader>gl", "<cmd>close<cr>", { buffer = true })
+				end
+			end,
+		})
+	end,
 	keys = {
 		{
 			"<leader>bd",
@@ -115,9 +129,17 @@ return {
 			desc = "Lazygit",
 		},
 		{
-			"<C-\\>",
+			"<C-g>",
 			function()
-				Snacks.terminal.toggle("zsh", { interactive = false })
+				Snacks.lazygit()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<C-\\>",
+			mode = { "n", "t" },
+			function()
+				Snacks.terminal.toggle("zsh")
 			end,
 			desc = "Toggle Terminal",
 		},

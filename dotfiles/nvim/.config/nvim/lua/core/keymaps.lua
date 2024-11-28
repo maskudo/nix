@@ -1,5 +1,8 @@
 local map = require("helpers.keys").map
 
+map("n", ":w<CR>", ":update<CR>", "Update")
+map("n", ":W<CR>", ":update<CR>", "Update")
+
 --better movement
 map("n", "<C-u>", "<C-u>zz", "Move up by half page")
 map("n", "<C-d>", "<C-d>zz", "Mode down by half page")
@@ -19,8 +22,8 @@ map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 map("n", "gx", ":silent !xdg-open <cfile><CR>", "Open link")
 
 -- Easier access to beginning and end of lines
-map("n", "gh", "^", "Go to beginning of line")
-map("n", "gl", "$", "Go to end of line")
+map("n", "<S-h>", "^", "Go to beginning of line")
+map("n", "<S-l>", "$", "Go to end of line")
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
@@ -47,15 +50,14 @@ map("n", "<C-Left>", ":vertical resize +2<CR>")
 map("n", "<C-Right>", ":vertical resize -2<CR>")
 
 -- Navigate quickfix list
-map("n", "<C-p>", ":cprev<CR>")
-map("n", "<C-n>", ":cnext<CR>")
+map("n", "[q", ":cprev<CR>")
+map("n", "]q", ":cnext<CR>")
 map("n", "<C-q>", ":clist<CR>")
 
-map("n", "<leader>bp", ":buffer #<CR>", "Previous Buffer")
-
 -- Navigate buffers
-map("n", "<S-l>", ":bnext<CR>")
-map("n", "<S-h>", ":bprevious<CR>")
+map("n", "<leader>bp", ":buffer #<CR>", "Previous Buffer")
+map("n", "]]", ":bnext<CR>")
+map("n", "[[", ":bprevious<CR>")
 
 -- Stay in indent mode
 map("v", "<", "<gv")
