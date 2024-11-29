@@ -11,7 +11,6 @@
 
   services = {
     xserver = {
-      videoDrivers = ["intel"];
       desktopManager.xterm.enable = false;
       excludePackages = [pkgs.xterm];
       enable = true;
@@ -48,13 +47,4 @@
       };
     };
   };
-
-  # nixpkgs.config = {
-  #   packageOverrides = pkgs: {
-  #     polybar = pkgs.polybar.override {
-  #       i3Support = true;
-  #       pulseSupport = true;
-  #     };
-  #   };
-  # };
 }

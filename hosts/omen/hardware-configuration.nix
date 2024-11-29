@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }: {
@@ -11,48 +12,32 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelModules = ["kvm-intel" "nvidia"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci"];
+  boot.initrd.kernelModules = ["amdgpu"];
+  boot.kernelModules = ["kvm-amd" "nvidia"];
   boot.extraModulePackages = [];
-  boot.initrd.kernelModules = ["snd_hda_intel.power_save=0"];
-
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 16 * 1024;
-    }
-  ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/39b77597-335c-48cb-ab31-2b83b56dc075";
+    device = "/dev/disk/by-uuid/775173e5-e04b-45cc-9d20-714ae2b88057";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0F5E-64D2";
+    device = "/dev/disk/by-uuid/00E6-6EC0";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  fileSystems."/mnt/media" = {
-    device = "/dev/disk/by-uuid/263E6A633E6A2BCD";
-    fsType = "ntfs";
-  };
-
-  fileSystems."/mnt/game" = {
-    device = "/dev/disk/by-uuid/5C3E79013E78D58C";
-    fsType = "ntfs";
-  };
+  swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp4s0f1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.enableRedistributableFirmware = true;
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
