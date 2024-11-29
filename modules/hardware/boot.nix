@@ -2,7 +2,8 @@
   # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages;
-    kernelModules = ["kvm-intel"];
+    kernelModules = ["uinput"];
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" "uvcvideo"];
     blacklistedKernelModules = ["nouveau"];
     loader.grub = {
       enable = true;
@@ -14,7 +15,7 @@
       fsIdentifier = "uuid";
       devices = ["nodev"];
     };
-    kernelParams = ["button.lid_init_state=open" "snd_hda_intel.power_save=0"];
+    kernelParams = ["button.lid_init_state=open"];
     supportedFilesystems = ["ntfs"];
     loader.grub.extraEntries = ''
       menuentry "Reboot" {

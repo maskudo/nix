@@ -15,7 +15,8 @@
     unstable,
     ...
   } @ inputs: let
-    username = "mk489";
+    aspire = "mk489";
+    omen = "omen";
     system = "x86_64-linux";
   in {
     # NixOS configuration entrypoint
@@ -25,7 +26,8 @@
       aspire = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit inputs system username;
+          inherit inputs system;
+          username = aspire;
         };
         # > Our main nixos configuration file <
         modules = [
@@ -35,31 +37,47 @@
           })
         ];
       };
+      omen = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs system;
+          username = omen;
+        };
+        modules = [./hosts/omen];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    # home-manager -- build --flake .#x86_64-linux
-    # home-manager -- switch --flake .#x86_64-linux
+    # home-manager -- build --flake .aspire
+    # home-manager -- switch --flake .aspire
 
     homeConfigurations = let
-      homeManagerModule = import ./home/home-manager.nix {
-        homeDirectory = "/home/" + username;
-        inherit username;
-      };
-      homeManager = system:
+      homeManagerModule = username:
+        import ./home/home-manager.nix {
+          homeDirectory = "/home/" + username;
+          inherit username;
+        };
+      homeManager = {
+        system,
+        username,
+      }:
         home-manager.lib.homeManagerConfiguration {
-          modules = [homeManagerModule];
+          modules = [(homeManagerModule username)];
           pkgs = unstable.legacyPackages.${system};
           extraSpecialArgs = {
             inherit username;
           };
         };
     in {
-      aarch64-darwin = homeManager "aarch64-darwin";
-      aarch64-linux = homeManager "aarch64-linux";
-      x86_64-darwin = homeManager "x86_64-darwin";
-      x86_64-linux = homeManager "x86_64-linux";
+      aspire = homeManager {
+        system = "x86_64-linux";
+        username = aspire;
+      };
+      omen = homeManager {
+        system = "x86_64-linux";
+        username = omen;
+      };
     };
   };
 }

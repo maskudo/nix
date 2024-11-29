@@ -1,18 +1,29 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    undervolt
-    auto-cpufreq
-  ];
-  systemd.services = {
-    undervolt = {
-      description = "Undervolt intel CPUs";
-      after = ["suspend.target" "hibernate.target" "hybrid-sleep.target"];
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.undervolt}/bin/undervolt -v --core -72 --cache -72 --gpu -72";
-      };
-      wantedBy = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
-    };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {
+    powerModule.enable = lib.mkEnableOption "Enables intel undervolt and auto-cpufreq";
   };
-  services.auto-cpufreq.enable = true;
+
+  config = lib.mkIf config.powerModule.enable {
+    environment.systemPackages = with pkgs; [
+      undervolt
+      auto-cpufreq
+    ];
+    systemd.services = {
+      undervolt = {
+        description = "Undervolt intel CPUs";
+        after = ["suspend.target" "hibernate.target" "hybrid-sleep.target"];
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${pkgs.undervolt}/bin/undervolt -v --core -72 --cache -72 --gpu -72";
+        };
+        wantedBy = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
+      };
+    };
+    services.auto-cpufreq.enable = true;
+  };
 }
