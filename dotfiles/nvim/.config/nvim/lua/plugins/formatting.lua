@@ -29,7 +29,7 @@ return {
 				nix = { "alejandra" },
 				rust = { "rustfmt" },
 				go = { "gofumpt" },
-				sql = { "sql-formatter" },
+				-- sql = { "sql-formatter" },
 				bash = { "shfmt" },
 				sh = { "shfmt" },
 				racket = {

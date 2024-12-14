@@ -33,3 +33,4 @@ nnoremap <silent> <C-u> <C-u>zz
 nnoremap <silent> <S-h> :bprev<CR>
 nnoremap <silent> <S-l> :bnext<CR>
 nnoremap - :E<CR>
+inoremap <silent> <C-Space> <C-x><C-o>

@@ -66,6 +66,22 @@ return {
 		bufdelete = { enabled = true },
 		notifier = { enabled = false },
 		quickfile = { enabled = true },
+		scratch = {
+			win = {
+				position = "right",
+				border = "single",
+				height = 1,
+				width = 0.3,
+			},
+		},
+		words = {
+			enabled = true,
+			notify_jump = false,
+			modes = { "n" },
+			debounce = 100,
+		},
+		-- indent = {},
+		input = {},
 		terminal = {
 			enabled = true,
 			win = {
@@ -100,6 +116,28 @@ return {
 		})
 	end,
 	keys = {
+
+		{
+			"<leader>sb",
+			function()
+				Snacks.scratch()
+			end,
+			desc = "Toggle Scratch Buffer",
+		},
+		{
+			"<leader>ss",
+			function()
+				Snacks.scratch.select()
+			end,
+			desc = "Select Scratch Buffer",
+		},
+		{
+			"<leader>sh",
+			function()
+				Snacks.scratch.open({ ft = "http" })
+			end,
+			desc = "Select Scratch Buffer",
+		},
 		{
 			"<leader>bd",
 			function()
@@ -142,6 +180,20 @@ return {
 				Snacks.terminal.toggle("zsh")
 			end,
 			desc = "Toggle Terminal",
+		},
+		{
+			"]r",
+			function()
+				require("snacks").words.jump(1, true)
+			end,
+			desc = "󰉚 Next reference",
+		},
+		{
+			"[r",
+			function()
+				require("snacks").words.jump(-1, true)
+			end,
+			desc = "󰉚 Prev reference",
 		},
 	},
 }
