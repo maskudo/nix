@@ -13,7 +13,11 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci"];
+  boot.extraModprobeConfig = ''
+    options bbswitch load_state=-1 unload_state=1 nvidia-drm
+  '';
   boot.initrd.kernelModules = ["amdgpu"];
+  boot.kernelParams = ["amdgpu.sg_display=0" "video=DisplayPort-0:1920x1080@144"];
   boot.kernelModules = ["kvm-amd" "nvidia"];
   boot.extraModulePackages = [];
 
@@ -28,7 +32,12 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  swapDevices = [];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
