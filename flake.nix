@@ -6,6 +6,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.inputs.nixpkgs.follows = "unstable";
     home-manager.url = "github:nix-community/home-manager";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
 
   outputs = {
@@ -27,7 +28,12 @@
           inherit inputs system username;
         };
         # > Our main nixos configuration file <
-        modules = [./hosts/aspire];
+        modules = [
+          ./hosts/aspire
+          ({...}: {
+            services.proxmox.enable = true;
+          })
+        ];
       };
     };
 

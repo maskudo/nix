@@ -21,7 +21,6 @@
     flameshot
     firefox
     gparted
-    gnome.gnome-keyring
     kitty
     libsForQt5.breeze-qt5
     libresprite

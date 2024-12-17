@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   fonts.fontconfig.enable = true;
   dconf.enable = true;
 
@@ -15,7 +11,7 @@
 
   home.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode" "Iosevka"];})
     alejandra
     atuin
     bat
@@ -43,11 +39,12 @@
     nixd
     nodejs_20
     nodePackages.pnpm
+    nixos-firewall-tool
     pandoc
+    texlive.combined.scheme-small # for pdf
     poetry
     postgresql
     python3
-    python311Packages.pip
     ripgrep
     rustup
     sqlite
