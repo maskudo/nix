@@ -40,6 +40,7 @@
         tapping = true;
         naturalScrolling = true;
         middleEmulation = false;
+        disableWhileTyping = true;
       };
       mouse = {
         naturalScrolling = false;

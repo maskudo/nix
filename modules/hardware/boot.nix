@@ -15,7 +15,8 @@
       fsIdentifier = "uuid";
       devices = ["nodev"];
     };
-    kernelParams = ["button.lid_init_state=open"];
+    # usbcore.quirks for keyboard
+    kernelParams = ["button.lid_init_state=open" "usbcore.quirks=5566:0008:gki"];
     supportedFilesystems = ["ntfs"];
     loader.grub.extraEntries = ''
       menuentry "Reboot" {

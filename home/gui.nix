@@ -11,6 +11,7 @@
     brave
     catppuccin
     copyq
+    cozy
     dex
     discord
     deadbeef-with-plugins
