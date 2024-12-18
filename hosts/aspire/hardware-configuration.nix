@@ -13,7 +13,7 @@
 
   boot.kernelModules = ["kvm-intel" "nvidia"];
   boot.extraModulePackages = [];
-  boot.initrd.kernelModules = ["snd_hda_intel.power_save=0"];
+  boot.kernelParams = ["button.lid_init_state=open" "snd_hda_intel.power_save=0"];
 
   swapDevices = [
     {
