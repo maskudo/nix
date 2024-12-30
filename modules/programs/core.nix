@@ -46,6 +46,7 @@
     libgcc
     libnotify
     libstdcxx5
+    linux-manual
     lsof
     man-pages
     man-pages-posix

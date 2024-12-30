@@ -11,7 +11,7 @@
     copyq
     emacs
     kanata
-    gnome.gnome-keyring
+    gnome-keyring
   ];
 
   services.copyq.enable = true;
