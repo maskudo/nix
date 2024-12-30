@@ -18,7 +18,10 @@ in {
     };
   };
   config = lib.mkIf config.services.proxmox.enable {
-    services.proxmox-ve.enable = true;
+    services.proxmox-ve = {
+      enable = true;
+      ipAddress = "192.168.1.65";
+    };
     nixpkgs.overlays = [
       proxmox-nixos.overlays.${system}
     ];

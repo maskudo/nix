@@ -11,8 +11,11 @@
 
   home.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override {fonts = ["JetBrainsMono" "FiraCode" "Iosevka"];})
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.zed-mono
+    nerd-fonts.fira-code
     alejandra
+    ansible
     atuin
     bat
     btop
@@ -28,10 +31,14 @@
     gh
     git-extras
     git-lfs
+    ghostty
     glow
     go
+    helix
     imagemagick
     jq
+    k9s
+    kubectl
     lazydocker
     lazygit
     neofetch
@@ -40,6 +47,7 @@
     nodejs_20
     nodePackages.pnpm
     nixos-firewall-tool
+    opentofu # terraform
     pandoc
     texlive.combined.scheme-small # for pdf
     poetry

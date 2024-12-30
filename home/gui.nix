@@ -31,7 +31,6 @@
     obsidian
     pinta
     qbittorrent
-    quickemu
     qogir-theme
     qogir-icon-theme
     rxvt-unicode
