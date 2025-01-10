@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  imports = [../../overlays/picomOverlay.nix];
-
   nixpkgs.config = {
     packageOverrides = pkgs: {
       rofi = pkgs.rofi.override {
@@ -24,6 +22,7 @@
           rofi
           picom
           polybarFull
+          st # a terminal just in case
         ];
       };
     };

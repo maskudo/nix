@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -14,10 +13,8 @@
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci"];
   boot.extraModprobeConfig = ''
-    options bbswitch load_state=-1 unload_state=1 nvidia-drm
+    options bbswitch load_state=-1 unload_state=1 nvidia-drm.modeset=1
   '';
-  boot.initrd.kernelModules = ["amdgpu"];
-  boot.kernelParams = ["amdgpu.sg_display=0" "video=DisplayPort-0:1920x1080@144"];
   boot.kernelModules = ["kvm-amd" "nvidia"];
   boot.extraModulePackages = [];
 

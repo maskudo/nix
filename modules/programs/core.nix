@@ -40,6 +40,7 @@
     findutils
     gcc
     git
+    glxinfo
     gnumake
     killall
     libcxx

@@ -18,6 +18,7 @@
       glib
       gtk3
       icu
+      libgit2
       libGL
       libappindicator-gtk3
       libdrm
