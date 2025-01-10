@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["uinput"];
     initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" "uvcvideo"];
     blacklistedKernelModules = ["nouveau"];

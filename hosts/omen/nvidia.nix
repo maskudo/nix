@@ -1,12 +1,44 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   boot.kernelModules = ["nvidia" "nvidia-uvm"];
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia" "amdgpu"];
+  services.xserver.config = ''
+    Section "ServerLayout"
+             Identifier "layout"
+             Screen 0 "amdgpu"
+             Inactive "nvidia"
+             Option "AllowNVIDIAGPUScreens"
+     EndSection
+
+     Section "Device"
+         Identifier "amdgpu"
+         Driver "amdgpu"
+         Option "TearFree" "true"
+         Option "DRI" "3"
+         Option "VariableRefresh" "true"
+         BusID "PCI:6:0:0"
+     EndSection
+
+     Section "Screen"
+         Identifier "amdgpu"
+         Device "amdgpu"
+     EndSection
+
+     Section "Device"
+         Identifier "nvidia"
+         Driver "nvidia"
+         BusID "PCI:1:0:0"
+     EndSection
+
+     Section "Screen"
+             Identifier "nvidia"
+             Device "nvidia"
+     EndSection
+  '';
   nixpkgs.config.nvidia.acceptLicense = true;
 
   environment.systemPackages = with pkgs; [
@@ -50,19 +82,6 @@
       offload = {
         enable = true;
         enableOffloadCmd = true;
-      };
-    };
-  };
-  specialisation = {
-    nvidia-sync.configuration = {
-      hardware.nvidia = {
-        prime = {
-          offload = {
-            enable = lib.mkForce false;
-            enableOffloadCmd = lib.mkForce false;
-          };
-          sync.enable = true;
-        };
       };
     };
   };

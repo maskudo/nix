@@ -2,7 +2,7 @@
   description = "mk489's nix config'";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.inputs.nixpkgs.follows = "unstable";
     home-manager.url = "github:nix-community/home-manager";
@@ -34,6 +34,10 @@
           ./hosts/aspire
           ({...}: {
             services.proxmox.enable = true;
+            environment.variables = {
+              MONITOR1 = "eDP1";
+              MONITOR2 = "HDMI1";
+            };
           })
         ];
       };
@@ -43,7 +47,15 @@
           inherit inputs system;
           username = omen;
         };
-        modules = [./hosts/omen];
+        modules = [
+          ./hosts/omen
+          ({...}: {
+            environment.variables = {
+              MONITOR1 = "eDP";
+              MONITOR2 = "HDMI-1-0";
+            };
+          })
+        ];
       };
     };
 
