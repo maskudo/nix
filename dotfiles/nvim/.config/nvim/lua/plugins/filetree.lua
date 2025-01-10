@@ -1,13 +1,55 @@
 return {
 	{
-		"stevearc/oil.nvim",
-		cmd = {
-			"Oil",
-		},
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		"echasnovski/mini.files",
+		version = "*",
+		config = function()
+			require("mini.files").setup({
+				mappings = {
+					close = "q",
+					go_in = "<S-CR>",
+					go_in_plus = "<CR>",
+					go_out = "-",
+					synchronize = ":w<CR>",
+				},
+			})
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "MiniFilesBufferCreate",
+				callback = function(args)
+					vim.keymap.set("n", "<C-c>", function()
+						MiniFiles.close()
+					end, { buffer = args.data.buf_id, desc = "Close" })
+				end,
+			})
+		end,
 		keys = {
-			{ "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+			-- Open the directory of the file currently being edited
+			-- If the file doesn't exist because you maybe switched to a new git branch
+			-- open the current working directory
+			{
+				"-",
+				function()
+					local buf_name = vim.api.nvim_buf_get_name(0)
+					local dir_name = vim.fn.fnamemodify(buf_name, ":p:h")
+					if vim.fn.filereadable(buf_name) == 1 then
+						-- Pass the full file path to highlight the file
+						require("mini.files").open(buf_name, true)
+					elseif vim.fn.isdirectory(dir_name) == 1 then
+						-- If the directory exists but the file doesn't, open the directory
+						require("mini.files").open(dir_name, true)
+					else
+						-- If neither exists, fallback to the current working directory
+						require("mini.files").open(vim.uv.cwd(), true)
+					end
+				end,
+				desc = "Open mini.files (Directory of Current File or CWD if not exists)",
+			},
+			{
+				"_",
+				function()
+					require("mini.files").open()
+				end,
+				desc = "Open mini.files (CWD)",
+			},
 		},
-		opts = {},
 	},
 }

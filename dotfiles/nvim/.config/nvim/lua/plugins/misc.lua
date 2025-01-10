@@ -69,7 +69,6 @@ return {
 		"luckasRanarison/nvim-devdocs",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
 		lazy = true,
@@ -79,6 +78,14 @@ return {
 		},
 		opts = {
 			previewer_cmd = "glow",
+			ensure_installed = {
+				"html",
+				"css",
+				"javascript",
+				"node",
+				"lua",
+				"ansible",
+			},
 		},
 		keys = {
 			{

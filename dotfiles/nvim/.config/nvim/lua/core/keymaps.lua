@@ -36,6 +36,8 @@ map("n", "<leader>tt", ":tabnew<CR>", "New Tab")
 map("n", "<leader>td", ":tabclose<CR>", "Close Tab")
 map("n", "<leader>tn", ":tabnext<CR>", "Next Tab")
 map("n", "<leader>tp", ":tabprevious<CR>", "Previous Tab")
+map("n", "]t", ":tabnext<CR>")
+map("n", "[t", ":tabprevious<CR>")
 
 -- Move with shift-arrows
 map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
@@ -56,8 +58,8 @@ map("n", "<C-q>", ":clist<CR>")
 
 -- Navigate buffers
 map("n", "<leader>bp", ":buffer #<CR>", "Previous Buffer")
-map("n", "]]", ":bnext<CR>")
-map("n", "[[", ":bprevious<CR>")
+map("n", "]b", ":bnext<CR>")
+map("n", "[b", ":bprevious<CR>")
 
 -- Stay in indent mode
 map("v", "<", "<gv")

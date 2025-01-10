@@ -4,9 +4,6 @@ return {
 		event = "VeryLazy",
 		lazy = true,
 		opts = {
-			icons = {
-				mappings = false,
-			},
 			spec = {
 				{
 					mode = { "n", "v" },

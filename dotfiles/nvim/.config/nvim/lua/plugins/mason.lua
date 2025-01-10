@@ -30,7 +30,6 @@ return {
 			"markdown-oxide",
 			"mypy",
 			"nilaway",
-			"nixpkgs-fmt",
 			"prettierd",
 			"pyright",
 			"ruff",

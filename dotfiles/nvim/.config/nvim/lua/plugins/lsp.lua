@@ -20,6 +20,22 @@ return {
 
 			local keymap = vim.keymap -- for conciseness
 
+			local border = "single"
+
+			vim.lsp.handlers["textDocument/hover"] =
+				vim.lsp.with(vim.lsp.handlers.hover, {
+					border = border,
+				})
+
+			vim.lsp.handlers["textDocument/signatureHelp"] =
+				vim.lsp.with(vim.lsp.handlers.signature_help, {
+					border = border,
+				})
+
+			vim.diagnostic.config({
+				float = { border = border },
+			})
+
 			lspconfig.nixd.setup({
 				cmd = { "nixd" },
 				filetypes = { "nix" },
@@ -34,10 +50,10 @@ return {
 
 			for server, config in pairs(opts.servers or {}) do
 				config.capabilities =
-					require("cmp_nvim_lsp").default_capabilities(config.capabilities)
+					require("blink.cmp").get_lsp_capabilities(config.capabilities)
 				lspconfig[server].setup(config)
 			end
-
+			--
 			lspconfig.racket_langserver.setup({})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -86,6 +102,9 @@ return {
 
 					opts.desc = "Restart LSP"
 					keymap.set("n", "<leader>lr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+					opts.desc = "LSP Info"
+					keymap.set("n", "<leader>li", ":LspInfo<CR>", opts) -- mapping to restart lsp if necessary
 				end,
 			})
 
@@ -97,7 +116,8 @@ return {
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
 
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			mason_lspconfig.setup_handlers({
 				-- default handler for installed servers
@@ -136,6 +156,29 @@ return {
 								},
 							},
 						},
+					})
+				end,
+				["markdown_oxide"] = function()
+					lspconfig["markdown_oxide"].setup({
+						capabilities = vim.tbl_deep_extend("force", capabilities, {
+							workspace = {
+								didChangeWatchedFiles = {
+									dynamicRegistration = true,
+								},
+							},
+						}),
+					})
+				end,
+				["tailwindcss"] = function()
+					lspconfig["tailwindcss"].setup({
+						root_dir = function(fname)
+							local root_pattern = require("lspconfig").util.root_pattern(
+								"tailwind.config.cjs",
+								"tailwind.config.js",
+								"postcss.config.js"
+							)
+							return root_pattern(fname)
+						end,
 					})
 				end,
 			})

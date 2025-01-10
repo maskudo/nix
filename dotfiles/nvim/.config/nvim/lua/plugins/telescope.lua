@@ -71,9 +71,15 @@ return {
 						n = {
 							["d"] = actions.delete_buffer,
 						},
+						i = {
+							["<C-k>"] = actions.delete_buffer,
+						},
 					},
 				},
 				pickers = {
+					oldfiles = {
+						cwd_only = true,
+					},
 					buffers = {
 						path_display = { smart = true },
 						sort_mru = true,
@@ -127,7 +133,7 @@ return {
 			local map = require("helpers.keys").map
 			local bin = require("telescope.builtin")
 
-			map("n", "<leader>fr", bin.oldfiles, "Recently opened")
+			map("n", "<leader>fp", bin.oldfiles, "Recently opened")
 			map("n", "<leader>ff", function()
 				return bin.find_files({ hidden = true })
 			end, "Files")
@@ -138,9 +144,6 @@ return {
 			map("n", "<leader>.", function()
 				return bin.find_files({ hidden = true })
 			end, "Files")
-			map("n", "<leader>fp", function()
-				bin.find_files({ cwd = "~/dotfiles/", hidden = true })
-			end, "Dotfiles")
 			map("n", "<leader>fz", function()
 				bin.find_files({ cwd = "~/zt/", hidden = true })
 			end, "Zt Files")
@@ -162,9 +165,12 @@ return {
 			map("n", "gb", function()
 				return bin.buffers()
 			end, "Buffers")
-			map("n", "<leader>fd", bin.diagnostics, "Diagnostics")
+			map("n", "<leader>fd", function()
+				bin.find_files({ cwd = "~/dotfiles/", hidden = true })
+			end, "Dotfiles")
 			map("n", "<leader>fk", bin.keymaps, "Search keymaps")
 			map("n", "<leader>cu", "<cmd>Telescope undo<CR>", "Undotree")
+			map("n", "<leader>cr", "<cmd>Telescope registers<CR>", "Registers")
 			map("n", "<leader>lS", function()
 				return bin.lsp_workspace_symbols({
 					symbols = { "function", "method" },

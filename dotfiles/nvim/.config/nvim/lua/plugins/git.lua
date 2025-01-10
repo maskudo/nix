@@ -17,8 +17,8 @@ return {
 				local map = require("helpers.keys").map
 
         -- stylua: ignore start
-        map("n", "]h", gs.next_hunk, "Next Hunk")
-        map("n", "[h", gs.prev_hunk, "Prev Hunk")
+        map("n", "]h", ":Gitsigns next_hunk<CR>zz", "Next Hunk")
+        map("n", "[h",":Gitsigns prev_hunk<CR>zz" , "Prev Hunk")
         map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
         map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
         map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
@@ -58,6 +58,17 @@ return {
 		cmd = {
 			"Neogit",
 		},
-		config = true,
+		opts = {
+			integrations = {
+				diffview = true,
+			},
+			mappings = {
+				status = {
+					["="] = "Toggle",
+					["[h"] = "GoToPreviousHunkHeader",
+					["]h"] = "GoToNextHunkHeader",
+				},
+			},
+		},
 	},
 }

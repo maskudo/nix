@@ -13,9 +13,7 @@ return {
 						icon = " ",
 						key = "f",
 						desc = "Find File",
-						action = function()
-							return require("telescope.builtin").find_files({ hidden = true })
-						end,
+						action = "<leader>.",
 					},
 					{
 						icon = " ",
@@ -27,23 +25,19 @@ return {
 						icon = " ",
 						key = "g",
 						desc = "Find Text",
-						action = function()
-							return require("telescope.builtin").live_grep({
-								additional_args = { "--hidden" },
-							})
-						end,
+						action = "<leader>/",
 					},
 					{
 						icon = " ",
 						key = "r",
 						desc = "Recent Files",
-						action = ":lua Snacks.dashboard.pick('oldfiles')",
+						action = "<leader>fr",
 					},
 					{
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						action = "<leader>fp",
 					},
 					{
 						icon = " ",
@@ -64,11 +58,11 @@ return {
 		},
 		bigfile = { enabled = true },
 		bufdelete = { enabled = true },
-		notifier = { enabled = false },
+		notifier = { enabled = true },
 		quickfile = { enabled = true },
 		scratch = {
 			win = {
-				position = "right",
+				position = "float",
 				border = "single",
 				height = 1,
 				width = 0.3,
@@ -80,7 +74,15 @@ return {
 			modes = { "n" },
 			debounce = 100,
 		},
-		-- indent = {},
+		indent = {
+			enabled = false,
+			only_scope = true,
+			only_current = true,
+			scope = {
+				enabled = false,
+				underline = false,
+			},
+		},
 		input = {},
 		terminal = {
 			enabled = true,
@@ -91,6 +93,7 @@ return {
 				width = 0.7,
 			},
 		},
+		gitbrowse = { enabled = true },
 		lazygit = {
 			enabled = true,
 			win = {
@@ -103,6 +106,21 @@ return {
 	},
 	config = function(_, opts)
 		require("snacks").setup(opts)
+		-- Create some toggle mappings
+		Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+		Snacks.toggle.diagnostics():map("<leader>ud")
+		Snacks.toggle
+			.option(
+				"conceallevel",
+				{ off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }
+			)
+			:map("<leader>uc")
+		Snacks.toggle.treesitter():map("<leader>ut")
+		Snacks.toggle.inlay_hints():map("<leader>uh")
+		Snacks.toggle.indent():map("<leader>ui")
+		Snacks.toggle.dim():map("<leader>ud")
+		Snacks.toggle.scroll():map("<leader>us")
+
 		vim.api.nvim_create_autocmd("TermOpen", {
 			pattern = "*",
 			callback = function()
@@ -116,11 +134,12 @@ return {
 		})
 	end,
 	keys = {
-
 		{
 			"<leader>sb",
 			function()
-				Snacks.scratch()
+				Snacks.scratch({
+					position = "float",
+				})
 			end,
 			desc = "Toggle Scratch Buffer",
 		},
@@ -132,11 +151,34 @@ return {
 			desc = "Select Scratch Buffer",
 		},
 		{
-			"<leader>sh",
+			"<leader>sr",
 			function()
-				Snacks.scratch.open({ ft = "http" })
+				Snacks.rename.rename_file()
 			end,
-			desc = "Select Scratch Buffer",
+			desc = "Rename File",
+		},
+		{
+			"<leader>sn",
+			function()
+				vim.ui.input({
+					prompt = "Enter filetype for the scratch buffer: ",
+					default = "markdown",
+					completion = "filetype",
+				}, function(ft)
+					Snacks.scratch.open({
+						ft = ft,
+						name = os.date("%Y-%m-%d-%H-%M-%S"),
+						win = {
+							width = 150,
+							position = "float",
+							height = 40,
+							border = "single",
+							title = "Scratch Buffer",
+						},
+					})
+				end)
+			end,
+			desc = "Scratch Buffer",
 		},
 		{
 			"<leader>bd",
@@ -167,6 +209,27 @@ return {
 			desc = "Lazygit",
 		},
 		{
+			"<leader>go",
+			function()
+				Snacks.gitbrowse()
+			end,
+			desc = "Open line(s) in browser",
+			mode = { "n", "v" },
+		},
+		{
+			"<leader>gy",
+			function()
+				Snacks.gitbrowse.open({
+					open = function(url)
+						vim.fn.setreg("+", url)
+						vim.notify("Yanked url to clipboard")
+					end,
+				})
+			end,
+			desc = "Copy line(s) link",
+			mode = { "n", "v" },
+		},
+		{
 			"<C-g>",
 			function()
 				Snacks.lazygit()
@@ -175,21 +238,21 @@ return {
 		},
 		{
 			"<C-\\>",
-			mode = { "n", "t" },
+			mode = { "n", "t", "i" },
 			function()
 				Snacks.terminal.toggle("zsh")
 			end,
 			desc = "Toggle Terminal",
 		},
 		{
-			"]r",
+			"]]",
 			function()
 				require("snacks").words.jump(1, true)
 			end,
 			desc = "󰉚 Next reference",
 		},
 		{
-			"[r",
+			"[[",
 			function()
 				require("snacks").words.jump(-1, true)
 			end,

@@ -59,6 +59,13 @@ return {
 					color_fg
 				)
 			)
+			vim.cmd(
+				string.format(
+					[[highlight RenderMarkdownCodeInline guifg=%s guibg=%s]],
+					color6_bg,
+					color_fg
+				)
+			)
 
 			-- Highlight for the heading and sign icons (symbol on the left)
 			-- I have the sign disabled for now, so this makes no effect

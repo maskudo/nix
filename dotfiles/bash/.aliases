@@ -30,6 +30,8 @@ alias ns='nix-shell --command zsh'
 alias sc='systemctl'
 alias scu='systemctl --user'
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
+alias tf='terraform'
+alias k='kubectl'
 
 cheat() {
   curl --silent cheat.sh/$1 | bat
