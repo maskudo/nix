@@ -27,6 +27,7 @@ trans = #00000000
 semi-trans-black = #aa000000
 
 [bar/bar1]
+enable-ipc = true
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 30
@@ -204,10 +205,11 @@ card = intel_backlight
 
 [module/backlight]
 type = internal/backlight
+; card = amdgpu_bl1
 
 ; Use the following command to list available cards:
 ; $ ls -1 /sys/class/backlight/
-card = intel_backlight
+; card = intel_backlight
 
 ; Use the `/sys/class/backlight/.../actual-brightness` file
 ; rather than the regular `brightness` file.
@@ -350,8 +352,8 @@ bar-volume-empty-foreground = ${colors.fg-alt}
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
 type = internal/battery
-battery = BAT1
-adapter = ADP1
+battery = BAT0
+adapter = ACAD
 full-at = 100
 low-at = 30
 

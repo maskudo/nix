@@ -46,6 +46,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -sort  -sorting-method fzf
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
 # change focus
 bindsym $mod+h focus left
@@ -249,7 +250,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/solar_eclipse.png
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/hollow-knight.png
 
 # screen lock
 # set $i3lockwall i3lock -i $HOME/Pictures/Wallpapers/3.png -t
@@ -273,7 +274,7 @@ mode "$mode_system" {
 }
 
 bindsym $mod+BackSpace mode "$mode_system"
-bindsym $mod+Shift+t exec --no-startup-id $HOME/.config/polybar/toggle.sh
+bindsym $mod+Shift+Tab exec --no-startup-id $HOME/.config/polybar/toggle.sh
 
 # mod2(Alt) application specific binds
 bindsym $mod2+d exec --no-startup-id rofi -show drun -sort  -sorting-method fzf
@@ -283,6 +284,8 @@ bindsym $mod2+e exec --no-startup-id rofi -show emoji
 bindsym $mod2+Shift+c exec --no-startup-id rofi -show calc
 bindsym $mod2+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod2+s exec --no-startup-id flameshot gui
+bindsym $mod+Shift+s exec flameshot full --path ~/Pictures/Screenshots/
+bindsym $mod2+Shift+o exec --no-startup-id normcap
 bindsym $mod2+q exec --no-startup-id pkill picom
 
 
@@ -294,12 +297,19 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="xpad"] floating enable
 for_window [instance="xpad"] floating enable
+for_window [instance="copyq"] \
+    floating enable, border none, \
+    resize set 40 ppt 40 ppt, \
+    move position 60 ppt 30, \
+
 
 
 set $i3scripts ~/.config/i3
-bindsym $mod+Ctrl+1 exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm "
+bindsym $mod+backslash exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm -e zsh"
+bindsym $mod2+backslash exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm -e zsh"
 bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "urxvt -name scratchyazi -e sh -c 'yazi'"
 bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "urxvt -name scratchcalcurse -e sh -c 'CALCURSE_EDITOR=vim calcurse'"
+bindsym $mod2+t exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchtodo" "urxvt -name scratchtodo -e sh -c 'nvim ~/.local/share/todo.md'"
 # btop leaks memory for some reason
 bindsym $mod2+b exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchbtop" "urxvt -name scratchbtop -e systemd-run --user --scope -p MemorySwapMax=0 -p MemoryMax=20M btop"
 

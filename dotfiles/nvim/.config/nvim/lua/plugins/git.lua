@@ -11,6 +11,15 @@ return {
 				changedelete = { text = "▎" },
 				untracked = { text = "▎" },
 			},
+			signs_staged = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "┆" },
+			},
+			signs_staged_enable = true,
 			attach_to_untracked = true,
 			on_attach = function()
 				local gs = package.loaded.gitsigns
@@ -23,6 +32,7 @@ return {
         map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
         map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
         map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        map("n", "<leader>gh", gs.setqflist, "All hunks")
         map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
         map("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
         map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")

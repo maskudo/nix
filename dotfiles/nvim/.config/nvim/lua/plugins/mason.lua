@@ -16,6 +16,7 @@ return {
 		ensure_installed = {
 			"ansible-language-server",
 			"ansible-lint",
+			"bash-language-server",
 			"biome",
 			"black", -- python formatter
 			"clangd",

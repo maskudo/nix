@@ -1,3 +1,71 @@
+local gitActions = {
+	actions = {
+		["open_file"] = function(picker)
+			local currentCommit = picker:current().commit
+			picker:close()
+			vim.cmd("Gitsigns show " .. currentCommit)
+		end,
+		["diffview"] = function(picker)
+			local currentCommit = picker:current().commit
+			picker:close()
+			vim.cmd("DiffviewOpen HEAD " .. currentCommit)
+		end,
+	},
+	win = {
+		input = {
+			keys = {
+				["<CR>"] = {
+					"open_file",
+					desc = "Open File",
+					mode = { "n", "i" },
+				},
+				["<c-d>"] = {
+					"diffview",
+					desc = "Diffview",
+					mode = { "n", "i" },
+				},
+			},
+		},
+	},
+}
+
+local fileActions = {
+	actions = {
+		["send_to_grep"] = function(picker)
+			local current = picker.input:get()
+			picker:close()
+			Snacks.picker.grep({
+				glob = "*" .. current .. "*",
+				hidden = true,
+				title = "Glob: " .. current,
+			})
+		end,
+	},
+	win = {
+		input = {
+			keys = {
+				["<c-r>"] = {
+					"send_to_grep",
+					desc = "Send to Grep",
+					mode = { "n", "i" },
+				},
+			},
+		},
+	},
+}
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "*",
+	callback = function()
+		local term_title = vim.b.term_title
+		if term_title and term_title:match("lazygit") then
+			-- Create lazygit specific mappings
+			vim.keymap.set("t", "<C-g>", "<cmd>close<cr>", { buffer = true })
+			vim.keymap.set("t", "<leader>gl", "<cmd>close<cr>", { buffer = true })
+		end
+	end,
+})
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -31,13 +99,13 @@ return {
 						icon = " ",
 						key = "r",
 						desc = "Recent Files",
-						action = "<leader>fr",
+						action = "<leader>fp",
 					},
 					{
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = "<leader>fp",
+						action = "<leader>fc",
 					},
 					{
 						icon = " ",
@@ -68,6 +136,37 @@ return {
 				width = 0.3,
 			},
 		},
+		picker = {
+			formatters = {
+				file = {
+					filename_first = true,
+				},
+			},
+			sources = {
+				git_log_file = gitActions,
+				git_log = gitActions,
+				files = fileActions,
+				smart = fileActions,
+				buffers = {
+					win = {
+						input = {
+							keys = {
+								["<s-m>"] = {
+									"toggle_modified",
+									desc = "Toggle modified",
+									mode = { "n", "i" },
+								},
+							},
+						},
+					},
+				},
+			},
+			layout = {
+				reverse = true,
+				cycle = true,
+				preset = "telescope",
+			},
+		},
 		words = {
 			enabled = true,
 			notify_jump = false,
@@ -77,9 +176,9 @@ return {
 		indent = {
 			enabled = false,
 			only_scope = true,
-			only_current = true,
+			only_current = false,
 			scope = {
-				enabled = false,
+				enabled = true,
 				underline = false,
 			},
 		},
@@ -104,102 +203,84 @@ return {
 			},
 		},
 	},
-	config = function(_, opts)
-		require("snacks").setup(opts)
-		-- Create some toggle mappings
-		Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-		Snacks.toggle.diagnostics():map("<leader>ud")
-		Snacks.toggle
-			.option(
-				"conceallevel",
-				{ off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }
-			)
-			:map("<leader>uc")
-		Snacks.toggle.treesitter():map("<leader>ut")
-		Snacks.toggle.inlay_hints():map("<leader>uh")
-		Snacks.toggle.indent():map("<leader>ui")
-		Snacks.toggle.dim():map("<leader>ud")
-		Snacks.toggle.scroll():map("<leader>us")
-
-		vim.api.nvim_create_autocmd("TermOpen", {
-			pattern = "*",
-			callback = function()
-				local term_title = vim.b.term_title
-				if term_title and term_title:match("lazygit") then
-					-- Create lazygit specific mappings
-					vim.keymap.set("t", "<C-g>", "<cmd>close<cr>", { buffer = true })
-					vim.keymap.set("t", "<leader>gl", "<cmd>close<cr>", { buffer = true })
-				end
-			end,
-		})
-	end,
 	keys = {
 		{
-			"<leader>sb",
+			"<leader>uw",
 			function()
-				Snacks.scratch({
-					position = "float",
-				})
+				Snacks.toggle.option("wrap"):toggle()
 			end,
-			desc = "Toggle Scratch Buffer",
+			desc = "Toggle Line Wrap",
 		},
 		{
-			"<leader>ss",
+			"<leader>ud",
 			function()
-				Snacks.scratch.select()
+				Snacks.toggle.diagnostics():toggle()
 			end,
-			desc = "Select Scratch Buffer",
+			desc = "Toggle Diagnostics",
 		},
 		{
-			"<leader>sr",
+			"<leader>ui",
 			function()
-				Snacks.rename.rename_file()
+				Snacks.toggle.indent():toggle()
 			end,
-			desc = "Rename File",
+			desc = "Toggle Indent",
 		},
 		{
-			"<leader>sn",
+			"<leader>us",
 			function()
-				vim.ui.input({
-					prompt = "Enter filetype for the scratch buffer: ",
-					default = "markdown",
-					completion = "filetype",
-				}, function(ft)
-					Snacks.scratch.open({
-						ft = ft,
-						name = os.date("%Y-%m-%d-%H-%M-%S"),
-						win = {
-							width = 150,
-							position = "float",
-							height = 40,
-							border = "single",
-							title = "Scratch Buffer",
-						},
-					})
-				end)
+				Snacks.toggle.scroll():toggle()
 			end,
-			desc = "Scratch Buffer",
+			desc = "Toggle Scroll",
 		},
 		{
-			"<leader>bd",
+			"<leader>uh",
 			function()
-				Snacks.bufdelete.delete()
+				Snacks.toggle.inlay_hints():toggle()
 			end,
-			desc = "Delete Current Buffer",
+			desc = "Toggle Inlay Hints",
 		},
 		{
-			"<leader>bo",
+			"<leader>ut",
 			function()
-				Snacks.bufdelete.other()
+				Snacks.toggle.treesitter():toggle()
 			end,
-			desc = "Delete Other Buffers",
+			desc = "Toggle Treesitter",
 		},
 		{
-			"<leader>ba",
+			"gd",
 			function()
-				Snacks.bufdelete.all()
+				Snacks.picker.lsp_definitions()
 			end,
-			desc = "Delete All Buffer",
+			desc = "Goto Definition",
+		},
+		{
+			"gr",
+			function()
+				Snacks.picker.lsp_references()
+			end,
+			nowait = true,
+			desc = "References",
+		},
+		{
+			"gi",
+			function()
+				Snacks.picker.lsp_implementations()
+			end,
+			desc = "Goto Implementation",
+		},
+		{
+			"gt",
+			function()
+				Snacks.picker.lsp_type_definitions()
+			end,
+			desc = "Goto T[y]pe Definition",
+		},
+		{
+			"<leader>un",
+			function()
+				Snacks.notifier.show_history()
+			end,
+			desc = "Show Notifications",
 		},
 		{
 			"<leader>gl",
@@ -214,6 +295,14 @@ return {
 				Snacks.gitbrowse()
 			end,
 			desc = "Open line(s) in browser",
+			mode = { "n", "v" },
+		},
+		{
+			"<leader>gY",
+			function()
+				Snacks.gitbrowse.open()
+			end,
+			desc = "Open git link in browser",
 			mode = { "n", "v" },
 		},
 		{
@@ -257,6 +346,249 @@ return {
 				require("snacks").words.jump(-1, true)
 			end,
 			desc = "󰉚 Prev reference",
+		},
+		{
+			"<leader>bd",
+			function()
+				Snacks.bufdelete.delete()
+			end,
+			desc = "Delete Current Buffer",
+		},
+		{
+			"<leader>bo",
+			function()
+				Snacks.bufdelete.other()
+			end,
+			desc = "Delete Other Buffers",
+		},
+		{
+			"<leader>ba",
+			function()
+				Snacks.bufdelete.all()
+			end,
+			desc = "Delete All Buffer",
+		},
+		{
+			"<leader>bf",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "List Buffers",
+		},
+		{
+			"<leader>bg",
+			function()
+				Snacks.picker.grep_buffers()
+			end,
+			desc = "Grep Open buffers",
+		},
+		{
+			"<leader>bl",
+			function()
+				Snacks.picker.lines()
+			end,
+			desc = "Buffer Lines",
+		},
+		{
+			"<leader>bw",
+			function()
+				Snacks.picker.grep_word()
+			end,
+			desc = "Visual selection or word",
+			mode = { "n", "x" },
+		},
+		{
+			"<leader><space>",
+			function()
+				Snacks.picker.buffers({ sort_lastused = true, supports_live = true })
+			end,
+			desc = "Buffers",
+		},
+		{
+			"<leader>/",
+			function()
+				Snacks.picker.grep({ hidden = true })
+			end,
+			desc = "Grep",
+		},
+		{
+			"<leader>:",
+			function()
+				Snacks.picker.command_history()
+			end,
+			desc = "Command History",
+		},
+		{
+			"<leader>.",
+			function()
+				Snacks.picker.smart({ hidden = true })
+			end,
+			desc = "Find Files",
+		},
+		{
+			"<leader>fb",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "Buffers",
+		},
+		{
+			"<leader>fc",
+			function()
+				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+			end,
+			desc = "Find Config File",
+		},
+		{
+			"<leader>ff",
+			function()
+				Snacks.picker.files({ hidden = true, filter = { cwd = true } })
+			end,
+			desc = "Find Files",
+		},
+		{
+			"<leader>fg",
+			function()
+				Snacks.picker.git_files({ hidden = true })
+			end,
+			desc = "Find Git Files",
+		},
+		{
+			"<leader>fp",
+			function()
+				Snacks.picker.recent({ hidden = true, filter = { cwd = true } })
+			end,
+			desc = "Recent",
+		},
+		{
+			"<leader>fs",
+			function()
+				Snacks.picker.smart({ hidden = true })
+			end,
+			desc = "Files (smart)",
+		},
+		{
+			"<leader>fR",
+			function()
+				Snacks.picker.registers()
+			end,
+			desc = "Registers",
+		},
+		{
+			"<leader>ld",
+			function()
+				Snacks.picker.diagnostics()
+			end,
+			desc = "Diagnostics",
+		},
+		{
+			"<leader>fh",
+			function()
+				Snacks.picker.help()
+			end,
+			desc = "Help Pages",
+		},
+		{
+			"<leader>fm",
+			function()
+				Snacks.picker.man()
+			end,
+			desc = "Man Pages",
+		},
+		{
+			"<leader>fr",
+			function()
+				Snacks.picker.resume()
+			end,
+			desc = "Resume",
+		},
+		{
+			"<leader>fq",
+			function()
+				Snacks.picker.qflist()
+			end,
+			desc = "Quickfix List",
+		},
+		{
+			"<leader>fP",
+			function()
+				Snacks.picker.projects()
+			end,
+			desc = "Projects",
+		},
+		{
+			"<leader>uC",
+			function()
+				Snacks.picker.colorschemes()
+			end,
+			desc = "Colorschemes",
+		},
+		{
+			"<leader>ft",
+			function()
+				Snacks.picker()
+			end,
+			desc = "Picker",
+		},
+		{
+			"<leader>gC",
+			function()
+				Snacks.picker.git_log({
+					hidden = true,
+				})
+			end,
+			desc = "Git Commits",
+		},
+		{
+			"<leader>gc",
+			function()
+				Snacks.picker.git_log_file({
+					hidden = true,
+				})
+			end,
+			desc = "Git Commits (file)",
+		},
+		{
+			"<leader>gB",
+			function()
+				Snacks.picker.git_branches()
+			end,
+			desc = "Git Branches",
+		},
+		{
+			"<leader>ls",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "Git Branches",
+		},
+		{
+			"<leader>fk",
+			function()
+				Snacks.picker.keymaps()
+			end,
+			desc = "Keymaps",
+		},
+		{
+			"<leader>fU",
+			function()
+				Snacks.picker.undo()
+			end,
+			desc = "Undo",
+		},
+		{
+			"<leader>fd",
+			function()
+				Snacks.picker.diagnostics_buffer()
+			end,
+			desc = "Buffer Diagnostics",
+		},
+		{
+			"<leader>fD",
+			function()
+				Snacks.picker.diagnostics()
+			end,
+			desc = "Diagnostics",
 		},
 	},
 }

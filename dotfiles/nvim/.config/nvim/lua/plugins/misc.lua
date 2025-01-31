@@ -22,11 +22,11 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.surround",
+		"kylechui/nvim-surround",
 		version = "*",
 		event = "BufEnter",
 		config = function()
-			require("mini.surround").setup()
+			require("nvim-surround").setup({})
 		end,
 	},
 
@@ -66,40 +66,11 @@ return {
 		end,
 	},
 	{
-		"luckasRanarison/nvim-devdocs",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
+		"MagicDuck/grug-far.nvim",
 		lazy = true,
-		cmd = {
-			"DevdocsInstall",
-			"DevdocsOpen",
-		},
-		opts = {
-			previewer_cmd = "glow",
-			ensure_installed = {
-				"html",
-				"css",
-				"javascript",
-				"node",
-				"lua",
-				"ansible",
-			},
-		},
-		keys = {
-			{
-				"<leader>ho",
-				mode = { "n" },
-				":DevdocsOpen<CR>",
-				desc = "DevDocs Open",
-			},
-			{
-				"<leader>hi",
-				mode = { "n" },
-				":DevdocsInstall<CR>",
-				desc = "DevDocs Install",
-			},
-		},
+		cmd = { "GrugFar" },
+		config = function()
+			require("grug-far").setup({})
+		end,
 	},
 }

@@ -20,6 +20,15 @@ return {
 					end, { buffer = args.data.buf_id, desc = "Close" })
 				end,
 			})
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "MiniFilesActionRename",
+				callback = function(event)
+					require("snacks").rename.on_rename_file(
+						event.data.from,
+						event.data.to
+					)
+				end,
+			})
 		end,
 		keys = {
 			-- Open the directory of the file currently being edited

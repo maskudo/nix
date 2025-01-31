@@ -13,7 +13,7 @@ return {
 			},
 			formatters_by_ft = {
 				javascript = { "prettierd" },
-				typescript = { "biome" },
+				typescript = { "prettierd" },
 				javascriptreact = { "prettierd" },
 				typescriptreact = { "biome" },
 				svelte = { "biome" },
