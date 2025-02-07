@@ -93,10 +93,10 @@ end
 local function lsp()
 	local count = {}
 	local levels = {
-		errors = "Error",
-		warnings = "Warn",
-		info = "Info",
-		hints = "Hint",
+		errors = vim.log.levels.ERROR,
+		warnings = vim.log.levels.WARN,
+		info = vim.log.levels.INFO,
+		hints = vim.log.levels.DEBUG,
 	}
 
 	for k, level in pairs(levels) do
@@ -160,12 +160,14 @@ local vcs = function()
 	end
 	return table.concat({
 		" ",
+		"%#GitSignsAdd# ",
+		branch_name,
+		" %#Normal#",
+		" ",
 		added,
 		changed,
 		removed,
 		" ",
-		"%#GitSignsAdd# ",
-		branch_name,
 		" %#Normal#",
 	})
 end

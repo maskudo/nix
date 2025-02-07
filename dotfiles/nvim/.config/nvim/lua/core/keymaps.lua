@@ -1,7 +1,7 @@
 local map = require("helpers.keys").map
 
-map("n", ":w<CR>", ":update<CR>", "Update")
-map("n", ":W<CR>", ":update<CR>", "Update")
+-- map("n", ":w<CR>", ":update<CR>", "Update")
+-- map("n", ":W<CR>", ":update<CR>", "Update")
 
 --better movement
 map("n", "<C-u>", "<C-u>zz", "Move up by half page")
@@ -15,6 +15,7 @@ map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
 map("n", "<leader>fu", "<cmd>up<cr>", "Update file")
 map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
 map("n", "<leader>fx", "<cmd>!chmod +x %<cr>", "Make File Executable")
+map("n", "<leader>fe", "<cmd>e!<cr>", "Reset buffer")
 
 map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
@@ -94,3 +95,6 @@ end)
 map("s", "<C-l>", function()
 	vim.snippet.jump(1)
 end)
+
+map("n", "B", "%")
+map("n", "<leader>um", "<cmd>messages<cr>", "Messages")

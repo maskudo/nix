@@ -45,7 +45,6 @@ return {
 
 	{
 		"barrett-ruth/live-server.nvim",
-		build = "pnpm i --global live-server",
 		cmd = { "LiveServerStart", "LiveServerStop" },
 		config = true,
 		lazy = true,

@@ -11,12 +11,20 @@ return {
 					go_out = "-",
 					synchronize = ":w<CR>",
 				},
+				windows = {
+					width_focus = 30,
+					width_preview = 80,
+				},
 			})
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "MiniFilesBufferCreate",
 				callback = function(args)
 					vim.keymap.set("n", "<C-c>", function()
 						MiniFiles.close()
+					end, { buffer = args.data.buf_id, desc = "Close" })
+					vim.keymap.set("n", "<C-h>", function()
+						MiniFiles.config.windows.preview =
+							not MiniFiles.config.windows.preview
 					end, { buffer = args.data.buf_id, desc = "Close" })
 				end,
 			})

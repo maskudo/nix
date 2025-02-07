@@ -24,12 +24,20 @@ return {
 		-- Your DBUI configuration
 		vim.g.db_ui_use_nerd_fonts = 1
 		vim.g.db_ui_force_echo_notifications = 1
+		vim.g.db_ui_save_location = "~/zt/dbui"
 		-- Disable C-j and C-k mappings in vim-dadbod-ui
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "dbui",
 			callback = function()
 				vim.api.nvim_buf_del_keymap(0, "n", "<C-j>")
 				vim.api.nvim_buf_del_keymap(0, "n", "<C-k>")
+				vim.api.nvim_buf_set_keymap(
+					0,
+					"n",
+					":q<CR>",
+					":tabclose<CR>",
+					{ silent = true }
+				)
 			end,
 		})
 	end,

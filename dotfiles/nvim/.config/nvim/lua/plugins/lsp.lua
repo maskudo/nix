@@ -3,7 +3,13 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			{ "antosha417/nvim-lsp-file-operations", config = true },
+			{
+				"antosha417/nvim-lsp-file-operations",
+				config = true,
+				dependencies = {
+					"nvim-lua/plenary.nvim", -- required
+				},
+			},
 			{
 				"williamboman/mason-lspconfig.nvim",
 				dependencies = {
