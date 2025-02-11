@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   boot.kernelModules = ["nvidia" "nvidia-uvm"];
@@ -82,6 +83,20 @@
       offload = {
         enable = true;
         enableOffloadCmd = true;
+      };
+    };
+  };
+  specialisation = {
+    nvidia-sync.configuration = {
+      environment.etc."specialisation".text = "nvidia";
+      hardware.nvidia = {
+        prime = {
+          offload = {
+            enable = lib.mkForce false;
+            enableOffloadCmd = lib.mkForce false;
+          };
+          sync.enable = true;
+        };
       };
     };
   };

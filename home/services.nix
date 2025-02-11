@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   systemd.user.enable = true;
 
   home.packages = with pkgs; [
@@ -18,7 +19,11 @@
   # services.emacs.enable = true;
   services.gnome-keyring = {
     enable = true;
-    components = ["secrets"];
+    components = [ "secrets" ];
+  };
+
+  services.syncthing = {
+    enable = true;
   };
 
   systemd.user.services.commit-zt = {
@@ -41,7 +46,7 @@
       Persistent = true; # so that the timer runs afterwards in case of system not being online
     };
     Install = {
-      WantedBy = ["timers.target"]; # Ensures the timer is part of the timers target
+      WantedBy = [ "timers.target" ]; # Ensures the timer is part of the timers target
     };
   };
 
@@ -52,10 +57,11 @@
     Service = {
       Type = "simple";
       ExecStart = "${pkgs.kanata}/bin/kanata -c ${config.home.homeDirectory}/.config/kanata/config.kbd";
-      Restart = "no";
+      Restart = "on-failure";
+      RestartSec = "5s";
     };
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = [ "default.target" ];
     };
   };
 }

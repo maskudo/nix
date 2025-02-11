@@ -16,6 +16,11 @@
       # guest.x11 = true;
       host.enableHardening = false;
     };
+    # lxd = {
+    #   agent.enable = true;
+    #   enable = true;
+    #   ui.enable = true;
+    # };
   };
   networking.firewall.interfaces = {
     docker0 = {

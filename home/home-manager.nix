@@ -6,6 +6,7 @@
 
   nixpkgs.config.allowUnfree = true;
   targets.genericLinux.enable = true;
+  xdg.enable = true;
 
   home = {
     inherit homeDirectory;

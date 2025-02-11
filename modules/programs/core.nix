@@ -26,12 +26,20 @@
   programs.nano.enable = false;
 
   nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
     trusted-users = ["root" username];
     trusted-substituters = ["https://devenv.cachix.org" "https://cache.saumon.network/proxmox-nixos"];
     trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "proxmox-nixos:nveXDuVVhFDRFx8Dn19f1WDEaNRJjPrF2CPD2D+m1ys="
     ];
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/${username}/nix";
   };
 
   environment.systemPackages = with pkgs; [

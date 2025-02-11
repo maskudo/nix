@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts.fontconfig.enable = true;
   dconf.enable = true;
 
@@ -14,9 +15,10 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.zed-mono
     nerd-fonts.fira-code
-    alejandra
+    act
     ansible
     atuin
+    autorandr
     bat
     btop
     calcurse
@@ -34,17 +36,24 @@
     ghostty
     glow
     go
-    helix
+    evil-helix
     imagemagick
+    jless
     jq
+    jqp
+    just
     k9s
     kubectl
     lazydocker
     lazygit
+    lua5_1
+    luarocks
+    minikube
     neofetch
-    neovim
     nixd
+    nixfmt-rfc-style
     nodejs_20
+    nodePackages.live-server
     nodePackages.pnpm
     nixos-firewall-tool
     opentofu # terraform
@@ -52,6 +61,7 @@
     texlive.combined.scheme-small # for pdf
     poetry
     postgresql
+    presenterm
     python3
     ripgrep
     rustup
@@ -60,6 +70,7 @@
     stow
     starship
     tealdeer
+    television
     tmux
     uv
     vim
@@ -68,6 +79,14 @@
     yt-dlp
     zoxide
   ];
+
+  programs.neovim = {
+    enable = true;
+    extraLuaPackages = ps: [ ps.magick ];
+    extraPackages = with pkgs; [
+      imagemagick
+    ];
+  };
 
   programs.direnv = {
     enable = true;

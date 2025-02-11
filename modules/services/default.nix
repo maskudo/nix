@@ -1,3 +1,8 @@
-{...}: {
-  imports = [./syncthing.nix ./tailscale.nix ./flatpak.nix ./proxmox.nix];
+{ ... }:
+{
+  imports = [
+    ./tailscale.nix
+    ./flatpak.nix
+    ./proxmox.nix
+  ];
 }
