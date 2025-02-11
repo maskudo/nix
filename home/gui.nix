@@ -28,11 +28,11 @@
     lxappearance
     mpv
     nicotine-plus
+    normcap
+    obs-studio
     obsidian
     pinta
     qbittorrent
-    qogir-theme
-    qogir-icon-theme
     rxvt-unicode
     smplayer
     uget

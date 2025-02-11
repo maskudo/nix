@@ -9,87 +9,100 @@
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    unstable,
-    ...
-  } @ inputs: let
-    aspire = "mk489";
-    omen = "omen";
-    system = "x86_64-linux";
-  in {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    # sudo nixos-rebuild switch --flake .#aspire
-    nixosConfigurations = {
-      aspire = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs system;
-          username = aspire;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      unstable,
+      ...
+    }@inputs:
+    let
+      aspire = "mk489";
+      omen = "omen";
+      system = "x86_64-linux";
+    in
+    {
+      # NixOS configuration entrypoint
+      # Available through 'nixos-rebuild --flake .#your-hostname'
+      # sudo nixos-rebuild switch --flake .#aspire
+      nixosConfigurations = {
+        aspire = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs system;
+            username = aspire;
+          };
+          # > Our main nixos configuration file <
+          modules = [
+            ./hosts/aspire
+            (
+              { ... }:
+              {
+                services.proxmox.enable = true;
+                environment.variables = {
+                  MONITOR1 = "eDP1";
+                  MONITOR2 = "HDMI1";
+                };
+              }
+            )
+          ];
         };
-        # > Our main nixos configuration file <
-        modules = [
-          ./hosts/aspire
-          ({...}: {
-            services.proxmox.enable = true;
-            environment.variables = {
-              MONITOR1 = "eDP1";
-              MONITOR2 = "HDMI1";
-            };
-          })
-        ];
+        omen = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs system;
+            username = omen;
+          };
+          modules = [
+            ./hosts/omen
+            (
+              { ... }:
+              {
+                environment.variables = {
+                  MONITOR1 = "eDP";
+                  MONITOR2 = "HDMI-1-0";
+                };
+              }
+            )
+          ];
+        };
       };
-      omen = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs system;
-          username = omen;
-        };
-        modules = [
-          ./hosts/omen
-          ({...}: {
-            environment.variables = {
-              MONITOR1 = "eDP";
-              MONITOR2 = "HDMI-1-0";
+
+      # Standalone home-manager configuration entrypoint
+      # Available through 'home-manager --flake .#your-username@your-hostname'
+      # home-manager -- build --flake .aspire
+      # home-manager -- switch --flake .aspire
+
+      homeConfigurations =
+        let
+          homeManagerModule =
+            username:
+            import ./home/home-manager.nix {
+              homeDirectory = "/home/" + username;
+              inherit username;
             };
-          })
-        ];
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    # home-manager -- build --flake .aspire
-    # home-manager -- switch --flake .aspire
-
-    homeConfigurations = let
-      homeManagerModule = username:
-        import ./home/home-manager.nix {
-          homeDirectory = "/home/" + username;
-          inherit username;
-        };
-      homeManager = {
-        system,
-        username,
-      }:
-        home-manager.lib.homeManagerConfiguration {
-          modules = [(homeManagerModule username)];
-          pkgs = unstable.legacyPackages.${system};
-          extraSpecialArgs = {
-            inherit username;
+          homeManager =
+            {
+              system,
+              username,
+            }:
+            home-manager.lib.homeManagerConfiguration {
+              modules = [ (homeManagerModule username) ];
+              pkgs = unstable.legacyPackages.${system};
+              extraSpecialArgs = {
+                inherit username inputs;
+              };
+            };
+        in
+        {
+          aspire = homeManager {
+            system = "x86_64-linux";
+            username = aspire;
+          };
+          omen = homeManager {
+            system = "x86_64-linux";
+            username = omen;
           };
         };
-    in {
-      aspire = homeManager {
-        system = "x86_64-linux";
-        username = aspire;
-      };
-      omen = homeManager {
-        system = "x86_64-linux";
-        username = omen;
-      };
     };
-  };
 }

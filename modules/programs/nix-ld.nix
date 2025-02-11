@@ -1,11 +1,15 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs = {
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
+      acl
       alsa-lib
       at-spi2-atk
       at-spi2-core
       atk
+      attr
+      bzip2
       cairo
       cups
       curl
@@ -18,13 +22,15 @@
       glib
       gtk3
       icu
-      libgit2
       libGL
       libappindicator-gtk3
       libdrm
+      libgit2
       libglvnd
       libnotify
       libpulseaudio
+      libsodium
+      libssh
       libunwind
       libusb1
       libuuid
@@ -38,6 +44,7 @@
       pipewire
       stdenv.cc.cc
       systemd
+      util-linux
       vulkan-loader
       xorg.libX11
       xorg.libXScrnSaver
@@ -54,6 +61,10 @@
       xorg.libxkbfile
       xorg.libxshmfence
       zlib
+      zstd
     ];
+  };
+  environment.variables = {
+    LIBGIT2_PATH = "${pkgs.libgit2}/lib";
   };
 }
