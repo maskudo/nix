@@ -4,6 +4,7 @@ git:
     pager: delta --dark --paging=never --side-by-side
 
 gui:
+  sidePanelWidth: 0.20
   theme:
     activeBorderColor:
       - "#f5e0dc"

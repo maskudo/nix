@@ -26,7 +26,7 @@ return {
 				markdown = { "prettierd" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				nix = { "alejandra" },
+				nix = { "nixfmt" },
 				rust = { "rustfmt" },
 				go = { "gofumpt" },
 				-- sql = { "sql-formatter" },

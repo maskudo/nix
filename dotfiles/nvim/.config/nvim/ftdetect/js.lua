@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = {
-		"*/work/**/*.js",
+		"*/work/**client**/*.js",
 	},
 	callback = function()
 		vim.bo.filetype = "javascriptreact"

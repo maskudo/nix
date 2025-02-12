@@ -15,6 +15,15 @@ return {
 			{
 				"nvim-treesitter/nvim-treesitter-context",
 				event = { "BufReadPost", "BufNewFile" },
+				keys = {
+					{
+						"[c",
+						function()
+							require("treesitter-context").go_to_context(vim.v.count1)
+						end,
+						desc = "󰉚 Prev reference",
+					},
+				},
 			},
 		},
 		config = function()
@@ -74,22 +83,18 @@ return {
 						set_jumps = true, -- whether to set jumps in the jumplist
 						goto_next_start = {
 							["]f"] = "@function.outer",
-							["]c"] = "@class.outer",
 							["]a"] = "@parameter.inner",
 						},
 						goto_next_end = {
 							["]F"] = "@function.outer",
-							["]C"] = "@class.outer",
 							["]A"] = "@parameter.inner",
 						},
 						goto_previous_start = {
 							["[f"] = "@function.outer",
-							["[c"] = "@class.outer",
 							["[a"] = "@parameter.inner",
 						},
 						goto_previous_end = {
 							["[F"] = "@function.outer",
-							["[C"] = "@class.outer",
 							["[A"] = "@parameter.inner",
 						},
 					},

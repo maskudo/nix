@@ -1,5 +1,12 @@
-[plugin]
-deps = [{ use = "dedukun/bookmarks", rev = "35da107" }, { use = "yazi-rs/plugins:full-border", rev = "71c4fc2" }]
+[[plugin.deps]]
+use = "dedukun/bookmarks"
+rev = "202e450"
+hash = "9e2f6f7381542d3adb3080b394b431b4"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "0725851"
+hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"
 
 [flavor]
 deps = []

@@ -13,7 +13,7 @@ map("n", "N", "Nzzzv", "Jump to Prev")
 map("n", "<leader>fw", "<cmd>noa up<cr>", "Write(w/o format on save)")
 map("n", "<leader>fa", "<cmd>wa<cr>", "Write all")
 map("n", "<leader>fu", "<cmd>up<cr>", "Update file")
-map("n", "<leader>fn", "<cmd>enew<cr>", "New File")
+map("n", "<leader>fN", "<cmd>enew<cr>", "New File")
 map("n", "<leader>fx", "<cmd>!chmod +x %<cr>", "Make File Executable")
 map("n", "<leader>fe", "<cmd>e!<cr>", "Reset buffer")
 
@@ -31,6 +31,7 @@ map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
 map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
 map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
 map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
+map("n", "<C-f>", "<C-w>w", "Focus window")
 --
 -- Better tab navigation
 map("n", "<leader>tt", ":tabnew<CR>", "New Tab")

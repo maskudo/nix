@@ -23,6 +23,7 @@
     conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+  colorMoved = default
+  context = 1
 [safe]
 	directory = ~/nix/.git

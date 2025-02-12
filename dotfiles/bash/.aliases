@@ -32,8 +32,10 @@ alias ns='nix-shell --command zsh'
 alias sc='systemctl'
 alias scu='systemctl --user'
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
-alias tf='terraform'
 alias k='kubectl'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 cheat() {
   curl --silent cheat.sh/$1 | bat
@@ -53,4 +55,10 @@ if type bat &>/dev/null; then
   alias less="bat --paging=always"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'" # prettier manpages
   export MANROFFOPT="-c"
+fi
+
+if type tofu &>/dev/null; then
+  alias tf='tofu'
+else
+  alias tf="terraform"
 fi

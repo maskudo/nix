@@ -97,6 +97,7 @@ return {
 						dirs = { "$HOME/zt/notes" },
 						multi = { "files" },
 						filter = { cwd = true },
+						exclude = { ".obsidian", "aegis*" },
 					})
 				end,
 				desc = "Notes",
@@ -107,6 +108,7 @@ return {
 					Snacks.picker.grep({
 						dirs = { "$HOME/zt/notes" },
 						filter = { cwd = true },
+						exclude = { ".obsidian", "aegis*" },
 					})
 				end,
 				desc = "Grep Notes",

@@ -61,9 +61,40 @@ return {
 				},
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+					snippets = {
+						opts = {
+							search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+						},
+					},
 				},
 			},
 		},
 		opts_extend = { "sources.completion.enabled_providers" },
+	},
+	{
+		"chrisgrieser/nvim-scissors",
+		dependencies = "nvim-telescope/telescope.nvim",
+		lazy = true,
+		opts = {
+			snippetDir = vim.fn.stdpath("config") .. "/snippets",
+		},
+		keys = {
+			{
+				"<leader>csa",
+				function()
+					require("scissors").addNewSnippet()
+				end,
+				desc = "Add Snippet",
+				mode = { "n", "x" },
+			},
+			{
+				"<leader>cse",
+				function()
+					require("scissors").editSnippet()
+				end,
+				desc = "Edit Snippets",
+				mode = { "n", "x" },
+			},
+		},
 	},
 }

@@ -1,0 +1,1 @@
+{"pprint":{"body":"print(vim.inspect($1))","prefix":"pprint"}}
