@@ -24,6 +24,7 @@ local opts = {
 	splitkeep = "screen",
 	splitright = true,
 	tabstop = 2,
+	softtabstop = 2,
 	termguicolors = true,
 	timeoutlen = 300,
 	undofile = true,
@@ -34,6 +35,13 @@ local opts = {
 	winminwidth = 5,
 	wrap = false,
 	fillchars = "eob: ",
+	exrc = true,
+	secure = true,
+	sessionoptions = "buffers",
+	shadafile = vim.fn.stdpath("cache") .. "/shada/" .. vim.fn.fnamemodify(
+		vim.fn.getcwd(),
+		":t"
+	) .. ".shada",
 }
 
 -- Set options from table

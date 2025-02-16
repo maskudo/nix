@@ -12,21 +12,9 @@ return {
 				"nvim-treesitter/nvim-treesitter-textobjects",
 				event = { "BufReadPost", "BufNewFile" },
 			},
-			{
-				"nvim-treesitter/nvim-treesitter-context",
-				event = { "BufReadPost", "BufNewFile" },
-				keys = {
-					{
-						"[c",
-						function()
-							require("treesitter-context").go_to_context(vim.v.count1)
-						end,
-						desc = "󰉚 Prev reference",
-					},
-				},
-			},
 		},
 		config = function()
+			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
 				sync_install = false,
 				auto_install = true,

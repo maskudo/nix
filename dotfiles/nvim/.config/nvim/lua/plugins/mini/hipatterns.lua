@@ -1,5 +1,4 @@
-local M = { hl = {} }
-M.colors = {
+local colors = {
 	slate = {
 		[50] = "f8fafc",
 		[100] = "f1f5f9",
@@ -308,4 +307,57 @@ M.colors = {
 		[950] = "4c0519",
 	},
 }
+local H = { hl = {} }
+local tailwindColors = {
+	pattern = "%f[%w:-]()[%w:-]+%-[a-z%-]+%-%d+()%f[^%w:-]",
+	group = function(_, _, m)
+		---@type string
+		local match = m.full_match
+		---@type string, number
+		local color, shade = match:match("[%w-]+%-([a-z%-]+)%-(%d+)")
+		---@diagnostic disable-next-line: cast-local-type
+		shade = tonumber(shade)
+		local bg = vim.tbl_get(colors, color, shade)
+		if bg then
+			local hl = "MiniHipatternsTailwind" .. color .. shade
+			if not H.hl[hl] then
+				H.hl[hl] = true
+				local bg_shade = shade == 500 and 950 or shade < 500 and 900 or 100
+				local fg = vim.tbl_get(colors, color, bg_shade)
+				vim.api.nvim_set_hl(0, hl, { bg = "#" .. bg, fg = "#" .. fg })
+			end
+			return hl
+		end
+	end,
+	extmark_opts = { priority = 2000 },
+}
+
+local M = {
+	-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+	fixme = {
+		pattern = "%f[%w]()FIXME()%f[%W]",
+		group = "MiniHipatternsFixme",
+	},
+	hack = {
+		pattern = "%f[%w]()HACK()%f[%W]",
+		group = "MiniHipatternsHack",
+	},
+	todo = {
+		pattern = "%f[%w]()TODO()%f[%W]",
+		group = "MiniHipatternsTodo",
+	},
+	note = {
+		pattern = "%f[%w]()NOTE()%f[%W]",
+		group = "MiniHipatternsNote",
+	},
+
+	-- Highlight hex color strings (`#rrggbb`) using that color
+	hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+	tailwind = tailwindColors,
+}
+
+require("mini.hipatterns").setup({
+	highlighters = M,
+})
+
 return M
