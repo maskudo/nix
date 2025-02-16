@@ -12,6 +12,14 @@ return {
 		---@type blink.cmp.Config
 		---
 		opts = {
+			cmdline = {
+				keymap = {
+
+					preset = "default",
+					["<Tab>"] = { "select_next", "select_and_accept" },
+					["<S-Tab>"] = { "select_prev", "select_and_accept" },
+				},
+			},
 			keymap = {
 				preset = "default",
 				["<C-j>"] = { "scroll_documentation_down" },
@@ -31,11 +39,6 @@ return {
 					function(cmp)
 						cmp.show({ providers = { "snippets" } })
 					end,
-				},
-				cmdline = {
-					preset = "default",
-					["<Tab>"] = { "select_next", "select_and_accept" },
-					["<S-Tab>"] = { "select_prev", "select_and_accept" },
 				},
 			},
 			completion = {
@@ -73,7 +76,6 @@ return {
 	},
 	{
 		"chrisgrieser/nvim-scissors",
-		dependencies = "nvim-telescope/telescope.nvim",
 		lazy = true,
 		opts = {
 			snippetDir = vim.fn.stdpath("config") .. "/snippets",

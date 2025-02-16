@@ -57,7 +57,7 @@ end
 local function modified()
 	local modifed = ""
 	if vim.bo.modified then
-		modifed = "%#Error#●"
+		modifed = "●"
 	end
 	return modifed
 end
@@ -176,7 +176,7 @@ Statusline = {}
 
 Statusline.active = function()
 	return table.concat({
-		-- "%#Normal# ",
+		"%#Normal# ",
 		open_buffers(),
 		"%#Statusline#",
 		update_mode_colors(),

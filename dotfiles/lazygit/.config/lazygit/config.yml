@@ -4,10 +4,13 @@ git:
     pager: delta --dark --paging=never --side-by-side
 
 gui:
-  sidePanelWidth: 0.20
+  sidePanelWidth: 0.2
+  mainPanelSplitMode: horizontal
+  expandFocusedSidePanel: true
+  border: "single"
   theme:
     activeBorderColor:
-      - "#f5e0dc"
+      - "#f38ba8"
       - bold
     inactiveBorderColor:
       - "#a6adc8"

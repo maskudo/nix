@@ -18,47 +18,26 @@ return {
 		event = "BufEnter",
 		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
-	{
-		"barrett-ruth/live-server.nvim",
-		cmd = { "LiveServerStart", "LiveServerStop" },
-		config = true,
-		lazy = true,
-	},
 
-	{
-		"BartSte/nvim-project-marks",
-		lazy = false,
-		config = function()
-			-- Get the name of the current working directory.
-			local function cwd_name()
-				return vim.fn.fnamemodify(
-					require("snacks").git.get_root() or vim.fn.getcwd(),
-					":t"
-				)
-			end
-			vim.fn.mkdir(vim.fn.stdpath("data") .. "/shadas", "p")
-			local path = vim.fn.stdpath("data")
-				.. "/shadas/"
-				.. cwd_name()
-				.. ".shada"
-			require("projectmarks").setup({
-				shadafile = path,
-			})
-			local shadaExists = vim.uv.fs_stat(path)
-			if shadaExists == nil then
-				require("projectmarks").make_shada(path)
-			end
-		end,
-	},
 	{
 		"MagicDuck/grug-far.nvim",
 		lazy = true,
 		cmd = { "GrugFar" },
+		keys = {
+			{
+				"<leader>fr",
+				mode = { "n", "x", "o" },
+				"<cmd>GrugFar<cr>",
+				desc = "Flash",
+			},
+		},
 		opts = {},
 	},
+
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
+		enabled = false,
 		---@type Flash.Config
 		opts = {
 			modes = {
@@ -74,5 +53,43 @@ return {
     keys = {
       { "S", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
     },
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		enabled = false,
+		opts = {
+			views = {
+				cmdline_input = {
+					view = "cmdline_popup",
+					relative = "cursor",
+					anchor = "auto",
+					size = { min_width = 30, width = "auto", height = "auto" },
+				},
+			},
+			presets = {
+				command_palette = {
+					views = {
+						cmdline_popup = {
+							position = {
+								row = 10,
+							},
+						},
+						cmdline_popupmenu = {
+							position = {
+								row = 10,
+							},
+						},
+					},
+				},
+				long_message_to_split = true,
+				inc_rename = false,
+				lsp_doc_border = true,
+			},
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+		},
 	},
 }

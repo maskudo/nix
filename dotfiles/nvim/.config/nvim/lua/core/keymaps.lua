@@ -4,8 +4,8 @@ local map = require("helpers.keys").map
 -- map("n", ":W<CR>", ":update<CR>", "Update")
 
 --better movement
-map("n", "<C-u>", "<C-u>zz", "Move up by half page")
-map("n", "<C-d>", "<C-d>zz", "Mode down by half page")
+-- map("n", "<C-u>", "<C-u>zz", "Move up by half page")
+-- map("n", "<C-d>", "<C-d>zz", "Mode down by half page")
 map("n", "n", "nzzzv", "Jump to Next")
 map("n", "N", "Nzzzv", "Jump to Prev")
 
@@ -97,5 +97,6 @@ map("s", "<C-l>", function()
 	vim.snippet.jump(1)
 end)
 
-map("n", "B", "%")
+map("n", "B", "<Plug>(MatchitNormalForward)")
+map("v", "B", "<Plug>(MatchitVisualForward)")
 map("n", "<leader>um", "<cmd>messages<cr>", "Messages")
