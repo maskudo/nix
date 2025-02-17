@@ -8,6 +8,7 @@
 	required = true
 [core]
   pager = delta
+	excludesFile = ~/.gitignore
 [interactive]
     diffFilter = delta --color-only
 
