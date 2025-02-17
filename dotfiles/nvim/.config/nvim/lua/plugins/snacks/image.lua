@@ -8,6 +8,12 @@ return {
 				float = false,
 				inline = false,
 			},
+			resolve = function(img, src)
+				if vim.startswith(src, "assets/") then
+					return Snacks.git.get_root(img) .. "/notes/" .. src
+				end
+				return src
+			end,
 		},
 	},
 	keys = {

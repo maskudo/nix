@@ -14,6 +14,7 @@ return {
 					indent = 8,
 				},
 				{ section = "keys", gap = 1, padding = 1 },
+				{ section = "startup" },
 			},
 			preset = {
         -- stylua: ignore

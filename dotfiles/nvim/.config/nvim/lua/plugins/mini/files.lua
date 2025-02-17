@@ -1,3 +1,20 @@
+require("mini.files").setup({
+	mappings = {
+		close = "q",
+		go_in = "<S-CR>",
+		go_in_plus = "<CR>",
+		go_out = "-",
+		synchronize = ":w<CR>",
+	},
+	windows = {
+		width_focus = 30,
+		width_preview = 80,
+	},
+	options = {
+		use_as_default_explorer = true,
+	},
+})
+
 vim.api.nvim_create_autocmd("User", {
 	pattern = "MiniFilesBufferCreate",
 	callback = function(args)
@@ -38,20 +55,3 @@ end)
 vim.keymap.set("n", "_", function()
 	require("mini.files").open()
 end, { desc = "Open mini.files (CWD)" })
-
-require("mini.files").setup({
-	mappings = {
-		close = "q",
-		go_in = "<S-CR>",
-		go_in_plus = "<CR>",
-		go_out = "-",
-		synchronize = ":w<CR>",
-	},
-	windows = {
-		width_focus = 30,
-		width_preview = 80,
-	},
-	options = {
-		use_as_default_explorer = true,
-	},
-})

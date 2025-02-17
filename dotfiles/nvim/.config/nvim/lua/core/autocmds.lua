@@ -66,3 +66,44 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
+
+-- Notify when recording macro
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	callback = function()
+		local register = vim.fn.reg_recording()
+		if register ~= "" then
+			vim.notify("Recording macro: " .. register, vim.log.levels.INFO)
+		end
+	end,
+	desc = "Notify macro start",
+})
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	callback = function()
+		local register = vim.fn.reg_recording()
+		if register ~= "" then
+			vim.notify("End recording macro: " .. register, vim.log.levels.INFO)
+		end
+	end,
+	desc = "Notify macro start",
+})
+
+-- update marks to last cursor position when switching buffers
+vim.api.nvim_create_autocmd("BufLeave", {
+	callback = function()
+		local cursor_pos = vim.api.nvim_win_get_cursor(0) -- Get current cursor position
+		local buf = vim.api.nvim_get_current_buf()
+		for mark = 65, 90 do -- ASCII values for 'A' to 'Z'
+			local mark_pos = vim.api.nvim_buf_get_mark(buf, string.char(mark))
+			if mark_pos[1] > 0 then -- Ensure mark exists
+				vim.api.nvim_buf_set_mark(
+					buf,
+					string.char(mark),
+					cursor_pos[1],
+					cursor_pos[2],
+					{}
+				)
+			end
+		end
+	end,
+	desc = "Move uppercase marks to cursor position on BufLeave",
+})

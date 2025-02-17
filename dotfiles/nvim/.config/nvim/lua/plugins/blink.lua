@@ -7,7 +7,6 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 		version = "*",
-
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		---

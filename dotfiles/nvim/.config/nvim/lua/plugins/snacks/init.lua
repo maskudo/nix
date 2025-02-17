@@ -1,43 +1,43 @@
 return {
-	"folke/snacks.nvim",
-	-- dir = "~/dev/snacks.nvim",
-	priority = 1000,
-	lazy = false,
-	import = "plugins.snacks",
-	opts = {
-		bigfile = { enabled = true },
-		zen = {},
-		bufdelete = { enabled = true },
-		scroll = {
-			animate = {
-				duration = { step = 10, total = 100 },
-				easing = "linear",
-			},
-			animate_repeat = {
-				delay = 200, -- delay in ms before using the repeat animation
-				duration = { step = 5, total = 50 },
-				easing = "linear",
-			},
-		},
-		statuscolumn = {
-			enabled = false,
-			left = {
-				"git",
-				"mark",
-			},
-			right = {},
-		},
-		notifier = { enabled = true },
-		quickfile = { enabled = true },
-		words = {
-			enabled = true,
-			notify_jump = false,
-			modes = { "n" },
-			debounce = 100,
-		},
-		input = {},
-		gitbrowse = { enabled = true },
-	},
+  "folke/snacks.nvim",
+  -- dir = "~/dev/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  import = "plugins.snacks",
+  opts = {
+    bigfile = { enabled = true },
+    zen = {},
+    bufdelete = { enabled = true },
+    scroll = {
+      animate = {
+        duration = { step = 10, total = 100 },
+        easing = "linear",
+      },
+      animate_repeat = {
+        delay = 200, -- delay in ms before using the repeat animation
+        duration = { step = 5, total = 50 },
+        easing = "linear",
+      },
+    },
+    statuscolumn = {
+      enabled = true,
+      left = {
+        "git",
+        "mark",
+      },
+      right = {},
+    },
+    notifier = { enabled = true },
+    quickfile = { enabled = true },
+    words = {
+      enabled = true,
+      notify_jump = false,
+      modes = { "n" },
+      debounce = 100,
+    },
+    input = {},
+    gitbrowse = { enabled = true },
+  },
   -- stylua: ignore
 	keys = {
 		{ "[[", function() require("snacks").words.jump(-1, true) end, desc = "󰉚 Prev reference", },
@@ -53,6 +53,7 @@ return {
 		{ "<leader>us", function() Snacks.toggle.scroll():toggle() end, desc = "Toggle Scroll", },
 		{ "<leader>ut", function() Snacks.toggle.treesitter():toggle() end, desc = "Toggle Treesitter", },
 		{ "<leader>uw", function() Snacks.toggle.option("wrap"):toggle() end, desc = "Toggle Line Wrap", },
+		{ "<leader>uz", function() Snacks.zen() end, desc = "Toggle Zen", },
   }
 ,
 }

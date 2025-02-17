@@ -37,9 +37,6 @@ M.on_attach = function(_client, bufnr)
 	opts.desc = "Show documentation for what is under cursor"
 	keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
-	opts.desc = "Restart LSP"
-	keymap.set("n", "<leader>lr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
 	opts.desc = "LSP Info"
 	keymap.set("n", "<leader>li", ":LspInfo<CR>", opts) -- mapping to restart lsp if necessary
 end

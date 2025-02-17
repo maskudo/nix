@@ -18,7 +18,7 @@ local function get_if_available(names, opts)
 end
 
 local colorscheme = get_if_available({
-	"rose-pine",
+	"rosepine",
 	"kanagawa",
 	"base16-rose-pine",
 	"default",

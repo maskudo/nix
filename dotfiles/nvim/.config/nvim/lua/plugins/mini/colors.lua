@@ -5,16 +5,16 @@ local rosepine = {
 	base03 = "#6e6a86",
 	base04 = "#908caa",
 	base05 = "#e0def4",
-	base06 = "#e0def4",
-	base07 = "#524f67",
-	base08 = "#eb6f92",
-	base09 = "#f6c177",
-	base0A = "#ebbcba",
-	base0B = "#31748f",
+	base06 = "#ebbcba",
+	base07 = "#e0def4",
+	base08 = "#908caa",
+	base09 = "#eb6f92",
+	base0A = "#31748f",
+	base0B = "#f6c177",
 	base0C = "#9ccfd8",
 	base0D = "#c4a7e7",
-	base0E = "#f6c177",
-	base0F = "#524f67",
+	base0E = "#ebbcba",
+	base0F = "#e0def4",
 }
 
 ---@diagnostic disable-next-line: unused-local
@@ -37,9 +37,18 @@ local catppuccinmocha = {
 	base0F = "#f2cdcd",
 }
 
-require("mini.base16").setup({
-	palette = rosepine,
-})
+-- require("mini.base16").setup({
+-- 	palette = rosepine,
+-- })
+
+vim.keymap.set("n", "<leader>ue", function()
+	vim.ui.input({ prompt = "Enter Colorscheme Name:" }, function(colorscheme)
+		if not colorscheme then
+			return
+		end
+		require("mini.colors").get_colorscheme():write({ name = colorscheme })
+	end)
+end, { desc = "Extract Colorscheme" })
 
 vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none", fg = "#585b70" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none", fg = "#585b70" })
