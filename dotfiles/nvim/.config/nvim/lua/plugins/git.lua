@@ -1,30 +1,30 @@
 return {
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
-		opts = {
-			current_line_blame = true,
-			signs = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				delete = { text = "▎" },
-				topdelete = { text = "▎" },
-				changedelete = { text = "▎" },
-				untracked = { text = "▎" },
-			},
-			signs_staged = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				delete = { text = "▎" },
-				topdelete = { text = "▎" },
-				changedelete = { text = "▎" },
-				untracked = { text = "┆" },
-			},
-			signs_staged_enable = true,
-			attach_to_untracked = true,
-			on_attach = function()
-				local gs = package.loaded.gitsigns
-				local map = require("helpers.keys").map
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    opts = {
+      current_line_blame = true,
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "▎" },
+        topdelete = { text = "▎" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      signs_staged = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "▎" },
+        topdelete = { text = "▎" },
+        changedelete = { text = "▎" },
+        untracked = { text = "┆" },
+      },
+      signs_staged_enable = true,
+      attach_to_untracked = true,
+      on_attach = function()
+        local gs = package.loaded.gitsigns
+        local map = require("helpers.keys").map
 
 	       -- stylua: ignore start
 	       map("n", "]h", ":Gitsigns next_hunk<CR>zz", "Next Hunk")
@@ -43,7 +43,7 @@ return {
 	       map({ "o", "x" }, "ah", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 	       map("n", "<leader>ga", "<cmd>silent !git add %<cr><cmd>silent Gitsigns refresh<CR>", "Git Add This File")
 	       map({'o', 'x'}, 'ih', '<Cmd>Gitsigns select_hunk<CR>', "Hunk object")
-			end,
-		},
-	},
+      end,
+    },
+  },
 }

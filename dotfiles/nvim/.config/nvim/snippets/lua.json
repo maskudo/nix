@@ -1,1 +1,1 @@
-{"pprint":{"body":"print(vim.inspect($1))","prefix":"pprint"}}
+{"pprint":{"body":"print(vim.inspect($1))","prefix":"pprint"},"autocmd":{"body":["vim.api.nvim_create_autocmd(\"${1}\", {","  group = vim.api.nvim_create_augroup(\"${2}\", { clear = true }),","\tcallback = function(ev)","\t\t${3}","\tend,","})"],"prefix":"autocmd"}}

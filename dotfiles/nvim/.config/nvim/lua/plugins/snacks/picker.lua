@@ -1,126 +1,126 @@
 local gitActions = {
-	hidden = true,
-	actions = {
-		["open_file"] = function(picker)
-			local currentCommit = picker:current().commit
-			picker:close()
-			vim.cmd("Gitsigns show " .. currentCommit)
-		end,
-		["diffview"] = function(picker)
-			local currentCommit = picker:current().commit
-			picker:close()
-			vim.cmd("vs")
-			require("gitsigns").show(currentCommit)
-		end,
-	},
-	win = {
-		input = {
-			keys = {
-				["<CR>"] = {
-					"open_file",
-					desc = "Open File",
-					mode = { "n", "i" },
-				},
-				["<c-d>"] = {
-					"diffview",
-					desc = "Diffview",
-					mode = { "n", "i" },
-				},
-			},
-		},
-	},
+  hidden = true,
+  actions = {
+    ["open_file"] = function(picker)
+      local currentCommit = picker:current().commit
+      picker:close()
+      vim.cmd("Gitsigns show " .. currentCommit)
+    end,
+    ["diffview"] = function(picker)
+      local currentCommit = picker:current().commit
+      picker:close()
+      vim.cmd("vs")
+      require("gitsigns").show(currentCommit)
+    end,
+  },
+  win = {
+    input = {
+      keys = {
+        ["<CR>"] = {
+          "open_file",
+          desc = "Open File",
+          mode = { "n", "i" },
+        },
+        ["<c-d>"] = {
+          "diffview",
+          desc = "Diffview",
+          mode = { "n", "i" },
+        },
+      },
+    },
+  },
 }
 
 local fileActions = {
-	hidden = true,
-	include = { ".env*" },
-	actions = {
-		["send_to_grep"] = function(picker)
-			local current = picker.input:get()
-			picker:close()
-			Snacks.picker.grep({
-				glob = "*" .. current .. "*",
-				hidden = true,
-				title = "Glob: " .. current,
-			})
-		end,
-	},
-	win = {
-		input = {
-			keys = {
-				["<c-h>"] = {
-					"toggle_ignored",
-					desc = "Toggle Ignored",
-					mode = { "n", "i" },
-				},
-				["<c-r>"] = {
-					"send_to_grep",
-					desc = "Send to Grep",
-					mode = { "n", "i" },
-				},
-			},
-		},
-	},
+  hidden = true,
+  include = { ".env*" },
+  actions = {
+    ["send_to_grep"] = function(picker)
+      local current = picker.input:get()
+      picker:close()
+      Snacks.picker.grep({
+        glob = "*" .. current .. "*",
+        hidden = true,
+        title = "Glob: " .. current,
+      })
+    end,
+  },
+  win = {
+    input = {
+      keys = {
+        ["<c-h>"] = {
+          "toggle_ignored",
+          desc = "Toggle Ignored",
+          mode = { "n", "i" },
+        },
+        ["<c-r>"] = {
+          "send_to_grep",
+          desc = "Send to Grep",
+          mode = { "n", "i" },
+        },
+      },
+    },
+  },
 }
 
 return {
-	"folke/snacks.nvim",
-	---@module 'snacks'
-	---@type snacks.Config
-	opts = {
-		picker = {
-			formatters = {
-				file = {
-					filename_first = true,
-				},
-			},
-			win = {
-				input = {
-					keys = {
-						["<c-l>"] = {
-							"cycle_win",
-							desc = "Cycle Window",
-							mode = { "n", "i" },
-						},
-					},
-				},
-			},
-			sources = {
-				git_log_file = gitActions,
-				git_log = gitActions,
-				files = fileActions,
-				smart = fileActions,
-				buffers = {
-					win = {
-						input = {
-							keys = {
-								["<space><space>"] = {
-									"switch_to_smart",
-									desc = "Toggle modified",
-									mode = { "n", "i" },
-								},
-								["<s-m>"] = {
-									"toggle_modified",
-									desc = "Toggle modified",
-									mode = { "n", "i" },
-								},
-							},
-						},
-					},
-					actions = {
-						["switch_to_smart"] = function(picker)
-							local current = picker.input:get()
-							picker:close()
-							Snacks.picker.smart({ pattern = current })
-						end,
-					},
-				},
-			},
-			layout = {
-				preset = "telescope",
-			},
-		},
-	},
+  "folke/snacks.nvim",
+  ---@module 'snacks'
+  ---@type snacks.Config
+  opts = {
+    picker = {
+      formatters = {
+        file = {
+          filename_first = true,
+        },
+      },
+      win = {
+        input = {
+          keys = {
+            ["<c-l>"] = {
+              "cycle_win",
+              desc = "Cycle Window",
+              mode = { "n", "i" },
+            },
+          },
+        },
+      },
+      sources = {
+        git_log_file = gitActions,
+        git_log = gitActions,
+        files = fileActions,
+        smart = fileActions,
+        buffers = {
+          win = {
+            input = {
+              keys = {
+                ["<space><space>"] = {
+                  "switch_to_smart",
+                  desc = "Toggle modified",
+                  mode = { "n", "i" },
+                },
+                ["<s-m>"] = {
+                  "toggle_modified",
+                  desc = "Toggle modified",
+                  mode = { "n", "i" },
+                },
+              },
+            },
+          },
+          actions = {
+            ["switch_to_smart"] = function(picker)
+              local current = picker.input:get()
+              picker:close()
+              Snacks.picker.smart({ pattern = current })
+            end,
+          },
+        },
+      },
+      layout = {
+        preset = "telescope",
+      },
+    },
+  },
   -- stylua: ignore 
 	keys = {
 		{"gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},

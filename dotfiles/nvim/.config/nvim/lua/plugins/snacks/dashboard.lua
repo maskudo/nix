@@ -1,22 +1,22 @@
 return {
-	"folke/snacks.nvim",
-	---@module 'snacks'
-	---@type snacks.Config
-	opts = {
-		dashboard = {
-			enabled = true,
-			sections = {
-				{
-					section = "terminal",
-					cmd = "fortune -s | cowsay",
-					hl = "header",
-					padding = 1,
-					indent = 8,
-				},
-				{ section = "keys", gap = 1, padding = 1 },
-				{ section = "startup" },
-			},
-			preset = {
+  "folke/snacks.nvim",
+  ---@module 'snacks'
+  ---@type snacks.Config
+  opts = {
+    dashboard = {
+      enabled = true,
+      sections = {
+        {
+          section = "terminal",
+          cmd = "fortune -s | cowsay",
+          hl = "header",
+          padding = 1,
+          indent = 8,
+        },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
+      },
+      preset = {
         -- stylua: ignore
 				keys = {
 					{icon = " ", key = "f", desc = "Find File", action = "<leader>.",},
@@ -28,7 +28,7 @@ return {
 					{icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil,},
 					{icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
-			},
-		},
-	},
+      },
+    },
+  },
 }

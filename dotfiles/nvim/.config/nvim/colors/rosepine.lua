@@ -1,7 +1,7 @@
 -- Made with 'mini.colors' module of https://github.com/echasnovski/mini.nvim
 
 if vim.g.colors_name ~= nil then
-	vim.cmd("highlight clear")
+  vim.cmd("highlight clear")
 end
 vim.g.colors_name = "rose-pine"
 
@@ -169,9 +169,9 @@ hi(0, "@variable.builtin", { bold = true, fg = "#eb6f92", italic = true })
 hi(0, "@variable.member", { fg = "#9ccfd8" })
 hi(0, "@variable.parameter", { fg = "#c4a7e7", italic = true })
 hi(
-	0,
-	"@variable.parameter.builtin",
-	{ bold = true, fg = "#c4a7e7", italic = true }
+  0,
+  "@variable.parameter.builtin",
+  { bold = true, fg = "#c4a7e7", italic = true }
 )
 hi(0, "AlphaButtons", { fg = "#9ccfd8" })
 hi(0, "AlphaFooter", { fg = "#f6c177" })
@@ -517,9 +517,9 @@ hi(0, "MiniJump", { sp = "#f6c177" })
 hi(0, "MiniJump2dDim", { fg = "#908caa" })
 hi(0, "MiniJump2dSpot", { bold = true, fg = "#f6c177", nocombine = true })
 hi(
-	0,
-	"MiniJump2dSpotAhead",
-	{ bg = "#1f1d2e", fg = "#9ccfd8", nocombine = true }
+  0,
+  "MiniJump2dSpotAhead",
+  { bg = "#1f1d2e", fg = "#9ccfd8", nocombine = true }
 )
 hi(0, "MiniJump2dSpotUnique", { bold = true, fg = "#ebbcba", nocombine = true })
 hi(0, "MiniMapNormal", { link = "NormalFloat" })
@@ -556,43 +556,43 @@ hi(0, "MiniStatuslineFileinfo", { link = "MiniStatuslineDevinfo" })
 hi(0, "MiniStatuslineFilename", { bg = "#1f1d2e", fg = "#6e6a86" })
 hi(0, "MiniStatuslineInactive", { link = "MiniStatuslineFilename" })
 hi(
-	0,
-	"MiniStatuslineModeCommand",
-	{ bg = "#eb6f92", bold = true, fg = "#191724" }
+  0,
+  "MiniStatuslineModeCommand",
+  { bg = "#eb6f92", bold = true, fg = "#191724" }
 )
 hi(
-	0,
-	"MiniStatuslineModeInsert",
-	{ bg = "#9ccfd8", bold = true, fg = "#191724" }
+  0,
+  "MiniStatuslineModeInsert",
+  { bg = "#9ccfd8", bold = true, fg = "#191724" }
 )
 hi(
-	0,
-	"MiniStatuslineModeNormal",
-	{ bg = "#ebbcba", bold = true, fg = "#191724" }
+  0,
+  "MiniStatuslineModeNormal",
+  { bg = "#ebbcba", bold = true, fg = "#191724" }
 )
 hi(
-	0,
-	"MiniStatuslineModeOther",
-	{ bg = "#ebbcba", bold = true, fg = "#191724" }
+  0,
+  "MiniStatuslineModeOther",
+  { bg = "#ebbcba", bold = true, fg = "#191724" }
 )
 hi(
-	0,
-	"MiniStatuslineModeReplace",
-	{ bg = "#31748f", bold = true, fg = "#191724" }
+  0,
+  "MiniStatuslineModeReplace",
+  { bg = "#31748f", bold = true, fg = "#191724" }
 )
 hi(
-	0,
-	"MiniStatuslineModeVisual",
-	{ bg = "#c4a7e7", bold = true, fg = "#191724" }
+  0,
+  "MiniStatuslineModeVisual",
+  { bg = "#c4a7e7", bold = true, fg = "#191724" }
 )
 hi(0, "MiniSurround", { link = "IncSearch" })
 hi(0, "MiniTablineCurrent", { bg = "#26233a", bold = true, fg = "#e0def4" })
 hi(0, "MiniTablineFill", { link = "TabLineFill" })
 hi(0, "MiniTablineHidden", { bg = "#1f1d2e", fg = "#908caa" })
 hi(
-	0,
-	"MiniTablineModifiedCurrent",
-	{ bg = "#e0def4", bold = true, fg = "#26233a" }
+  0,
+  "MiniTablineModifiedCurrent",
+  { bg = "#e0def4", bold = true, fg = "#26233a" }
 )
 hi(0, "MiniTablineModifiedHidden", { bg = "#908caa", fg = "#1f1d2e" })
 hi(0, "MiniTablineModifiedVisible", { bg = "#e0def4", fg = "#1f1d2e" })
@@ -652,9 +652,9 @@ hi(0, "NeoTreeTabSeparatorInactive", { link = "WinSeparator" })
 hi(0, "NeoTreeTitleBar", { link = "StatusLineTerm" })
 hi(0, "NeogitChangeAdded", { bold = true, fg = "#9ccfd8", italic = true })
 hi(
-	0,
-	"NeogitChangeBothModified",
-	{ bold = true, fg = "#ebbcba", italic = true }
+  0,
+  "NeogitChangeBothModified",
+  { bold = true, fg = "#ebbcba", italic = true }
 )
 hi(0, "NeogitChangeCopied", { bold = true, fg = "#908caa", italic = true })
 hi(0, "NeogitChangeDeleted", { bold = true, fg = "#eb6f92", italic = true })
@@ -918,9 +918,9 @@ hi(0, "htmlBold", { bold = true })
 hi(0, "htmlBoldItalic", { bold = true, italic = true })
 hi(0, "htmlBoldUnderline", { bold = true, underline = true })
 hi(
-	0,
-	"htmlBoldUnderlineItalic",
-	{ bold = true, italic = true, underline = true }
+  0,
+  "htmlBoldUnderlineItalic",
+  { bold = true, italic = true, underline = true }
 )
 hi(0, "htmlEndTag", { fg = "#908caa" })
 hi(0, "htmlH1", { link = "markdownH1" })
