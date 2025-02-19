@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "dedukun/bookmarks"
-rev = "202e450"
-hash = "9e2f6f7381542d3adb3080b394b431b4"
+rev = "fe0b1de"
+hash = "221ed40593a5cb5bd80f963f05c556f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "0725851"
+rev = "beb586a"
 hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"
 
 [flavor]

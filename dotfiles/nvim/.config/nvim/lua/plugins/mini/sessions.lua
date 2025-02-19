@@ -1,6 +1,4 @@
-local file = ".git/"
-  .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  .. "session.vim"
+local file = "." .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. ".session.vim"
 
 require("mini.sessions").setup({
   autowrite = true,
@@ -20,7 +18,7 @@ map(
 map("n", "<leader>ql", function()
   session.select()
 end, { desc = "Select session" })
-map("n", "<leader>qc", function()
+map("n", "<leader>qw", function()
   session.write(file)
 end, { desc = "Write session" })
 

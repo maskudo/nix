@@ -1,5 +1,6 @@
 local gitActions = {
   hidden = true,
+  include = { ".env*", "*.nix" },
   actions = {
     ["open_file"] = function(picker)
       local currentCommit = picker:current().commit
@@ -33,7 +34,7 @@ local gitActions = {
 
 local fileActions = {
   hidden = true,
-  include = { ".env*" },
+  include = { ".env*", "*.nix" },
   actions = {
     ["send_to_grep"] = function(picker)
       local current = picker.input:get()
@@ -96,7 +97,7 @@ return {
               keys = {
                 ["<space><space>"] = {
                   "switch_to_smart",
-                  desc = "Toggle modified",
+                  desc = "Switch to smart",
                   mode = { "n", "i" },
                 },
                 ["<s-m>"] = {
@@ -143,6 +144,8 @@ return {
 		{"<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File",},
 		{"<leader>fD", function() Snacks.picker.diagnostics({ format = "file", }) end, desc = "Workspace Diagnostics",},
 		{"<leader>fd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
+		-- {"<leader>xx", function() Snacks.picker.diagnostics({ format = "file", }) end, desc = "Workspace Diagnostics",},
+		-- {"<leader>xb", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
 		{"<leader>ff", function() Snacks.picker.files({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
 		{"<leader>fg", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
 		{"<leader>fp", function() Snacks.picker.recent({ hidden = true, filter = { cwd = true } }) end, desc = "Recent",},

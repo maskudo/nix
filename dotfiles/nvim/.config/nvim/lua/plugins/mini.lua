@@ -5,6 +5,7 @@ return {
   config = function()
     require("mini.ai").setup()
     require("mini.doc").setup()
+    require("mini.git").setup()
     require("mini.jump").setup({ silent = true })
     require("mini.extra").setup()
     require("mini.pairs").setup()
@@ -13,7 +14,22 @@ return {
     require("mini.colors").setup()
     require("mini.surround").setup()
     require("mini.splitjoin").setup()
-    require("mini.operators").setup()
+    require("mini.trailspace").setup()
+    require("mini.jump2d").setup({
+      view = {
+        dim = true,
+        n_steps_ahead = 2,
+      },
+    })
+    require("mini.operators").setup({
+      -- Exchange text regions
+      exchange = {
+        prefix = "ge",
+      },
+      sort = {
+        prefix = "",
+      },
+    })
     require("mini.bracketed").setup({
       file = { suffix = "", options = {} },
       treesitter = { suffix = "t", options = {} },

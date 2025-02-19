@@ -20,7 +20,7 @@ set "status-justify" "left"
 set "status-right" ""
 set "status-left" " #S | "
 set "status-left-length" 50
-tmux set-option -wg "mode-style" "bg=$_visual_grey,fg=$_white"
+tmux set-option -wg "mode-style" "bg=#37344a,fg=$_white"
 tmux set-option -g "message-style" "bg=$_visual_grey,fg=$_white"
 
 set "window-status-format" "#[fg=$_white,bg=default] #I|#W "

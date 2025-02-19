@@ -6,7 +6,7 @@ https://github.com/dedukun/bookmarks.yazi/assets/25795432/9a9fe345-dd06-442e-99f
 
 ## Requirements
 
-- [Yazi](https://github.com/sxyazi/yazi) v0.4.0+
+- [Yazi](https://github.com/sxyazi/yazi) v25.2.7+
 
 ## Features
 
@@ -21,6 +21,13 @@ https://github.com/dedukun/bookmarks.yazi/assets/25795432/9a9fe345-dd06-442e-99f
 ya pack -a dedukun/bookmarks
 ```
 
+## Import/Export bookmarks
+
+This plugin uses [Yazi's DDS](https://yazi-rs.github.io/docs/dds/) for bookmark persistence, as such, 
+the bookmarks are saved in DDS's state file (`~/.local/state/yazi/.dds` on Linux and `C:\Users\USERNAME\AppData\Roaming\yazi\state\.dds` on Windows)
+
+***NOTE:*** This system may be used by other plugins that you have installed, so this file might have more data than just the bookmarks.
+
 ## Configuration
 
 Add this to your `keymap.toml`:
@@ -28,22 +35,22 @@ Add this to your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on = [ "m" ]
-run = "plugin bookmarks --args=save"
+run = "plugin bookmarks save"
 desc = "Save current position as a bookmark"
 
 [[manager.prepend_keymap]]
 on = [ "'" ]
-run = "plugin bookmarks --args=jump"
+run = "plugin bookmarks jump"
 desc = "Jump to a bookmark"
 
 [[manager.prepend_keymap]]
 on = [ "b", "d" ]
-run = "plugin bookmarks --args=delete"
+run = "plugin bookmarks delete"
 desc = "Delete a bookmark"
 
 [[manager.prepend_keymap]]
 on = [ "b", "D" ]
-run = "plugin bookmarks --args=delete_all"
+run = "plugin bookmarks delete_all"
 desc = "Delete all bookmarks"
 ```
 

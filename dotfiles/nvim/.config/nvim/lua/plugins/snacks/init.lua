@@ -4,6 +4,8 @@ return {
   priority = 1000,
   lazy = false,
   import = "plugins.snacks",
+  ---@module 'snacks'
+  ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     zen = {},
@@ -44,7 +46,7 @@ return {
 		{ "]]", function() require("snacks").words.jump(1, true) end, desc = "󰉚 Next reference", },
 		{"<leader>ba", function() Snacks.bufdelete.all() end, desc = "Delete All Buffer",},
 		{"<leader>bd", function() Snacks.bufdelete.delete() end, desc = "Delete Current Buffer",},
-		{ "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TS Context", },
+		-- { "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TS Context", },
 		{ "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes", },
 		{ "<leader>ud", function() Snacks.toggle.diagnostics():toggle() end, desc = "Toggle Diagnostics", },
 		{ "<leader>uh", function() Snacks.toggle.inlay_hints():toggle() end, desc = "Toggle Inlay Hints", },

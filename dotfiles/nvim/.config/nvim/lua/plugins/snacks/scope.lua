@@ -5,12 +5,17 @@ return {
   opts = {
     scope = {},
     indent = {
-      enabled = false,
-      only_scope = true,
-      only_current = false,
+      enabled = true,
+      indent = {
+        only_scope = true,
+        only_current = false,
+      },
       scope = {
         enabled = true,
         underline = false,
+      },
+      chunk = {
+        enabled = true,
       },
     },
   },

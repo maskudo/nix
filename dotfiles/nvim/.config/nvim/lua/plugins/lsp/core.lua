@@ -1,7 +1,6 @@
 local M = {}
 local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 local has_blink, blink = pcall(require, "blink.cmp")
-
 M.capabilities = vim.tbl_deep_extend(
   "force",
   {},

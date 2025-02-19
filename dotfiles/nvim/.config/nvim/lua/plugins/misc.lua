@@ -23,12 +23,12 @@ return {
       ensure_installed = {
         "go",
         "html",
-        "dom",
+        -- "dom",
         "http",
-        "css",
-        "javascript",
+        -- "css",
+        -- "javascript",
         "lua~5.1",
-        "rust",
+        -- "rust",
       },
     },
   },
@@ -49,31 +49,10 @@ return {
         "<leader>fr",
         mode = { "n", "x", "o" },
         "<cmd>GrugFar<cr>",
-        desc = "Flash",
+        desc = "Find and Replace",
       },
     },
     opts = {},
-  },
-
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    ---@type Flash.Config
-    opts = {
-      modes = {
-        char = {
-          enabled = false, -- Disable character motions (like `f`, `t`, `F`, `T`)
-        },
-        search = {
-          enabled = false, -- Disable search motions (`/`, `?`)
-        },
-      },
-    },
-    -- stylua: ignore
-    keys = {
-      { "S", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    },
   },
   {
     "folke/noice.nvim",

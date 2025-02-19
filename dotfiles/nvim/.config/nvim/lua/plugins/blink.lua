@@ -24,21 +24,27 @@ return {
         ["<C-j>"] = { "scroll_documentation_down" },
         ["<C-k>"] = { "scroll_documentation_up" },
         ["<C-space>"] = {
-          function(cmp)
-            local providers = vim.fn.filter(
-              require("blink.cmp.config.sources").default.default,
-              function(_, val)
-                return val ~= "snippets"
-              end
-            )
-            cmp.show({ providers = providers })
-          end,
+          "show",
+          "show_documentation",
+          "hide_documentation",
         },
         ["<C-s>"] = {
           function(cmp)
             cmp.show({ providers = { "snippets" } })
           end,
         },
+        ["<CR>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          "fallback",
+        },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
       },
       completion = {
         menu = { border = "single" },
