@@ -7,6 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "unstable";
     home-manager.url = "github:nix-community/home-manager";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
   outputs =
@@ -14,6 +15,7 @@
       nixpkgs,
       home-manager,
       unstable,
+      grub2-themes,
       ...
     }@inputs:
     let
@@ -35,6 +37,7 @@
           # > Our main nixos configuration file <
           modules = [
             ./hosts/aspire
+            grub2-themes.nixosModules.default
             (
               { ... }:
               {
@@ -55,6 +58,7 @@
           };
           modules = [
             ./hosts/omen
+            grub2-themes.nixosModules.default
             (
               { ... }:
               {
