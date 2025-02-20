@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # Bootloader.
   boot = {
@@ -16,12 +16,16 @@
     loader.grub = {
       enable = true;
       copyKernels = true;
-      splashImage = ../../wallpapers/nix-wallpaper-stripes-logo.png;
       efiInstallAsRemovable = true;
       efiSupport = true;
       useOSProber = true;
       fsIdentifier = "uuid";
       devices = [ "nodev" ];
+    };
+    loader.grub2-theme = {
+      theme = "vimix";
+      splashImage = lib.mkForce ../../wallpapers/flowering-rain.png;
+      footer = true;
     };
     # usbcore.quirks for keyboard
     kernelParams = [ "usbcore.quirks=5566:0008:gki" ];
