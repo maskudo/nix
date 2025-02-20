@@ -9,8 +9,15 @@
 
   services = {
     xserver = {
-      desktopManager.xterm.enable = false;
-      excludePackages = [pkgs.xterm];
+      desktopManager = {
+        xterm.enable = false;
+        xfce = {
+          enable = true;
+          noDesktop = true;
+          enableXfwm = false;
+        };
+      };
+      excludePackages = [ pkgs.xterm ];
       enable = true;
       xkb.layout = "us";
       xkb.variant = "";
@@ -29,8 +36,9 @@
 
     displayManager = {
       sddm.enable = true;
-      sddm.theme = "${import ../../modules/sddm-theme.nix {inherit pkgs;}}";
-      defaultSession = "none+i3";
+      sddm.theme = "${import ../../modules/sddm-theme.nix { inherit pkgs; }}";
+      # defaultSession = "none+i3";
+      defaultSession = "xfce+i3";
     };
 
     libinput = {

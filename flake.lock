@@ -2,7 +2,7 @@
   "nodes": {
     "crane": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1717383740,
@@ -54,35 +54,18 @@
         "type": "github"
       }
     },
-    "iwe": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1739189886,
-        "narHash": "sha256-/CtxWb+n9dhg8LvJjiept4J4RFd8YIR7ezZqzymf2x8=",
-        "owner": "maskudo",
-        "repo": "iwe",
-        "rev": "a782c29235d7783ecb5a9f35e57a9fa628ccf9c9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "maskudo",
-        "repo": "iwe",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1739185772,
-        "narHash": "sha256-X+Dky73wlN9R+zcrV98yH6jvZkd/VxleZKtKtFglCGk=",
+        "lastModified": 1736200483,
+        "narHash": "sha256-JO+lFN2HsCwSLMUWXHeOad6QUxOuwe9UOAF/iSl1J4I=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "587efe0fd09a8675a0630910fa04043ec48a7036",
+        "rev": "3f0a8ac25fb674611b98089ca3a5dd6480175751",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -118,22 +101,6 @@
       }
     },
     "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1736200483,
-        "narHash": "sha256-JO+lFN2HsCwSLMUWXHeOad6QUxOuwe9UOAF/iSl1J4I=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "3f0a8ac25fb674611b98089ca3a5dd6480175751",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
       "locked": {
         "lastModified": 1714656196,
         "narHash": "sha256-kjQkA98lMcsom6Gbhw8SYzmwrSo+2nruiTcTZp5jK7o=",
@@ -174,8 +141,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "iwe": "iwe",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "proxmox-nixos": "proxmox-nixos",
         "unstable": "unstable"
       }

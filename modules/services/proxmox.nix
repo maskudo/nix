@@ -26,7 +26,7 @@ in {
       proxmox-nixos.overlays.${system}
     ];
 
-    networking.firewall.enable = false;
+    networking.firewall.enable = true;
     networking.bridges = {
       "vmbr0" = {
         interfaces = ["enp4s0f1"];
