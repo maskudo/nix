@@ -33,7 +33,6 @@
     gh
     git-extras
     git-lfs
-    ghostty
     glow
     go
     evil-helix
@@ -52,7 +51,7 @@
     neofetch
     nixd
     nixfmt-rfc-style
-    nodejs_20
+    nodejs_23
     nodePackages.live-server
     nodePackages.pnpm
     nixos-firewall-tool
@@ -85,6 +84,8 @@
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with pkgs; [
       imagemagick
+      cowsay
+      fortune
     ];
   };
 
