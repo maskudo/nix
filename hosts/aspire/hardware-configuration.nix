@@ -6,14 +6,21 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelModules = ["kvm-intel" "nvidia"];
-  boot.extraModulePackages = [];
-  boot.kernelParams = ["button.lid_init_state=open" "snd_hda_intel.power_save=0"];
+  boot.kernelModules = [
+    "kvm-intel"
+    "nvidia"
+  ];
+  boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "button.lid_init_state=open"
+    "snd_hda_intel.power_save=0"
+  ];
 
   swapDevices = [
     {
@@ -30,7 +37,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/0F5E-64D2";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/mnt/media" = {

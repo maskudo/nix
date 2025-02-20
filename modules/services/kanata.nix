@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  environment.systemPackages = [pkgs.kanata];
+{ pkgs, ... }:
+{
+  environment.systemPackages = [ pkgs.kanata ];
   services.kanata = {
     enable = true;
     keyboards = {

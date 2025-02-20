@@ -6,17 +6,27 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci"];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "usb_storage"
+    "sd_mod"
+    "sdhci_pci"
+  ];
   boot.extraModprobeConfig = ''
     options bbswitch load_state=-1 unload_state=1 nvidia-drm.modeset=1
   '';
-  boot.kernelModules = ["kvm-amd" "nvidia"];
-  boot.extraModulePackages = [];
+  boot.kernelModules = [
+    "kvm-amd"
+    "nvidia"
+  ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/775173e5-e04b-45cc-9d20-714ae2b88057";
@@ -26,7 +36,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/00E6-6EC0";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   swapDevices = [

@@ -2,14 +2,21 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Enable OpenGL
   specialisation = {
     nvidia-graphics.configuration = {
       environment.etc."specialisation".text = "nvidia";
-      boot.kernelModules = ["nvidia" "nvidia-uvm"];
+      boot.kernelModules = [
+        "nvidia"
+        "nvidia-uvm"
+      ];
       # Load nvidia driver for Xorg and Wayland
-      services.xserver.videoDrivers = ["nvidia" "intel"];
+      services.xserver.videoDrivers = [
+        "nvidia"
+        "intel"
+      ];
       nixpkgs.config.nvidia.acceptLicense = true;
 
       environment.systemPackages = with pkgs; [

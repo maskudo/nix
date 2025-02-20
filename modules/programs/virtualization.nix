@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   virtualisation = {
     docker = {
       enable = true;
@@ -24,10 +25,14 @@
   };
   networking.firewall.interfaces = {
     docker0 = {
-      allowedTCPPorts = [80 443 9323];
+      allowedTCPPorts = [
+        80
+        443
+        9323
+      ];
     };
   };
-  users.extraGroups.vboxusers.members = ["kv"];
+  users.extraGroups.vboxusers.members = [ "kv" ];
   nixpkgs.config = {
     virtualbox.host.enableExtensionPack = true;
   };

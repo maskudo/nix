@@ -2,7 +2,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -31,10 +32,16 @@
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
     networkmanager = {
       enable = true;
-      insertNameservers = ["1.1.1.1" "9.9.9.9"];
+      insertNameservers = [
+        "1.1.1.1"
+        "9.9.9.9"
+      ];
       dns = "none";
     };
-    nameservers = ["1.1.1.1" "9.9.9.9"];
+    nameservers = [
+      "1.1.1.1"
+      "9.9.9.9"
+    ];
   };
   services.resolved.enable = false;
 
@@ -58,13 +65,22 @@
         isNormalUser = true;
         description = "${username}";
         shell = pkgs.zsh;
-        extraGroups = ["networkmanager" "wheel" "video" "audio" "docker" "vboxusers" "input" "uinput"];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "video"
+          "audio"
+          "docker"
+          "vboxusers"
+          "input"
+          "uinput"
+        ];
         packages = [
         ];
       };
     };
     groups.video = {
-      members = [username];
+      members = [ username ];
     };
   };
 

@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
-    dbus.packages = [pkgs.dconf];
+    dbus.packages = [ pkgs.dconf ];
     logind = {
       lidSwitch = "ignore";
       extraConfig = ''
@@ -39,8 +40,8 @@
           "monitor.alsa.rules" = [
             {
               matches = [
-                {"node.name" = "~alsa_input.*";}
-                {"node.name" = "~alsa_output.*";}
+                { "node.name" = "~alsa_input.*"; }
+                { "node.name" = "~alsa_output.*"; }
               ];
               actions = {
                 "update-props" = {
@@ -52,8 +53,8 @@
           "monitor.bluez.rules" = [
             {
               matches = [
-                {"node.name" = "~bluez_input.*";}
-                {"node.name" = "~bluez_output.*";}
+                { "node.name" = "~bluez_input.*"; }
+                { "node.name" = "~bluez_output.*"; }
               ];
               actions = {
                 "update-props" = {

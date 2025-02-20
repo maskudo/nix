@@ -3,10 +3,17 @@
   pkgs,
   lib,
   ...
-}: {
-  boot.kernelModules = ["nvidia" "nvidia-uvm"];
+}:
+{
+  boot.kernelModules = [
+    "nvidia"
+    "nvidia-uvm"
+  ];
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia" "amdgpu"];
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "amdgpu"
+  ];
   services.xserver.config = ''
     Section "ServerLayout"
              Identifier "layout"

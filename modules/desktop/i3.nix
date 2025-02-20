@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   nixpkgs.config = {
     packageOverrides = pkgs: {
       rofi = pkgs.rofi.override {
-        plugins = [pkgs.rofi-emoji pkgs.rofi-calc];
+        plugins = [
+          pkgs.rofi-emoji
+          pkgs.rofi-calc
+        ];
       };
     };
   };
