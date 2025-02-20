@@ -4,9 +4,11 @@
   system,
   config,
   ...
-}: let
+}:
+let
   proxmox-nixos = inputs.proxmox-nixos;
-in {
+in
+{
   imports = [
     proxmox-nixos.nixosModules.proxmox-ve
   ];
@@ -29,7 +31,7 @@ in {
     networking.firewall.enable = true;
     networking.bridges = {
       "vmbr0" = {
-        interfaces = ["enp4s0f1"];
+        interfaces = [ "enp4s0f1" ];
       };
     };
     networking.interfaces.vmbr0.useDHCP = lib.mkDefault true;

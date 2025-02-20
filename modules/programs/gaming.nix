@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     gaming.enable = lib.mkEnableOption "Enable gaming";
   };

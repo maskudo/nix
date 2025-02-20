@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     powerModule.enable = lib.mkEnableOption "Enables intel undervolt and auto-cpufreq";
   };
@@ -16,12 +17,21 @@
     systemd.services = {
       undervolt = {
         description = "Undervolt intel CPUs";
-        after = ["suspend.target" "hibernate.target" "hybrid-sleep.target"];
+        after = [
+          "suspend.target"
+          "hibernate.target"
+          "hybrid-sleep.target"
+        ];
         serviceConfig = {
           Type = "oneshot";
           ExecStart = "${pkgs.undervolt}/bin/undervolt -v --core -72 --cache -72 --gpu -72";
         };
-        wantedBy = ["multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target"];
+        wantedBy = [
+          "multi-user.target"
+          "suspend.target"
+          "hibernate.target"
+          "hybrid-sleep.target"
+        ];
       };
     };
     services.auto-cpufreq.enable = true;

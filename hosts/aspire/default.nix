@@ -1,4 +1,9 @@
-{...}: {
-  imports = [./hardware-configuration.nix ./configuration.nix ./nvidia.nix];
+{ ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./configuration.nix
+    ./nvidia.nix
+  ];
   powerModule.enable = true;
 }
