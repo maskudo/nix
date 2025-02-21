@@ -44,6 +44,7 @@
       "proxmox-nixos:nveXDuVVhFDRFx8Dn19f1WDEaNRJjPrF2CPD2D+m1ys="
     ];
   };
+  nix.optimise.automatic = true;
 
   programs.nh = {
     enable = true;
@@ -72,6 +73,7 @@
     nettools
     networkmanagerapplet
     nix-prefetch-git
+    nfs-utils
     nmap
     plocate
     polkit
