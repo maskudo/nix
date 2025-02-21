@@ -5,13 +5,15 @@
 Rebuild and switch home manager:
 
 ```bash
-make
+just omenh # or
+just aspireh
 ```
 
 Rebuild and Switch System
 
 ```bash
-sudo make nixos
+just omen # or
+just aspire
 ```
 
 > [!NOTE]

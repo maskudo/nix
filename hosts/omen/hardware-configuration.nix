@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }:
@@ -28,6 +29,10 @@
   ];
   boot.extraModulePackages = [ ];
 
+  boot.kernelParams = [ "amd_pstate=active" ];
+  powerManagement.cpuFreqGovernor = "ondemand";
+  services.fstrim.enable = true;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/775173e5-e04b-45cc-9d20-714ae2b88057";
     fsType = "ext4";
@@ -39,6 +44,25 @@
     options = [
       "fmask=0077"
       "dmask=0077"
+    ];
+  };
+
+  services.rpcbind.enable = true; # needed for NFS
+  boot.initrd = {
+    supportedFilesystems = [ "nfs" ];
+    kernelModules = [ "nfs" ];
+  };
+  networking.hosts = {
+    "192.168.1.65" = [ "aspire" ];
+  };
+  fileSystems."/mnt/media" = {
+    device = "aspire:/media";
+    fsType = "nfs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=600"
+      "nfsvers=4.2"
     ];
   };
 

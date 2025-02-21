@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  imports = [ ../sddm-avatar.nix ];
   nixpkgs.config = {
     packageOverrides = pkgs: {
       rofi = pkgs.rofi.override {
@@ -11,6 +12,21 @@
     };
   };
 
+  environment.xfce.excludePackages = with pkgs.xfce; [
+    mousepad
+    parole
+    xfce4-appfinder
+    xfce4-notifyd
+    xfce4-screensaver
+    xfce4-screenshooter
+    xfce4-session
+    xfce4-taskmanager
+    xfce4-terminal
+    xfce4-volumed-pulse
+    xfwm4
+    pkgs.lightdm
+  ];
+
   services = {
     xserver = {
       desktopManager = {
@@ -19,6 +35,7 @@
           enable = true;
           noDesktop = true;
           enableXfwm = false;
+          enableScreensaver = false;
         };
       };
       excludePackages = [ pkgs.xterm ];
@@ -33,7 +50,6 @@
           rofi
           picom
           polybarFull
-          st # a terminal just in case
         ];
       };
     };

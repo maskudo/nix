@@ -45,6 +45,8 @@
                 environment.variables = {
                   MONITOR1 = "eDP1";
                   MONITOR2 = "HDMI1";
+                  BATTERY = "BAT1";
+                  ADAPTER = "ADP1";
                 };
               }
             )
@@ -65,6 +67,8 @@
                 environment.variables = {
                   MONITOR1 = "eDP";
                   MONITOR2 = "HDMI-1-0";
+                  BATTERY = "BAT0";
+                  ADAPTER = "ACAD";
                 };
               }
             )

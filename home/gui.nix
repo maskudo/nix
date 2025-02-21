@@ -3,6 +3,13 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+  nixpkgs.config = {
+    packagesOverrides = pkgs: {
+      firefox = pkgs.firefox.override {
+        enableVaapi = true;
+      };
+    };
+  };
 
   home.packages = with pkgs; [
     arandr

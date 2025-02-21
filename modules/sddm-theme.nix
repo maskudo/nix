@@ -1,10 +1,6 @@
 { pkgs }:
 let
-  imageLink = "https://raw.githubusercontent.com/maskudo/dotfiles/main/wallpapers/Pictures/Wallpapers/7.png";
-  image = pkgs.fetchurl {
-    url = imageLink;
-    hash = "sha256-1iP5eT2RgFcfs/C/sFXbJQmFGK2WVFe7pM6jHaS5GWo=";
-  };
+  image = ../wallpapers/keyboard.png;
 in
 pkgs.stdenv.mkDerivation {
   name = "sddm-theme";

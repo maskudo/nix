@@ -23,8 +23,8 @@
       devices = [ "nodev" ];
     };
     loader.grub2-theme = {
-      theme = "vimix";
-      splashImage = lib.mkForce ../../wallpapers/flowering-rain.png;
+      theme = "stylish";
+      splashImage = lib.mkForce ../../wallpapers/keyboard.png;
       footer = true;
     };
     # usbcore.quirks for keyboard
