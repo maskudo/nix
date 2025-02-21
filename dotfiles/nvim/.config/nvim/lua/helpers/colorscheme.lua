@@ -19,6 +19,7 @@ end
 
 local colorscheme = get_if_available({
   "rosepine",
+  "da-one-ocean",
   "kanagawa",
   "base16-rose-pine",
   "default",

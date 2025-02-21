@@ -7,8 +7,8 @@ return {
     require("mini.doc").setup()
     require("mini.git").setup()
     require("mini.jump").setup({ silent = true })
+    require("mini.align").setup()
     require("mini.extra").setup()
-    require("mini.pairs").setup()
     require("mini.icons").setup()
     require("mini.icons").mock_nvim_web_devicons()
     require("mini.colors").setup()
@@ -16,6 +16,7 @@ return {
     require("mini.splitjoin").setup()
     require("mini.trailspace").setup()
     require("mini.jump2d").setup({
+      labels = "asdfghjkl",
       view = {
         dim = true,
         n_steps_ahead = 2,
@@ -40,5 +41,6 @@ return {
     require("plugins.mini.hipatterns")
     require("plugins.mini.clue")
     require("plugins.mini.sessions")
+    require("plugins.mini.pairs")
   end,
 }

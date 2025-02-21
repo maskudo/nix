@@ -6,12 +6,18 @@ $git_branch\
 $cmd_duration\
 $nix_shell\
 $python\
+$jobs\
 $line_break\
 $character"""
 
 [directory]
 style = "blue"
 truncation_length = 8
+
+[jobs]
+symbol = "💻 "  # You can use any symbol or emoji you like
+threshold = 1     # Show when there's at least one background job
+style = "bold yellow"
 
 [character]
 success_symbol = "[❯](purple)"

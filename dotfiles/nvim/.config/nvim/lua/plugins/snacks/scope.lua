@@ -3,7 +3,19 @@ return {
   ---@module 'snacks'
   ---@type snacks.Config
   opts = {
-    scope = {},
+    scope = {
+      treesitter = {
+        blocks = {
+          enabled = true,
+          "function_declaration",
+          "function_definition",
+          "method_declaration",
+          "method_definition",
+          "class_declaration",
+          "class_definition",
+        },
+      },
+    },
     indent = {
       enabled = true,
       indent = {
@@ -59,6 +71,11 @@ return {
       scope_popup = vim.api.nvim_open_win(float_buf, false, opts)
       -- Auto-close on CursorMoved or CursorMovedI
     end
-    vim.keymap.set("n", "<c-s>", toggle_scope, { desc = "Toggle Scope" })
+    vim.keymap.set(
+      { "n", "i" },
+      "<c-s>",
+      toggle_scope,
+      { desc = "Toggle Scope" }
+    )
   end,
 }

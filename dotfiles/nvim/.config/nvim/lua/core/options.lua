@@ -1,7 +1,7 @@
 local opts = {
   autowrite = true,
   clipboard = "unnamedplus",
-  completeopt = "menu,menuone,noselect,noinsert",
+  completeopt = "menu,menuone,noinsert",
   conceallevel = 2,
   confirm = true,
   cursorline = true,
@@ -43,7 +43,7 @@ local opts = {
     ":t"
   ) .. ".shada",
 }
-
+require("helpers.marks")
 -- Set options from table
 for opt, val in pairs(opts) do
   vim.o[opt] = val

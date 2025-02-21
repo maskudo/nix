@@ -519,7 +519,7 @@ hi(0, "MiniJump2dSpot", { bold = true, fg = "#f6c177", nocombine = true })
 hi(
   0,
   "MiniJump2dSpotAhead",
-  { bg = "#1f1d2e", fg = "#9ccfd8", nocombine = true }
+  { bg = "#1f1d2e", fg = "#908caa", nocombine = true }
 )
 hi(0, "MiniJump2dSpotUnique", { bold = true, fg = "#ebbcba", nocombine = true })
 hi(0, "MiniMapNormal", { link = "NormalFloat" })
@@ -844,6 +844,11 @@ hi(0, "Todo", { bg = "#433842", fg = "#ebbcba" })
 hi(0, "TreesitterContextLineNumber", { fg = "#ebbcba" })
 hi(0, "TroubleCount", { bg = "#1f1d2e", fg = "#c4a7e7" })
 hi(0, "TroubleText", { fg = "#908caa" })
+hi(0, "TSOperator", { fg = "#ffffff" })
+hi(0, "TSParameter", { fg = "#ffffff" })
+hi(0, "TSParameterReference", { fg = "#ffffff" })
+hi(0, "TSProperty", { fg = "#ffffff" })
+hi(0, "TSPunctBracket", { fg = "#ffffff" })
 hi(0, "Type", { fg = "#9ccfd8" })
 hi(0, "Underlined", { fg = "#c4a7e7", underline = true })
 hi(0, "VertSplit", { fg = "#6e6a86" })
