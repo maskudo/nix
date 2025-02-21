@@ -22,13 +22,16 @@ in
   config = lib.mkIf config.services.proxmox.enable {
     services.proxmox-ve = {
       enable = true;
-      ipAddress = "192.168.1.65";
+      ipAddress = "192.168.1.146";
     };
     nixpkgs.overlays = [
       proxmox-nixos.overlays.${system}
     ];
 
     networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [
+      8006
+    ];
     networking.bridges = {
       "vmbr0" = {
         interfaces = [ "enp4s0f1" ];
