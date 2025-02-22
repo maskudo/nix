@@ -3,9 +3,13 @@ default:
 
 aspire:
 	sudo nixos-rebuild switch --flake .#aspire
+aspireb:
+	sudo nixos-rebuild boot --flake .#aspire
 
 omen:
 	sudo nixos-rebuild switch --flake .#omen
+omenb:
+	sudo nixos-rebuild boot --flake .#omen
 
 omenh:
 	nix run nixpkgs#home-manager -- build --flake .#omen

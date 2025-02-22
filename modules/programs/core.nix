@@ -117,7 +117,6 @@
     nettools
     networkmanagerapplet
     nix-prefetch-git
-    nfs-utils
     nmap
     plocate
     polkit

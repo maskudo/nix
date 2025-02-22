@@ -42,6 +42,7 @@
               { ... }:
               {
                 services.proxmox.enable = true;
+                services.nfs-server.enable = true;
                 environment.variables = {
                   MONITOR1 = "eDP1";
                   MONITOR2 = "HDMI1";
@@ -64,6 +65,7 @@
             (
               { ... }:
               {
+                services.nfs-client.enable = true;
                 environment.variables = {
                   MONITOR1 = "eDP";
                   MONITOR2 = "HDMI-1-0";
