@@ -20,6 +20,7 @@
   };
   services.resolved.enable = false;
   networking.firewall = {
+    enable = true;
     # for NFSv3; view with `rpcinfo -p`
     allowedTCPPorts = [
       22

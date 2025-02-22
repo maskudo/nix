@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -47,14 +46,17 @@
     ];
   };
 
-  services.rpcbind.enable = true; # needed for NFS
-  boot.initrd = {
-    supportedFilesystems = [ "nfs" ];
-    kernelModules = [ "nfs" ];
-  };
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
   networking.hosts = {
     "192.168.1.65" = [ "aspire" ];
   };
+
   fileSystems."/mnt/media" = {
     device = "aspire:/media";
     fsType = "nfs";
@@ -65,13 +67,6 @@
       "nfsvers=4.2"
     ];
   };
-
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 16 * 1024;
-    }
-  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
