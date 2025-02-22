@@ -78,9 +78,6 @@
   networking.firewall = {
     # for NFSv3; view with `rpcinfo -p`
     allowedTCPPorts = [
-      22
-      80
-      443
       111
       2049
       4000

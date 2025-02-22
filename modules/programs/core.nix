@@ -12,6 +12,48 @@
     };
   };
 
+  security.rtkit.enable = true;
+  # Set your time zone.
+  time.timeZone = "Asia/Kathmandu";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  systemd = {
+    enableEmergencyMode = false;
+    extraConfig = "DefaultTimeoutStopSec=10s";
+  };
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users = {
+    users = {
+      ${username} = {
+        isNormalUser = true;
+        description = "${username}";
+        shell = pkgs.zsh;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "video"
+          "audio"
+          "docker"
+          "vboxusers"
+          "input"
+          "uinput"
+        ];
+        packages = [
+        ];
+      };
+    };
+    groups.video = {
+      members = [ username ];
+    };
+  };
+
   # symlink bash to /bin/bash
   system.activationScripts.createBashSymlink = ''
     mkdir -p /bin
@@ -52,6 +94,8 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/${username}/nix";
   };
+
+  programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
     alsa-utils
