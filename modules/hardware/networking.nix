@@ -19,8 +19,21 @@
     ];
   };
   services.resolved.enable = false;
-  networking.firewall = {
+
+  services.openssh = {
     enable = true;
+    permitRootLogin = "no";
+    passwordAuthentication = false;
+    challengeResponseAuthentication = false;
+    extraConfig = ''
+      HostBasedAuthentication no
+      PubkeyAuthentication yes
+    '';
+
+  };
+
+  networking.firewall = {
+    enable = false;
     # for NFSv3; view with `rpcinfo -p`
     allowedTCPPorts = [
       22
