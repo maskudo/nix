@@ -2,6 +2,11 @@
 {
   fonts.fontconfig.enable = true;
   dconf.enable = true;
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
 
   # home.activation = {
   #   setLockScreen = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -11,10 +16,6 @@
   # };
 
   home.packages = with pkgs; [
-    font-awesome
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.zed-mono
-    nerd-fonts.fira-code
     act
     ansible
     atuin
@@ -22,20 +23,23 @@
     bat
     btop
     calcurse
+    cowsay
     dconf
     delta
     dig
     distrobox
     dua
+    evil-helix
     fd
     ffmpeg
+    font-awesome
+    fortune
     fzf
     gh
     git-extras
     git-lfs
     glow
     go
-    evil-helix
     imagemagick
     jless
     jq
@@ -49,15 +53,18 @@
     luarocks
     minikube
     neofetch
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.zed-mono
     nixd
     nixfmt-rfc-style
-    nodejs_23
+    nixos-firewall-tool
     nodePackages.live-server
     nodePackages.pnpm
-    nixos-firewall-tool
+    nodejs_23
+    nwg-look
     opentofu # terraform
     pandoc
-    texlive.combined.scheme-small # for pdf
     poetry
     postgresql
     presenterm
@@ -66,10 +73,11 @@
     rustup
     sqlite
     sshs
-    stow
     starship
+    stow
     tealdeer
     television
+    texlive.combined.scheme-small # for pdf
     tmux
     uv
     vim
@@ -82,11 +90,6 @@
   programs.neovim = {
     enable = true;
     extraLuaPackages = ps: [ ps.magick ];
-    extraPackages = with pkgs; [
-      imagemagick
-      cowsay
-      fortune
-    ];
   };
 
   programs.direnv = {

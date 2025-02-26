@@ -1,6 +1,4 @@
 {
-  pkgs,
-  username,
   ...
 }:
 {
@@ -9,7 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/programs
     ../../modules/services
-    ../../modules/desktop/i3.nix
+    ../../modules/desktop
     ../../modules/hardware
   ];
 

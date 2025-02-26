@@ -8,6 +8,8 @@
     home-manager.url = "github:nix-community/home-manager";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs =
@@ -85,22 +87,22 @@
 
       homeConfigurations =
         let
-          homeManagerModule =
-            username:
-            import ./home/home-manager.nix {
-              homeDirectory = "/home/" + username;
-              inherit username;
-            };
           homeManager =
             {
               system,
               username,
             }:
             home-manager.lib.homeManagerConfiguration {
-              modules = [ (homeManagerModule username) ];
+              modules = [
+                (import ./home/home-manager.nix {
+                  homeDirectory = "/home/${username}";
+                  inherit username;
+                })
+                inputs.catppuccin.homeManagerModules.catppuccin
+              ];
               pkgs = unstable.legacyPackages.${system};
               extraSpecialArgs = {
-                inherit username inputs;
+                inherit username inputs system;
               };
             };
         in

@@ -10,20 +10,20 @@
       settings = {
         CPU_SCALING_GOVERNOR_ON_BAT = "ondemand";
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_MIN_FREQ_ON_AC = 400000;
+        CPU_SCALING_MIN_FREQ_ON_AC = 0;
         CPU_SCALING_MAX_FREQ_ON_AC = 9999999;
-        CPU_SCALING_MIN_FREQ_ON_BAT = 400000;
-        CPU_SCALING_MAX_FREQ_ON_BAT = 3400000;
+        CPU_SCALING_MIN_FREQ_ON_BAT = 0;
+        CPU_SCALING_MAX_FREQ_ON_BAT = 2400000;
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
         CPU_MIN_PERF_ON_AC = 0;
         CPU_MAX_PERF_ON_AC = 100;
         CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 50;
+        CPU_MAX_PERF_ON_BAT = 25;
         CPU_BOOST_ON_AC = 1;
-        CPU_BOOST_ON_BAT = 1;
+        CPU_BOOST_ON_BAT = 0;
         CPU_HWP_DYN_BOOST_ON_AC = 1;
-        CPU_HWP_DYN_BOOST_ON_BAT = 1;
+        CPU_HWP_DYN_BOOST_ON_BAT = 0;
 
         NMI_WATCHDOG = 0;
 
@@ -32,8 +32,9 @@
         USB_AUTOSUSPEND = 0;
         RUNTIME_PM_ENABLE = "01:00.0";
         RUNTIME_PM_ON_AC = "auto";
+        RUNTIME_PM_ON_BAT = "auto";
         SOUND_POWER_SAVE_ON_AC = 0;
-        SOUND_POWER_SAVE_ON_BAT = 0;
+        SOUND_POWER_SAVE_ON_BAT = 1;
       };
     };
   };
