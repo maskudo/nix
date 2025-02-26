@@ -1,15 +1,17 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-  nixpkgs.config = {
-    packagesOverrides = pkgs: {
-      firefox = pkgs.firefox.override {
-        enableVaapi = true;
-      };
-    };
-  };
+
+  catppuccin.flavor = "mocha";
+  catppuccin.gtk.enable = true;
+  catppuccin.hyprland.enable = true;
 
   home.packages = with pkgs; [
     arandr
@@ -21,14 +23,16 @@
     copyq
     cozy
     dex
-    discord
+    (discord.override {
+      withVencord = true;
+    })
     deadbeef-with-plugins
     dracula-theme
     kanagawa-gtk-theme
     kanagawa-icon-theme
     feh
-    flameshot
-    firefox
+    (flameshot.override { enableWlrSupport = true; })
+    # firefox
     gparted
     kitty
     libsForQt5.breeze-qt5
@@ -51,5 +55,7 @@
     xfce.xfconf
     xfce.thunar
     xsel
+    inputs.zen-browser.packages."${system}".default
+
   ];
 }

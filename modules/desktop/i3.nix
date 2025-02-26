@@ -11,7 +11,7 @@
       };
     };
   };
-
+  environment.sessionVariables.GTK_CSD = "0"; # disable client side window decorations
   environment.xfce.excludePackages = with pkgs.xfce; [
     mousepad
     parole

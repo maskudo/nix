@@ -22,9 +22,11 @@
 
   services.openssh = {
     enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = false;
-    challengeResponseAuthentication = false;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      ChallengeResponseAuthentication = false;
+    };
     extraConfig = ''
       HostBasedAuthentication no
       PubkeyAuthentication yes
