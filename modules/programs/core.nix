@@ -80,6 +80,7 @@
     trusted-substituters = [
       "https://devenv.cachix.org"
       "https://cache.saumon.network/proxmox-nixos"
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
     trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
