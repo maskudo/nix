@@ -12,15 +12,9 @@
     copyq
     emacs
     kanata
-    gnome-keyring
   ];
 
   services.copyq.enable = true;
-  # services.emacs.enable = true;
-  services.gnome-keyring = {
-    enable = true;
-    components = [ "secrets" ];
-  };
 
   services.syncthing = {
     enable = true;
