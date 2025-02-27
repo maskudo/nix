@@ -1,0 +1,13 @@
+ {
+   "output": "eDP-1",
+   "height": 30, // Waybar height (to be removed for auto height)
+   "layer": "top", // Waybar at top layer
+   "position": "top",
+   "margin": "0px 0px 0px 0px",
+   "include": ["~/.config/waybar/modules.json"],
+   "modules-left": ["hyprland/workspaces","hyprland/submap"],
+   "modules-center": [],
+   "modules-right": ["group/sys-info","battery","group/clock","custom/notification","tray"]
+//    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock","tray"],
+ }
+
