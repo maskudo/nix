@@ -7,7 +7,11 @@
 {
   imports = [ ../sddm-avatar.nix ];
   options = {
-    desktop.i3.enable = lib.mkEnableOption "Enables i3wm";
+    desktop.i3.enable = lib.mkOption {
+      description = "Enables i3wm";
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.desktop.i3.enable {

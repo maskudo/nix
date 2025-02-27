@@ -1,6 +1,6 @@
-{ ... }:
+{ lib, config, ... }:
 {
-  services.libinput = {
+  services.libinput = lib.mkIf (config.desktop.i3.enable || config.desktop.hyprland.enable) {
     enable = true;
     touchpad = {
       tapping = true;

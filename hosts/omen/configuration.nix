@@ -11,8 +11,6 @@
     ../../modules/hardware
   ];
 
-  desktop.hyprland.enable = true;
-
   services.xserver.videoDrivers = [
     "nvidia"
     "amdgpu"
