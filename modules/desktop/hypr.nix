@@ -6,7 +6,11 @@
 }:
 {
   options = {
-    desktop.hyprland.enable = lib.mkEnableOption "Enables hyprland";
+    desktop.hyprland.enable = lib.mkOption {
+      description = "Enables hyprland";
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.desktop.hyprland.enable {
