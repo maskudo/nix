@@ -21,6 +21,14 @@ return {
         easing = "linear",
       },
     },
+    statuscolumn = {
+      enabled = true,
+      left = {
+        "git",
+        "mark",
+      },
+      right = { "fold" },
+    },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     words = {

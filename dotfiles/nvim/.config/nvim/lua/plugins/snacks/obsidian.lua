@@ -55,6 +55,11 @@ return {
         desc = "Create Daily Note",
       },
       {
+        "<leader>ot",
+        ":e ~/.local/share/todo.md<CR>",
+        desc = "Open Todo",
+      },
+      {
         "<leader>on",
         function()
           vim.ui.input({ prompt = "Enter filename" }, function(filename)

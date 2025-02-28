@@ -1,0 +1,40 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "ctp-mocha"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+
+[[block]]
+block = "cpu"
+format = " $icon $utilization "
+
+[[block]]
+block = "net"
+format = " ^icon_net_down $speed_down ^icon_net_up $speed_up"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%R') "
+
+[[block]]
+block = "battery"
+driver = "upower"
+device = "BAT0"
+format = " $icon $percentage |N/A"
+full_format = "$icon $percentage"
+missing_format = ""
+

@@ -1,34 +1,32 @@
 #!/bin/bash
 
 function send_notification() {
-	volume=$(pactl get-sink-volume 0 | awk -F'[/,]' '/Volume/ {gsub(/%/, "", $2); gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
-	dunstify -a "changevolume" -u low -r "9993" -h int:value:"$volume" -i "volume-$1" "Volume: $volume%" -t 2000
+  volume=$(pactl get-sink-volume 0 | awk -F'[/,]' '/Volume/ {gsub(/%/, "", $2); gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+  dunstify -a "changevolume" -u low -r "9993" -h int:value:"$volume" -i "volume-$1" "Volume: $volume%" -t 2000
 }
 
 case $1 in
 up)
-	# Set the volume on (if it was muted)
-	pactl set-sink-mute 0 0
-	pactl set-sink-volume 0 +5% # set relative
-	send_notification $1
-	;;
+  # Set the volume on (if it was muted)
+  pactl set-sink-mute 0 0
+  pactl set-sink-volume 0 +5% # set relative
+  ;;
 down)
-	pactl set-sink-mute 0 0
-	pactl set-sink-volume 0 -5% # set relative
-	send_notification $1
-	;;
+  pactl set-sink-mute 0 0
+  pactl set-sink-volume 0 -5% # set relative
+  ;;
 mute)
-	pactl set-sink-mute 0 toggle
-	mute_status=$(pactl get-sink-mute 0 | awk -F': ' '{print $2}')
-	volume=$(pactl get-sink-volume 0 | awk -F'[/,]' '/Volume/ {gsub(/%/, "", $2); gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2); print $2}')
-	if [ "$mute_status" = "no" ]; then
-		if [ "$volume" -eq 0 ]; then
-			dunstify -i "volume-mute" -a "changevolume" -t 2000 -r 9993 -u low "Muted: $volume%"
-		else
-			dunstify -i "volume-$1" -a "changevolume" -t 2000 -r 9993 -u low "Unmuted: $volume%"
-		fi
-	else
-		dunstify -i "volume-mute" -a "changevolume" -t 2000 -r 9993 -u low "Muted: $volume%"
-	fi
-	;;
+  pactl set-sink-mute 0 toggle
+  # mute_status=$(pactl get-sink-mute 0 | awk -F': ' '{print $2}')
+  volume=$(pactl get-sink-volume 0 | awk -F'[/,]' '/Volume/ {gsub(/%/, "", $2); gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2); print $2}')
+  # if [ "$mute_status" = "no" ]; then
+  #   if [ "$volume" -eq 0 ]; then
+  #     dunstify -i "volume-mute" -a "changevolume" -t 2000 -r 9993 -u low "Muted: $volume%"
+  #   else
+  #     dunstify -i "volume-$1" -a "changevolume" -t 2000 -r 9993 -u low "Unmuted: $volume%"
+  #   fi
+  # else
+  #   dunstify -i "volume-mute" -a "changevolume" -t 2000 -r 9993 -u low "Muted: $volume%"
+  # fi
+  ;;
 esac

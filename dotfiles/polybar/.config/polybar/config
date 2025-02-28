@@ -30,7 +30,7 @@ semi-trans-black = #aa000000
 enable-ipc = true
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 30
+height = 25
 ; bottom = false
 ;offset-x = 1%
 ;offset-y = 1%
@@ -53,10 +53,10 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "JetBrainsMono Nerd Font:size=10;2"
+font-0 = "JetBrainsMono Nerd Font:size=9;2"
 font-1 = "FontAwesome:size=13;4"
-font-2 = "JetBrainsMono Nerd Font:size=10;2"
-font-3 = "JetBrainsMono Nerd Font:size=10;2"
+font-2 = "JetBrainsMono Nerd Font:size=9;2"
+font-3 = "JetBrainsMono Nerd Font:size=9;2"
 
 modules-left = bspwm i3
 modules-center = 

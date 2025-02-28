@@ -7,6 +7,9 @@ local opts = {
   cursorline = true,
   expandtab = true,
   formatoptions = "jcroqlnt",
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
+  foldenable = false,
   grepformat = "%f:%l:%c:%m",
   -- colorcolumn = "80",
   grepprg = "rg",
@@ -43,7 +46,6 @@ local opts = {
     ":t"
   ) .. ".shada",
 }
-require("helpers.marks")
 -- Set options from table
 for opt, val in pairs(opts) do
   vim.o[opt] = val

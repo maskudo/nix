@@ -5,6 +5,7 @@ return {
       "folke/snacks.nvim",
     },
     lazy = false,
+    event = "VeryLazy",
     keys = {
       {
         "<leader>ho",
@@ -31,13 +32,6 @@ return {
         -- "rust",
       },
     },
-  },
-
-  {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = "BufEnter",
-    enabled = vim.fn.has("nvim-0.10.0") == 1,
   },
 
   {
