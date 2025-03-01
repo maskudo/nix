@@ -8,12 +8,14 @@ function send_notification() {
 
 case $1 in
 up)
-  light -A 5
+  light -A 5 -q
+  send_notification $1
   ;;
 down)
   brightness=$(printf "%.0f\n" $(light -G))
   if [[ $brightness -gt 5 ]]; then
-    light -U 5
+    light -U 5 -q
+    send_notification $1
   fi
   ;;
 esac
