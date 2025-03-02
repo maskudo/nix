@@ -1,3 +1,12 @@
-result
-$HOME
+nvim/.config/nvim/plugin/packer_compiled.lua
+smplayer/.config/smplayer/file_settings
+smplayer/.config/smplayer/device_info.ini
+smplayer/.config/smplayer/favorites.m3u8
+smplayer/.config/smplayer/hdpi.ini
+smplayer/.config/smplayer/player_info.ini
+smplayer/.config/smplayer/playlist.ini
+smplayer/.config/smplayer/radio.m3u8
+smplayer/.config/smplayer/tv.m3u8
+emacs/.config/doom/eln-cache/
 .direnv
+result
