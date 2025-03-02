@@ -1,5 +1,6 @@
 { lib, config, ... }:
 {
+  environment.sessionVariables.GTK_CSD = "0"; # disable client side window decorations
   services.libinput = lib.mkIf (config.desktop.i3.enable || config.desktop.hyprland.enable) {
     enable = true;
     touchpad = {

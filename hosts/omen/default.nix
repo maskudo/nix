@@ -6,6 +6,7 @@
     ./nvidia.nix
   ];
   desktop.i3.enable = true;
-  desktop.hyprland.enable = false;
+  desktop.hyprland.enable = true;
+  desktop.sway.enable = false;
   powerModule.enable = false;
 }
