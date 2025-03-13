@@ -11,6 +11,7 @@
     ../../modules/hardware
   ];
 
+  gaming.enable = true;
   services.xserver.videoDrivers = [
     "nvidia"
     "amdgpu"

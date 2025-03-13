@@ -25,11 +25,11 @@
       rofi-wayland
       bemoji
       swww
-      # hyprshot
+      hyprshot
       wl-clipboard
       wl-clipboard-x11
       wlr-randr
-      swaynotificationcenter
+      dunst
       pyprland
     ];
   };

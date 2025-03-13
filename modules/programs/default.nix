@@ -7,5 +7,5 @@
     ./virtualization.nix
     ./gaming.nix
   ];
-  gaming.enable = lib.mkDefault true;
+  gaming.enable = lib.mkDefault false;
 }

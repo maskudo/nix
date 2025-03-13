@@ -98,6 +98,9 @@
 
   programs.zsh.enable = true;
 
+  # for commands such as npm link to work
+  programs.npm.enable = true;
+
   environment.systemPackages = with pkgs; [
     alsa-utils
     docker-compose

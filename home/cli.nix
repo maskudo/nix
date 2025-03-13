@@ -18,6 +18,7 @@
   home.packages = with pkgs; [
     act
     ansible
+    awscli2
     atuin
     autorandr
     bat
@@ -79,11 +80,13 @@
     television
     texlive.combined.scheme-small # for pdf
     tmux
+    typst
     uv
     vim
     yazi
     yq
     yt-dlp
+    zathura
     zoxide
   ];
 
