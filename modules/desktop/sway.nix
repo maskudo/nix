@@ -19,18 +19,19 @@
       xwayland.enable = true;
       package = pkgs.swayfx;
       extraOptions = [ "--unsupported-gpu" ];
+      extraPackages = with pkgs; [
+        waybar
+        hyprlock
+        rofi-wayland
+        bemoji
+        swww
+        wl-clipboard
+        wl-clipboard-x11
+        wlr-randr
+        dunst
+
+      ];
     };
 
-    environment.systemPackages = with pkgs; [
-      waybar
-      hyprlock
-      rofi-wayland
-      bemoji
-      swww
-      wl-clipboard
-      wl-clipboard-x11
-      wlr-randr
-      swaynotificationcenter
-    ];
   };
 }

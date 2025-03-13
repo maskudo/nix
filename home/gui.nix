@@ -38,6 +38,7 @@
     libsForQt5.breeze-qt5
     libresprite
     lxappearance
+    lxrandr
     mpv
     nicotine-plus
     normcap

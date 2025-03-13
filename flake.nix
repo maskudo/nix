@@ -102,7 +102,12 @@
               ];
               pkgs = unstable.legacyPackages.${system};
               extraSpecialArgs = {
-                inherit username inputs system;
+                stablePkgs = nixpkgs.legacyPackages.${system};
+                inherit
+                  username
+                  inputs
+                  system
+                  ;
               };
             };
         in
