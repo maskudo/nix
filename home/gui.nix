@@ -46,6 +46,7 @@
     obsidian
     pinta
     qbittorrent
+    qbittorrent-nox
     rxvt-unicode
     smplayer
     uget
