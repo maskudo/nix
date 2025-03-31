@@ -1,13 +1,13 @@
 {
   "battery": {
     "bat": "BAT0",
-    "format": "{<span ><b>{capacity}</b></span>icon}",
+    "format": "{<span><b>{capacity}</b></span>icon}",
     "format-icons": [
-      "  ",
-      "  ",
-      "  ",
-      "  ",
-      "  ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
     ],
     "format-critical": "<span font_family='JetBrainsMono Nerd Font' color='#f38ba8'>{icon} </span><b>{capacity}% </b>",
     "format-good": "<span font_family='JetBrainsMono Nerd Font' color='#ffffff'>{icon} </span><b>{capacity}% </b>",

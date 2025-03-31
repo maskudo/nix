@@ -1,5 +1,17 @@
+local function use_biome(bufnr)
+  local path = vim.api.nvim_buf_get_name(bufnr)
+  if path:find("autolink") then
+    return { "biome" }
+  end
+  if path:find("work/") then
+    return { "prettierd" }
+  else
+    return { "biome" }
+  end
+end
 return {
   "stevearc/conform.nvim",
+  event = "BufReadPost",
   config = function()
     local conform = require("conform")
 
@@ -12,14 +24,14 @@ return {
         },
       },
       formatters_by_ft = {
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "biome" },
-        svelte = { "biome" },
-        css = { "biome" },
-        html = { "biome" },
-        json = { "biome" },
+        javascript = use_biome,
+        typescript = use_biome,
+        javascriptreact = use_biome,
+        typescriptreact = use_biome,
+        svelte = { "prettierd" },
+        css = { "prettierd" },
+        html = { "prettierd" },
+        json = { "prettierd" },
         yaml = { "prettierd" },
         graphql = { "prettierd" },
         liquid = { "prettierd" },

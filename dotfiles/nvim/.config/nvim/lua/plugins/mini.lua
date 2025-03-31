@@ -34,15 +34,6 @@ return {
         start_jumping = "S",
       },
     })
-    require("mini.operators").setup({
-      -- Exchange text regions
-      exchange = {
-        prefix = "ge",
-      },
-      sort = {
-        prefix = "",
-      },
-    })
     require("mini.bracketed").setup({
       file = { suffix = "", options = {} },
       treesitter = { suffix = "t", options = {} },

@@ -1,42 +1,43 @@
 [Default Applications]
 application/json=editor.desktop
-application/pdf=firefox.desktop
-application/x-extension-htm=firefox.desktop
-application/x-extension-html=firefox.desktop
-application/x-extension-shtml=firefox.desktop
-application/x-extension-xht=firefox.desktop
-application/x-extension-xhtml=firefox.desktop
-application/xhtml+xml=firefox.desktop
+application/pdf=zen.desktop
+application/x-extension-htm=zen.desktop
+application/x-extension-html=zen.desktop
+application/x-extension-shtml=zen.desktop
+application/x-extension-xht=zen.desktop
+application/x-extension-xhtml=zen.desktop
+application/xhtml+xml=zen.desktop
 image/png=feh.desktop;
-text/html=firefox.desktop
+text/html=zen.desktop
 text/plain=nvim.desktop
-text/xml=firefox.desktop;
+text/xml=zen.desktop;
 video/mp4=smplayer.desktop
 video/x-matroska=smplayer.desktop
-x-scheme-handler/chrome=firefox.desktop
-x-scheme-handler/ftp=firefox.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=zen.desktop
+x-scheme-handler/ftp=zen.desktop;
+x-scheme-handler/http=zen.desktop;
+x-scheme-handler/https=zen.desktop;
 x-scheme-handler/postman=Postman.desktop
 inode/directory=thunar.desktop
 
 [Added Associations]
-application/pdf=firefox.desktop;
+application/pdf=zen.desktop;
 application/x-desktop=nvim.desktop;
-application/x-extension-htm=firefox.desktop;
-application/x-extension-html=firefox.desktop;
-application/x-extension-shtml=firefox.desktop;
-application/x-extension-xht=firefox.desktop;
-application/x-extension-xhtml=firefox.desktop;
-application/xhtml+xml=firefox.desktop;
+application/x-extension-htm=zen.desktop;
+application/x-extension-html=zen.desktop;
+application/x-extension-shtml=zen.desktop;
+application/x-extension-xht=zen.desktop;
+application/x-extension-xhtml=zen.desktop;
+application/xhtml+xml=zen.desktop;
 image/jpeg=feh.desktop;
-text/html=firefox.desktop;
+text/html=zen.desktop;
 video/mp4=smplayer.desktop;
 video/x-matroska=smplayer.desktop;
-x-scheme-handler/chrome=firefox.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=zen.desktop;
+x-scheme-handler/http=zen.desktop;
+x-scheme-handler/https=zen.desktop;
 inode/directory=thunar.desktop
 
 [Removed Associations]
 inode/directory=code.desktop
+inode/directory=nvim.desktop

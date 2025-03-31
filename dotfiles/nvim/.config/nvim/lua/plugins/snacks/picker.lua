@@ -91,6 +91,26 @@ return {
         git_log = gitActions,
         files = fileActions,
         smart = fileActions,
+        grep = {
+          win = {
+            input = {
+              keys = {
+                ["<space><space>"] = {
+                  "multi_grep",
+                  desc = "Add -g flag on ripgrep",
+                  mode = { "n", "i" },
+                },
+              },
+            },
+          },
+          actions = {
+            ["multi_grep"] = function(picker)
+              local current = picker.input:get()
+              picker.input:set("", current .. " -- -g=")
+              picker:find({ refresh = true })
+            end,
+          },
+        },
         buffers = {
           win = {
             input = {
@@ -122,7 +142,7 @@ return {
       },
     },
   },
-  -- stylua: ignore 
+  -- stylua: ignore
 	keys = {
 		{"gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},
 		{"gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation",},
@@ -136,20 +156,23 @@ return {
 		{"<leader><space>", function() Snacks.picker.buffers({ sort_lastused = true, supports_live = true }) end, desc = "Buffers",},
 		{"<leader>bf", function() Snacks.picker.buffers() end, desc = "List Buffers",},
 		{"<leader>bg", function() Snacks.picker.grep_buffers() end, desc = "Grep Open buffers",},
+		{"<leader>b/", function() Snacks.picker.grep_buffers() end, desc = "Grep Open buffers",},
 		{"<leader>bl", function() Snacks.picker.lines() end, desc = "Buffer Lines",},
 		{"<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete Other Buffers",},
 		{"<leader>e", function() Snacks.picker.explorer() end, desc = "Explorer",},
 		{"<leader>fU", function() Snacks.picker.undo() end, desc = "Undo",},
 		{"<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers",},
-		{"<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File",},
+		{"<leader>fc", function() Snacks.picker.smart({ cwd = "~/dotfiles",  hidden = true, filter = { cwd = true }  }) end, desc = "Find Config File",},
 		{"<leader>fD", function() Snacks.picker.diagnostics({ format = "file", }) end, desc = "Workspace Diagnostics",},
 		{"<leader>fd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
-		{"<leader>xx", function() Snacks.picker.diagnostics({ format = "file", }) end, desc = "Workspace Diagnostics",},
-		{"<leader>xb", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
-		{"<leader>ff", function() Snacks.picker.files({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
+		-- {"<leader>xx", function() Snacks.picker.diagnostics({ format = "file", }) end, desc = "Workspace Diagnostics",},
+		-- {"<leader>xb", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
+		{"<leader>ff", function() Snacks.picker.smart({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
+		{"<leader>fF", function() Snacks.picker.files({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
 		{"<leader>fg", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
 		{"<leader>fp", function() Snacks.picker.recent({ hidden = true, filter = { cwd = true } }) end, desc = "Recent",},
 		{"<leader>fs", function() Snacks.picker.smart({ hidden = true }) end, desc = "Files (smart)",},
+		{"<leader>ft", function() Snacks.picker.grep({ hidden = true }) end, desc = "TODO Comments",},
 		{"<leader>gB", function() Snacks.picker.git_branches() end, desc = "Git Branches",},
 		{"<leader>gC", function() Snacks.picker.git_log({ hidden = true }) end, desc = "Git Commits",},
 		{"<leader>gY", function() Snacks.gitbrowse.open() end, desc = "Open git link in browser", mode = { "n", "v" },},

@@ -3,7 +3,7 @@ return {
   {
     "rose-pine/nvim",
     name = "rose-pine",
-    enabled = false,
+    enabled = true,
     lazy = true,
     opts = {
       styles = {

@@ -2,7 +2,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    -- lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
     build = function()
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
@@ -11,6 +11,12 @@ return {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
         event = { "BufReadPost", "BufNewFile" },
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = {
+          max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
+        },
       },
     },
     config = function()

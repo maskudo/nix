@@ -24,6 +24,13 @@ M.on_attach = function(_client, bufnr)
   opts.desc = "See available code actions"
   keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
+  opts.desc = "See available code actions"
+  keymap.set({ "n", "v" }, "<leader>cA", function()
+    vim.lsp.buf.code_action({
+      range = { start = { 0, 0 }, ["end"] = { vim.fn.line("$"), 0 } },
+    })
+  end, opts) -- see available code actions, in visual mode will apply to selection
+
   opts.desc = "Show line diagnostics"
   keymap.set("n", "<leader>xd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 

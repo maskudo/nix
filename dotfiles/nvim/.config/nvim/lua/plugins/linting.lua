@@ -5,11 +5,11 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      javascript = { "biomejs" },
-      typescript = { "biomejs" },
-      javascriptreact = { "biomejs" },
-      typescriptreact = { "biomejs" },
-      svelte = { "biomejs" },
+      javascript = { "eslint" },
+      typescript = { "eslint" },
+      javascriptreact = { "eslint" },
+      typescriptreact = { "eslint" },
+      svelte = { "eslint" },
       python = { "ruff" },
       sql = { "sqlfluff" },
       markdown = { "markdownlint-cli2" },

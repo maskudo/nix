@@ -2,7 +2,7 @@ return {
   {
     "saghen/blink.cmp",
     enabled = true,
-    lazy = false,
+    event = "BufReadPre",
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
@@ -11,43 +11,6 @@ return {
     ---@type blink.cmp.Config
     ---
     opts = {
-      cmdline = {
-        keymap = {
-
-          preset = "default",
-          ["<Tab>"] = { "select_next", "select_and_accept" },
-          ["<S-Tab>"] = { "select_prev", "select_and_accept" },
-        },
-      },
-      keymap = {
-        preset = "default",
-        ["<C-j>"] = { "scroll_documentation_down" },
-        ["<C-k>"] = { "scroll_documentation_up" },
-        ["<C-space>"] = {
-          "show",
-          "show_documentation",
-          "hide_documentation",
-        },
-        ["<C-s>"] = {
-          function(cmp)
-            cmp.show({ providers = { "snippets" } })
-          end,
-        },
-        ["<S-Tab>"] = { "snippet_backward", "fallback" },
-      },
-      completion = {
-        menu = { border = "single" },
-        documentation = { window = { border = "single" } },
-        accept = { auto_brackets = { enabled = false } },
-        list = {
-          selection = {
-            preselect = function(ctx)
-              return ctx.mode ~= "cmdline"
-            end,
-          },
-        },
-      },
-      signature = { window = { border = "single" } },
       sources = {
         default = {
           "lsp",
@@ -58,11 +21,6 @@ return {
         },
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-          snippets = {
-            opts = {
-              search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-            },
-          },
         },
       },
     },

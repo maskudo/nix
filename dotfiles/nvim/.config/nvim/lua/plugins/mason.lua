@@ -40,6 +40,8 @@ return {
       "stylua", -- lua formatter
       "tailwindcss-language-server",
       "terraform-ls",
+      "tinymist",
+      "typstfmt",
       "tflint",
       "vtsls", -- typescript lsp
       -- debuggers
