@@ -1,5 +1,5 @@
 {
-  pkgs,
+  unstablePkgs,
   lib,
   config,
   ...
@@ -19,7 +19,7 @@
 
     programs.gamescope.enable = true;
     programs.gamemode.enable = true;
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstablePkgs; [
       mangohud
       lutris
       protonup

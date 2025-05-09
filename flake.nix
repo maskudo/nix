@@ -24,6 +24,10 @@
       aspire = "mk489";
       omen = "omen";
       system = "x86_64-linux";
+      unstablePkgs = import unstable {
+        system = system;
+        config.allowUnfree = true;
+      };
     in
     {
       # NixOS configuration entrypoint
@@ -58,7 +62,7 @@
         omen = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs system;
+            inherit inputs system unstablePkgs;
             username = omen;
           };
           modules = [
@@ -98,9 +102,9 @@
                   homeDirectory = "/home/${username}";
                   inherit username;
                 })
-                inputs.catppuccin.homeManagerModules.catppuccin
+                inputs.catppuccin.homeModules.catppuccin
               ];
-              pkgs = unstable.legacyPackages.${system};
+              pkgs = unstablePkgs;
               extraSpecialArgs = {
                 stablePkgs = nixpkgs.legacyPackages.${system};
                 inherit

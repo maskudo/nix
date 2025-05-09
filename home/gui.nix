@@ -28,6 +28,7 @@
     })
     deadbeef-with-plugins
     dracula-theme
+    gromit-mpx
     kanagawa-gtk-theme
     kanagawa-icon-theme
     feh
