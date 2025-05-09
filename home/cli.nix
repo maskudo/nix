@@ -22,6 +22,7 @@
     atuin
     autorandr
     bat
+    bc
     btop
     calcurse
     cowsay
@@ -48,6 +49,7 @@
     just
     k9s
     kubectl
+    kubernetes-helm
     lazydocker
     lazygit
     lua5_1
@@ -62,14 +64,14 @@
     nixos-firewall-tool
     nodePackages.live-server
     nodePackages.pnpm
-    nodejs_23
+    nodejs_24
     nwg-look
     opentofu # terraform
     pandoc
     poetry
     postgresql
     presenterm
-    python3
+    python311
     ripgrep
     rustup
     sqlite
@@ -100,5 +102,6 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+    silent = true;
   };
 }

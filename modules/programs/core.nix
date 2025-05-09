@@ -118,6 +118,7 @@
     lsof
     man-pages
     man-pages-posix
+    moreutils
     nettools
     networkmanagerapplet
     nix-prefetch-git
@@ -134,6 +135,7 @@
     usbutils
     wget
     xdotool
+    xorg.xkill
     vim
     zip
     libsForQt5.qt5.qtquickcontrols
