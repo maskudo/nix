@@ -95,6 +95,7 @@
             {
               system,
               username,
+              enableGuiApps ? true,
             }:
             home-manager.lib.homeManagerConfiguration {
               modules = [
@@ -102,7 +103,13 @@
                   homeDirectory = "/home/${username}";
                   inherit username;
                 })
-                inputs.catppuccin.homeModules.catppuccin
+                inputs.catppuccin.homeManagerModules.catppuccin
+                (
+                  { ... }:
+                  {
+                    home.guiApps.enable = enableGuiApps;
+                  }
+                )
               ];
               pkgs = unstablePkgs;
               extraSpecialArgs = {
@@ -119,6 +126,7 @@
           aspire = homeManager {
             system = "x86_64-linux";
             username = aspire;
+            enableGuiApps = false;
           };
           omen = homeManager {
             system = "x86_64-linux";
