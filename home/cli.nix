@@ -26,7 +26,6 @@
     btop
     calcurse
     cowsay
-    dconf
     delta
     dig
     distrobox
@@ -38,8 +37,6 @@
     fortune
     fzf
     gh
-    git-extras
-    git-lfs
     glow
     go
     imagemagick

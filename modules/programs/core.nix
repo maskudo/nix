@@ -33,6 +33,7 @@
     users = {
       ${username} = {
         isNormalUser = true;
+        linger = true;
         description = "${username}";
         shell = pkgs.zsh;
         extraGroups = [
@@ -113,7 +114,6 @@
     libcxx
     libgcc
     libnotify
-    libstdcxx5
     linux-manual
     lsof
     man-pages
