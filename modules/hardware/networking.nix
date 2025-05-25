@@ -1,5 +1,6 @@
 { username, ... }:
 {
+  environment.etc.hosts.mode = "0700";
   networking = {
     resolvconf.enable = false;
     dhcpcd.extraConfig = "nohook resolv.conf";

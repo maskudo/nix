@@ -32,9 +32,10 @@
       copyq
       cozy
       dex
-      (discord.override {
-        withVencord = true;
-      })
+      discord
+      # (discord.override {
+      #   withVencord = true;
+      # })
       deadbeef-with-plugins
       dracula-theme
       kanagawa-gtk-theme
@@ -70,5 +71,4 @@
 
     ];
   };
-
 }

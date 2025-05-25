@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./configuration.nix
     ./nvidia.nix
+    ./ryzenadj.nix
   ];
   desktop.i3.enable = true;
   desktop.hyprland.enable = true;

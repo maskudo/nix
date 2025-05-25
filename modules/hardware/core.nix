@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   services = {
+    pulseaudio.enable = false;
     dbus.packages = [ pkgs.dconf ];
     logind = {
       lidSwitch = "ignore";
@@ -12,7 +13,6 @@
     locate = {
       enable = true;
       package = pkgs.plocate;
-      localuser = null;
     };
 
     openssh.enable = true;
