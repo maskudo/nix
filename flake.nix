@@ -23,6 +23,7 @@
     let
       aspire = "mk489";
       omen = "omen";
+      probook = "probook";
       system = "x86_64-linux";
       unstablePkgs = import unstable {
         system = system;
@@ -54,6 +55,29 @@
                   MONITOR2 = "HDMI1";
                   BATTERY = "BAT1";
                   ADAPTER = "ADP1";
+                };
+              }
+            )
+          ];
+        };
+        probook = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs system unstablePkgs;
+            username = probook;
+          };
+          modules = [
+            ./hosts/probook
+            grub2-themes.nixosModules.default
+            (
+              { ... }:
+              {
+                services.proxmox.enable = true;
+                environment.variables = {
+                  MONITOR1 = "eDP";
+                  MONITOR2 = "HDMI-1-0";
+                  BATTERY = "BAT0";
+                  ADAPTER = "ACAD";
                 };
               }
             )
@@ -128,6 +152,10 @@
             system = "x86_64-linux";
             username = aspire;
             enableGuiApps = false;
+          };
+          probook = homeManager {
+            system = "x86_64-linux";
+            username = probook;
           };
           omen = homeManager {
             system = "x86_64-linux";
