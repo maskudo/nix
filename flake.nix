@@ -10,6 +10,9 @@
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
+    portainer-on-nixos.url = "gitlab:cbleslie/portainer-on-nixos";
+    portainer-on-nixos.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =
@@ -18,6 +21,7 @@
       home-manager,
       unstable,
       grub2-themes,
+      portainer-on-nixos,
       ...
     }@inputs:
     let
@@ -69,6 +73,7 @@
           modules = [
             ./hosts/probook
             grub2-themes.nixosModules.default
+            portainer-on-nixos.nixosModules.portainer
             (
               { ... }:
               {
@@ -79,6 +84,19 @@
                   BATTERY = "BAT0";
                   ADAPTER = "ACAD";
                 };
+                services.portainer = {
+                  enable = true; # Default false
+                  version = "latest";
+                  # Default latest, you can check dockerhub for
+                  # other tags.
+                  openFirewall = true; # Default false, set to 'true' if you want
+                  # to be able to access via the port on
+                  # something other than localhost.
+                  port = 9443;
+                  # Sets the port number in both the firewall and
+                  # the docker container port mapping itself.
+                };
+
               }
             )
           ];
@@ -156,6 +174,7 @@
           probook = homeManager {
             system = "x86_64-linux";
             username = probook;
+            enableGuiApps = false;
           };
           omen = homeManager {
             system = "x86_64-linux";
