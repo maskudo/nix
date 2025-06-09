@@ -221,6 +221,26 @@
         "type": "github"
       }
     },
+    "portainer-on-nixos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744390409,
+        "narHash": "sha256-C+Kw42DaTa6y2/4LDXWMMCK2/qOpEPLs6lpEg+zypWc=",
+        "owner": "cbleslie",
+        "repo": "portainer-on-nixos",
+        "rev": "8737cb91f32d6861165c84b22a5a98b198fa49b5",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "cbleslie",
+        "repo": "portainer-on-nixos",
+        "type": "gitlab"
+      }
+    },
     "proxmox-nixos": {
       "inputs": {
         "crane": "crane",
@@ -249,6 +269,7 @@
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
+        "portainer-on-nixos": "portainer-on-nixos",
         "proxmox-nixos": "proxmox-nixos",
         "unstable": "unstable",
         "zen-browser": "zen-browser"

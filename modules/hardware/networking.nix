@@ -27,6 +27,7 @@
       PermitRootLogin = "no";
       PasswordAuthentication = false;
       ChallengeResponseAuthentication = false;
+      Macs = [ "hmac-sha2-256" ];
     };
     extraConfig = ''
       HostBasedAuthentication no
