@@ -145,7 +145,7 @@
                   homeDirectory = "/home/${username}";
                   inherit username;
                 })
-                inputs.catppuccin.homeManagerModules.catppuccin
+                inputs.catppuccin.homeModules.catppuccin
                 (
                   { ... }:
                   {
