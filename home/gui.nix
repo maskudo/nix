@@ -26,6 +26,7 @@
       arandr
       arc-theme
       arc-icon-theme
+      authenticator
       betterlockscreen
       brave
       catppuccin
@@ -38,13 +39,18 @@
       # })
       deadbeef-with-plugins
       dracula-theme
-      kanagawa-gtk-theme
-      kanagawa-icon-theme
+      emacs
+      evince
       feh
       (flameshot.override { enableWlrSupport = true; })
+      floorp
       # firefox
       gparted
+      google-chrome
+      kanagawa-gtk-theme
+      kanagawa-icon-theme
       kitty
+      kdePackages.kmag
       libsForQt5.breeze-qt5
       libresprite
       lxappearance

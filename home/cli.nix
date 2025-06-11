@@ -70,6 +70,7 @@
     presenterm
     python311
     ripgrep
+    rmpc
     rustup
     sqlite
     sshs
