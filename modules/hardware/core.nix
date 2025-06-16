@@ -76,7 +76,6 @@
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
-    pulseaudio.enable = false;
     bluetooth.enable = true; # enables support for Bluetooth
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     enableAllFirmware = true;

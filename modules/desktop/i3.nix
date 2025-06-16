@@ -27,7 +27,7 @@
     };
 
     environment.sessionVariables.GTK_CSD = "0"; # disable client side window decorations
-
+    security.pam.services.i3lock.enable = true;
     services = {
       xserver = {
         desktopManager = {
@@ -41,6 +41,8 @@
         windowManager.i3 = {
           enable = true;
           extraPackages = with pkgs; [
+            betterlockscreen
+            dmenu
             dunst
             rofi
             picom

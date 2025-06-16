@@ -10,4 +10,12 @@
   desktop.hyprland.enable = true;
   desktop.sway.enable = false;
   powerModule.enable = false;
+
+  services.nfs-client.enable = true;
+  environment.variables = {
+    MONITOR1 = "eDP";
+    MONITOR2 = "HDMI-1-0";
+    BATTERY = "BAT0";
+    ADAPTER = "ACAD";
+  };
 }

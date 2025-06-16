@@ -8,6 +8,9 @@
   desktop.i3.enable = false;
   desktop.hyprland.enable = false;
   powerModule.enable = true;
+  services.proxmox.enable = true;
+  services.nfs-server.enable = true;
+
   networking.bridges = {
     "vmbr0" = {
       interfaces = [ "enp4s0f1" ];
@@ -22,4 +25,10 @@
     ];
   };
 
+  environment.variables = {
+    MONITOR1 = "eDP1";
+    MONITOR2 = "HDMI1";
+    BATTERY = "BAT1";
+    ADAPTER = "ADP1";
+  };
 }

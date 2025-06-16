@@ -21,7 +21,6 @@
       home-manager,
       unstable,
       grub2-themes,
-      portainer-on-nixos,
       ...
     }@inputs:
     let
@@ -49,19 +48,6 @@
           modules = [
             ./hosts/aspire
             grub2-themes.nixosModules.default
-            (
-              { ... }:
-              {
-                services.proxmox.enable = true;
-                services.nfs-server.enable = true;
-                environment.variables = {
-                  MONITOR1 = "eDP1";
-                  MONITOR2 = "HDMI1";
-                  BATTERY = "BAT1";
-                  ADAPTER = "ADP1";
-                };
-              }
-            )
           ];
         };
         probook = nixpkgs.lib.nixosSystem {
@@ -73,32 +59,6 @@
           modules = [
             ./hosts/probook
             grub2-themes.nixosModules.default
-            portainer-on-nixos.nixosModules.portainer
-            (
-              { ... }:
-              {
-                services.proxmox.enable = true;
-                environment.variables = {
-                  MONITOR1 = "eDP";
-                  MONITOR2 = "HDMI-1-0";
-                  BATTERY = "BAT0";
-                  ADAPTER = "ACAD";
-                };
-                services.portainer = {
-                  enable = true; # Default false
-                  version = "latest";
-                  # Default latest, you can check dockerhub for
-                  # other tags.
-                  openFirewall = true; # Default false, set to 'true' if you want
-                  # to be able to access via the port on
-                  # something other than localhost.
-                  port = 9443;
-                  # Sets the port number in both the firewall and
-                  # the docker container port mapping itself.
-                };
-
-              }
-            )
           ];
         };
         omen = nixpkgs.lib.nixosSystem {
@@ -110,18 +70,6 @@
           modules = [
             ./hosts/omen
             grub2-themes.nixosModules.default
-            (
-              { ... }:
-              {
-                services.nfs-client.enable = true;
-                environment.variables = {
-                  MONITOR1 = "eDP";
-                  MONITOR2 = "HDMI-1-0";
-                  BATTERY = "BAT0";
-                  ADAPTER = "ACAD";
-                };
-              }
-            )
           ];
         };
       };
