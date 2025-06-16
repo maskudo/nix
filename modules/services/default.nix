@@ -8,5 +8,6 @@
     ./nfs-client.nix
     ./nfs-server.nix
     ./gnome-keyring.nix
+    ./portainer.nix
   ];
 }

@@ -8,6 +8,14 @@
   desktop.hyprland.enable = false;
   desktop.sway.enable = false;
   powerModule.enable = false;
+  services.proxmox.enable = true;
+  environment.variables = {
+    MONITOR1 = "eDP";
+    MONITOR2 = "HDMI-1-0";
+    BATTERY = "BAT0";
+    ADAPTER = "ACAD";
+  };
+
   networking.bridges = {
     "vmbr0" = {
       interfaces = [ "enp2s0" ];

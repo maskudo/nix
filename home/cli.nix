@@ -1,19 +1,6 @@
 { pkgs, ... }:
 {
   fonts.fontconfig.enable = true;
-  dconf.enable = true;
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
-  # home.activation = {
-  #   setLockScreen = lib.hm.dag.entryAfter ["writeBoundary"] ''
-  #     export PATH=${pkgs.xorg.xrdb}/bin:$PATH
-  #     ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/Pictures/Wallpapers/
-  #   '';
-  # };
 
   home.packages = with pkgs; [
     act

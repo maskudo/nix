@@ -97,6 +97,8 @@
     flake = "/home/${username}/nix";
   };
 
+  programs.command-not-found.enable = true;
+
   programs.zsh.enable = true;
 
   # for commands such as npm link to work

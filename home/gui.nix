@@ -27,7 +27,6 @@
       arc-theme
       arc-icon-theme
       authenticator
-      betterlockscreen
       brave
       catppuccin
       copyq
@@ -45,10 +44,7 @@
       (flameshot.override { enableWlrSupport = true; })
       floorp
       # firefox
-      gparted
       google-chrome
-      kanagawa-gtk-theme
-      kanagawa-icon-theme
       kitty
       kdePackages.kmag
       libsForQt5.breeze-qt5
@@ -60,6 +56,7 @@
       normcap
       obs-studio
       obsidian
+      pcmanfm
       pinta
       qbittorrent
       qbittorrent-nox
@@ -70,8 +67,6 @@
       vscode
       xarchiver
       xclip
-      xfce.xfconf
-      xfce.thunar
       xsel
       inputs.zen-browser.packages."${system}".default
 
