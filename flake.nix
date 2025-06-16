@@ -16,21 +16,15 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      unstable,
-      grub2-themes,
-      ...
-    }@inputs:
+    inputs:
     let
       aspire = "mk489";
       omen = "omen";
       probook = "probook";
-      system = "x86_64-linux";
-      unstablePkgs = import unstable {
-        system = system;
-        config.allowUnfree = true;
+      libx = import ./lib {
+        inherit
+          inputs
+          ;
       };
     in
     {
@@ -38,39 +32,14 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       # sudo nixos-rebuild switch --flake .#aspire
       nixosConfigurations = {
-        aspire = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs system;
-            username = aspire;
-          };
-          # > Our main nixos configuration file <
-          modules = [
-            ./hosts/aspire
-            grub2-themes.nixosModules.default
-          ];
+        aspire = libx.mkHost {
+          username = aspire;
         };
-        probook = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs system unstablePkgs;
-            username = probook;
-          };
-          modules = [
-            ./hosts/probook
-            grub2-themes.nixosModules.default
-          ];
+        probook = libx.mkHost {
+          username = probook;
         };
-        omen = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs system unstablePkgs;
-            username = omen;
-          };
-          modules = [
-            ./hosts/omen
-            grub2-themes.nixosModules.default
-          ];
+        omen = libx.mkHost {
+          username = omen;
         };
       };
 
@@ -79,55 +48,21 @@
       # home-manager -- build --flake .aspire
       # home-manager -- switch --flake .aspire
 
-      homeConfigurations =
-        let
-          homeManager =
-            {
-              system,
-              username,
-              enableGuiApps ? true,
-            }:
-            home-manager.lib.homeManagerConfiguration {
-              modules = [
-                (import ./home/home-manager.nix {
-                  homeDirectory = "/home/${username}";
-                  inherit username;
-                })
-                inputs.catppuccin.homeModules.catppuccin
-                (
-                  { ... }:
-                  {
-                    home.guiApps.enable = enableGuiApps;
-                  }
-                )
-              ];
-              pkgs = unstablePkgs;
-              extraSpecialArgs = {
-                stablePkgs = nixpkgs.legacyPackages.${system};
-                inherit
-                  username
-                  inputs
-                  system
-                  enableGuiApps
-                  ;
-              };
-            };
-        in
-        {
-          aspire = homeManager {
-            system = "x86_64-linux";
-            username = aspire;
-            enableGuiApps = false;
-          };
-          probook = homeManager {
-            system = "x86_64-linux";
-            username = probook;
-            enableGuiApps = false;
-          };
-          omen = homeManager {
-            system = "x86_64-linux";
-            username = omen;
-          };
+      homeConfigurations = {
+        aspire = libx.mkHome {
+          system = "x86_64-linux";
+          username = aspire;
+          enableGuiApps = false;
         };
+        probook = libx.mkHome {
+          system = "x86_64-linux";
+          username = probook;
+          enableGuiApps = false;
+        };
+        omen = libx.mkHome {
+          system = "x86_64-linux";
+          username = omen;
+        };
+      };
     };
 }
