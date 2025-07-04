@@ -72,6 +72,17 @@ return {
       mode = { "n", "v" },
     },
     {
+      "<leader>ssm",
+      function()
+        Snacks.scratch.open({
+          win = { width = 0.5, height = 0.5 },
+          ft = "markdown",
+        })
+      end,
+      desc = "Scratch Buffer JS",
+      mode = { "n", "v" },
+    },
+    {
       "<leader>ssj",
       function()
         Snacks.scratch.open({

@@ -26,6 +26,7 @@ return {
     },
     lazygit = {
       enabled = true,
+      configure = false,
       win = {
         position = "float",
         border = "single",

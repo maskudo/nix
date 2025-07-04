@@ -318,7 +318,7 @@ for_window [instance="copyq"] \
 
 
 
-set $i3scripts ~/.config/i3
+set $i3scripts ~/.config/sway
 bindsym $mod+backslash exec $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm -e zsh"
 bindsym $mod2+backslash exec $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm -e zsh"
 bindsym $mod2+f exec $i3scripts/scratchpad_script.sh "scratchyazi" "urxvt -name scratchyazi -e sh -c 'yazi'"
@@ -330,7 +330,7 @@ bindsym $mod2+b exec $i3scripts/scratchpad_script.sh "scratchbtop" "urxvt -name 
 for_window [instance="^scratch"] \
     floating enable, border none, \
     resize set 70 ppt 70 ppt, \
-    move position 0 24, \
+    move position 24 24, \
     move scratchpad, \
     border pixel 1
 

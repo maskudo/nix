@@ -30,6 +30,7 @@ return {
         typescriptreact = use_biome,
         svelte = { "prettierd" },
         css = { "prettierd" },
+        scss = { "prettierd" },
         html = { "prettierd" },
         json = { "prettierd" },
         yaml = { "prettierd" },
@@ -53,6 +54,7 @@ return {
             }
           end,
         },
+        terraform = { "tofu_fmt" },
       },
       format_on_save = {
         lsp_fallback = true,

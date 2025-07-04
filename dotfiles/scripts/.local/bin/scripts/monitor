@@ -19,7 +19,7 @@ case "$selected_option" in
   xrandr --output "$laptop_display" --off
   ;;
 "$extend_bottom")
-  xrandr --output "$laptop_display" --auto --top "$external_display"
+  xrandr --output "$laptop_display" --auto --above "$external_display"
   ;;
 "$extend_top")
   xrandr --output "$laptop_display" --auto --below "$external_display"

@@ -316,6 +316,7 @@ bindsym $mod2+s exec --no-startup-id flameshot gui
 bindsym $mod+Shift+s exec flameshot full --path ~/Pictures/Screenshots/
 bindsym $mod2+Shift+o exec --no-startup-id normcap
 bindsym $mod2+q exec --no-startup-id pkill picom
+bindsym $mod2+z exec --no-startup-id $i3scripts/toggle_kmag.sh
 
 
 
@@ -329,7 +330,13 @@ for_window [instance="xpad"] floating enable
 for_window [instance="copyq"] \
     floating enable, border none, \
     resize set 40 ppt 40 ppt, \
-    move position 60 ppt 30, \
+    move position 60 ppt 30
+
+for_window [instance="kmag"] \
+    floating enable, border none, \
+    sticky enable \
+    resize set 30 ppt 30 ppt, \
+    move position 70 ppt 30
 
 
 
@@ -337,6 +344,7 @@ set $i3scripts ~/.config/i3
 bindsym $mod+backslash exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm -e zsh"
 bindsym $mod2+backslash exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchterm" "urxvt -name scratchterm -e zsh"
 bindsym $mod2+f exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchyazi" "urxvt -name scratchyazi -e sh -c 'yazi'"
+bindsym $mod2+m exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchmpd" "urxvt -name scratchmpd -e sh -c 'rmpc'"
 bindsym $mod2+c exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchcalcurse" "urxvt -name scratchcalcurse -e sh -c 'CALCURSE_EDITOR=vim calcurse'"
 bindsym $mod2+t exec --no-startup-id $i3scripts/scratchpad_script.sh "scratchtodo" "urxvt -name scratchtodo -e sh -c 'nvim ~/.local/share/todo.md'"
 # btop leaks memory for some reason

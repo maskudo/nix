@@ -23,7 +23,7 @@ return {
       "css-lsp",
       "docker-compose-language-service",
       "dockerfile-language-server",
-      "emmet-ls",
+      -- "emmet-ls",
       "gofumpt",
       "gopls",
       "lua-language-server",
