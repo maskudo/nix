@@ -60,6 +60,15 @@
       modules = [
         ../hosts
         inputs.grub2-themes.nixosModules.default
+        inputs.flake-programs-sqlite.nixosModules.programs-sqlite
+        (
+          { pkgs, inputs, ... }:
+          {
+            home.file.".cache/nix-index/files" = {
+              source = inputs.nix-index-db.packages.${pkgs.system}.default;
+            };
+          }
+        )
       ];
     };
 }
