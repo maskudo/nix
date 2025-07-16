@@ -8,8 +8,9 @@
   ];
   desktop.i3.enable = true;
   desktop.hyprland.enable = true;
-  desktop.sway.enable = false;
+  desktop.sway.enable = true;
   powerModule.enable = false;
+  tlpModule.enable = false;
 
   services.nfs-client.enable = true;
   environment.variables = {

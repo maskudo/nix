@@ -17,19 +17,19 @@
     programs.sway = {
       enable = true;
       xwayland.enable = true;
-      package = pkgs.swayfx;
       extraOptions = [ "--unsupported-gpu" ];
+      wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         waybar
         hyprlock
         rofi-wayland
+        foot
         bemoji
         swww
         wl-clipboard
         wl-clipboard-x11
         wlr-randr
         dunst
-
       ];
     };
 

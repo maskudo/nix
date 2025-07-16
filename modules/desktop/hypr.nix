@@ -22,6 +22,8 @@
     environment.systemPackages = with pkgs; [
       waybar
       hyprlock
+      swappy
+      foot
       rofi-wayland
       bemoji
       swww

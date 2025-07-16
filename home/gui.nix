@@ -14,6 +14,7 @@
       type = lib.types.bool;
     };
   };
+
   config = lib.mkIf config.home.guiApps.enable {
     nixpkgs.config.permittedInsecurePackages = [
       "electron-25.9.0"
@@ -27,7 +28,6 @@
       arc-theme
       arc-icon-theme
       authenticator
-      brave
       catppuccin
       copyq
       cozy
@@ -59,10 +59,10 @@
       pcmanfm
       pinta
       qbittorrent
-      qbittorrent-nox
+      rose-pine-gtk-theme
+      rose-pine-icon-theme
       rxvt-unicode
       smplayer
-      uget
       vlc
       vscode
       xarchiver

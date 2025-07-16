@@ -9,22 +9,19 @@
     atuin
     autorandr
     bat
-    bc
     btop
     calcurse
+    comma
     cowsay
     delta
-    dig
     distrobox
     dua
-    evil-helix
     fd
     ffmpeg
     font-awesome
     fortune
     fzf
     gh
-    glow
     go
     imagemagick
     jless
@@ -37,12 +34,8 @@
     lazydocker
     lazygit
     lua5_1
-    luarocks
     minikube
-    neofetch
-    nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
-    nerd-fonts.zed-mono
     nixd
     nixfmt-rfc-style
     nixos-firewall-tool
@@ -52,7 +45,6 @@
     nwg-look
     opentofu # terraform
     pandoc
-    poetry
     postgresql
     presenterm
     python311
@@ -72,7 +64,6 @@
     vim
     yazi
     yq
-    yt-dlp
     zathura
     zoxide
   ];
@@ -89,4 +80,5 @@
     nix-direnv.enable = true;
     silent = true;
   };
+
 }
