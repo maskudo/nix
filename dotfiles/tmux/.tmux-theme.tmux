@@ -7,6 +7,7 @@ _white="#e0def4"
 _green="#98c379"
 _visual_grey="#26233a"
 _comment_grey="#6e6a86"
+_rosepine_green="#393552"
 
 set() {
   local option=$1
@@ -24,4 +25,4 @@ tmux set-option -wg "mode-style" "bg=#37344a,fg=$_white"
 tmux set-option -g "message-style" "bg=$_visual_grey,fg=$_white"
 
 set "window-status-format" "#[fg=$_white,bg=default] #I|#W "
-set "window-status-current-format" "#[fg=$_black,bg=$_visual_grey,nobold]#[fg=$_white,bg=$_visual_grey,nobold] #I|#W #[fg=$_visual_grey,bg=default,nobold,nounderscore,noitalics]"
+set "window-status-current-format" "#[fg=$_black,bg=$_visual_grey,nobold]#[fg=$_white,bg=$_rosepine_green,nobold] #I|#W #[fg=$_visual_grey,bg=default,nobold,nounderscore,noitalics]"

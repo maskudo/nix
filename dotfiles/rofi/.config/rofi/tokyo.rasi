@@ -1,19 +1,19 @@
 * {
-  bg0     : #282a36;  /* Dracula background */
-  bg1     : #44475a;  /* Dracula selection background */
-  bg2     : #44475a;  /* Dracula selection background (alternative) */
-  bg3     : #44475a;  /* Dracula selection background (alternative) */
-  fg0     : #f8f8f2;  /* Dracula foreground */
-  fg1     : #ffffff;  /* Dracula selection foreground */
-  fg2     : #ffffff;  /* Dracula selection foreground (alternative) */
-  red     : #ff5555;  /* Dracula red */
-  green   : #50fa7b;  /* Dracula green */
-  yellow  : #f1fa8c;  /* Dracula yellow */
-  blue    : #bd93f9;  /* Dracula blue */
-  magenta : #ff79c6;  /* Dracula magenta */
-  cyan    : #8be9fd;  /* Dracula cyan */
+  bg0     : #191724;  /* Rose Pine base */
+  bg1     : #1f1d2e;  /* Rose Pine surface */
+  bg2     : #26233a;  /* Rose Pine overlay */
+  bg3     : #2a273f;  /* Rose Pine muted overlay (custom) */
+  fg0     : #e0def4;  /* Rose Pine text */
+  fg1     : #e0def4;  /* Rose Pine text (same for selection) */
+  fg2     : #e0def4;  /* Rose Pine text (same for alt selection) */
+  red     : #eb6f92;  /* Rose Pine love */
+  green   : #9ccfd8;  /* Rose Pine foam */
+  yellow  : #f6c177;  /* Rose Pine gold */
+  blue    : #c4a7e7;  /* Rose Pine iris */
+  magenta : #ea9a97;  /* Rose Pine rose */
+  cyan    : #31748f;  /* Rose Pine pine */
 
-  accent: #ff5555;    /* Dracula red as accent */
-  urgent: #f1fa8c;    /* Dracula yellow for urgency */
+  accent  : #eb6f92;  /* Rose Pine love as accent */
+  urgent  : #f6c177;  /* Rose Pine gold for urgency */
 }
 

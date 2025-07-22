@@ -170,6 +170,7 @@ return {
 		{"<leader>ff", function() Snacks.picker.smart({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
 		{"<leader>fF", function() Snacks.picker.files({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
 		{"<leader>fg", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
+		{"<leader>,", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
 		{"<leader>fp", function() Snacks.picker.recent({ hidden = true, filter = { cwd = true } }) end, desc = "Recent",},
 		{"<leader>fs", function() Snacks.picker.smart({ hidden = true }) end, desc = "Files (smart)",},
 		{"<leader>ft", function() Snacks.picker.grep({ hidden = true }) end, desc = "TODO Comments",},

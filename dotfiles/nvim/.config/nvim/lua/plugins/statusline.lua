@@ -172,6 +172,24 @@ local vcs = function()
   })
 end
 
+local function file_size()
+  local file = vim.fn.expand("%:p")
+  if file == "" or vim.fn.getfsize(file) < 0 then
+    return ""
+  end
+
+  local size = vim.fn.getfsize(file)
+  if size < 1024 then
+    return size .. " B"
+  elseif size < 1024 * 1024 then
+    return string.format("%.2f KB", size / 1024)
+  elseif size < 1024 * 1024 * 1024 then
+    return string.format("%.2f MB", size / (1024 * 1024))
+  else
+    return string.format("%.2f GB", size / (1024 * 1024 * 1024))
+  end
+end
+
 Statusline = {}
 
 Statusline.active = function()
@@ -190,6 +208,7 @@ Statusline.active = function()
     lsp(),
     vcs(),
     filetype(),
+    file_size(),
     lineinfo(),
   })
 end

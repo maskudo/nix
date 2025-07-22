@@ -54,7 +54,7 @@ export GOPATH=~/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
-export EMACSDIR="$HOME/.config/emacs"
+# export EMACSDIR="$HOME/.config/emacs"
 export DOOMDIR="$HOME/.config/doom"
 export DOOM_PATH="$HOME/.config/emacs/bin"
 export PATH=$PATH:$DOOM_PATH

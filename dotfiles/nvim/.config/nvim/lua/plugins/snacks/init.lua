@@ -25,9 +25,8 @@ return {
       enabled = true,
       left = {
         "git",
-        "mark",
       },
-      right = { "fold" },
+      right = { "mark", "fold" },
     },
     notifier = { enabled = true },
     quickfile = { enabled = true },

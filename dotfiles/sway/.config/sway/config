@@ -46,6 +46,10 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
+input * {
+	tap enabled
+}
+
 #font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
@@ -69,6 +73,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 bindsym Print exec flameshot gui
 bindsym Shift+Print exec flameshot full --path ~/Pictures/Screenshots/
+bindsym $mod+v exec copyq toggle
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -219,10 +224,10 @@ assign [class="discord"] $ws3
 assign [class="xpad"] $ws12
 assign [instance="xpad"] $ws12
 
-#toggle workspace 
+#toggle workspace
 workspace_auto_back_and_forth yes
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec swaymsg reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
@@ -311,7 +316,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="xpad"] floating enable
 for_window [instance="xpad"] floating enable
-for_window [instance="copyq"] \
+for_window [app_id="copyq"] \
     floating enable, border none, \
     resize set 40 ppt 40 ppt, \
     move position 60 ppt 30, \
@@ -336,9 +341,9 @@ for_window [instance="^scratch"] \
 
 
 
-exec $i3scripts/start.sh
+exec foot --server
 exec swww-daemon &
-exec swww img ~/Pictures/Wallpapers/hollow-knight.png
+exec swww img ~/Pictures/Wallpapers/hollow-knight.png &
 exec nm-applet --indicator &
 exec waybar &
 exec xrdb -load ~/.Xdefaults
@@ -346,4 +351,4 @@ exec zen &
 exec copyq &
 exec discord &
 exec gnome-keyring-daemon &
-exec swaync &
+exec dunst &

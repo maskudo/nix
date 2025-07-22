@@ -14,7 +14,7 @@ end
 
 M.set_leader = function(key)
   vim.g.mapleader = key
-  vim.g.maplocalleader = key
+  vim.g.maplocalleader = ","
   M.map({ "n", "v" }, key, "<nop>")
 end
 

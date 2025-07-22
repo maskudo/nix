@@ -91,9 +91,9 @@
   },
   "group/sys-info": {
     "modules": [
-      "network",
-      "group/volume",
       "group/brightness",
+      "group/volume",
+      "network",
       "cpu",
       "memory"
     ],
@@ -162,7 +162,7 @@
     "icon-size": 14
   },
   "backlight": {
-     "format": "{icon} {percent}%",
+     "format": "{icon} {percent}%  ",
     "states": [0,50],
     "format-icons": ["󰃞 ","󰃝 ","󰃟 ","󰃠 "],
     "on-scroll-up": "~/.local/bin/scripts/changebrightness up",

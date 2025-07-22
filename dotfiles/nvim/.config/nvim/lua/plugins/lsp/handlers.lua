@@ -1,4 +1,5 @@
 -- Change the Diagnostic symbols in the sign column (gutter)
+local border = "single"
 vim.diagnostic.config({
   signs = {
     text = {
@@ -14,18 +15,6 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.INFO] = "",
     },
   },
-})
-
-local border = "single"
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = border,
-  })
-
-vim.diagnostic.config({
+  virtual_text = true,
   float = { border = border },
 })

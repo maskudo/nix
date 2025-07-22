@@ -52,7 +52,7 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen               ; distraction-free coding or writing
 
 
        :editor
@@ -94,7 +94,7 @@
        ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        direnv
-       ;;docker
+       docker
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -105,7 +105,7 @@
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
-       ;;terraform         ; infrastructure as code
+       terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
@@ -144,7 +144,7 @@
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp +treesitter) ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
@@ -155,7 +155,7 @@
        ;;nim               ; python + lisp at the speed of c
        nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org +roam2)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;graphviz          ; diagrams for confusing yourself even more
@@ -167,7 +167,7 @@
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
@@ -175,6 +175,7 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
+       (terraform +lsp +treesitter)
        web               ; the tubes
        ;;yaml              ; JSON, but readable
        ;;zig               ; C, but simpler
@@ -185,7 +186,7 @@
        ;;(wanderlust +gmail)
 
        :app
-       ;;calendar
+       calendar
        ;;emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize

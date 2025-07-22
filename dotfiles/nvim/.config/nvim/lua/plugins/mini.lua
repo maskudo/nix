@@ -19,21 +19,15 @@ return {
     require("mini.icons").setup()
     require("mini.icons").mock_nvim_web_devicons()
     require("mini.colors").setup()
-    require("mini.surround").setup()
+    require("mini.surround").setup({
+      mappings = {
+        replace = "sc", -- Replace surrounding
+      },
+    })
     require("mini.splitjoin").setup()
     require("mini.visits").setup()
     require("mini.trailspace").setup()
-    -- require("mini.indentscope").setup({ symbol = "" })
-    require("mini.jump2d").setup({
-      labels = "asdfghjkl",
-      view = {
-        dim = true,
-        n_steps_ahead = 2,
-      },
-      mappings = {
-        start_jumping = "S",
-      },
-    })
+
     require("mini.bracketed").setup({
       file = { suffix = "", options = {} },
       treesitter = { suffix = "t", options = {} },

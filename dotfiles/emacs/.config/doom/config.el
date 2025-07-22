@@ -32,7 +32,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(add-to-list 'custom-theme-load-path "~/.config/doom/themes/rose-pine")
+(load-theme 'doom-rose-pine t) ;; or 'rose-pine-dawn / 'rose-pine-moon
+
+(add-to-list 'load-path "/path/to/lsp-biome/")
+
+(setq doom-theme nil)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -41,7 +46,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/zt/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -59,6 +64,31 @@
                            (useany . t)
                            (unusedvariable . t)))
   )
+
+(add-hook 'after-make-frame-functions (lambda (f) (set-face-attribute 'default f :font "JetBrains Mono Nerd Font 12")))
+
+(setq lsp-ui-sideline-enable t)               ;; Enable sideline
+(setq lsp-ui-sideline-show-diagnostics t)    ;; Show diagnostics inline
+(setq lsp-ui-sideline-ignore-duplicate t)
+(setq lsp-ui-doc-position 'at-point)  ;; show docs near cursor
+
+(use-package pdf-tools
+  :mode (("\\.pdf\\'" . pdf-view-mode))
+  :config
+  (pdf-loader-install))
+(setq pdf-view-use-scaling t) ;; optional for zoom handling
+
+(use-package saveplace-pdf-view
+  :after (:any doc-view pdf-tools)
+  :demand t)
+
+;; Save the last viewed page in bookmarks
+(add-hook 'pdf-view-mode-hook
+          (lambda ()
+            (add-hook 'kill-buffer-hook #'pdf-view-save-memento nil t)))
+(add-hook 'pdf-view-mode-hook #'pdf-view-restored-memento)
+
+
 ;; The exceptions to this rule:
 ;;
 ;;   - Setting file/directory variables (like `org-directory')
@@ -84,7 +114,22 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(map! :n "-" #'dired-jump)
 (map! :n "C-u" (lambda () (interactive) (evil-scroll-up nil) (recenter))
       :n "C-d" (lambda () (interactive) (evil-scroll-down nil) (recenter))
       :n "n" (lambda () (interactive) (evil-ex-search-next) (recenter))
       :n "N" (lambda () (interactive) (evil-ex-search-previous) (recenter)))
+(map! "C-S-v" #'clipboard-yank)
+(map! "C-\\" #'+vterm/toggle)
+(map! :n "B" "%")
+
+(setq consult-ripgrep-args
+      "rg --hidden --null --line-buffered --color=never --max-columns=1000 --path-separator / --with-filename --no-heading --line-number --smart-case .")
+
+(map! :leader
+      "/"   #'consult-ripgrep         ;; live grep (project)
+      )
+
+(map! :leader
+      "[" #'+workspace/switch-left
+      "]" #'+workspace/switch-right)

@@ -1,9 +1,6 @@
 return {
   {
-    dir = "~/dev/lua/devdocs.nvim",
-    dependencies = {
-      "folke/snacks.nvim",
-    },
+    "maskudo/devdocs.nvim",
     lazy = false,
     event = "VeryLazy",
     keys = {
@@ -24,12 +21,12 @@ return {
       ensure_installed = {
         "go",
         "html",
-        -- "dom",
+        "dom",
         "http",
-        -- "css",
-        -- "javascript",
+        "css",
+        "javascript",
         "lua~5.1",
-        -- "rust",
+        "rust",
       },
     },
   },
@@ -47,6 +44,26 @@ return {
       },
     },
     opts = {},
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    enabled = true,
+    ---@type Flash.Config
+    opts = {
+      modes = {
+        char = {
+          enabled = false, -- Disable character motions (like `f`, `t`, `F`, `T`)
+        },
+        search = {
+          enabled = false, -- Disable search motions (`/`, `?`)
+        },
+      },
+    },
+    -- stylua: ignore
+    keys = {
+      { "S", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    },
   },
   {
     "folke/noice.nvim",

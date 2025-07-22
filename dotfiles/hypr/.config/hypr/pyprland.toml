@@ -7,25 +7,34 @@ plugins = [
  "scratchpads",
  "shift_monitors",
  "toggle_special",
- "workspaces_follow_focus",
+ # "workspaces_follow_focus",
 ]
 
 # using variables for demonstration purposes (not needed)
 [pyprland.variables]
-term_classed = "urxvt -name"
+term_classed = "foot --title"
 
 [scratchpads.term]
 animation = "fromTop"
 command = "[term_classed] scratchpad -e zsh"
+lazy = true
 
 [scratchpads.btop]
 animation = "fromTop"
 command = "[term_classed] scratchpad -e systemd-run --user --scope -p MemorySwapMax=0 -p MemoryMax=20M btop"
+lazy = true
 
 [scratchpads.todo]
 animation = "fromTop"
 command = "[term_classed] scratchpad -e sh -c 'nvim ~/.local/share/todo.md'"
+lazy = true
 
 [scratchpads.filemanager]
 animation = "fromTop"
 command = "[term_classed] scratchpad -e sh -c yazi"
+lazy = true
+
+[scratchpads.music]
+animation = "fromTop"
+command = "[term_classed] scratchpad -e sh -c rmpc"
+lazy = true
