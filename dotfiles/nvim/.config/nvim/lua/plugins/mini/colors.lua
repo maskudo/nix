@@ -1,16 +1,16 @@
 local rosepine = {
-  base00 = "#191724",
-  base01 = "#1f1d2e",
-  base02 = "#26233a",
+  base00 = "#232136",
+  base01 = "#2a273f",
+  base02 = "#393552",
   base03 = "#6e6a86",
   base04 = "#908caa",
   base05 = "#e0def4",
   base06 = "#e0def4",
-  base07 = "#524f67",
+  base07 = "#56526e",
   base08 = "#eb6f92",
   base09 = "#f6c177",
-  base0A = "#ebbcba",
-  base0B = "#31748f",
+  base0A = "#ea9a97",
+  base0B = "#3e8fb0",
   base0C = "#9ccfd8",
   base0D = "#c4a7e7",
   base0E = "#f6c177",
@@ -18,7 +18,7 @@ local rosepine = {
 }
 
 ---@diagnostic disable-next-line: unused-local
-local catppuccinmocha = {
+local _catppuccinmocha = {
   base00 = "#1e1e2e",
   base01 = "#181825",
   base02 = "#313244",
@@ -68,3 +68,16 @@ end, { desc = "Extract Colorscheme" })
 -- vim.api.nvim_set_hl(0, "GitSignsStagedChangeNr", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "GitSignsStagedDeleteNr", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#313244" })
+--
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
+--
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "TabLine", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "TabLineSel", { bg = "none" })

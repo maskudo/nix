@@ -1,15 +1,17 @@
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
+  enabled = false,
   config = function()
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      javascript = { "biomejs" },
-      typescript = { "biomejs" },
-      javascriptreact = { "biomejs" },
-      typescriptreact = { "biomejs" },
-      svelte = { "biomejs" },
+      -- let biome lsp handle linting for js
+      -- javascript = { "biomejs" },
+      -- typescript = { "biomejs" },
+      -- javascriptreact = { "biomejs" },
+      -- typescriptreact = { "biomejs" },
+      -- svelte = { "biomejs" },
       python = { "ruff" },
       sql = { "sqlfluff" },
       markdown = { "markdownlint-cli2" },

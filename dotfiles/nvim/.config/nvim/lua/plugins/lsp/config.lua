@@ -14,31 +14,31 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
 })
 
-lspconfig["vtsls"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    vtsls = {
-      experimental = {
-        completion = {
-          enableServerSideFuzzyMatch = true,
-          entriesLimit = 10,
-        },
-      },
-    },
-  },
-})
-
-lspconfig["markdown_oxide"].setup({
-  on_attach = on_attach,
-  capabilities = vim.tbl_deep_extend("force", capabilities, {
-    workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
-    },
-  }),
-})
+-- lspconfig["vtsls"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   settings = {
+--     vtsls = {
+--       experimental = {
+--         completion = {
+--           enableServerSideFuzzyMatch = true,
+--           entriesLimit = 10,
+--         },
+--       },
+--     },
+--   },
+-- })
+--
+-- lspconfig["markdown_oxide"].setup({
+--   on_attach = on_attach,
+--   capabilities = vim.tbl_deep_extend("force", capabilities, {
+--     workspace = {
+--       didChangeWatchedFiles = {
+--         dynamicRegistration = true,
+--       },
+--     },
+--   }),
+-- })
 
 lspconfig["tailwindcss"].setup({
   on_attach = on_attach,

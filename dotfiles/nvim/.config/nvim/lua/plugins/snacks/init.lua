@@ -12,7 +12,7 @@ return {
     bufdelete = { enabled = true },
     scroll = {
       animate = {
-        duration = { step = 10, total = 100 },
+        duration = { step = 10, total = 50 },
         easing = "linear",
       },
       animate_repeat = {
@@ -38,6 +38,17 @@ return {
     },
     input = {},
     gitbrowse = { enabled = true },
+    explorer = {},
+    picker = {
+      sources = {
+        explorer = {
+          hidden = true,
+          layout = {
+            -- layout = { position = "right" },
+          },
+        },
+      },
+    },
   },
   -- stylua: ignore
 	keys = {

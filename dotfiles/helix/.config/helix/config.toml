@@ -1,0 +1,26 @@
+theme = "rose_pine"
+
+[editor]
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal."space"]
+"." = "file_picker"
+
+[keys.normal]
+"K" = "hover"
+"-" = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+"C-g" = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+"C-x" = ":reset-diff-change"
+

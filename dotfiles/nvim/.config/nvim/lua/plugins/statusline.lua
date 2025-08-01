@@ -109,16 +109,16 @@ local function lsp()
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = " %#DiagnosticError# " .. count["errors"]
+    errors = "  " .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#DiagnosticWarn# " .. count["warnings"]
+    warnings = "  " .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = " %#DiagnosticHint# " .. count["hints"]
+    hints = "  " .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = " %#DiagnosticInfo#  " .. count["info"]
+    info = "   " .. count["info"]
   end
 
   return errors .. warnings .. hints .. info .. "%#Normal#"
@@ -132,7 +132,7 @@ local function lineinfo()
   if vim.bo.filetype == "alpha" then
     return ""
   end
-  return " %P %l:%c "
+  return " %l:%L "
 end
 
 local vcs = function()
@@ -160,15 +160,13 @@ local vcs = function()
   end
   return table.concat({
     " ",
-    "%#GitSignsAdd# ",
+    " ",
     branch_name,
-    " %#Normal#",
     " ",
     added,
     changed,
     removed,
     " ",
-    " %#Normal#",
   })
 end
 
@@ -182,11 +180,11 @@ local function file_size()
   if size < 1024 then
     return size .. " B"
   elseif size < 1024 * 1024 then
-    return string.format("%.2f KB", size / 1024)
+    return string.format("%.2fKB", size / 1024)
   elseif size < 1024 * 1024 * 1024 then
-    return string.format("%.2f MB", size / (1024 * 1024))
+    return string.format("%.2fMB", size / (1024 * 1024))
   else
-    return string.format("%.2f GB", size / (1024 * 1024 * 1024))
+    return string.format("%.2fGB", size / (1024 * 1024 * 1024))
   end
 end
 
@@ -194,21 +192,25 @@ Statusline = {}
 
 Statusline.active = function()
   return table.concat({
-    "%#Normal# ",
+    "%#Statusline#",
     open_buffers(),
     "%#Statusline#",
     update_mode_colors(),
     mode(),
-    "%#Normal#",
+    "%#Statusline#",
     filepath(),
+    "%#Normal#",
     filename(),
     modified(),
-    "%#Normal#",
     "%=%#StatusLineExtra#",
+    "%#Statusline#",
     lsp(),
+    "%#Statusline#",
     vcs(),
-    filetype(),
+    "%#Statusline#",
+    -- filetype(),
     file_size(),
+    "%#Statusline#",
     lineinfo(),
   })
 end
@@ -223,7 +225,7 @@ vim.cmd(
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
+  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal noshowmode
   augroup END
 ]],

@@ -3,14 +3,14 @@ return {
     "saghen/blink.cmp",
     enabled = true,
     event = "BufReadPre",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
     version = "*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     ---
     opts = {
+      keymap = {
+        preset = "super-tab",
+      },
       sources = {
         default = {
           "lsp",
