@@ -80,4 +80,6 @@
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     enableAllFirmware = true;
   };
+
+  zramSwap.enable = true;
 }

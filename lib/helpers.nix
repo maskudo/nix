@@ -12,29 +12,33 @@
         system = system;
         config.allowUnfree = true;
       },
+      stablePkgs ? inputs.nixpkgs.legacyPackages.${system},
+      ...
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       modules = [
         (import ../home/home-manager.nix {
           homeDirectory = "/home/${username}";
-          inherit username;
+          inherit username inputs stablePkgs;
         })
         inputs.catppuccin.homeModules.catppuccin
+        inputs.nix-index-database.homeModules.nix-index
         (
           { ... }:
           {
             home.guiApps.enable = enableGuiApps;
+            programs.nix-index-database.comma.enable = true;
           }
         )
       ];
       pkgs = unstablePkgs;
       extraSpecialArgs = {
-        stablePkgs = inputs.nixpkgs.legacyPackages.${system};
         inherit
           username
           inputs
           system
           enableGuiApps
+          stablePkgs
           ;
       };
     };
@@ -61,14 +65,6 @@
         ../hosts
         inputs.grub2-themes.nixosModules.default
         inputs.flake-programs-sqlite.nixosModules.programs-sqlite
-        (
-          { pkgs, inputs, ... }:
-          {
-            home.file.".cache/nix-index/files" = {
-              source = inputs.nix-index-db.packages.${pkgs.system}.default;
-            };
-          }
-        )
       ];
     };
 }

@@ -131,6 +131,7 @@
     pulseaudioFull
     pavucontrol
     pciutils
+    pkg-config
     psmisc
     unrar
     unzip
