@@ -11,7 +11,6 @@
     bat
     btop
     calcurse
-    comma
     cowsay
     delta
     distrobox
@@ -23,6 +22,7 @@
     fzf
     gh
     go
+    evil-helix
     imagemagick
     jless
     jq
@@ -33,34 +33,28 @@
     kubernetes-helm
     lazydocker
     lazygit
-    lua5_1
     minikube
+    mpc
     nerd-fonts.jetbrains-mono
-    nixd
-    nixfmt-rfc-style
+    nerd-fonts.iosevka
     nixos-firewall-tool
-    nodePackages.live-server
-    nodePackages.pnpm
-    nodejs_24
     nwg-look
     opentofu # terraform
     pandoc
     postgresql
     presenterm
-    python311
     ripgrep
     rmpc
-    rustup
     sqlite
     sshs
     starship
     stow
+    systemctl-tui
     tealdeer
     television
     texlive.combined.scheme-small # for pdf
     tmux
     typst
-    uv
     vim
     yazi
     yq

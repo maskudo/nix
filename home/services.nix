@@ -8,6 +8,10 @@
   imports = [ ./systemd ];
 
   services.copyq.enable = true;
+  # services.emacs.enable = true;
+  # services.emacs.package =
+  #   with pkgs;
+  #   ((emacsPackagesFor emacs-pgtk).emacsWithPackages (epkgs: [ epkgs.vterm ]));
 
   services.mpd = {
     enable = true;

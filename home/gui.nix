@@ -23,6 +23,14 @@
     catppuccin.gtk.enable = true;
     catppuccin.hyprland.enable = true;
 
+    # programs.emacs = {
+    #   enable = true;
+    #   extraPackages = epkgs: [
+    #     pkgs.libtool
+    #     pkgs.cmake
+    #   ];
+    # };
+
     home.packages = with pkgs; [
       arandr
       arc-theme
@@ -38,7 +46,6 @@
       # })
       deadbeef-with-plugins
       dracula-theme
-      emacs
       evince
       feh
       (flameshot.override { enableWlrSupport = true; })

@@ -13,9 +13,9 @@
     portainer-on-nixos.url = "gitlab:cbleslie/portainer-on-nixos";
     portainer-on-nixos.inputs.nixpkgs.follows = "nixpkgs";
     flake-programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
-    flake-programs-sqlite.inputs.nixpkgs.follows = "nixpkgs";
+    flake-programs-sqlite.inputs.nixpkgs.follows = "unstable";
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs =

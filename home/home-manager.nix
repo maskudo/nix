@@ -1,13 +1,14 @@
 {
   homeDirectory,
   username,
+  ...
 }:
-{ ... }:
 {
   imports = [
     ./cli.nix
     ./gui.nix
     ./services.nix
+    ./languages.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
