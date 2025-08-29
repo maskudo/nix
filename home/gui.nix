@@ -19,10 +19,6 @@
     nixpkgs.config.permittedInsecurePackages = [
       "electron-25.9.0"
     ];
-    catppuccin.flavor = "mocha";
-    catppuccin.gtk.enable = true;
-    catppuccin.hyprland.enable = true;
-
     # programs.emacs = {
     #   enable = true;
     #   extraPackages = epkgs: [
@@ -36,16 +32,13 @@
       arc-theme
       arc-icon-theme
       authenticator
-      catppuccin
       copyq
       cozy
-      dex
       discord
       # (discord.override {
       #   withVencord = true;
       # })
       deadbeef-with-plugins
-      dracula-theme
       evince
       feh
       (flameshot.override { enableWlrSupport = true; })
@@ -54,7 +47,8 @@
       google-chrome
       kitty
       kdePackages.kmag
-      libsForQt5.breeze-qt5
+      kdePackages.breeze
+      libreoffice
       libresprite
       lxappearance
       lxrandr

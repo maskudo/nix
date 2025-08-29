@@ -21,7 +21,6 @@
           homeDirectory = "/home/${username}";
           inherit username inputs stablePkgs;
         })
-        inputs.catppuccin.homeModules.catppuccin
         inputs.nix-index-database.homeModules.nix-index
         (
           { ... }:
