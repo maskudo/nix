@@ -9,7 +9,6 @@
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    catppuccin.url = "github:catppuccin/nix";
     portainer-on-nixos.url = "gitlab:cbleslie/portainer-on-nixos";
     portainer-on-nixos.inputs.nixpkgs.follows = "nixpkgs";
     flake-programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
