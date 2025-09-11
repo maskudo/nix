@@ -45,6 +45,7 @@
           "vboxusers"
           "input"
           "uinput"
+          "render"
         ];
         packages = [
         ];
