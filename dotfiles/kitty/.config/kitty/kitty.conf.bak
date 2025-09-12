@@ -1,3 +1,4 @@
+include ./dracula.conf
 shell_integration enabled
 font_family      family="JetBrainsMono Nerd Font"
 bold_font        auto
@@ -7,24 +8,24 @@ bold_italic_font auto
 font_size 12.0
 
 disable_ligatures  never
-# cursor #E82424
+cursor #E82424
 cursor_trail 3
 cursor_trail_decay 0.05 0.1
 cursor_trail_start_threshold 0
-# cursor_text_color #f4dbdb
+cursor_text_color #f4dbdb
 cursor_blink_interval 1 ease-in-out
 open_url_with zen
 
 copy_on_select yes
 
-background_opacity 0.7
+background_opacity 1
 
 tab_bar_style powerline
 tab_powerline_style angled
 
 window_border_width 0pt
 draw_minimal_borders yes
-# active_border_color none
+active_border_color none
 
 editor .
 confirm_os_window_close -1
@@ -37,5 +38,5 @@ wayland_enable_ime no
 
 # BEGIN_KITTY_THEME
 # Rosé Pine
-include rosepine.conf
+include current-theme.conf
 # END_KITTY_THEME

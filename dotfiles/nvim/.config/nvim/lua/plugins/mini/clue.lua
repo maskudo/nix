@@ -21,6 +21,9 @@ M.clues = {
   { mode = "n", keys = "<leader>x", desc = "Diagnostics" },
   { mode = "n", keys = "<leader>y", desc = "Yank" },
   { mode = "n", keys = "<leader>t", desc = "Tab" },
+  { mode = "n", keys = "<leader>h", desc = "Docs" },
+  { mode = "n", keys = "<leader>i", desc = "Image" },
+  { mode = "n", keys = "<leader>o", desc = "Obsidian" },
 }
 
 M.triggers = {

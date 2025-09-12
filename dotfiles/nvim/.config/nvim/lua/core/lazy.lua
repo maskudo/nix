@@ -25,8 +25,9 @@ require("helpers.keys").set_leader(" ")
 -- (The leader key must be set before this)
 lazy.setup("plugins", {
   change_detection = { enabled = false },
+  ui = { border = "rounded" },
 })
 
 -- Might as well set up an easy-access keybinding
 
-require("helpers.keys").map("n", "<leader>L", lazy.show, "Show Lazy")
+vim.keymap.set("n", "<leader>L", lazy.show, { desc = "Show Lazy" })

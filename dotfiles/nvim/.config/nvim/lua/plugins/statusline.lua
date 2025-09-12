@@ -121,7 +121,7 @@ local function lsp()
     info = "   " .. count["info"]
   end
 
-  return errors .. warnings .. hints .. info .. "%#Normal#"
+  return errors .. "%#Normal#"
 end
 
 local function filetype()
@@ -192,12 +192,10 @@ Statusline = {}
 
 Statusline.active = function()
   return table.concat({
-    "%#Statusline#",
+    "%#Normal#",
     open_buffers(),
-    "%#Statusline#",
     update_mode_colors(),
     mode(),
-    "%#Statusline#",
     filepath(),
     "%#Normal#",
     filename(),

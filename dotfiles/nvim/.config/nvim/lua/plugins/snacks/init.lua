@@ -1,3 +1,4 @@
+local enable_virtual_lines = false
 return {
   "folke/snacks.nvim",
   -- dir = "~/dev/snacks.nvim",
@@ -52,13 +53,17 @@ return {
   },
   -- stylua: ignore
 	keys = {
-		{ "[[", function() require("snacks").words.jump(-1, true) end, desc = "󰉚 Prev reference", },
-		{ "]]", function() require("snacks").words.jump(1, true) end, desc = "󰉚 Next reference", },
+		{ "[[", function() Snacks.words.jump(-1, true) end, desc = "󰉚 Prev reference", },
+		{ "]]", function() Snacks.words.jump(1, true) end, desc = "󰉚 Next reference", },
 		{"<leader>ba", function() Snacks.bufdelete.all() end, desc = "Delete All Buffer",},
 		{"<leader>bd", function() Snacks.bufdelete.delete() end, desc = "Delete Current Buffer",},
 		-- { "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TS Context", },
 		{ "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes", },
-		{ "<leader>ud", function() Snacks.toggle.diagnostics():toggle() end, desc = "Toggle Diagnostics", },
+		{ "<leader>udd", function() Snacks.toggle.diagnostics():toggle() end, desc = "Toggle Diagnostics", },
+		{ "<leader>udl", function()
+      enable_virtual_lines = not enable_virtual_lines
+      vim.diagnostic.config({virtual_lines = enable_virtual_lines, virtual_text = not enable_virtual_lines})
+    end, desc = "Toggle Line Diagnostics", },
 		{ "<leader>uh", function() Snacks.toggle.inlay_hints():toggle() end, desc = "Toggle Inlay Hints", },
 		{ "<leader>ui", function() Snacks.toggle.indent():toggle() end, desc = "Toggle Indent", },
 		{ "<leader>un", function() Snacks.notifier.show_history() end, desc = "Show Notifications", },

@@ -20,18 +20,18 @@ map("n", "<leader>fe", "<cmd>e!<cr>", "Reset buffer")
 map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 
-map("n", "gx", ":silent !xdg-open <cfile><CR>", "Open link")
+map("n", "gX", ":silent !xdg-open <cfile><CR>", "Open link")
 
 -- Easier access to beginning and end of lines
-map("n", "<S-h>", "^", "Go to beginning of line")
-map("n", "<S-l>", "$", "Go to end of line")
+map({ "n", "v" }, "<S-h>", "^", "Go to beginning of line")
+map({ "n", "v" }, "<S-l>", "$", "Go to end of line")
 
 -- Better window navigation
-map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
-map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
-map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
-map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
-map("n", "<C-f>", "<C-w>w", "Focus window")
+-- map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
+-- map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
+-- map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
+-- map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
+-- map("n", "<C-f>", "<C-w>w", "Focus window")
 --
 -- Better tab navigation
 map("n", "<leader>tt", ":tabnew<CR>", "New Tab")

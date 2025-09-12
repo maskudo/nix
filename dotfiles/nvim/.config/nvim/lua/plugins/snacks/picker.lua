@@ -85,6 +85,15 @@ return {
             },
           },
         },
+        preview = {
+          keys = {
+            ["<c-h>"] = {
+              "cycle_win",
+              desc = "Cycle Window",
+              mode = { "n", "i" },
+            },
+          },
+        },
       },
       sources = {
         git_log_file = gitActions,
@@ -167,8 +176,7 @@ return {
 		{"<leader>fd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
 		-- {"<leader>xx", function() Snacks.picker.diagnostics({ format = "file", }) end, desc = "Workspace Diagnostics",},
 		-- {"<leader>xb", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
-		{"<leader>ff", function() Snacks.picker.smart({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
-		{"<leader>fF", function() Snacks.picker.files({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
+		{"<leader>ff", function() Snacks.picker.files({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},
 		{"<leader>fg", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
 		{"<leader>,", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
 		{"<leader>fp", function() Snacks.picker.recent({ hidden = true, filter = { cwd = true } }) end, desc = "Recent",},
@@ -189,7 +197,7 @@ return {
 		{"<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages",},
 		{"<leader>sP", function() Snacks.picker.projects() end, desc = "Projects",},
 		{"<leader>sR", function() Snacks.picker.registers() end, desc = "Registers",},
-		{"<leader>sH", function() Snacks.picker.highlights() end, desc = "Help Pages",},
+		{"<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights",},
 		{"<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages",},
 		{"<leader>sm", function() Snacks.picker.marks({ filter = { cwd = true } }) end, desc = "Marks", mode = { "n", "v" },},
 		{"<leader>sp", function() Snacks.picker() end, desc = "Picker",},

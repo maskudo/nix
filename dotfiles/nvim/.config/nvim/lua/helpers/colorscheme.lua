@@ -18,6 +18,7 @@ local function get_if_available(names, opts)
 end
 
 local colorscheme = get_if_available({
+  "vim-dark",
   "rose-pine",
   "da-one-ocean",
   "kanagawa",

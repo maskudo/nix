@@ -52,6 +52,3 @@ local opts = {
 for opt, val in pairs(opts) do
   vim.o[opt] = val
 end
-
-local colorscheme = require("helpers.colorscheme")
-vim.cmd.colorscheme(colorscheme)

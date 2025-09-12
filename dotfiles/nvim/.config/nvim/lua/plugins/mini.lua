@@ -1,5 +1,5 @@
 return {
-  "echasnovski/mini.nvim",
+  "nvim-mini/mini.nvim",
   dependencies = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
@@ -19,13 +19,8 @@ return {
     require("mini.icons").setup()
     require("mini.icons").mock_nvim_web_devicons()
     require("mini.colors").setup()
-    require("mini.surround").setup({
-      mappings = {
-        replace = "sc", -- Replace surrounding
-      },
-    })
+    require("mini.surround").setup()
     require("mini.splitjoin").setup()
-    require("mini.visits").setup()
     require("mini.trailspace").setup()
 
     require("mini.bracketed").setup({
@@ -38,6 +33,11 @@ return {
           return require("ts_context_commentstring.internal").calculate_commentstring()
             or vim.bo.commentstring
         end,
+      },
+    })
+    require("mini.operators").setup({
+      replace = {
+        prefix = "gp",
       },
     })
 

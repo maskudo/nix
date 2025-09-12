@@ -18,7 +18,7 @@ x-scheme-handler/ftp=zen.desktop;
 x-scheme-handler/http=zen.desktop;
 x-scheme-handler/https=zen.desktop;
 x-scheme-handler/postman=Postman.desktop
-inode/directory=thunar.desktop
+inode/directory=pcmanfm.desktop
 
 [Added Associations]
 application/pdf=zen.desktop;

@@ -1,8 +1,6 @@
 return {
   {
     "maskudo/devdocs.nvim",
-    lazy = false,
-    event = "VeryLazy",
     keys = {
       {
         "<leader>ho",
@@ -43,11 +41,16 @@ return {
         desc = "Find and Replace",
       },
     },
-    opts = {},
+    opts = {
+      engines = {
+        ripgrep = {
+          extraArgs = "-.",
+        },
+      },
+    },
   },
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
     enabled = true,
     ---@type Flash.Config
     opts = {

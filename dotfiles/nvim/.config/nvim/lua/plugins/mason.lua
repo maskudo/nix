@@ -7,6 +7,7 @@ return {
   },
   opts = {
     ui = {
+      border = "rounded",
       icons = {
         package_installed = "✓",
         package_pending = "➜",
@@ -22,11 +23,12 @@ return {
       "css-lsp",
       "docker-compose-language-service",
       "dockerfile-language-server",
-      "emmylua_ls",
+      -- "emmylua_ls",
       -- "emmet-ls",
       "gofumpt",
       "gopls",
       "markdown-oxide",
+      "lua-language-server",
       "nixpkgs-fmt",
       "prettierd",
       "pyright",

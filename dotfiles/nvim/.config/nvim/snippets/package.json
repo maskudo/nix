@@ -46,6 +46,12 @@
         "language": [
           "markdown"
         ]
+      },
+      {
+        "path": "./kubernetes.json",
+        "language": [
+          "yaml"
+        ]
       }
     ]
   },

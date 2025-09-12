@@ -8,3 +8,6 @@ require("core.keymaps")
 require("core.options")
 
 require("core.autocmds")
+
+local colorscheme = require("helpers.colorscheme")
+vim.cmd.colorscheme(colorscheme)
