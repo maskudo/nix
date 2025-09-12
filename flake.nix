@@ -22,7 +22,6 @@
     let
       aspire = "mk489";
       omen = "omen";
-      probook = "probook";
       libx = import ./lib {
         inherit
           inputs
@@ -36,9 +35,6 @@
       nixosConfigurations = {
         aspire = libx.mkHost {
           username = aspire;
-        };
-        probook = libx.mkHost {
-          username = probook;
         };
         omen = libx.mkHost {
           username = omen;
@@ -54,11 +50,6 @@
         aspire = libx.mkHome {
           system = "x86_64-linux";
           username = aspire;
-          enableGuiApps = false;
-        };
-        probook = libx.mkHome {
-          system = "x86_64-linux";
-          username = probook;
           enableGuiApps = false;
         };
         omen = libx.mkHome {
