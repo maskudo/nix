@@ -51,6 +51,14 @@
           system = "x86_64-linux";
           username = aspire;
           enableGuiApps = false;
+          mods = [
+            (
+              { ... }:
+              {
+                services.sync-photos.enable = true;
+              }
+            )
+          ];
         };
         omen = libx.mkHome {
           system = "x86_64-linux";

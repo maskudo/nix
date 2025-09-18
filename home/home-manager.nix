@@ -7,8 +7,9 @@
   imports = [
     ./cli.nix
     ./gui.nix
-    ./services.nix
     ./languages.nix
+    ./systemd
+    ./services
   ];
 
   nixpkgs.config.allowUnfree = true;

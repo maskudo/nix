@@ -1,25 +1,41 @@
-{ pkgs, ... }:
 {
-  systemd.user.services.sync-photos = {
-    Unit = {
-      Description = "Sync Photos";
-    };
-    Service = {
-      ExecStart = ''${pkgs.rsync}/bin/rsync -Prvh /mnt/media/photos /mnt/game'';
-      Type = "oneshot"; # The service runs and finishes once each time it's triggered
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+
+  options = {
+    services.sync-photos.enable = lib.mkOption {
+      description = "Enables photo sync";
+      default = false;
+      type = lib.types.bool;
     };
   };
 
-  systemd.user.timers.sync-photos = {
-    Unit = {
-      Description = "Make regular backups of photos";
+  config = lib.mkIf config.services.sync-photos.enable {
+    systemd.user.services.sync-photos = {
+      Unit = {
+        Description = "Sync Photos";
+      };
+      Service = {
+        ExecStart = ''${pkgs.rsync}/bin/rsync -Prvh /mnt/media/photos /mnt/game'';
+        Type = "oneshot"; # The service runs and finishes once each time it's triggered
+      };
     };
-    Timer = {
-      OnCalendar = "*-*-* 11,21:00:00";
-      Persistent = true; # so that the timer runs afterwards in case of system not being online
-    };
-    Install = {
-      WantedBy = [ "timers.target" ]; # Ensures the timer is part of the timers target
+
+    systemd.user.timers.sync-photos = {
+      Unit = {
+        Description = "Make regular backups of photos";
+      };
+      Timer = {
+        OnCalendar = "*-*-* 11,21:00:00";
+        Persistent = true; # so that the timer runs afterwards in case of system not being online
+      };
+      Install = {
+        WantedBy = [ "timers.target" ]; # Ensures the timer is part of the timers target
+      };
     };
   };
 }

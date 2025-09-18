@@ -13,6 +13,7 @@
         config.allowUnfree = true;
       },
       stablePkgs ? inputs.nixpkgs.legacyPackages.${system},
+      mods ? [ ],
       ...
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
@@ -29,7 +30,8 @@
             programs.nix-index-database.comma.enable = true;
           }
         )
-      ];
+      ]
+      ++ mods;
       pkgs = unstablePkgs;
       extraSpecialArgs = {
         inherit
