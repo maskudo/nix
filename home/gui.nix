@@ -19,13 +19,6 @@
     nixpkgs.config.permittedInsecurePackages = [
       "electron-25.9.0"
     ];
-    # programs.emacs = {
-    #   enable = true;
-    #   extraPackages = epkgs: [
-    #     pkgs.libtool
-    #     pkgs.cmake
-    #   ];
-    # };
 
     home.packages = with pkgs; [
       arandr

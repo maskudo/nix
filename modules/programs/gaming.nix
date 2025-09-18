@@ -6,7 +6,11 @@
 }:
 {
   options = {
-    gaming.enable = lib.mkEnableOption "Enable gaming";
+    gaming.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable gaming";
+    };
   };
 
   config = lib.mkIf config.gaming.enable {

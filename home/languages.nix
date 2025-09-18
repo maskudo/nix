@@ -14,6 +14,5 @@
     lua5_1
     rustup
     python311
-
   ];
 }

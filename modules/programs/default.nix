@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   imports = [
     ./nix-ld.nix
@@ -7,5 +7,4 @@
     ./virtualization.nix
     ./gaming.nix
   ];
-  gaming.enable = lib.mkDefault false;
 }

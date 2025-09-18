@@ -6,4 +6,6 @@
     ./qbittorrent.nix
     ./syncPhotos.nix
   ];
+
+  systemd.user.enable = true;
 }
