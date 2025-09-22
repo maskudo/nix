@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     ./tailscale.nix
@@ -9,5 +9,8 @@
     ./nfs-server.nix
     ./gnome-keyring.nix
     ./portainer.nix
+    ./power.nix
+    ./tlp.nix
+    ./ryzenadj.nix
   ];
 }

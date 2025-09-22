@@ -6,7 +6,11 @@
 }:
 {
   options = {
-    powerModule.enable = lib.mkEnableOption "Enables intel undervolt and auto-cpufreq";
+    powerModule.enable = lib.mkOption {
+      description = "Enables intel undervolt and auto-cpufreq";
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.powerModule.enable {

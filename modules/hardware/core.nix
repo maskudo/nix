@@ -26,7 +26,7 @@
     udisks2.enable = true;
     tumbler.enable = true; # Thumbnail support for images
 
-    printing.enable = true;
+    printing.enable = false;
 
     blueman.enable = true;
 
