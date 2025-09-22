@@ -48,6 +48,7 @@
       mpv
       nicotine-plus
       normcap
+      nwg-look
       obs-studio
       obsidian
       pcmanfm
@@ -62,6 +63,7 @@
       xarchiver
       xclip
       xsel
+      zathura
       inputs.zen-browser.packages."${system}".default
 
     ];

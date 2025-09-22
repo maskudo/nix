@@ -1,7 +1,12 @@
 { lib, config, ... }:
 {
+
   options = {
-    tlpModule.enable = lib.mkEnableOption "Enables Tlp";
+    tlpModule.enable = lib.mkOption {
+      description = "Enables Tlp";
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
   config = lib.mkIf config.tlpModule.enable {

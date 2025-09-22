@@ -1,8 +1,7 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "uinput" ];
     initrd.availableKernelModules = [
       "xhci_pci"

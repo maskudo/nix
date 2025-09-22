@@ -38,7 +38,6 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
     nixos-firewall-tool
-    nwg-look
     opentofu # terraform
     pandoc
     postgresql
@@ -58,7 +57,6 @@
     vim
     yazi
     yq
-    zathura
     zoxide
   ];
 

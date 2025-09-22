@@ -1,11 +1,11 @@
 {
   pkgs,
-  enableGuiApps,
   lib,
+  config,
   ...
 }:
 {
-  systemd.user.services.qbittorrent = lib.mkIf (!enableGuiApps) {
+  systemd.user.services.qbittorrent = lib.mkIf (!config.home.guiApps.enable) {
     Unit = {
       Description = "Qbittorrent Service";
       Wants = [ "network-online.target" ];
