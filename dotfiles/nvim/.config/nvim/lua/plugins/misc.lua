@@ -35,7 +35,7 @@ return {
     cmd = { "GrugFar" },
     keys = {
       {
-        "<leader>fr",
+        "<leader>fR",
         mode = { "n", "x", "o" },
         "<cmd>GrugFar<cr>",
         desc = "Find and Replace",

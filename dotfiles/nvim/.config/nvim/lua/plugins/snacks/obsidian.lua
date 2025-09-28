@@ -72,6 +72,42 @@ return {
         end,
         desc = "Create Note",
       },
+      {
+        "<leader>own",
+        function()
+          vim.ui.input({ prompt = "Enter filename" }, function(filename)
+            if not filename then
+              return
+            end
+            local filepath = "$HOME/zt/work/inbox/" .. filename .. ".md"
+            vim.cmd("edit " .. filepath)
+          end)
+        end,
+        desc = "Create Note(Work)",
+      },
+      {
+        "<leader>owf",
+        function()
+          Snacks.picker.smart({
+            dirs = { "$HOME/zt/work" },
+            multi = { "files" },
+            filter = { cwd = true },
+            exclude = { ".obsidian", "aegis*" },
+          })
+        end,
+        desc = "Notes(Work)",
+      },
+      {
+        "<leader>ow/",
+        function()
+          Snacks.picker.grep({
+            dirs = { "$HOME/zt/work" },
+            filter = { cwd = true },
+            exclude = { ".obsidian", "aegis*" },
+          })
+        end,
+        desc = "Grep Notes(Work)",
+      },
     },
   },
 }

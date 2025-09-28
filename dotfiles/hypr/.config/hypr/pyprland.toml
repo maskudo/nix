@@ -29,6 +29,11 @@ animation = "fromTop"
 command = "[term_classed] scratchpad -e sh -c 'nvim ~/.local/share/todo.md'"
 lazy = true
 
+[scratchpads.todoWork]
+animation = "fromTop"
+command = "[term_classed] scratchpad -e sh -c 'nvim ~/.local/share/todo-work.md'"
+lazy = true
+
 [scratchpads.filemanager]
 animation = "fromTop"
 command = "[term_classed] scratchpad -e sh -c yazi"

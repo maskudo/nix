@@ -203,6 +203,7 @@ return {
 		{"<leader>sp", function() Snacks.picker() end, desc = "Picker",},
 		{"<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List",},
 		{"<leader>sr", function() Snacks.picker.resume() end, desc = "Resume",},
+		{"<leader>fr", function() Snacks.picker.resume() end, desc = "Resume",},
 		{"<leader>st", function() Snacks.picker.treesitter() end, desc = "Picker",},
 		{"<leader>sT", function() Snacks.picker.treesitter({ filter = { default = { "Class", "Enum", "Field", "Function", "Method", "Module", "Namespace", "Struct", "Trait", "Table", "Object", "Property", "Key", }, }, }) end, desc = "Treesitter",},
 		{"<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" },},

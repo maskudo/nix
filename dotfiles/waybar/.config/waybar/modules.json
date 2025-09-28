@@ -121,7 +121,7 @@
     "on-scroll-up": "hyprctl dispatch workspace e-1",
   },
   "network": {
-		"family": "ipv6",
+		"family": "ipv4",
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
 		"format-wifi": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
 		"format-ethernet": "  {bandwidthUpBytes}   {bandwidthDownBytes}",

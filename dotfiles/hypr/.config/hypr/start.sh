@@ -9,16 +9,17 @@ pypr --debug /tmp/pypr.log &
 xrdb -load ~/.Xdefaults &
 
 copyq &
-gnome-keyring-daemon &
+# gnome-keyring-daemon &
 pkill dunst &
 dunst &
+# vicinae server &
 
 #!/usr/bin/env bash
 set -e
 
 [[ -n $HYPRLAND_DEBUG_CONF ]] && exit 0
 USAGE="\
-Import environment variables 
+Import environment variables
 
 Usgae: $0 <command>
 

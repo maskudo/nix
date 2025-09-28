@@ -10,6 +10,7 @@ return {
     opts = {
       keymap = {
         preset = "super-tab",
+        ["<C-j>"] = { "select_and_accept" },
       },
       sources = {
         default = {

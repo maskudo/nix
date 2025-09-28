@@ -39,6 +39,8 @@ M.triggers = {
   { mode = "n", keys = "g" },
   { mode = "x", keys = "g" },
 
+  { mode = "n", keys = "z" },
+
   -- Marks
   { mode = "n", keys = "'" },
   { mode = "n", keys = "`" },

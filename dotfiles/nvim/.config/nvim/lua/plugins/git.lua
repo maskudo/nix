@@ -20,12 +20,15 @@ return {
         changedelete = { text = "▎" },
         untracked = { text = "┆" },
       },
+      preview_config = {
+        border = "rounded",
+      },
       signs_staged_enable = true,
       attach_to_untracked = true,
       on_attach = function()
         local gs = package.loaded.gitsigns
         local map = require("helpers.keys").map
-
+        --
 	       -- stylua: ignore start
 	       map("n", "]h", ":Gitsigns next_hunk<CR>", "Next Hunk")
 	       map("n", "[h",":Gitsigns prev_hunk<CR>" , "Prev Hunk")

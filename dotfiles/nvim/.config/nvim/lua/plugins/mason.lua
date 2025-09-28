@@ -27,7 +27,7 @@ return {
       -- "emmet-ls",
       "gofumpt",
       "gopls",
-      "markdown-oxide",
+      "marksman",
       "lua-language-server",
       "nixpkgs-fmt",
       "prettierd",

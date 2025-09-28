@@ -1,0 +1,314 @@
+workspace "1"
+workspace "2"
+workspace "3"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+input {
+    // workspace-auto-back-and-forth
+    keyboard {
+        numlock
+    }
+    touchpad {
+        tap
+        dwt
+        drag true
+        natural-scroll
+    }
+}
+
+
+layout {
+    gaps 0
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        width 1
+    }
+
+    border {
+        off
+        width 1
+        active-color "#ffc87f"
+        inactive-color "#505050"
+        urgent-color "#9b0000"
+    }
+
+    // You can enable drop shadows for windows.
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+        gap 5
+        width 4
+    }
+}
+
+spawn-at-startup "~/.config/niri/start.sh"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    slowdown 0.5
+}
+
+window-rule {
+    match app-id="zen-beta"
+    open-maximized true
+    open-on-workspace "2"
+}
+
+window-rule {
+    match app-id="kitty"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="^scratch*"
+    open-maximized true
+    open-floating true
+    focus-ring {
+      width 1
+    }
+    default-window-height { proportion 0.8; }
+    default-column-width { proportion 0.8; }
+}
+
+window-rule {
+    match app-id="Xdg-desktop-portal-gtk"
+    focus-ring {
+      off
+    }
+}
+
+window-rule {
+    match app-id="^(com.github.hluk.copyq)$"
+    open-floating true
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=".*"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="discord"
+    match app-id="vesktop"
+    open-maximized true
+    open-on-workspace "3"
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+overview {
+    zoom 0.5
+}
+
+gestures {
+  hot-corners {
+    // off
+  }
+}
+
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
+    Mod+E hotkey-overlay-title="Emoji" { spawn "bemoji" ; }
+    Mod+Backspace hotkey-overlay-title="Power" { spawn-sh "wlr-which-key" ; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "hyprlock"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "~/.local/bin/scripts/changevolume up";}
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "~/.local/bin/scripts/changevolume down";}
+    XF86AudioMute        allow-when-locked=true { spawn "~/.local/bin/scripts/changevolume mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle" ; }
+
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "~/.local/bin/scripts/changebrightness down";}
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "~/.local/bin/scripts/changebrightness up";}
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Shift+Q { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+J     { focus-monitor-down; }
+    Mod+Ctrl+K     { focus-monitor-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { move-column-right; }
+    Mod+WheelScrollLeft       { move-column-left; }
+    Mod+Shift+WheelScrollRight { focus-column-right; }
+    Mod+Shift+WheelScrollLeft  { focus-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+
+    Mod+Tab { focus-workspace-previous; }
+
+    Mod+Comma  { consume-or-expel-window-left; }
+    Mod+Period { consume-or-expel-window-right; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    // Expand the focused column to space not taken up by other fully visible columns.
+    // Makes the column "fill the rest of the space".
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+
+    // Center all fully visible columns on screen.
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+Space       { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    // Windows in this column will appear as vertical tabs,
+    // rather than stacked on top of each other.
+    Mod+W { toggle-column-tabbed-display; }
+
+    Alt+S { spawn-sh "hyprshot -m region -z --raw --clipboard-only | swappy -f -"; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+V {spawn-sh "copyq toggle";}
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Mod+Shift+P { power-off-monitors; }
+
+    Alt+Backslash { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchterm --spawn 'foot --app-id scratchterm'"; }
+    Alt+F { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchyazi --spawn 'foot --app-id scratchyazi -e sh -c yazi'"; }
+    Alt+B { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchbtop --spawn 'foot --app-id scratchbtop -e sh -c btop'"; }
+    Alt+M { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchrmpc --spawn 'foot --app-id scratchrmpc -e sh -c rmpc'"; }
+    Alt+N { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchnote --spawn 'foot --app-id scratchnote -e sh -c \"nvim ~/.local/share/todo.md\"'"; }
+    Alt+W { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchnoteWork --spawn 'foot --app-id scratchnoteWork -e sh -c \"nvim ~/.local/share/todo-work.md\"'"; }
+}
+
