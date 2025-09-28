@@ -23,10 +23,10 @@
     options bbswitch load_state=-1 unload_state=1 nvidia-drm.modeset=1
   '';
   boot.kernelModules = [
+    "kvm-amd"
     "nvidia"
   ];
   boot.extraModulePackages = [ ];
-  boot.blacklistedKernelModules = [ "kvm-amd" ];
 
   boot.kernelParams = [ "amd_pstate=active" ];
   powerManagement.cpuFreqGovernor = "ondemand";

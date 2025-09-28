@@ -7,8 +7,9 @@
   ];
 
   desktop.i3.enable = true;
-  desktop.hyprland.enable = true;
-  desktop.sway.enable = true;
+  desktop.hyprland.enable = false;
+  desktop.sway.enable = false;
+  desktop.niri.enable = true;
   powerModule.enable = false;
   tlpModule.enable = false;
   ryzenadjModule.enable = true;

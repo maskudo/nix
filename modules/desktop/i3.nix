@@ -42,7 +42,6 @@
           enable = true;
           extraPackages = with pkgs; [
             betterlockscreen
-            dmenu
             dunst
             rofi
             picom

@@ -35,7 +35,7 @@
       evince
       feh
       (flameshot.override { enableWlrSupport = true; })
-      floorp
+      floorp-bin
       # firefox
       google-chrome
       kitty
@@ -43,6 +43,7 @@
       kdePackages.breeze
       libreoffice
       libresprite
+      localsend
       lxappearance
       lxrandr
       mpv
@@ -53,7 +54,10 @@
       obsidian
       pcmanfm
       pinta
+      protonvpn-gui
       qbittorrent
+      qogir-theme
+      qogir-icon-theme
       rose-pine-gtk-theme
       rose-pine-icon-theme
       rxvt-unicode
