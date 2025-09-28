@@ -41,13 +41,10 @@
           "wheel"
           "video"
           "audio"
-          "docker"
           "vboxusers"
           "input"
           "uinput"
           "render"
-        ];
-        packages = [
         ];
       };
     };
@@ -107,7 +104,6 @@
 
   environment.systemPackages = with pkgs; [
     alsa-utils
-    docker-compose
     findutils
     gcc
     git
@@ -121,7 +117,6 @@
     lsof
     man-pages
     man-pages-posix
-    moreutils
     nettools
     networkmanagerapplet
     nix-prefetch-git

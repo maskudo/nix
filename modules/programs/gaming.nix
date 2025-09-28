@@ -25,9 +25,6 @@
     programs.gamemode.enable = true;
     environment.systemPackages = with unstablePkgs; [
       mangohud
-      lutris
-      protonup
-      bottles
       (heroic.override {
         extraPkgs = pkgs: [
           pkgs.gamescope

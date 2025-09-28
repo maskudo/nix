@@ -25,6 +25,5 @@
         ExecStart = "${pkgs.ryzenadj}/bin/ryzenadj --stapm-limit=35000 --fast-limit=35000 --slow-limit=30000 --tctl-temp=75";
       };
     };
-
   };
 }

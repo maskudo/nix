@@ -18,10 +18,12 @@
     fd
     ffmpeg
     font-awesome
+    carlito # calibri and ms fonts
     fortune
     fzf
     gh
     go
+    git-lfs
     evil-helix
     imagemagick
     jless
@@ -30,7 +32,15 @@
     just
     k9s
     kubectl
-    kubernetes-helm
+    (wrapHelm kubernetes-helm {
+      plugins = with pkgs.kubernetes-helmPlugins; [
+        helm-secrets
+        helm-diff
+        helm-s3
+        helm-git
+      ];
+    })
+    helmfile
     lazydocker
     lazygit
     minikube
@@ -40,6 +50,8 @@
     nixos-firewall-tool
     opentofu # terraform
     pandoc
+    parallel
+    pgadmin4
     postgresql
     presenterm
     ripgrep
