@@ -1,0 +1,27 @@
+diff --git a/flake.nix b/flake.nix
+index 2897a33..843b1a8 100644
+--- a/flake.nix
++++ b/flake.nix
+@@ -17,2 +17,6 @@
+     nix-index-database.inputs.nixpkgs.follows = "unstable";
++    dankMaterialShell = {
++      url = "github:AvengeMedia/DankMaterialShell";
++      inputs.nixpkgs.follows = "unstable";
++    };
+   };
+diff --git a/home/gui.nix b/home/gui.nix
+index 700f440..9a598fe 100644
+--- a/home/gui.nix
++++ b/home/gui.nix
+@@ -22,2 +22,3 @@
+ 
++    programs.dankMaterialShell.enable = true;
+     home.packages = with pkgs; [
+diff --git a/lib/helpers.nix b/lib/helpers.nix
+index 74dce6b..8238bbd 100644
+--- a/lib/helpers.nix
++++ b/lib/helpers.nix
+@@ -25,2 +25,3 @@
+         inputs.nix-index-database.homeModules.nix-index
++        inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+         (
