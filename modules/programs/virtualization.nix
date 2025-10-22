@@ -19,12 +19,12 @@
     libvirtd.enable = true;
     spiceUSBRedirection.enable = true;
     # waydroid.enable = true;
-    virtualbox = {
-      host.enable = true;
-      guest.enable = true;
-      # guest.x11 = true;
-      host.enableHardening = false;
-    };
+    # virtualbox = {
+    #   host.enable = true;
+    #   # guest.enable = true; # causes long switch times
+    #   # guest.x11 = true;
+    #   host.enableHardening = false;
+    # };
   };
   networking.firewall.interfaces = {
     docker0 = {
