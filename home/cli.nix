@@ -3,7 +3,6 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    act
     ansible
     awscli2
     atuin
@@ -21,14 +20,11 @@
     carlito # calibri and ms fonts
     fortune
     fzf
-    gh
     go
     git-lfs
     evil-helix
     imagemagick
-    jless
     jq
-    jqp
     just
     k9s
     kubectl
@@ -44,7 +40,6 @@
     lazydocker
     lazygit
     minikube
-    mpc
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
     nixos-firewall-tool
@@ -65,10 +60,8 @@
     television
     texlive.combined.scheme-small # for pdf
     tmux
-    typst
     vim
     yazi
-    yq
     zoxide
   ];
 

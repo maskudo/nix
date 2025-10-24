@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   system,
+  username,
   ...
 }:
 {
@@ -21,6 +22,8 @@
     ];
 
     home.packages = with pkgs; [
+      adw-gtk3
+      adwaita-icon-theme
       arandr
       arc-theme
       arc-icon-theme
@@ -31,7 +34,6 @@
       # (discord.override {
       #   withVencord = true;
       # })
-      deadbeef-with-plugins
       evince
       feh
       (flameshot.override { enableWlrSupport = true; })
@@ -39,7 +41,6 @@
       # firefox
       google-chrome
       kitty
-      kdePackages.kmag
       kdePackages.breeze
       libreoffice
       libresprite
@@ -58,12 +59,8 @@
       qbittorrent
       qogir-theme
       qogir-icon-theme
-      rose-pine-gtk-theme
-      rose-pine-icon-theme
       rxvt-unicode
       smplayer
-      vlc
-      vscode
       xarchiver
       xclip
       xsel
