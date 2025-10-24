@@ -7,10 +7,11 @@ configuration {
   modi: "window,run,drun";
 }
 
-@theme "tokyo"
+@theme "colors"
+
 * {
     background-color:   transparent;
-    text-color:         @fg0;
+    text-color:         @on-surface;
 
     margin:     0px;
     padding:    0px;
@@ -24,8 +25,8 @@ window {
     border-radius:  2px;
 
     border: 1px;
-    border-color: @bg3;
-    background-color:   @bg0;
+    border-color: @surface-container-low;
+    background-color: @surface-container-lowest;
 }
 
 mainbox {
@@ -33,10 +34,10 @@ mainbox {
 }
 
 inputbar {
-    background-color:   @bg0;
-    border-color:       @bg3;
-    border-radius:  5px;
-    border:         1px;
+    background-color:   @surface-container-low;
+    border-color:       @shadow;
+    border-radius:      5px;
+    border:             1px;
 
     padding:    8px 16px;
     spacing:    8px;
@@ -44,24 +45,24 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg2;
+    text-color: @on-surface-variant;
 }
 
 entry {
     placeholder:        "Search";
-    placeholder-color:  @bg3;
+    placeholder-color:  @outline-variant;
 }
 
 message {
     margin:             12px 0 0;
     border-radius:      16px;
-    border-color:       @bg2;
-    background-color:   @bg2;
+    border-color:       @surface-container-high;
+    background-color:   @surface-container-high;
 }
 
 textbox {
-    padding:    8px 24px;
-    background-color:   @bg2;
+    padding:            8px 24px;
+    background-color:   @surface-container-high;
 }
 
 listview {
@@ -80,15 +81,15 @@ element {
 }
 
 element normal urgent {
-  text-color: @urgent;
+  text-color: @error;
 }
 
 element normal active {
-    text-color: @accent;
+    text-color: @primary;
 }
 
 element selected normal, element selected active {
-    background-color:   @bg2;
+    background-color: @surface-container;
 }
 
 element-icon {
@@ -97,6 +98,6 @@ element-icon {
 }
 
 element-text {
-    text-color: @fg1;
+    text-color: @on-surface;
 }
 

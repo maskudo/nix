@@ -100,6 +100,16 @@ return {
         git_log = gitActions,
         files = fileActions,
         smart = fileActions,
+        scratch = {
+          win = {
+            input = {
+              keys = {
+                ["<s-cr>"] = { "scratch_new", mode = { "n", "i" } },
+                ["<c-n>"] = { "list_down", mode = { "n", "i" } },
+              },
+            },
+          },
+        },
         grep = {
           win = {
             input = {
@@ -155,6 +165,8 @@ return {
 	keys = {
 		{"gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},
 		{"gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation",},
+		{"<leader>li", function() Snacks.picker.lsp_incoming_calls() end, desc = "LSP Incoming",},
+		{"<leader>lo", function() Snacks.picker.lsp_definitions() end, desc = "LSP Outgoing",},
 		{"<leader>lr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References",},
 		{"gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition",},
 		{"<C-\\>", mode = { "n", "t", "i" }, function() Snacks.terminal.toggle("zsh") end, desc = "Toggle Terminal",},
@@ -186,7 +198,7 @@ return {
 		{"<leader>gC", function() Snacks.picker.git_log({ hidden = true }) end, desc = "Git Commits",},
 		{"<leader>gY", function() Snacks.gitbrowse.open() end, desc = "Open git link in browser", mode = { "n", "v" },},
 		{"<leader>gc", function() Snacks.picker.git_log_file({ hidden = true }) end, desc = "Git Commits (file)",},
-		{"<leader>gl", function() Snacks.lazygit() end, desc = "Lazygit",},
+		{"<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Git Log Line",},
 		{"<leader>go", function() Snacks.gitbrowse() end, desc = "Open line(s) in browser", mode = { "n", "v" },},
 		{"<leader>gy", function() Snacks.gitbrowse.open({ open = function(url) vim.fn.setreg("+", url) vim.notify("Yanked url to clipboard") end, }) end, desc = "Copy line(s) link", mode = { "n", "v" },},
 		{"<leader>lS", function() Snacks.picker.lsp_workspace_symbols({ layout = { preset = "telescope", preview = "main" }, filter = { cwd = true }, }) end, desc = "LSP Symbols Workspace",},

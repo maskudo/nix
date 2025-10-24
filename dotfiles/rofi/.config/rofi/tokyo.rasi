@@ -1,19 +1,21 @@
 * {
-  bg0     : #191724;  /* Rose Pine base */
-  bg1     : #1f1d2e;  /* Rose Pine surface */
-  bg2     : #26233a;  /* Rose Pine overlay */
-  bg3     : #2a273f;  /* Rose Pine muted overlay (custom) */
-  fg0     : #e0def4;  /* Rose Pine text */
-  fg1     : #e0def4;  /* Rose Pine text (same for selection) */
-  fg2     : #e0def4;  /* Rose Pine text (same for alt selection) */
-  red     : #eb6f92;  /* Rose Pine love */
-  green   : #9ccfd8;  /* Rose Pine foam */
-  yellow  : #f6c177;  /* Rose Pine gold */
-  blue    : #c4a7e7;  /* Rose Pine iris */
-  magenta : #ea9a97;  /* Rose Pine rose */
-  cyan    : #31748f;  /* Rose Pine pine */
+  bg0     : #0d1014;
+  bg1     : #14171c;
+  bg2     : #1a1e24;
+  bg3     : #21262d;
 
-  accent  : #eb6f92;  /* Rose Pine love as accent */
-  urgent  : #f6c177;  /* Rose Pine gold for urgency */
+  fg0     : #e6ebf1;
+  fg1     : #e6ebf1;
+  fg2     : #e6ebf1;
+
+  red     : #9faec2;
+  green   : #a8b6c9;
+  yellow  : #b3c2d4;
+  blue    : #c8d3e0;
+  magenta : #b6c2d6;
+  cyan    : #bfd0e2;
+
+  accent  : #c8d3e0;
+  urgent  : #a2afc2;
 }
 

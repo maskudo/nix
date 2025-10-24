@@ -66,7 +66,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
-    slowdown 0.5
+    slowdown 0.75
 }
 
 window-rule {
@@ -123,7 +123,8 @@ window-rule {
 }
 
 overview {
-    zoom 0.5
+    zoom 0.7
+    backdrop-color "#111111"
 }
 
 gestures {
@@ -288,11 +289,13 @@ binds {
     Mod+W { toggle-column-tabbed-display; }
 
     Alt+S { spawn-sh "hyprshot -m region -z --raw --clipboard-only | swappy -f -"; }
+    Mod+P { spawn-sh "niri msg pick-color | awk '$1 == \"Hex:\" { printf \"%s\", $2 }' | wl-copy"; }
+
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+V {spawn-sh "copyq toggle";}
+    Mod+V {spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy";}
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 

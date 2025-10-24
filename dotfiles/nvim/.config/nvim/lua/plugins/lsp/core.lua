@@ -43,11 +43,6 @@ M.on_attach = function(_client, bufnr)
   opts.desc = "Show documentation for what is under cursor"
   keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
   --
-  opts.desc = "LSP Incoming Calls"
-  keymap.set("n", "<leader>li", vim.lsp.buf.incoming_calls, opts)
-
-  opts.desc = "LSP Outgoing Calls"
-  keymap.set("n", "<leader>lo", vim.lsp.buf.outgoing_calls, opts)
 end
 
 return M

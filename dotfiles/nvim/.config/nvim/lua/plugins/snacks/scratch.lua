@@ -120,7 +120,7 @@ return {
     {
       "<leader>sss",
       function()
-        Snacks.scratch.select({ win = { width = 0.5, height = 0.5 } })
+        Snacks.picker.scratch()
       end,
       desc = "List Scratch Buffer",
       mode = { "n", "v" },

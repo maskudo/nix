@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 swww-daemon &
-swww img ~/Pictures/Wallpapers/hollow-knight.png
+swww img ~/Pictures/Wallpapers/portal.png
 waybar &
 foot --server &
 
@@ -15,6 +15,7 @@ pkill dunst &
 dunst &
 zen &
 discord &
+wl-paste --watch cliphist store &
 # vicinae server &
 sleep 10
 go run ~/.config/niri/scripts/auto-hide-waybar.go &

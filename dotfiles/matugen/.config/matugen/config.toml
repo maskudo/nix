@@ -1,0 +1,47 @@
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+set = true
+
+# [templates.kitty]
+# input_path = './templates/kitty.conf'
+# output_path = '~/.config/kitty/matugen.conf'
+#
+# [templates.foot]
+# input_path = './templates/foot-matugen.ini'
+# output_path = '~/.config/foot/foot.ini'
+#
+# [templates.dunst]
+# input_path = './templates/dunstrc'
+# output_path = '~/.config/dunst/dunstrc'
+# post_hook = 'pkill -SIGUSR2 dunst'
+#
+# [templates.rofi]
+# input_path = './templates/rofi-colors.rasi'
+# output_path = '~/.config/rofi/colors.rasi'
+#
+# [templates.gtk3]
+# input_path = './templates/gtk-colors.css'
+# output_path = '~/.config/gtk-3.0/colors.css'
+# # post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+#
+# [templates.gtk4]
+# input_path = './templates/gtk-colors.css'
+# output_path = '~/.config/gtk-4.0/colors.css'
+#
+# [templates.waybar]
+# input_path = './templates/waybar-colors.css'
+# output_path = '~/.config/waybar/colors.css'
+# post_hook = 'pkill -SIGUSR2 waybar && pkill -SIGUSR1 waybar'
+#
+# [templates.yazi]
+# input_path  = './templates/yazi.toml'
+# output_path = '~/.config/yazi/theme.toml'
+#
+# [templates.btop]
+# input_path  = './templates/btop.theme'
+# output_path = '~/.config/btop/themes/matugen.theme'
+
+# [templates.hyprland]
+# input_path = './templates/'
+# output_path = '~/.config/hypr/colors.conf'
