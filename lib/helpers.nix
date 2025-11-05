@@ -66,6 +66,7 @@
         ../hosts
         inputs.grub2-themes.nixosModules.default
         inputs.flake-programs-sqlite.nixosModules.programs-sqlite
+        inputs.mango.nixosModules.mango
       ];
     };
 }
