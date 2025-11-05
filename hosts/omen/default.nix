@@ -10,6 +10,7 @@
   desktop.hyprland.enable = false;
   desktop.sway.enable = false;
   desktop.niri.enable = true;
+  desktop.mango.enable = true;
   powerModule.enable = false;
   tlpModule.enable = false;
   ryzenadjModule.enable = true;

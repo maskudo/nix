@@ -6,14 +6,7 @@
 }:
 {
   services.displayManager =
-    lib.mkIf
-      (
-        config.desktop.i3.enable
-        || config.desktop.hyprland.enable
-        || config.desktop.sway.enable
-        || config.desktop.niri.enable
-        || config.desktop.mango.enable
-      )
+    lib.mkIf (config.services.xserver.enable || config.services.displayManager.sddm.wayland.enable)
       {
         sddm.enable = true;
         sddm.theme = "${import ../../modules/sddm-theme.nix { inherit pkgs; }}";
