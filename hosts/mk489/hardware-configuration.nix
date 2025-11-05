@@ -19,7 +19,7 @@
 
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
-    "button.lid_init_state=open"
+    # "button.lid_init_state=open"
     "snd_hda_intel.power_save=0"
   ];
 
@@ -49,7 +49,7 @@
     fsType = "ntfs";
   };
 
-  fileSystems."/mnt/game" = {
+  fileSystems."/mnt/ssd" = {
     device = "/dev/disk/by-uuid/5C3E79013E78D58C";
     fsType = "ntfs";
   };
@@ -62,7 +62,7 @@
   services.nfs.server = {
     exports = ''
       /export     192.168.1.0/24(rw,fsid=0,no_subtree_check)
-      /export/media  192.168.1.0/24(rw,async,nohide,insecure,no_subtree_check)
+      /export/media  192.168.1.0/24(rw,async,nohide,insecure,no_subtree_check,crossmnt)
     '';
   };
 

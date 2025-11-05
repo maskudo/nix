@@ -8,7 +8,7 @@
   desktop.i3.enable = false;
   desktop.hyprland.enable = false;
   powerModule.enable = true;
-  services.proxmox.enable = true;
+  services.proxmox.enable = false;
   services.nfs-server.enable = true;
 
   networking.bridges = {
@@ -23,6 +23,10 @@
         prefixLength = 24;
       }
     ];
+  };
+  networking.interfaces.enp4s0f1.wakeOnLan.enable = true;
+  networking.firewall = {
+    allowedUDPPorts = [ 9 ];
   };
 
   environment.variables = {
