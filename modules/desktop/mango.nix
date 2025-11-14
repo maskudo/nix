@@ -15,7 +15,7 @@
 
   config = lib.mkIf config.desktop.mango.enable {
     programs.mango = {
-      enable = false;
+      enable = true;
     };
 
     environment.systemPackages = with pkgs; [
