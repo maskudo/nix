@@ -30,10 +30,11 @@
       authenticator
       copyq
       cozy
-      discord
+      # discord
       # (discord.override {
       #   withVencord = true;
       # })
+      vesktop
       evince
       feh
       (flameshot.override { enableWlrSupport = true; })

@@ -66,5 +66,13 @@
           username = omen;
         };
       };
+
+      templates = {
+        simple = {
+          description = "Minimal flake with only a devshell";
+          path = ./templates/simple;
+        };
+      };
+      defaultTemplate = inputs.self.templates.simple;
     };
 }
