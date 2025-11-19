@@ -13,6 +13,7 @@
     cowsay
     delta
     distrobox
+    dragon-drop
     dua
     fd
     ffmpeg
