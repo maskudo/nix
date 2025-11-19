@@ -9,7 +9,7 @@ application/x-extension-xhtml=zen.desktop
 application/xhtml+xml=zen.desktop
 image/png=feh.desktop;
 text/html=zen.desktop
-text/plain=nvim.desktop
+text/plain=editor.desktop
 text/xml=zen.desktop;
 video/mp4=smplayer.desktop
 video/x-matroska=smplayer.desktop
@@ -19,6 +19,7 @@ x-scheme-handler/http=zen.desktop;
 x-scheme-handler/https=zen.desktop;
 x-scheme-handler/postman=Postman.desktop
 inode/directory=pcmanfm.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 application/pdf=zen.desktop;
@@ -30,6 +31,7 @@ application/x-extension-xht=zen.desktop;
 application/x-extension-xhtml=zen.desktop;
 application/xhtml+xml=zen.desktop;
 image/jpeg=feh.desktop;
+image/png=feh.desktop;
 text/html=zen.desktop;
 video/mp4=smplayer.desktop;
 video/x-matroska=smplayer.desktop;

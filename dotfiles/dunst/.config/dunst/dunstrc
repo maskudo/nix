@@ -56,14 +56,14 @@
     timeout = 3
     background = "#101418"
     foreground = "#e0e2e8"
-    highlight = "#144974"
-    frame_color = "#144974"
+    highlight = "#a0a2a8"
+    frame_color = "#a0a2a8"
 [urgency_normal]
     timeout = 6
     background = "#101418"
     foreground = "#e0e2e8"
-    highlight = "#144974"
-    frame_color = "#144974"
+    highlight = "#c4a7e7"
+    frame_color = "#a0a2a8"
 [urgency_critical]
     timeout = 0
     background = "#101418"

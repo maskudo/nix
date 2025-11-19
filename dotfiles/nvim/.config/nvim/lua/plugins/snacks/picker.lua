@@ -88,8 +88,8 @@ return {
         preview = {
           keys = {
             ["<c-h>"] = {
-              "cycle_win",
-              desc = "Cycle Window",
+              "focus_input",
+              desc = "Focus Window",
               mode = { "n", "i" },
             },
           },
@@ -193,13 +193,11 @@ return {
 		{"<leader>,", function() Snacks.picker.git_status({ hidden = true }) end, desc = "Find Git Files",},
 		{"<leader>fp", function() Snacks.picker.recent({ hidden = true, filter = { cwd = true } }) end, desc = "Recent",},
 		{"<leader>fs", function() Snacks.picker.smart({ hidden = true }) end, desc = "Files (smart)",},
-		{"<leader>ft", function() Snacks.picker.grep({ hidden = true }) end, desc = "TODO Comments",},
 		{"<leader>gB", function() Snacks.picker.git_branches() end, desc = "Git Branches",},
 		{"<leader>gC", function() Snacks.picker.git_log({ hidden = true }) end, desc = "Git Commits",},
-		{"<leader>gY", function() Snacks.gitbrowse.open() end, desc = "Open git link in browser", mode = { "n", "v" },},
 		{"<leader>gc", function() Snacks.picker.git_log_file({ hidden = true }) end, desc = "Git Commits (file)",},
 		{"<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Git Log Line",},
-		{"<leader>go", function() Snacks.gitbrowse() end, desc = "Open line(s) in browser", mode = { "n", "v" },},
+		{"<leader>gY", function() Snacks.gitbrowse.open() end, desc = "Open git link in browser", mode = { "n", "v" },},
 		{"<leader>gy", function() Snacks.gitbrowse.open({ open = function(url) vim.fn.setreg("+", url) vim.notify("Yanked url to clipboard") end, }) end, desc = "Copy line(s) link", mode = { "n", "v" },},
 		{"<leader>lS", function() Snacks.picker.lsp_workspace_symbols({ layout = { preset = "telescope", preview = "main" }, filter = { cwd = true }, }) end, desc = "LSP Symbols Workspace",},
 		{"<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics",},

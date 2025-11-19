@@ -2,19 +2,15 @@
 
 swww-daemon &
 swww img ~/Pictures/Wallpapers/portal.png
-waybar &
 foot --server &
 
 nm-applet --indicator &
 xrdb -load ~/.Xdefaults &
 
-copyq &
-# gnome-keyring-daemon &
-pkill dunst &
 dunst &
+waybar &
 zen &
 discord &
+vesktop &
 wl-paste --watch cliphist store &
-# vicinae server &
-sleep 10
-go run ~/.config/niri/scripts/auto-hide-waybar.go &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots &

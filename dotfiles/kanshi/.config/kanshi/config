@@ -1,0 +1,5 @@
+profile laptop {
+	output "HDMI-A-1" enable mode 1920x1080 position 0,0
+	output "eDP-1" enable  mode 1920x1080 position 0,0
+  exec wl-present mirror eDP-1 --fullscreen-output HDMI-A-1 --fullscreen
+}

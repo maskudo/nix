@@ -59,8 +59,8 @@ return {
 		{"<leader>bd", function() Snacks.bufdelete.delete() end, desc = "Delete Current Buffer",},
 		-- { "<leader>uc", ":TSContextToggle<CR>", desc = "Toggle TS Context", },
 		{ "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes", },
-		{ "<leader>udd", function() Snacks.toggle.diagnostics():toggle() end, desc = "Toggle Diagnostics", },
-		{ "<leader>udl", function()
+		{ "<leader>uDd", function() Snacks.toggle.diagnostics():toggle() end, desc = "Toggle Diagnostics", },
+		{ "<leader>uDl", function()
       enable_virtual_lines = not enable_virtual_lines
       vim.diagnostic.config({virtual_lines = enable_virtual_lines, virtual_text = not enable_virtual_lines})
     end, desc = "Toggle Line Diagnostics", },

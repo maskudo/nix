@@ -27,6 +27,17 @@ on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
 
+[[mgr.prepend_keymap]]
+on  = "<C-n>"
+run = 'shell -- dragon-drop -T -x -i "$0"'
+
+[[mgr.prepend_keymap]]
+on   = "!"
+for  = "unix"
+run  = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+
 # [[manager.prepend_keymap]]
 # on  = "k"
 # run = "plugin --sync arrow --args=-1"

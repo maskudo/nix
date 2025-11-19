@@ -3,16 +3,19 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = {
-          "mason-org/mason.nvim",
-        },
-      },
+      "mason-org/mason.nvim",
     },
     config = function()
       require("plugins.lsp.handlers")
       require("plugins.lsp.config")
+      local installedPacks = require("mason-registry").get_installed_packages()
+      local lspConfigNames = vim
+        .iter(installedPacks)
+        :fold({}, function(acc, pack)
+          table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
+          return acc
+        end)
+      vim.lsp.enable(lspConfigNames)
     end,
   },
   {

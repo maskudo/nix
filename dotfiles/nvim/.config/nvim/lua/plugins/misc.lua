@@ -101,6 +101,14 @@ return {
         lsp_doc_border = true,
       },
     },
+    keys = {
+      {
+        "<leader>ud",
+        mode = "n",
+        "<cmd>NoiceDismiss<cr>",
+        desc = "Dismiss notifications",
+      },
+    },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",

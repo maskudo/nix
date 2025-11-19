@@ -43,6 +43,10 @@ bindkey "^[[1;5D" backward-word
 bindkey -s '^Z' "fg\n"
 
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # Environment variables
 export TERMINAL=kitty
 

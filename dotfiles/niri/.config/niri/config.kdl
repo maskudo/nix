@@ -295,7 +295,7 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+V {spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy";}
+    Mod+V {spawn-sh "rofi -modi clipboard:~/.config/rofi/cliphist-rofi-img.sh -show clipboard -show-icons";}
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
@@ -303,15 +303,12 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
-
     Alt+Backslash { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchterm --spawn 'foot --app-id scratchterm'"; }
     Alt+F { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchyazi --spawn 'foot --app-id scratchyazi -e sh -c yazi'"; }
     Alt+B { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchbtop --spawn 'foot --app-id scratchbtop -e sh -c btop'"; }
     Alt+M { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchrmpc --spawn 'foot --app-id scratchrmpc -e sh -c rmpc'"; }
     Alt+N { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchnote --spawn 'foot --app-id scratchnote -e sh -c \"nvim ~/.local/share/todo.md\"'"; }
     Alt+W { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchnoteWork --spawn 'foot --app-id scratchnoteWork -e sh -c \"nvim ~/.local/share/todo-work.md\"'"; }
+    Alt+G { spawn-sh "~/.config/niri/niri-scratchpad --app-id scratchGemini --spawn 'foot --app-id scratchGemini -e sh -c gemini'"; }
 }
 

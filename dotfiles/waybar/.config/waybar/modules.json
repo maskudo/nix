@@ -2,13 +2,7 @@
   "battery": {
     "bat": "BAT0",
     "format": "{<span><b>{capacity}</b></span>icon}",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-    ],
+    "format-icons": [" ", " ", " ", " ", " "],
     "format-critical": "<span font_family='JetBrainsMono Nerd Font' color='#f38ba8'>{icon} </span><b>{capacity}% </b>",
     "format-good": "<span font_family='JetBrainsMono Nerd Font' color='#ffffff'>{icon} </span><b>{capacity}% </b>",
     "format-charging": "<span font_family='JetBrainsMono Nerd Font' color='#a6e3a1'>{icon} </span><b>{capacity}% </b>",
@@ -78,25 +72,15 @@
       "transition-duration": 500,
       "transition-left-to-right": true
     },
-    "modules": [
-      "backlight",
-    ],
+    "modules": ["backlight"],
     "orientation": "horizontal"
   },
   "group/clock": {
-    "modules": [
-      "clock#time",
-    ],
+    "modules": ["clock#time"],
     "orientation": "inherit"
   },
   "group/sys-info": {
-    "modules": [
-      "group/brightness",
-      "group/volume",
-      "network",
-      "cpu",
-      "memory"
-    ],
+    "modules": ["group/brightness", "group/volume", "network", "cpu", "memory"],
     "orientation": "horizontal"
   },
   "group/volume": {
@@ -105,47 +89,41 @@
       "transition-duration": 500,
       "transition-left-to-right": true
     },
-    "modules": [
-      "pulseaudio",
-    ],
+    "modules": ["pulseaudio"],
     "orientation": "horizontal"
   },
   "hyprland/submap": {
     "format": "{}",
-    "tooltip": false,
+    "tooltip": false
   },
   "hyprland/workspaces": {
     "active-only": false,
     "format": "{icon}",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-up": "hyprctl dispatch workspace e-1"
   },
   "network": {
-		"family": "ipv4",
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
-		"format-ethernet": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
-		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "󰤭 ",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}",
-		"interval": 5
-	},
+    "family": "ipv4",
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
+    "format-ethernet": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󰤭 ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "interval": 5
+  },
   "cpu": {
-		"format": "  {usage}%",
-		"tooltip": false
-	},
+    "format": "  {usage}%",
+    "tooltip": false
+  },
   "memory": {
-		"format": "  {percentage}%"
-	},
+    "format": "  {percentage}%"
+  },
   "pulseaudio": {
     "format": "{icon}{volume}%",
     "format-bluetooth": "{icon}",
     "format-icons": {
-      "default": [
-        " ",
-        " ",
-        "󰕾 "
-      ]
+      "default": [" ", " ", "󰕾 "]
     },
     "format-muted": "󰖁 ",
     "on-click": "pavucontrol",
@@ -162,16 +140,16 @@
     "icon-size": 14
   },
   "backlight": {
-     "format": "{icon} {percent}%  ",
-    "states": [0,50],
-    "format-icons": ["󰃞 ","󰃝 ","󰃟 ","󰃠 "],
+    "format": "{icon} {percent}%  ",
+    "states": [0, 50],
+    "format-icons": ["󰃞 ", "󰃝 ", "󰃟 ", "󰃠 "],
     "on-scroll-up": "~/.local/bin/scripts/changebrightness up",
     "on-scroll-down": "~/.local/bin/scripts/changebrightness down"
   },
   "backlight/slider": {
     "max": 100,
     "min": 0,
-    "orientation": "horizontal",
+    "orientation": "horizontal"
   },
   "image": {
     "tooltip": false,
@@ -179,6 +157,15 @@
     "size": 47
   },
 
-  "orientation": "inherit"
+  "orientation": "inherit",
+  "ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": true,
+    "on-click": "activate",
+    "on-click-right": "deactivate",
+    "sort-by-id": true
+  },
+  "dwl/window": {
+    "format": " {title}"
   }
 }

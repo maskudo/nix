@@ -10,7 +10,9 @@
 		"hyprland/workspaces",
 		"hyprland/submap",
 		"niri/workspaces",
-		"sway/workspaces"
+		"sway/workspaces",
+    "ext/workspaces",
+    "dwl/window"
 	],
 	"modules-center": [],
 	"modules-right": [

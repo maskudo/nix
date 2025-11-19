@@ -1,8 +1,7 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --side-by-side
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --side-by-side
 gui:
   sidePanelWidth: 0.2
   mainPanelSplitMode: horizontal
@@ -31,10 +30,8 @@ gui:
     searchingActiveBorderColor:
       - "#f6c177"
   "*": "#b4befe"
-
 os:
   editPreset: "nvim"
-
 keybinding:
   commits:
     viewResetOptions: "D"
