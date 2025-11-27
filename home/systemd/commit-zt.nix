@@ -8,6 +8,7 @@
       ExecStart = "/home/${username}/zt/auto-commit.sh"; # Path to script
       WorkingDirectory = "/home/${username}/zt/"; # Set your working directory
       Type = "oneshot"; # The service runs and finishes once each time it's triggered
+      Environment = "PATH=/run/current-system/sw/bin:/home/${username}/.nix-profile/bin";
     };
   };
 

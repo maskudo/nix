@@ -6,11 +6,6 @@ aspire:
 aspireb:
 	sudo nixos-rebuild boot --flake .#aspire
 
-probook:
-	sudo nixos-rebuild switch --flake .#probook
-probookb:
-	sudo nixos-rebuild boot --flake .#probook
-
 omen:
 	sudo nixos-rebuild switch --flake .#omen
 omenb:
@@ -23,10 +18,6 @@ omenh:
 aspireh:
 	nix run nixpkgs#home-manager -- build --flake .#aspire
 	nix run nixpkgs#home-manager -- switch --flake .#aspire
-
-probookh:
-	nix run nixpkgs#home-manager -- build --flake .#probook
-	nix run nixpkgs#home-manager -- switch --flake .#probook
 
 check:
   nix flake check
