@@ -1,8 +1,14 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  unstablePkgs,
+  ...
+}:
 {
   environment.sessionVariables.GTK_CSD = "0"; # disable client side window decorations
   services.libinput =
-    lib.mkIf (config.desktop.i3.enable || config.desktop.hyprland.enable || config.desktop.sway.enable)
+    lib.mkIf (config.services.xserver.enable || config.services.displayManager.sddm.wayland.enable)
       {
         enable = true;
         touchpad = {
@@ -16,4 +22,28 @@
           middleEmulation = false;
         };
       };
+
+  environment.systemPackages =
+    with pkgs;
+    lib.mkIf (config.services.displayManager.sddm.wayland.enable) [
+      bemoji
+      cliphist
+      dunst
+      foot
+      hyprlock
+      hyprshot
+      hyprpicker
+      kanshi
+      rofi-wayland
+      swappy
+      swww
+      unstablePkgs.wlr-which-key
+      unstablePkgs.hyprmagnifier
+      waybar
+      wl-clipboard
+      wl-clipboard-x11
+      wl-mirror
+      wlr-randr
+      xwayland-satellite
+    ];
 }

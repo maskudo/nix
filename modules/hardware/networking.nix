@@ -4,10 +4,11 @@
   networking = {
     resolvconf.enable = false;
     dhcpcd.extraConfig = "nohook resolv.conf";
-    hostName = "${username}-nixos"; # Define your hostname.
+    hostName = "${username}"; # Define your hostname.
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
     networkmanager = {
       enable = true;
+      wifi.powersave = false;
       insertNameservers = [
         "1.1.1.1"
         "9.9.9.9"
