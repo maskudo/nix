@@ -1,15 +1,15 @@
 { pkgs, ... }:
 {
   services = {
+    system76-scheduler.enable = true;
     pulseaudio.enable = false;
     dbus.packages = [ pkgs.dconf ];
     logind = {
-      lidSwitch = "ignore";
-      extraConfig = ''
-        HandlePowerKey=ignore
-      '';
+      settings.Login = {
+        HandlePowerKey = "ignore";
+        HandleLidSwitch = "ignore";
+      };
     };
-
     locate = {
       enable = true;
       package = pkgs.plocate;

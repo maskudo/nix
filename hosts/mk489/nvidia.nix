@@ -1,11 +1,13 @@
 {
   config,
   pkgs,
+  lib,
+  enableGuiApps,
   ...
 }:
 {
   # Enable OpenGL
-  specialisation = {
+  specialisation = lib.mkIf enableGuiApps {
     nvidia-graphics.configuration = {
       environment.etc."specialisation".text = "nvidia";
       boot.kernelModules = [

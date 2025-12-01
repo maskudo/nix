@@ -47,6 +47,7 @@
   mkHost =
     {
       username,
+      enableGuiApps ? true,
       system ? "x86_64-linux",
       unstablePkgs ? import inputs.unstable {
         system = system;
@@ -60,6 +61,7 @@
           system
           username
           unstablePkgs
+          enableGuiApps
           ;
       };
       modules = [

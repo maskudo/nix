@@ -2,7 +2,7 @@
   description = "mk489's nix config'";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.inputs.nixpkgs.follows = "unstable";
     home-manager.url = "github:nix-community/home-manager";
@@ -39,6 +39,7 @@
       nixosConfigurations = {
         aspire = libx.mkHost {
           username = aspire;
+          enableGuiApps = false;
         };
         omen = libx.mkHost {
           username = omen;

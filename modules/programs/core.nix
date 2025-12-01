@@ -21,7 +21,9 @@
 
   systemd = {
     enableEmergencyMode = false;
-    extraConfig = "DefaultTimeoutStopSec=10s";
+    settings.Manager = {
+      DefaultTimeoutStopSec = "10s";
+    };
   };
 
   nixpkgs.config = {
@@ -79,15 +81,6 @@
       "root"
       username
     ];
-    trusted-substituters = [
-      "https://devenv.cachix.org"
-      "https://cache.saumon.network/proxmox-nixos"
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
-    trusted-public-keys = [
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-      "proxmox-nixos:nveXDuVVhFDRFx8Dn19f1WDEaNRJjPrF2CPD2D+m1ys="
-    ];
   };
   nix.optimise.automatic = true;
 
@@ -110,16 +103,12 @@
     findutils
     gcc
     git
-    glxinfo
     gnumake
     killall
     libcxx
     libgcc
     libnotify
-    linux-manual
     lsof
-    man-pages
-    man-pages-posix
     nettools
     networkmanagerapplet
     nix-prefetch-git
@@ -140,9 +129,6 @@
     xorg.xkill
     vim
     zip
-    libsForQt5.qt5.qtquickcontrols
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
   ];
   environment.variables = {
     GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";

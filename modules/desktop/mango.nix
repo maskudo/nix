@@ -8,7 +8,7 @@
   options = {
     desktop.mango.enable = lib.mkOption {
       description = "Enables mango";
-      default = true;
+      default = false;
       type = lib.types.bool;
     };
   };
@@ -23,7 +23,7 @@
       hyprlock
       swappy
       foot
-      rofi-wayland
+      rofi
       bemoji
       swww
       hyprshot

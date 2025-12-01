@@ -40,6 +40,7 @@
     };
     services.thermald.enable = true;
     services.auto-cpufreq.enable = true;
+    services.power-profiles-daemon.enable = lib.mkForce false;
     services.auto-cpufreq.settings = {
       battery = {
         governor = "powersave";
