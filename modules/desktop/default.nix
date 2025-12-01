@@ -7,6 +7,6 @@
     ./sway.nix
     ./mango.nix
     ./common.nix
-    ./sddm.nix
+    ./gdm.nix
   ];
 }

@@ -34,7 +34,7 @@
       hyprshot
       hyprpicker
       kanshi
-      rofi-wayland
+      rofi
       swappy
       swww
       unstablePkgs.wlr-which-key

@@ -22,7 +22,7 @@
       extraPackages = with pkgs; [
         waybar
         hyprlock
-        rofi-wayland
+        rofi
         foot
         bemoji
         swww

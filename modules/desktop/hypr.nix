@@ -24,7 +24,7 @@
       hyprlock
       swappy
       foot
-      rofi-wayland
+      rofi
       bemoji
       swww
       hyprshot

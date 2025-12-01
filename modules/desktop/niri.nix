@@ -38,7 +38,7 @@
       wl-mirror
       unstablePkgs.wlr-which-key
       dunst
-      rofi-wayland
+      rofi
     ];
   };
 }
