@@ -5,5 +5,6 @@
     ./copyq.nix
     ./mpd.nix
     ./syncthing.nix
+    ./activitywatch.nix
   ];
 }

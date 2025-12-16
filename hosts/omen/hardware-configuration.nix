@@ -28,8 +28,10 @@
   ];
   boot.extraModulePackages = [ ];
 
-  boot.kernelParams = [ "amd_pstate=active" ];
-  powerManagement.cpuFreqGovernor = "ondemand";
+  boot.kernelParams = [ "amd_pstate=guided" ];
+  powerManagement.cpuFreqGovernor = "schedutil";
+  powerManagement.enable = true;
+
   services.fstrim.enable = true;
 
   fileSystems."/" = {
@@ -49,7 +51,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16 * 1024;
+      size = 8 * 1024;
     }
   ];
 

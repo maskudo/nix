@@ -9,7 +9,7 @@
   desktop.i3.enable = true;
   desktop.hyprland.enable = false;
   desktop.sway.enable = false;
-  desktop.niri.enable = true;
+  desktop.niri.enable = false;
   desktop.mango.enable = true;
   powerModule.enable = false;
   tlpModule.enable = false;

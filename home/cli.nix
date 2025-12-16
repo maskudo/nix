@@ -12,6 +12,7 @@
     calcurse
     cowsay
     delta
+    dig
     distrobox
     dragon-drop
     dua
@@ -21,6 +22,8 @@
     carlito # calibri and ms fonts
     fortune
     fzf
+    gh
+    gh-dash
     go
     git-lfs
     evil-helix
