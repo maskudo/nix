@@ -2,7 +2,7 @@
   lib,
   config,
   pkgs,
-  unstablePkgs,
+  enableGuiApps,
   ...
 }:
 {
@@ -25,7 +25,7 @@
 
   environment.systemPackages =
     with pkgs;
-    lib.mkIf (config.services.displayManager.sddm.wayland.enable) [
+    lib.mkIf enableGuiApps [
       bemoji
       cliphist
       dunst
@@ -37,8 +37,8 @@
       rofi
       swappy
       swww
-      unstablePkgs.wlr-which-key
-      unstablePkgs.hyprmagnifier
+      wlr-which-key
+      hyprmagnifier
       waybar
       wl-clipboard
       wl-clipboard-x11

@@ -4,7 +4,6 @@
   pkgs,
   inputs,
   system,
-  username,
   ...
 }:
 {
@@ -67,7 +66,6 @@
       xsel
       zathura
       inputs.zen-browser.packages."${system}".default
-
     ];
   };
 }
