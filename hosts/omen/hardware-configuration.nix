@@ -56,11 +56,11 @@
   ];
 
   networking.hosts = {
-    "192.168.1.65" = [ "aspire" ];
+    "192.168.1.65" = [ "mk489" ];
   };
 
   fileSystems."/mnt/media" = {
-    device = "aspire:/media";
+    device = "mk489:/media";
     fsType = "nfs";
     options = [
       "x-systemd.automount"

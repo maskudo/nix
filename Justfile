@@ -1,10 +1,10 @@
 default:
 	which bat >/dev/null && bat Justfile || cat Justfile
 
-aspire:
-	sudo nixos-rebuild switch --flake .#aspire
-aspireb:
-	sudo nixos-rebuild boot --flake .#aspire
+mk489:
+	sudo nixos-rebuild switch --flake .#mk489
+mk489b:
+	sudo nixos-rebuild boot --flake .#mk489
 
 omen:
 	sudo nixos-rebuild switch --flake .#omen
@@ -15,9 +15,9 @@ omenh:
 	nix run nixpkgs#home-manager -- build --flake .#omen
 	nix run nixpkgs#home-manager -- switch --flake .#omen
 
-aspireh:
-	nix run nixpkgs#home-manager -- build --flake .#aspire
-	nix run nixpkgs#home-manager -- switch --flake .#aspire
+mk489h:
+	nix run nixpkgs#home-manager -- build --flake .#mk489
+	nix run nixpkgs#home-manager -- switch --flake .#mk489
 
 check:
   nix flake check

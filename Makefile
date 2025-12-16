@@ -1,15 +1,15 @@
 default:
 	cat Makefile
 
-aspireh:
-	nix run nixpkgs#home-manager -- build --flake .#aspire
-	nix run nixpkgs#home-manager -- switch --flake .#aspire
+mk489h:
+	nix run nixpkgs#home-manager -- build --flake .#mk489
+	nix run nixpkgs#home-manager -- switch --flake .#mk489
 
 nixos:
-	sudo nixos-rebuild switch --flake .#aspire
+	sudo nixos-rebuild switch --flake .#mk489
 
-aspire:
-	sudo nixos-rebuild switch --flake .#aspire
+mk489:
+	sudo nixos-rebuild switch --flake .#mk489
 
 
 omen:
