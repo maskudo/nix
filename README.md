@@ -6,14 +6,14 @@ Rebuild and switch home manager:
 
 ```bash
 just omenh # or
-just aspireh
+just mk489h
 ```
 
 Rebuild and Switch System
 
 ```bash
 just omen # or
-just aspire
+just mk489
 ```
 
 > [!NOTE]

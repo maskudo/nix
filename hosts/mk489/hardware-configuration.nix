@@ -59,10 +59,16 @@
     options = [ "bind" ];
   };
 
+  fileSystems."/export/ssd" = {
+    device = "/mnt/ssd";
+    options = [ "bind" ];
+  };
+
   services.nfs.server = {
     exports = ''
       /export     192.168.1.0/24(rw,fsid=0,no_subtree_check)
       /export/media  192.168.1.0/24(rw,async,nohide,insecure,no_subtree_check,crossmnt)
+      /export/ssd  192.168.1.0/24(rw,async,nohide,insecure,no_subtree_check,crossmnt)
     '';
   };
 

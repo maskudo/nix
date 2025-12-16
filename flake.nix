@@ -24,7 +24,7 @@
   outputs =
     inputs:
     let
-      aspire = "mk489";
+      mk489 = "mk489";
       omen = "omen";
       libx = import ./lib {
         inherit
@@ -35,10 +35,10 @@
     {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      # sudo nixos-rebuild switch --flake .#aspire
+      # sudo nixos-rebuild switch --flake .#mk489
       nixosConfigurations = {
-        aspire = libx.mkHost {
-          username = aspire;
+        mk489 = libx.mkHost {
+          username = mk489;
           enableGuiApps = false;
         };
         omen = libx.mkHost {
@@ -48,13 +48,13 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      # home-manager -- build --flake .aspire
-      # home-manager -- switch --flake .aspire
+      # home-manager -- build --flake .mk489
+      # home-manager -- switch --flake .mk489
 
       homeConfigurations = {
-        aspire = libx.mkHome {
+        mk489 = libx.mkHome {
           system = "x86_64-linux";
-          username = aspire;
+          username = mk489;
           enableGuiApps = false;
           mods = [
             (
