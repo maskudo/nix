@@ -5,6 +5,11 @@ mk489:
 	sudo nixos-rebuild switch --flake .#mk489
 mk489b:
 	sudo nixos-rebuild boot --flake .#mk489
+mk489r:
+  nixos-rebuild switch \
+  --flake .#mk489 \
+  --target-host mk489@192.168.1.67 \
+  --ask-sudo-password
 
 omen:
 	sudo nixos-rebuild switch --flake .#omen
