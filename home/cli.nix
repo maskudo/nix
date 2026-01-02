@@ -22,6 +22,7 @@
     carlito # calibri and ms fonts
     fortune
     fzf
+    gemini-cli
     gh
     gh-dash
     go
@@ -48,6 +49,7 @@
     nerd-fonts.iosevka
     nixos-firewall-tool
     opentofu # terraform
+    opencode
     pandoc
     parallel
     pgadmin4
@@ -63,6 +65,7 @@
     tealdeer
     television
     texlive.combined.scheme-small # for pdf
+    timer
     tmux
     vim
     yazi
@@ -81,5 +84,4 @@
     nix-direnv.enable = true;
     silent = true;
   };
-
 }

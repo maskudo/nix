@@ -13,6 +13,8 @@
   };
 
   security.rtkit.enable = true;
+  security.polkit.enable = true;
+  security.soteria.enable = true;
   # Set your time zone.
   time.timeZone = "Asia/Kathmandu";
 
