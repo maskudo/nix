@@ -35,6 +35,7 @@ alias ns='nix-shell --command zsh'
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^u' undo
 bindkey -s '^F' "tmux-sessionizer\n"
 bindkey -s '^G' "tmux-sessionizer fzf\n"
 bindkey '\e\e' vi-cmd-mode

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+time="${1:-25m}"
+
+clear
+
+timer "$time"
+spd-say "${time} elapsed"
+notify-send "${time} elapsed"

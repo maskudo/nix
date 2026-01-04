@@ -5,16 +5,17 @@ function send_notification() {
   brightness=$(printf "%.0f\n" $(light -G))
   dunstify -a "changebrightness" -u low -r 9991 -h int:value:"$brightness" -i "brightness-$1" "Brightness: $brightness%" -t 2000
 }
+delta="${2:-5}"
 
 case $1 in
 up)
-  light -A 5 -q
+  light -A $delta
   send_notification $1
   ;;
 down)
   brightness=$(printf "%.0f\n" $(light -G))
-  if [[ $brightness -gt 5 ]]; then
-    light -U 5 -q
+  if [[ $brightness -gt $delta ]]; then
+    light -U $delta
     send_notification $1
   fi
   ;;

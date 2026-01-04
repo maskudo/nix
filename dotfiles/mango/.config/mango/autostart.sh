@@ -12,5 +12,7 @@ waybar &
 zen &
 discord &
 vesktop &
+powermode-indicator &
+awatcher &
 wl-paste --watch cliphist store &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots &

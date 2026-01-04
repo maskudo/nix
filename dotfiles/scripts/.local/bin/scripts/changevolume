@@ -5,16 +5,17 @@ function send_notification() {
   dunstify -a "changevolume" -u low -r "9993" -h int:value:"$volume" -i "volume-$1" "Volume: $volume%" -t 2000
 }
 
+delta="${2:-5}"
 case $1 in
 up)
   # Set the volume on (if it was muted)
   pactl set-sink-mute 0 0
-  pactl set-sink-volume 0 +5% # set relative
+  pactl set-sink-volume 0 "+${delta}%"
   send_notification $1
   ;;
 down)
   pactl set-sink-mute 0 0
-  pactl set-sink-volume 0 -5% # set relative
+  pactl set-sink-volume 0 "-${delta}%" # set relative
   send_notification $1
   ;;
 mute)

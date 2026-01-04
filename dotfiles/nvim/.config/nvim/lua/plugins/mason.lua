@@ -38,11 +38,12 @@ return {
       "shfmt",
       "sql-formatter",
       "stylua", -- lua formatter
-      "tailwindcss-language-server",
+      -- "tailwindcss-language-server",
+      "tsgo",
       "terraform-ls",
       "tinymist",
       "tflint",
-      "vtsls",
+      -- "vtsls",
       -- debuggers
       -- "delve",
       -- "js-debug-adapter",

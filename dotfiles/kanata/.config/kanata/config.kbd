@@ -8,11 +8,10 @@
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
-(defalias 
+(defalias
   tab (tap-hold 200 200 tab (layer-toggle symbols))
   esc (tap-hold 200 200 esc lctl)
-
-  )
+)
 (deflayer default
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
@@ -26,7 +25,7 @@
   _    _    _        _    _    _      _       _    _    _        _    _    _
   _    _    _        _    _    _      _       _    _    _        _    _    _    _
   _    f6   C-bspc   _    _    _      _       _    _    _        up   _    _    _
-  _    _    _        _    _    _      C-left  down up   C-rght   _    _    _
+  caps _    _        _    _    _      C-left  down up   C-rght   _    _    _
   _    _    _        _    _    _      down    _    _    _        _    _
   _    _    _                  _                   _    _        _
 )
