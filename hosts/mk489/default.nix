@@ -10,6 +10,7 @@
   powerModule.enable = true;
   services.proxmox.enable = false;
   services.nfs-server.enable = true;
+  services.homelab.k3s.enable = true;
 
   networking.bridges = {
     "vmbr0" = {

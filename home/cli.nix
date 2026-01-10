@@ -33,6 +33,7 @@
     just
     k9s
     kubectl
+    kubectl-cnpg
     (wrapHelm kubernetes-helm {
       plugins = with pkgs.kubernetes-helmPlugins; [
         helm-secrets
