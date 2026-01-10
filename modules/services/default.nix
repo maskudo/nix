@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   imports = [
     ./tailscale.nix
@@ -12,5 +12,6 @@
     ./power.nix
     ./tlp.nix
     ./ryzenadj.nix
+    ./kubernetes.nix
   ];
 }
