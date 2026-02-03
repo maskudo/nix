@@ -61,6 +61,7 @@
       qogir-icon-theme
       rxvt-unicode
       smplayer
+      vscode
       xarchiver
       xclip
       xsel

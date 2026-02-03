@@ -3,37 +3,33 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    andcli
     ansible
-    awscli2
     atuin
     autorandr
+    awscli2
     bat
+    biome
     btop
     calcurse
+    carlito # calibri and ms fonts
     cowsay
     delta
     dig
     distrobox
-    dragon-drop
     dua
+    eslint
+    evil-helix
     fd
     ffmpeg
     font-awesome
-    carlito # calibri and ms fonts
     fortune
     fzf
-    gemini-cli
     gh
     gh-dash
-    go
     git-lfs
-    evil-helix
-    imagemagick
-    jq
-    just
-    k9s
-    kubectl
-    kubectl-cnpg
+    go
+    helmfile
     (wrapHelm kubernetes-helm {
       plugins = with pkgs.kubernetes-helmPlugins; [
         helm-secrets
@@ -42,22 +38,35 @@
         helm-git
       ];
     })
-    helmfile
+    imagemagick
+    jq
+    just
+    k9s
+    kubectl
+    kubectl-cnpg
     lazydocker
     lazygit
+    lua5_1
     minikube
-    nerd-fonts.jetbrains-mono
+    neovim
     nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
+    nixd
+    nixfmt
     nixos-firewall-tool
+    nodePackages.pnpm
     opentofu # terraform
-    opencode
     pandoc
     parallel
     pgadmin4
     postgresql
     presenterm
+    prettier
+    python311
+    ripdrag
     ripgrep
     rmpc
+    rustup
     sqlite
     sshs
     starship
@@ -68,15 +77,12 @@
     texlive.combined.scheme-small # for pdf
     timer
     tmux
+    typescript-language-server
+    uv
     vim
     yazi
     zoxide
   ];
-
-  programs.neovim = {
-    enable = true;
-    extraLuaPackages = ps: [ ps.magick ];
-  };
 
   programs.direnv = {
     enable = true;

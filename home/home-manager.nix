@@ -7,7 +7,6 @@
   imports = [
     ./cli.nix
     ./gui.nix
-    ./languages.nix
     ./systemd
     ./services
   ];
