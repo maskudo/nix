@@ -100,8 +100,11 @@
   # for commands such as npm link to work
   programs.npm.enable = true;
 
+  xdg.mime.enable = true;
+
   environment.systemPackages = with pkgs; [
     alsa-utils
+    dex
     findutils
     gcc
     git

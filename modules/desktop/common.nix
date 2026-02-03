@@ -44,6 +44,7 @@
       wl-clipboard-x11
       wl-mirror
       wlr-randr
+      wlsunset
       xwayland-satellite
     ];
 }

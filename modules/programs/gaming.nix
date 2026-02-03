@@ -21,6 +21,11 @@
       gamescopeSession.enable = true;
     };
 
+    services.input-remapper = {
+      enable = true;
+      enableUdevRules = true;
+    };
+
     programs.gamescope.enable = true;
     programs.gamemode.enable = true;
     environment.systemPackages = with unstablePkgs; [
