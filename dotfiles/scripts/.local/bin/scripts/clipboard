@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+preview_cmd='
+  entry={}
+  printf "\033[2J\033[H"
+  if [[ "$entry" == *"[[ binary data"* ]]; then
+      echo "$entry" | cliphist decode 2>/dev/null | kitten icat --clear --transfer-mode=memory --unicode-placeholder --stdin=yes --place="$((FZF_PREVIEW_COLUMNS -2))x${FZF_PREVIEW_LINES}@0x0"
+  else
+      echo "$entry" | cliphist decode 2>/dev/null
+  fi
+'
+
+cliphist list | fzf \
+  --preview "$preview_cmd" \
+  --preview-window 'right:60%:wrap' \
+  --with-nth=2.. \
+  --border \
+  --prompt '📋 ' \
+  --header 'C-d: Delete | Enter: Copy' \
+  --bind "ctrl-d:execute(echo {} | cliphist delete)+reload(cliphist list)" \
+  --bind "ctrl-y:execute-silent(echo {} | cliphist decode | wl-copy)+abort" \
+  --bind "enter:execute-silent(echo {} | cliphist decode | wl-copy)+abort"

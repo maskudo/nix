@@ -1,6 +1,7 @@
 return {
   {
     "maskudo/devdocs.nvim",
+    dir = "~/dev/devdocs.nvim",
     keys = {
       {
         "<leader>ho",
@@ -19,7 +20,6 @@ return {
       ensure_installed = {
         "go",
         "html",
-        "dom",
         "http",
         "css",
         "javascript",
@@ -49,6 +49,7 @@ return {
       },
     },
   },
+
   {
     "folke/flash.nvim",
     enabled = true,

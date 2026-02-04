@@ -40,6 +40,12 @@ return {
         prefix = "gp",
       },
     })
+    vim.keymap.set(
+      { "n", "v" },
+      "<leader>ct",
+      require("mini.trailspace").trim,
+      { desc = "Trim spaces" }
+    )
 
     require("plugins.mini.files")
     require("plugins.mini.colors")

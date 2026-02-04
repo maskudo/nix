@@ -69,7 +69,8 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", "Escape and clear hlsearch")
+map("i", "<esc>", "<cmd>noh<cr><esc>", "Escape and clear hlsearch")
+map("n", "<esc>", "<cmd>noh<cr><esc>", "Escape and clear hlsearch")
 
 -- Move text up and down
 map("v", "p", '"_dP', "Paste")

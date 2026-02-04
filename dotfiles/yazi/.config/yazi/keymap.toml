@@ -29,7 +29,8 @@ desc = "Cancel input"
 
 [[mgr.prepend_keymap]]
 on  = "<C-n>"
-run = 'shell -- dragon-drop -T -x -i "$0"'
+# run = 'shell -- dragon-drop -T -x "$@"'
+run = 'shell -- ripdrag -a "$@"'
 
 [[mgr.prepend_keymap]]
 on   = "!"

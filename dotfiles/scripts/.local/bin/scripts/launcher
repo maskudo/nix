@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+IFS=: read -ra XDG_DIRS <<<"${XDG_DATA_DIRS:-/usr/share}"
+desktop_files=()
+
+for dir in "${XDG_DIRS[@]}"; do
+  appdir="$dir/applications"
+  [[ -d $appdir ]] || continue
+
+  while IFS= read -r -d '' f; do
+    desktop_files+=("$f")
+  done < <(find "$appdir" -name '*.desktop' -print0 2>/dev/null)
+done
+
+choice=$(
+  printf "%s\n" "${desktop_files[@]}" |
+    awk -F/ '
+      {
+        name = $NF
+        sub(/\.desktop$/, "", name)
+        print name "\t" $0
+      }
+    ' |
+    fzf \
+      --prompt='🚀 Run: ' \
+      --delimiter=$'\t' \
+      --border \
+      --with-nth=1 \
+      --nth=1 |
+    cut -f2
+)
+
+[[ -z $choice ]] && exit 0
+
+setsid dex "$choice" </dev/null &>/dev/null

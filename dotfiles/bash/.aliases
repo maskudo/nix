@@ -35,9 +35,12 @@ alias sc='systemctl'
 alias scu='systemctl --user'
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 alias k='kubectl'
+alias h='helmfile'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+alias dnd='ripdrag -a $(fzf --multi)'
 
 cheat() {
   curl --silent cheat.sh/$1 | bat

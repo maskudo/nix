@@ -9,39 +9,19 @@ M.capabilities = vim.tbl_deep_extend(
   has_blink and blink.get_lsp_capabilities() or {}
 )
 
-M.on_attach = function(_client, bufnr)
+M.on_attach = function(_, bufnr)
   local opts = { buffer = bufnr, silent = true }
   local keymap = vim.keymap
-  opts.desc = "LSP Rename"
-  keymap.set("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-
-  opts.desc = "Go to declaration"
-  keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-
-  opts.desc = "Show LSP Signature"
-  keymap.set({ "i", "v" }, "<C-k>", vim.lsp.buf.signature_help, opts) -- show lsp function signature
-
-  opts.desc = "See available code actions"
-  keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-  opts.desc = "See available code actions"
-  keymap.set({ "n", "v" }, "<leader>cA", function()
-    vim.lsp.buf.code_action({
-      range = { start = { 0, 0 }, ["end"] = { vim.fn.line("$"), 0 } },
-    })
-  end, opts) -- see available code actions, in visual mode will apply to selection
 
   opts.desc = "Show line diagnostics"
   keymap.set("n", "<leader>xd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-  opts.desc = "Go to previous diagnostic"
-  keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+  -- opts.desc = "Go to previous diagnostic"
+  -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+  --
+  -- opts.desc = "Go to next diagnostic"
+  -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
-  opts.desc = "Go to next diagnostic"
-  keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-  opts.desc = "Show documentation for what is under cursor"
-  keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
   --
 end
 

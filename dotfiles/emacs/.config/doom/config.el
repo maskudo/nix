@@ -35,7 +35,8 @@
 (add-to-list 'custom-theme-load-path "~/.config/doom/themes/rose-pine")
 (load-theme 'doom-rose-pine t) ;; or 'rose-pine-dawn / 'rose-pine-moon
 
-(add-to-list 'load-path "/path/to/lsp-biome/")
+(add-to-list 'load-path "./lsp/biome.el")
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 (setq doom-theme nil)
 

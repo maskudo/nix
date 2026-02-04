@@ -46,7 +46,7 @@ return {
       -- "vtsls",
       -- debuggers
       -- "delve",
-      -- "js-debug-adapter",
+      "js-debug-adapter",
     },
   },
   config = function(_, opts)

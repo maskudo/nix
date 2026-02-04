@@ -6,6 +6,10 @@ hotkey-overlay {
     skip-at-startup
 }
 
+debug {
+    keep-laptop-panel-on-when-lid-is-closed
+}
+
 input {
     // workspace-auto-back-and-forth
     keyboard {

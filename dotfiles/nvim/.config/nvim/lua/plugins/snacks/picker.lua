@@ -163,12 +163,13 @@ return {
   },
   -- stylua: ignore
 	keys = {
+		{"grd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},
 		{"gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},
-		{"gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation",},
+		{"gri", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation",},
 		{"<leader>li", function() Snacks.picker.lsp_incoming_calls() end, desc = "LSP Incoming",},
 		{"<leader>lo", function() Snacks.picker.lsp_definitions() end, desc = "LSP Outgoing",},
 		{"<leader>lr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References",},
-		{"gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition",},
+		{"grt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition",},
 		{"<C-\\>", mode = { "n", "t", "i" }, function() Snacks.terminal.toggle("zsh") end, desc = "Toggle Terminal",},
 		{"<C-g>", function() Snacks.lazygit() end, desc = "Lazygit",},
 		{"<leader>.", function() Snacks.picker.smart({ hidden = true, filter = { cwd = true } }) end, desc = "Find Files",},

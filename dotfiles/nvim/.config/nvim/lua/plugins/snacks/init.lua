@@ -26,6 +26,7 @@ return {
       enabled = true,
       left = {
         "git",
+        "sign",
       },
       right = { "mark", "fold" },
     },
@@ -68,6 +69,9 @@ return {
 		{ "<leader>ui", function() Snacks.toggle.indent():toggle() end, desc = "Toggle Indent", },
 		{ "<leader>un", function() Snacks.notifier.show_history() end, desc = "Show Notifications", },
 		{ "<leader>us", function() Snacks.toggle.scroll():toggle() end, desc = "Toggle Scroll", },
+		{ "<leader>ur", function()
+      vim.o.relativenumber = not vim.o.relativenumber
+    end, desc = "Toggle Relative Line Number", },
 		{ "<leader>ut", function() Snacks.toggle.treesitter():toggle() end, desc = "Toggle Treesitter", },
 		{ "<leader>uw", function() Snacks.toggle.option("wrap"):toggle() end, desc = "Toggle Line Wrap", },
 		{ "<leader>uz", function() Snacks.zen() end, desc = "Toggle Zen", },

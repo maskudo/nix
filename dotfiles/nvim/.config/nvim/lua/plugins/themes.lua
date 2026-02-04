@@ -14,4 +14,13 @@ return {
       end,
     },
   },
+  {
+    "folke/styler.nvim",
+    opts = {
+      themes = {
+        markdown = { colorscheme = "rose-pine" },
+        help = { colorscheme = "rose-pine" },
+      },
+    },
+  },
 }

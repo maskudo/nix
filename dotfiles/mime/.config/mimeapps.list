@@ -1,5 +1,5 @@
 [Default Applications]
-application/json=editor.desktop
+application/json=nvim.desktop
 application/pdf=zen.desktop
 application/x-extension-htm=zen.desktop
 application/x-extension-html=zen.desktop
@@ -9,7 +9,7 @@ application/x-extension-xhtml=zen.desktop
 application/xhtml+xml=zen.desktop
 image/png=feh.desktop;
 text/html=zen.desktop
-text/plain=editor.desktop
+text/plain=nvim.desktop
 text/xml=zen.desktop;
 video/mp4=smplayer.desktop
 video/x-matroska=smplayer.desktop
