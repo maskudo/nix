@@ -30,8 +30,8 @@
       127.0.0.1 linkedin.com
       127.0.0.1 www.linkedin.com
 
-      127.0.0.1 youtube.com
-      127.0.0.1 www.youtube.com
+      # 127.0.0.1 youtube.com
+      # 127.0.0.1 www.youtube.com
 
       127.0.0.1 twitch.tv
       127.0.0.1 www.twitch.tv

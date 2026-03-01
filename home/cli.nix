@@ -81,6 +81,7 @@
     uv
     vim
     yazi
+    yt-dlp
     zoxide
   ];
 

@@ -1,5 +1,6 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [ playerctl ];
   services = {
     pulseaudio.enable = false;
     pipewire = {
