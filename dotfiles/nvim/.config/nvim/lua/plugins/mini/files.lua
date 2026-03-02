@@ -4,7 +4,7 @@ require("mini.files").setup({
     go_in = "<S-CR>",
     go_in_plus = "<CR>",
     go_out = "-",
-    synchronize = ":w<CR>",
+    synchronize = "=",
   },
   windows = {
     width_focus = 30,

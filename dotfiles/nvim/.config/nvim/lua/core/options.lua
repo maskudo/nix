@@ -40,6 +40,7 @@ local opts = {
   winminwidth = 5,
   wrap = false,
   fillchars = "eob: ",
+  swapfile = false,
   exrc = true,
   secure = true,
   sessionoptions = "buffers",

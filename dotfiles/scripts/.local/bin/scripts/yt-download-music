@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Set music output folder
+output_folder="$HOME/Music/YT"
+
+# Create the output folder if it doesn't exist
+mkdir -p "$output_folder"
+
+# Get the link from the argument or clipboard
+link=${1:-$(xclip -o -selection primary 2>/dev/null || wl-paste --primary 2>/dev/null)}
+
+# Remove the playlist part of the URL
+link=${link%%&list=*}
+
+notify-send "Downloading Music ${link}"
+yt-dlp --embed-metadata -x --audio-format opus --audio-quality 256k --output "${output_folder}/%(title)s.%(ext)s" "${link}"
+notify-send "Download complete"

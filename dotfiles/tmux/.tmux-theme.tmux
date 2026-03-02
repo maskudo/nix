@@ -18,7 +18,7 @@ set() {
 set "status-style" "bg=default"
 set "status" "on"
 set "status-justify" "left"
-set "status-right" ""
+set "status-right" "#(free -h | awk '/^Mem:/ {print \$3 \"/\" \$2}') | %H:%M"
 set "status-left" " #S | "
 set "status-left-length" 50
 tmux set-option -wg "mode-style" "bg=#37344a,fg=$_white"

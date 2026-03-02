@@ -11,7 +11,7 @@ return {
   config = function()
     require("mini.ai").setup()
     require("mini.doc").setup()
-    require("mini.git").setup()
+    -- require("mini.git").setup()
     require("mini.jump").setup({ silent = true })
     require("mini.align").setup()
     require("mini.extra").setup()

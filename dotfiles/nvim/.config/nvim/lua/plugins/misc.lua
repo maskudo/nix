@@ -1,5 +1,11 @@
 return {
   {
+    "maskudo/bharyang.nvim",
+    config = function()
+      require("bharyang").setup()
+    end,
+  },
+  {
     "maskudo/devdocs.nvim",
     dir = "~/dev/devdocs.nvim",
     keys = {

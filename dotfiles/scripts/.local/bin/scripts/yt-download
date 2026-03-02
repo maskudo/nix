@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Get the link from the argument or clipboard
+link=${1:-$(xclip -o -selection primary 2>/dev/null || wl-paste --primary 2>/dev/null)}
+
+# Remove the playlist part of the URL
+link=${link%%&list=*}
+
+notify-send "Downloading ${link}"
+yt-dlp --embed-metadata "${link}" -t mkv --merge-output-format mkv --remux-video mkv -o "$HOME/Videos/%(title)s.%(ext)s"
+
+notify-send "Download complete"

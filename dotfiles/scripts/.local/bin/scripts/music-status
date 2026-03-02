@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+title=$(playerctl metadata --format "{{title}} - {{artist}}")
+status=$(playerctl status)
+
+notify-send "${status}" "${title}"

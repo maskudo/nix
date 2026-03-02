@@ -10,13 +10,12 @@ xrdb -load ~/.Xdefaults &
 dunst &
 # waybar &
 ~/.config/mango/autohide-waybar.sh &
-zen &
+# zen &
 # discord &
 # vesktop &
-powermode-indicator &
 awatcher &
 wl-paste --watch cliphist store &
-wlsunset -s "21:00" -S "06:00" &
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots &
+wlsunset -s "21:00" -S "06:00" -T 4000 -t 2000 &
+# dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots &
 pactl set-sink-volume alsa_output.pci-0000_06_00.6.HiFi__Speaker__sink 0 &
 input-remapper-control --command stop-all && input-remapper-control --command autoload &

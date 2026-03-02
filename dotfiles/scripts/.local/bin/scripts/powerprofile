@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+profiles=("performance" "balanced" "power-saver")
+cur=$(powerprofilesctl get)
+selected=$(printf "%s\n" "${profiles[@]}" | sed "s/^${cur}/& */" | fzf)
+[[ -z $selected ]] && exit 1
+powerprofilesctl set "${selected}"

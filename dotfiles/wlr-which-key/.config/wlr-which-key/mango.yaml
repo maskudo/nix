@@ -1,0 +1,99 @@
+# Theming
+font: JetBrainsMono Nerd Font 12
+background: "#282828d0"
+color: "#eeeeee"
+border: "#332d41"
+separator: " ➜ "
+border_width: 2
+corner_r: 10
+padding: 15 # Defaults to corner_r
+rows_per_column: 1 # No limit by default
+column_padding: 25 # Defaults to padding
+
+# Anchor and margin
+anchor: top # One of center, left, right, top, bottom, bottom-left, top-left, etc.
+# Only relevant when anchor is not center
+margin_right: 0
+margin_bottom: 0
+margin_left: 0
+margin_top: 10
+
+# Permits key bindings that conflict with compositor key bindings.
+# Default is `false`.
+inhibit_compositor_keyboard_shortcuts: true
+
+# Try to guess the correct keyboard layout to use. Default is `false`.
+auto_kbd_layout: true
+
+menu:
+  - key: "p"
+    desc: Power
+    submenu:
+      - key: "s"
+        desc: Sleep
+        cmd: hyprlock & systemctl suspend
+      - key: "r"
+        desc: Reboot
+        cmd: reboot
+      - key: "p"
+        desc: Shut down
+        cmd: poweroff
+      - key: "e"
+        desc: Log Out
+        cmd: mmsg -q
+      - key: "l"
+        desc: Lock
+        cmd: hyprlock
+
+  - key: "d"
+    desc: Programs
+    submenu:
+      - key: "f"
+        desc: Floorp
+        cmd: floorp
+      - key: "z"
+        desc: Zen
+        cmd: zen
+      - key: "e"
+        desc: Evince
+        cmd: evince
+      - key: "l"
+        desc: Libresprite
+        cmd: libresprite
+      - key: "h"
+        desc: Heroic
+        cmd: heroic
+      - key: "o"
+        desc: Obsidian
+        cmd: obsidian
+
+  - key: "s"
+    desc: Scripts
+    submenu:
+      - key: "v"
+        desc: Youtube Video
+        cmd: bash ~/.local/bin/scripts/yt-download
+      - key: "m"
+        desc: Youtube Music
+        cmd: bash ~/.local/bin/scripts/yt-download-music
+      - key: "d"
+        desc: Dictionary
+        cmd: bash ~/.local/bin/scripts/define
+      - key: "p"
+        desc: Power Profile
+        cmd: kitty --app-id smallscratchpowerprofile -e sh -c ~/.local/bin/scripts/powerprofile
+  - key: "m"
+    desc: Music
+    submenu:
+      - key: "n"
+        desc: Next
+        cmd: playerctl next
+      - key: "P"
+        desc: Previous
+        cmd: playerctl previous
+      - key: "p"
+        desc: Pause/Play
+        cmd: playerctl play-pause
+      - key: "s"
+        desc: Status
+        cmd: bash ~/.local/bin/scripts/music-status
