@@ -54,7 +54,6 @@
     nixd
     nixfmt
     nixos-firewall-tool
-    nodePackages.pnpm
     opentofu # terraform
     pandoc
     parallel
@@ -77,6 +76,7 @@
     texlive.combined.scheme-small # for pdf
     timer
     tmux
+    tree-sitter
     typescript-language-server
     uv
     vim
