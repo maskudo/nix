@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 {
@@ -52,7 +50,6 @@
   environment.systemPackages = with pkgs; [
     eglexternalplatform
     egl-wayland
-    nvtopPackages.full
   ];
 
   hardware.nvidia = {
