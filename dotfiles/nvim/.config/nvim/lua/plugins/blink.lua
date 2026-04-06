@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     enabled = true,
     event = "BufReadPre",
-    version = "*",
+    version = "1.*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     ---

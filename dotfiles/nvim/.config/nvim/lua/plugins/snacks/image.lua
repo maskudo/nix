@@ -1,28 +1,27 @@
 return {
-  "folke/snacks.nvim",
-  ---@module 'snacks'
-  ---@type snacks.Config
-  opts = {
-    image = {
-      markdown = {
-        float = false,
-        inline = false,
+  {
+    "folke/snacks.nvim",
+    ---@module 'snacks'
+    ---@type snacks.Config
+    opts = {
+      image = {
+        doc = {
+          inline = false,
+          floating = true,
+        },
       },
-      resolve = function(img, src)
-        if vim.startswith(src, "assets/") then
-          return Snacks.git.get_root(img) .. "/notes/" .. src
-        end
-        return src
-      end,
     },
   },
-  keys = {
-    {
-      "<leader>is",
-      function()
-        Snacks.image.hover()
-      end,
-      desc = "Show Image",
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "<leader>ip",
+        "<cmd>PasteImage<cr>",
+        desc = "Paste image from system clipboard",
+      },
     },
   },
 }

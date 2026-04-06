@@ -19,7 +19,9 @@ return {
     require("mini.icons").setup()
     require("mini.icons").mock_nvim_web_devicons()
     require("mini.colors").setup()
-    require("mini.surround").setup()
+    require("mini.surround").setup({
+      n_lines = 500,
+    })
     require("mini.splitjoin").setup()
     require("mini.trailspace").setup()
 
