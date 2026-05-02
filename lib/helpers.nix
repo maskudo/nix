@@ -12,15 +12,19 @@
         system = system;
         config.allowUnfree = true;
       },
-      stablePkgs ? inputs.nixpkgs.legacyPackages.${system},
       mods ? [ ],
+      isDarwin ? unstablePkgs.stdenv.hostPlatform.isDarwin,
       ...
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       modules = [
         (import ../home/home-manager.nix {
-          homeDirectory = "/home/${username}";
-          inherit username inputs stablePkgs;
+          homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
+          inherit
+            username
+            inputs
+            isDarwin
+            ;
         })
         inputs.nix-index-database.homeModules.nix-index
         (
@@ -39,7 +43,6 @@
           inputs
           system
           enableGuiApps
-          stablePkgs
           ;
       };
     };

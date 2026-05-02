@@ -6,6 +6,9 @@
   system,
   ...
 }:
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
   options = {
     home.guiApps.enable = lib.mkOption {
@@ -20,53 +23,72 @@
       "electron-25.9.0"
     ];
 
-    home.packages = with pkgs; [
-      adw-gtk3
-      adwaita-icon-theme
-      arandr
-      arc-theme
-      arc-icon-theme
-      authenticator
-      copyq
-      cozy
-      # discord
-      # (discord.override {
-      #   withVencord = true;
-      # })
-      vesktop
-      evince
-      feh
-      (flameshot.override { enableWlrSupport = true; })
-      floorp-bin
-      # firefox
-      google-chrome
-      kitty
-      kdePackages.breeze
-      libreoffice
-      libresprite
-      localsend
-      lxappearance
-      lxrandr
-      mpv
-      nicotine-plus
-      normcap
-      nwg-look
-      obs-studio
-      obsidian
-      pcmanfm
-      pinta
-      protonvpn-gui
-      qbittorrent
-      qogir-theme
-      qogir-icon-theme
-      rxvt-unicode
-      smplayer
-      vscode
-      xarchiver
-      xclip
-      xsel
-      zathura
-      inputs.zen-browser.packages."${system}".default
-    ];
+    home.packages =
+      with pkgs;
+      [
+        # discord
+        # (discord.override {
+        #   withVencord = true;
+        # })
+        vesktop
+        feh
+        flameshot
+        floorp-bin
+        google-chrome
+        kitty
+        libresprite
+        localsend
+        nicotine-plus
+        obsidian
+        qbittorrent
+        vscode
+        inputs.zen-browser.packages."${system}".default
+      ]
+      ++ lib.optionals isDarwin [
+        raycast
+        iina
+        postman
+        nodemon
+        # jankyborders
+      ]
+      ++ lib.optionals (!isDarwin) [
+        adw-gtk3
+        adwaita-icon-theme
+        arandr
+        arc-icon-theme
+        arc-theme
+        authenticator
+        copyq
+        cozy
+        evince
+        firefox
+        kdePackages.breeze
+        libreoffice
+        lxappearance
+        lxrandr
+        mpv
+        normcap
+        nwg-look
+        obs-studio
+        pcmanfm
+        pinta
+        protonvpn-gui
+        qogir-icon-theme
+        qogir-theme
+        rxvt-unicode
+        smplayer
+        xarchiver
+        xclip
+        xsel
+        zathura
+      ];
+
+    programs.aerospace = {
+      enable = isDarwin;
+      launchd = {
+        enable = isDarwin;
+        keepAlive = isDarwin;
+      };
+    };
   };
 }

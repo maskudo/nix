@@ -19,6 +19,8 @@
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs =
@@ -68,6 +70,20 @@
         omen = libx.mkHome {
           system = "x86_64-linux";
           username = omen;
+        };
+        mac = libx.mkHome {
+          system = "aarch64-darwin";
+          username = "mac";
+        };
+      };
+
+      darwinConfigurations = {
+        "mac" = inputs.nix-darwin.lib.darwinSystem {
+          modules = [ ./hosts/mac ];
+          specialArgs = {
+            inherit inputs;
+            username = "mac";
+          };
         };
       };
 
