@@ -20,6 +20,13 @@ omenh:
 	nix run nixpkgs#home-manager -- build --flake .#omen
 	nix run nixpkgs#home-manager -- switch --flake .#omen
 
+mac:
+  sudo darwin-rebuild switch --flake .#mac
+
+mach:
+	nix run nixpkgs#home-manager -- build --flake .#mac
+	nix run nixpkgs#home-manager -- switch --flake .#mac
+
 mk489h:
 	nix run nixpkgs#home-manager -- build --flake .#mk489
 	nix run nixpkgs#home-manager -- switch --flake .#mk489

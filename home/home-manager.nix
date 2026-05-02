@@ -1,19 +1,27 @@
 {
   homeDirectory,
   username,
+  isDarwin,
   ...
 }:
 {
   imports = [
     ./cli.nix
     ./gui.nix
-    ./systemd
-    ./services
-  ];
+  ]
+  ++ (
+    if isDarwin then
+      [ ]
+    else
+      [
+        ./systemd
+        ./services
+      ]
+  );
 
   nixpkgs.config.allowUnfree = true;
-  targets.genericLinux.enable = true;
-  xdg.enable = true;
+  targets.genericLinux.enable = !isDarwin;
+  xdg.enable = !isDarwin;
 
   home = {
     inherit homeDirectory;
