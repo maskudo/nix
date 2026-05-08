@@ -100,8 +100,10 @@ edit = [
 	{ run = 'nvim "$@"', block = true, for = "unix" },
 ]
 play = [
-	{ run = 'smplayer "$@"', orphan = true, for = "unix" },
+	{ run = 'smplayer "$@"', orphan = true, for = "linux" },
+	{ run = 'iina "$@"', block = true, orphan = true, for = "macos" },
 ]
 open = [
-	{ run = 'xdg-open "$@"', desc = "Open" },
+	{ run = 'xdg-open "$@"', desc = "Open" , for = "linux"},
+	{ run = 'open "$@"', desc = "Open", for = "macos"},
 ]

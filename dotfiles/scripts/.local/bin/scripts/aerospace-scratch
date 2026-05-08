@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Toggle a scratchpad window by title.
+# If not running: launch it.
+# If in scratch workspace: bring to current workspace and focus.
+# If visible: send back to scratch workspace.
+#
+# Usage: aerospace-scratch <exact-window-title> <cmd> [args...]
+
+TITLE="$1"
+shift
+
+SCRATCH_WS="scratch"
+
+CURRENT_WS=$(aerospace list-workspaces --focused)
+
+# %{workspace} is the correct specifier (not %{workspace-name})
+WINDOW_LINE=$(aerospace list-windows --all \
+    --format '%{window-id}|%{workspace}|%{window-title}' 2>/dev/null \
+    | grep -F "|${TITLE}" | head -1)
+
+WINDOW_ID=$(echo "$WINDOW_LINE" | cut -d'|' -f1)
+WINDOW_WS=$(echo "$WINDOW_LINE" | cut -d'|' -f2)
+
+if [ -z "$WINDOW_ID" ]; then
+    "$@" &
+    exit 0
+fi
+
+if [ "$WINDOW_WS" = "$SCRATCH_WS" ]; then
+    aerospace move-node-to-workspace --window-id "$WINDOW_ID" "$CURRENT_WS"
+    aerospace focus --window-id "$WINDOW_ID"
+else
+    aerospace move-node-to-workspace --window-id "$WINDOW_ID" "$SCRATCH_WS"
+fi

@@ -7,7 +7,6 @@ return {
   },
   {
     "maskudo/devdocs.nvim",
-    dir = "~/dev/devdocs.nvim",
     keys = {
       {
         "<leader>ho",

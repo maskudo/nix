@@ -77,6 +77,11 @@ export SCRIPTS=~/.local/bin/scripts
 export PATH=$PATH:$SCRIPTS
 export EDITOR=nvim
 
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+
 # pnpm
 export PNPM_HOME="/home/mk489/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
