@@ -31,8 +31,6 @@ in
         #   withVencord = true;
         # })
         vesktop
-        feh
-        flameshot
         floorp-bin
         google-chrome
         kitty
@@ -49,6 +47,7 @@ in
         iina
         postman
         nodemon
+        stats
         # jankyborders
       ]
       ++ lib.optionals (!isDarwin) [
@@ -81,6 +80,8 @@ in
         xclip
         xsel
         zathura
+        flameshot
+        feh
       ];
 
     programs.aerospace = {

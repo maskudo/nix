@@ -59,11 +59,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-shift-r = 'reload-config' # 'layout toggle split' in i3
 
     alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
-    alt-s = 'exec-and-forget screencapture -i -x -P'
+    # alt-s = 'exec-and-forget screencapture -i -x -P'
 
     # Scratchpads (mirrors mango toggle_named_scratchpad bindings)
     # bash -l -c ensures login shell PATH and tilde expansion
     alt-backslash = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchterm kitty --title scratchterm"'
+    alt-a         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchauth kitty --title scratchauth -e andcli"'
     alt-f         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchyazi kitty --title scratchyazi -e yazi ~"'
     alt-b         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchbtop kitty --title scratchbtop -e btop"'
     alt-n         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchnote kitty --title scratchnote -e nvim ~/zt/notes/inbox/todo.md"'

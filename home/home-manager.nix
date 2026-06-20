@@ -11,7 +11,11 @@
   ]
   ++ (
     if isDarwin then
-      [ ]
+      [
+        ./systemd/commit-zt.nix
+        ./services/syncthing.nix
+        ./services/mpd.nix
+      ]
     else
       [
         ./systemd

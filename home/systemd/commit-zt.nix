@@ -1,6 +1,11 @@
-{ username, ... }:
 {
-  systemd.user.services.commit-zt = {
+  pkgs,
+  lib,
+  username,
+  ...
+}:
+{
+  systemd.user.services.commit-zt = lib.mkIf pkgs.stdenv.isLinux {
     Unit = {
       Description = "Automatic Git Commit and Push";
     };
@@ -12,7 +17,7 @@
     };
   };
 
-  systemd.user.timers.commit-zt = {
+  systemd.user.timers.commit-zt = lib.mkIf pkgs.stdenv.isLinux {
     Unit = {
       Description = "Make regular backups of zt to git.";
     };
@@ -25,4 +30,35 @@
     };
   };
 
+  launchd.agents.commit-zt = lib.mkIf pkgs.stdenv.isDarwin {
+    enable = true;
+
+    config = {
+      Label = "commit-zt";
+
+      ProgramArguments = [
+        "/bin/sh"
+        "/Users/${username}/zt/auto-commit.sh"
+      ];
+
+      WorkingDirectory = "/Users/${username}/zt";
+
+      EnvironmentVariables = {
+        PATH = "/run/current-system/sw/bin:/etc/profiles/per-user/${username}/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin";
+      };
+      StartCalendarInterval = [
+        {
+          Hour = 11;
+          Minute = 0;
+        }
+        {
+          Hour = 21;
+          Minute = 0;
+        }
+      ];
+
+      StandardOutPath = "/tmp/commit-zt.log";
+      StandardErrorPath = "/tmp/commit-zt.err";
+    };
+  };
 }
