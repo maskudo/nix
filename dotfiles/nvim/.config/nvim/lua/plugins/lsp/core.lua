@@ -16,6 +16,15 @@ M.on_attach = function(_, bufnr)
   opts.desc = "Show line diagnostics"
   keymap.set("n", "<leader>xd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
+  opts.desc = "Hover documentation"
+  keymap.set("n", "K", function()
+    vim.lsp.buf.hover({
+      border = "rounded",
+      max_width = 80,
+      max_height = 20,
+    })
+  end, opts)
+
   -- opts.desc = "Go to previous diagnostic"
   -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
   --

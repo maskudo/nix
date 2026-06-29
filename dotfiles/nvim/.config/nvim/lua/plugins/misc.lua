@@ -75,49 +75,24 @@ return {
     },
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    -- enabled = false,
-    opts = {
-      views = {
-        cmdline_input = {
-          view = "cmdline_popup",
-          relative = "cursor",
-          anchor = "auto",
-          size = { min_width = 30, width = "auto", height = "auto" },
+    "rachartier/tiny-cmdline.nvim",
+    init = function()
+      vim.o.cmdheight = 0
+      require("vim._core.ui2").enable({})
+    end,
+    config = function()
+      local tiny = require("tiny-cmdline")
+      tiny.setup({
+        on_reposition = tiny.adapters.blink,
+        native_types = {},
+        position = {
+          x = "50%", -- horizontal: "0%" = left, "50%" = center, "100%" = right
+          y = "30%", -- vertical:   "0%" = top,  "50%" = center, "100%" = bottom
         },
-      },
-      presets = {
-        command_palette = {
-          views = {
-            cmdline_popup = {
-              position = {
-                row = 10,
-              },
-            },
-            cmdline_popupmenu = {
-              position = {
-                row = 10,
-              },
-            },
-          },
+        title = {
+          enabled = true,
         },
-        long_message_to_split = true,
-        inc_rename = false,
-        lsp_doc_border = true,
-      },
-    },
-    keys = {
-      {
-        "<leader>ud",
-        mode = "n",
-        "<cmd>NoiceDismiss<cr>",
-        desc = "Dismiss notifications",
-      },
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-    },
+      })
+    end,
   },
 }
