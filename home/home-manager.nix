@@ -8,6 +8,7 @@
   imports = [
     ./cli.nix
     ./gui.nix
+    ./zen-browser.nix
   ]
   ++ (
     if isDarwin then

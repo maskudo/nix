@@ -28,6 +28,7 @@
       "steam"
       "ngrok"
       "libreoffice"
+      "itsycal"
     ];
   };
 }

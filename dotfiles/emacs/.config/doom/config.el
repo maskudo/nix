@@ -32,18 +32,18 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/rose-pine")
-(load-theme 'doom-rose-pine t) ;; or 'rose-pine-dawn / 'rose-pine-moon
+; (add-to-list 'custom-theme-load-path "~/.config/doom/themes/rose-pine")
+; (load-theme 'doom-rose-pine t) ;; or 'rose-pine-dawn / 'rose-pine-moon
 
 (add-to-list 'load-path "./lsp/biome.el")
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-(setq doom-theme nil)
+; (setq doom-theme nil)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
-(set-frame-font "JetBrains Mono Nerd Font 12" nil t)
+(set-frame-font "JetBrainsMonoNL Nerd Font Mono 12" nil t)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!

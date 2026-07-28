@@ -2,8 +2,8 @@
   description = "mk489's nix config'";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager.inputs.nixpkgs.follows = "unstable";
     home-manager.url = "github:nix-community/home-manager";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";

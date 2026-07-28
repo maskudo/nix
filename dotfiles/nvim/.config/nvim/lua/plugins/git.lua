@@ -41,7 +41,6 @@ return {
 	       map("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
 	       map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
 	       map("n", "<leader>gd", gs.diffthis, "Diff This")
-	       map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
 	       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 	       map({ "o", "x" }, "ah", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 	       map("n", "<leader>ga", "<cmd>silent !git add %<cr><cmd>silent Gitsigns refresh<CR>", "Git Add This File")
@@ -54,5 +53,24 @@ return {
     event = "BufReadPre",
     version = "*",
     config = true,
+  },
+  {
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
+    keys = {
+      {
+        "<leader>gD",
+        "<cmd>CodeDiff<CR>",
+        desc = "Restore Session",
+      },
+    },
+    opts = {
+      keymaps = {
+        view = {
+          next_hunk = "]h",
+          prev_hunk = "[h",
+        },
+      },
+    },
   },
 }

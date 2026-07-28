@@ -75,7 +75,7 @@ in
       stow
       tealdeer
       television
-      texlive.combined.scheme-small # for pdf
+      texliveSmall # for pdf
       timer
       tmux
       tree-sitter

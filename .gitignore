@@ -10,3 +10,4 @@ smplayer/.config/smplayer/tv.m3u8
 emacs/.config/doom/eln-cache/
 .direnv
 result
+/dotfiles/tv/.config/television/cable

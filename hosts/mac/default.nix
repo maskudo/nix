@@ -20,6 +20,7 @@
   ];
 
   services.openssh.enable = true;
+  programs.nix-index.enable = true;
 
   networking = {
     knownNetworkServices = [

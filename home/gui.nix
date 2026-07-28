@@ -2,8 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
-  system,
   ...
 }:
 let
@@ -34,13 +32,11 @@ in
         floorp-bin
         google-chrome
         kitty
-        libresprite
         localsend
         nicotine-plus
         obsidian
         qbittorrent
         vscode
-        inputs.zen-browser.packages."${system}".default
       ]
       ++ lib.optionals isDarwin [
         raycast
@@ -63,6 +59,7 @@ in
         firefox
         kdePackages.breeze
         libreoffice
+        libresprite
         lxappearance
         lxrandr
         mpv

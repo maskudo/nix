@@ -70,7 +70,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-n         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchnote kitty --title scratchnote -e nvim ~/zt/notes/inbox/todo.md"'
     alt-shift-n   = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchworknote kitty --title scratchworknote -e nvim ~/zt/notes/inbox/todo-work.md"'
     alt-p         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchpass kitty --title scratchpass -e sh -c ~/.local/bin/scripts/passwords"'
-    alt-c         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchcal kitty --title scratchcal -e calcurse"'
+    # alt-c         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchcal kitty --title scratchcal -e calcurse"'
     # alt-v         = 'exec-and-forget bash -l -c "~/.local/bin/scripts/aerospace-scratch scratchclip kitty --title scratchclip -e sh -c ~/.local/bin/scripts/clipboard"'
 
     # Not supported, because this command is redundant in AeroSpace mental model.

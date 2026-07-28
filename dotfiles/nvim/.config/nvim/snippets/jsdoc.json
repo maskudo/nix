@@ -1,4 +1,9 @@
 {
+  "Console Log": {
+    "prefix": "cl",
+    "body": ["console.log($1)$0"],
+    "description": "Console log"
+  },
   "JSDoc Comment": {
     "prefix": "/*",
     "body": ["/**\n", " * ${1:Comment}$0\n", "*/"],
