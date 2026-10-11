@@ -29,7 +29,7 @@ macro_workers    = 25
 bizarre_retry    = 5
 image_alloc      = 536870912  # 512MB
 image_bound      = [ 0, 0 ]
-suppress_preload = false
+suppress_preload = true
 
 [input]
 # cd
@@ -97,13 +97,13 @@ enabled = false
 
 [opener]
 edit = [
-	{ run = 'nvim "$@"', block = true, for = "unix" },
+	{ run = 'nvim %s', block = true, for = "unix" },
 ]
 play = [
-	{ run = 'smplayer "$@"', orphan = true, for = "linux" },
-	{ run = 'iina "$@"', block = true, orphan = true, for = "macos" },
+	{ run = 'smplayer %s', orphan = true, for = "linux" },
+	{ run = 'iina %s', block = true, orphan = true, for = "macos" },
 ]
 open = [
-	{ run = 'xdg-open "$@"', desc = "Open" , for = "linux"},
-	{ run = 'open "$@"', desc = "Open", for = "macos"},
+	{ run = 'xdg-open %s', desc = "Open" , for = "linux"},
+	{ run = 'open %s', desc = "Open", for = "macos"},
 ]

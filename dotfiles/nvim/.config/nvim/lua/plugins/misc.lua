@@ -77,7 +77,7 @@ return {
   {
     "rachartier/tiny-cmdline.nvim",
     init = function()
-      vim.o.cmdheight = 0
+      vim.o.cmdheight = 1
       require("vim._core.ui2").enable({})
     end,
     config = function()

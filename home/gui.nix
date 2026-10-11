@@ -24,11 +24,11 @@ in
     home.packages =
       with pkgs;
       [
+        anki-bin
         # discord
         # (discord.override {
         #   withVencord = true;
         # })
-        vesktop
         floorp-bin
         google-chrome
         kitty
@@ -39,11 +39,11 @@ in
         vscode
       ]
       ++ lib.optionals isDarwin [
+        vicinae
         raycast
         iina
         postman
         nodemon
-        stats
         # jankyborders
       ]
       ++ lib.optionals (!isDarwin) [
@@ -73,6 +73,7 @@ in
         qogir-theme
         rxvt-unicode
         smplayer
+        vesktop
         xarchiver
         xclip
         xsel

@@ -28,7 +28,11 @@
       "steam"
       "ngrok"
       "libreoffice"
-      "itsycal"
+      "spotify"
+      "discord"
+      "eqmac"
+      "vorssaint"
+      "calibre"
     ];
   };
 }

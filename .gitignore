@@ -11,3 +11,4 @@ emacs/.config/doom/eln-cache/
 .direnv
 result
 /dotfiles/tv/.config/television/cable
+/dotfiles/ssh/.DS_Store

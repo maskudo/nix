@@ -139,6 +139,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Floorp'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'Zen'
 run = ['move-node-to-workspace 2']
 
@@ -149,3 +153,13 @@ run = ['move-node-to-workspace 3']
 [[on-window-detected]]
 if.window-title-regex-substring = '^scratch'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'app.floorp.Floorp'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'

@@ -51,6 +51,7 @@ in
       lazydocker
       lazygit
       lua5_1
+      nmap
       nodejs
       neovim
       nerd-fonts.iosevka
@@ -67,7 +68,6 @@ in
       python311
       ripdrag
       ripgrep
-      rmpc
       rustup
       sqlite
       sshs
@@ -91,6 +91,7 @@ in
       minikube
       nixos-firewall-tool
       systemctl-tui
+      rmpc
       yt-dlp
     ];
 

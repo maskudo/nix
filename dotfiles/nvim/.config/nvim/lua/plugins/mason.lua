@@ -27,7 +27,8 @@ return {
       -- "emmet-ls",
       "gofumpt",
       "gopls",
-      "marksman",
+      -- "marksman",
+      "markdown-oxide",
       "lua-language-server",
       "nixpkgs-fmt",
       "prettierd",
@@ -39,7 +40,7 @@ return {
       "sql-formatter",
       "stylua", -- lua formatter
       -- "tailwindcss-language-server",
-      "tsgo",
+      "tsc",
       "terraform-ls",
       "tinymist",
       "tflint",

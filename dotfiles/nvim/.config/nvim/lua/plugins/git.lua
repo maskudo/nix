@@ -48,12 +48,12 @@ return {
       end,
     },
   },
-  {
-    "akinsho/git-conflict.nvim",
-    event = "BufReadPre",
-    version = "*",
-    config = true,
-  },
+  -- {
+  --   "akinsho/git-conflict.nvim",
+  --   event = "BufReadPre",
+  --   version = "*",
+  --   config = true,
+  -- },
   {
     "esmuellert/codediff.nvim",
     cmd = "CodeDiff",
