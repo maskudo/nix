@@ -20,6 +20,7 @@
           "zen.view.compact.enable-at-startup" = true;
           "zen.view.show-newtab-button-top" = false;
           "browser.tabs.insertAfterCurrent" = true;
+          "general.autoScroll" = true;
         };
         mods = [
           "f7c71d9a-bce2-420f-ae44-a64bd92975ab" # Better Unloaded Tabs

@@ -16,7 +16,9 @@
   config = lib.mkIf config.desktop.mango.enable {
     programs.mango = {
       enable = true;
+      addLoginEntry = true;
     };
+    services.displayManager.defaultSession = "mango";
 
     environment.systemPackages = with pkgs; [
       waybar
@@ -25,7 +27,7 @@
       foot
       rofi
       bemoji
-      swww
+      awww
       hyprshot
       wl-clipboard
       wl-clipboard-x11

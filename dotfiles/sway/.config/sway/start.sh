@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-swww-daemon &
-swww img ~/Pictures/Wallpapers/hollow-knight.png
+awww-daemon &
+awww img ~/Pictures/Wallpapers/hollow-knight.png
 
 nm-applet --indicator &
 # pypr --debug /tmp/pypr.log &

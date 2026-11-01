@@ -36,7 +36,7 @@
       kanshi
       rofi
       swappy
-      swww
+      awww
       wlr-which-key
       hyprmagnifier
       waybar

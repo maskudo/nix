@@ -5,7 +5,6 @@
 }:
 {
   programs = {
-    light.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -131,10 +130,11 @@
     usbutils
     wget
     xdotool
-    xorg.xkill
+    xkill
     vim
     zip
     powermode-indicator
+    brightnessctl
   ];
   environment.variables = {
     GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";

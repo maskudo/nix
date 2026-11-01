@@ -25,7 +25,7 @@
         rofi
         foot
         bemoji
-        swww
+        awww
         wl-clipboard
         wl-clipboard-x11
         wlr-randr

@@ -41,7 +41,7 @@
       nixosConfigurations = {
         mk489 = libx.mkHost {
           username = mk489;
-          enableGuiApps = false;
+          enableGuiApps = true;
         };
         omen = libx.mkHost {
           username = omen;
@@ -57,7 +57,7 @@
         mk489 = libx.mkHome {
           system = "x86_64-linux";
           username = mk489;
-          enableGuiApps = false;
+          enableGuiApps = true;
           mods = [
             (
               { ... }:

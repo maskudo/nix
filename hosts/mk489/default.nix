@@ -7,10 +7,13 @@
   ];
   desktop.i3.enable = false;
   desktop.hyprland.enable = false;
+  desktop.mango.enable = true;
+  gaming.enable = true;
   powerModule.enable = true;
   services.proxmox.enable = false;
   services.nfs-server.enable = true;
-  services.homelab.k3s.enable = true;
+  homelab.services.k3s.enable = true;
+  homelab.services.audiobookshelf.enable = true;
 
   networking.bridges = {
     "vmbr0" = {

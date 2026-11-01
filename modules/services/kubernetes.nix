@@ -4,14 +4,14 @@
   ...
 }:
 {
-  options.services.homelab.k3s = {
+  options.homelab.services.k3s = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Enable k3s";
     };
   };
-  config = lib.mkIf config.services.homelab.k3s.enable {
+  config = lib.mkIf config.homelab.services.k3s.enable {
     networking.firewall.allowedTCPPorts = [ 6443 ];
     services.k3s = {
       enable = true;

@@ -88,7 +88,6 @@ in
     ++ lib.optionals (!isDarwin) [
       autorandr
       distrobox
-      minikube
       nixos-firewall-tool
       systemctl-tui
       rmpc

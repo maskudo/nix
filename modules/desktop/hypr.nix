@@ -26,7 +26,7 @@
       foot
       rofi
       bemoji
-      swww
+      awww
       hyprshot
       wl-clipboard
       wl-clipboard-x11

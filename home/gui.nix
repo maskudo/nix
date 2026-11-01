@@ -30,7 +30,7 @@ in
         #   withVencord = true;
         # })
         floorp-bin
-        google-chrome
+        # google-chrome
         kitty
         localsend
         nicotine-plus
@@ -53,7 +53,7 @@ in
         arc-icon-theme
         arc-theme
         authenticator
-        copyq
+        # copyq
         cozy
         evince
         firefox

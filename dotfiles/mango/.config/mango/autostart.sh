@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-swww-daemon &
-swww img ~/Pictures/Wallpapers/berserk-brand.png
+awww-daemon &
+awww img ~/Pictures/Wallpapers/berserk-brand.png
 foot --server &
 
 nm-applet --indicator &

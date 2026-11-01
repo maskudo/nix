@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-swww-daemon &
-swww img ~/Pictures/Wallpapers/portal.png
+awww-daemon &
+awww img ~/Pictures/Wallpapers/portal.png
 waybar &
 foot --server &
 

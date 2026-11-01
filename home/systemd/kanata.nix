@@ -1,5 +1,8 @@
 { pkgs, config, ... }:
 {
+  home.packages = [
+    pkgs.kanata
+  ];
   systemd.user.services.kanata = {
     Unit = {
       Description = "Kanata Keyboard Service";

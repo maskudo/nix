@@ -30,7 +30,7 @@
       bemoji
       cliphist
       kanshi
-      swww
+      awww
       xwayland-satellite
       wl-clipboard
       wl-clipboard-x11

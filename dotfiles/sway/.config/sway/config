@@ -342,8 +342,8 @@ for_window [instance="^scratch"] \
 
 
 exec foot --server
-exec swww-daemon &
-exec swww img ~/Pictures/Wallpapers/hollow-knight.png &
+exec awww-daemon &
+exec awww img ~/Pictures/Wallpapers/hollow-knight.png &
 exec nm-applet --indicator &
 exec waybar &
 exec xrdb -load ~/.Xdefaults

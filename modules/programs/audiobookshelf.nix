@@ -20,5 +20,8 @@ in
       port = 8113;
       host = "0.0.0.0";
     };
+    systemd.tmpfiles.rules = [
+      "a+ /mnt - - - - u:audiobookshelf:--x"
+    ];
   };
 }

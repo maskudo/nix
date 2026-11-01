@@ -57,11 +57,13 @@
   fileSystems."/export/media" = {
     device = "/mnt/media";
     options = [ "bind" ];
+    fsType = "ntfs";
   };
 
   fileSystems."/export/ssd" = {
     device = "/mnt/ssd";
     options = [ "bind" ];
+    fsType = "ntfs";
   };
 
   services.nfs.server = {

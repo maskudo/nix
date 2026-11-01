@@ -20,7 +20,7 @@
         Description = "Sync Photos";
       };
       Service = {
-        ExecStart = ''${pkgs.rsync}/bin/rsync -Prvh /mnt/media/photos /mnt/game'';
+        ExecStart = "${pkgs.rsync}/bin/rsync -Prvh /mnt/media/photos /mnt/ssd";
         Type = "oneshot"; # The service runs and finishes once each time it's triggered
       };
     };

@@ -30,7 +30,7 @@
     };
   };
 
-  launchd.agents.commit-zt = lib.mkIf pkgs.stdenv.isDarwin {
+  launchd.agents.commit-zt = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     enable = true;
 
     config = {

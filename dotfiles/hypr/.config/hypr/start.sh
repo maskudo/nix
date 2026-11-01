@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-swww-daemon &
-swww img ~/Pictures/Wallpapers/hollow-knight.png
+awww-daemon &
+awww img ~/Pictures/Wallpapers/hollow-knight.png
 ~/.config/waybar/waybar-autohide.sh &
 foot --server &
 
